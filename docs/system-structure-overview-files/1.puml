@@ -1,0 +1,27 @@
+@startuml
+
+' Definitions
+package Frontend {
+  [End-user Views] as EUV
+  [Management Views] as MNV
+}
+
+package Backend {
+  [End-user API Endpoints] as EUAE
+  [Management API Endpoints] as MNAE
+}
+
+database Database as DB
+
+' Order fixes
+EUV -[hidden]right- MNV
+EUAE -[hidden]right- MNAE
+
+' Connections
+MNV ..> MNAE
+EUV ..> EUAE
+
+EUAE ..> DB
+MNAE ..> DB
+
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+
+' Definitions
+package Frontend {
+  [End-user Views] as EUV
+  [Management Views] as MNV
+}
+
+package Backend {
+  [End-user API Endpoints] as EUAE
+  [Management API Endpoints] as MNAE
+  
+  [Customer Care Domain] as CCD
+  [Contract Management Domain] as CMD1
+  [Content Management Domain] as CMD2
+  
+  [Data Accessor] as DA
+  [Image Server] as IS
+}
+
+database Database as DB
+
+' Order fixes
+' MNV -[hidden]right- EUV
+EUV -[hidden]right- MNV
+EUAE -[hidden]right- MNAE
+
+CCD -[hidden]right- CMD1
+CMD1 -[hidden]right- CMD2
+
+DA -[hidden]right- IS
+
+' Connections
+MNV ..> MNAE
+EUV ..> EUAE
+
+EUAE ..> CCD
+EUAE ..> CMD1
+EUAE ..> CMD2
+
+MNAE ..> CCD
+MNAE ..> CMD1
+MNAE ..> CMD2
+
+CCD ..> DA
+CMD1 ..> DA
+CMD2 ..> DA
+
+DA ..> DB
+
+CMD2 ..> IS
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+
+' Definitions
+package Frontend as FE {
+  package "End-user Views" as EUV {
+    [Content View] as CV
+    [Bike View] as BV
+    [List Bike View] as LBV
+    
+    [Contact Component] as CC1
+    [Contract Component] as CC2
+  }
+  
+  package "Management Views" as MNV {
+     [...]
+  }
+}
+
+package Backend as BE {
+  [End-user API Endpoints] as EUAE
+  [Management API Endpoints] as MNAE
+}
+
+database Database as DB
+
+' Order fixes
+'FE -[hidden]down- BE
+
+EUV -[hidden]right- MNV
+EUAE -[hidden]right- MNAE
+
+CV -[hidden]right- BV
+BV -[hidden]right- LBV
+
+CV -[hidden]down- CC1
+BV -[hidden]down- CC2
+
+CC1 -[hidden]down- BE
+
+' Connections
+MNV .down.> MNAE
+EUV .down.> EUAE
+
+EUAE .down.> DB
+MNAE .down.> DB
+
+@enduml
