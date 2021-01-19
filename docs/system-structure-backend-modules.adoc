@@ -1,4 +1,6 @@
 [plantuml]
 ----
-include::system-structure-backend-modules-files/1.puml[]
+include::./new-system-structure.puml[]
 ----
+
+- Administration View: 

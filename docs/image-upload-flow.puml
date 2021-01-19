@@ -1,0 +1,15 @@
+@startuml
+start
+:Select the image;
+if (Is link?) then (yes)
+:Persist the image;
+else (no)
+endif
+if (Images is more than 10MB?) then (yes)
+:Resize the image;
+else (no)
+endif
+:Save the image;
+:Return the URL;
+stop
+@enduml

@@ -1,0 +1,79 @@
+@startuml
+
+''''''''''''''''''''''''
+' Packages and modules '
+''''''''''''''''''''''''
+package System {
+  package "Presentation Layer" {
+    [End-user View] as EUV
+    [Administration View] as ADMV
+  }
+  
+  package "Business Logic Layer" {
+    [Data Analysing Service] as DAS2
+    [Customer Care Service] as CCS
+    [Contract Management Service] as CMS1
+    [Content Management Service] as CMS2
+    [Metadata Providing Service] as MDPS
+  }
+  
+  package "Data Access Layer" {
+    [Data Accessing Service] as DAS
+    [Data Provisioning Service] as DPS
+  }
+}
+
+database Database as DB
+[Image Server] as IS
+[External Communication Service] as ECS
+
+''''''''''''''''
+' Layout fixes '
+''''''''''''''''
+
+'CCS -[hidden]right- CMS1
+'CMS1 -[hidden]right- CMS2
+'CMS2 -[hidden]right- MDPS
+CMS1 -[hidden]down- DAS2
+CMS1 -[hidden]down- MDPS
+
+'DB -[hidden]right- IS
+DB -[hidden]right- ECS
+'MDPS -[hidden]right- DAS2
+
+'''''''''''''''''''''''''''''''
+' Connections between modules '
+'''''''''''''''''''''''''''''''
+
+' End-User View '
+EUV ..> CCS
+EUV ..> CMS1
+EUV ..> CMS2
+EUV ..> MDPS
+' Management View
+ADMV ..> CCS
+ADMV ..> CMS1
+ADMV ..> CMS2
+ADMV ..> DAS2
+ADMV ..> MDPS
+
+' Contract Management Service
+CMS1 ..> DAS
+' Content Management Service
+CMS2 ..> DAS
+' Data Analysing Service
+DAS2 ..> DAS
+' Customer Care Service
+CCS ..> DAS
+CCS ..> ECS
+' Metadata Providing Service
+MDPS ..> DAS
+
+' Data Accessing Service
+DAS ..> DB
+DAS ..> IS
+DAS .right.> DPS
+' Data Provisioning Service
+DPS ..> DB
+
+@enduml

@@ -1,0 +1,12 @@
+/home/thanh/Projects/amber/backend/DataAccessing/bin/Debug/net5.0/DataAccessing.deps.json
+/home/thanh/Projects/amber/backend/DataAccessing/bin/Debug/net5.0/DataAccessing.dll
+/home/thanh/Projects/amber/backend/DataAccessing/bin/Debug/net5.0/ref/DataAccessing.dll
+/home/thanh/Projects/amber/backend/DataAccessing/bin/Debug/net5.0/DataAccessing.pdb
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.csprojAssemblyReference.cache
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.GeneratedMSBuildEditorConfig.editorconfig
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.AssemblyInfoInputs.cache
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.AssemblyInfo.cs
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.csproj.CoreCompileInputs.cache
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.dll
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/ref/DataAccessing.dll
+/home/thanh/Projects/amber/backend/DataAccessing/obj/Debug/net5.0/DataAccessing.pdb
