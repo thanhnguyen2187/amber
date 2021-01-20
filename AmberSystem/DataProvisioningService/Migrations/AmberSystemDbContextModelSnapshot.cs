@@ -30,12 +30,12 @@ namespace DataProvisioningService.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2021, 1, 19, 10, 38, 12, 192, DateTimeKind.Local).AddTicks(6276));
+                        .HasDefaultValue(new DateTime(2021, 1, 20, 10, 30, 18, 13, DateTimeKind.Local).AddTicks(5633));
 
                     b.Property<DateTime>("DateModified")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2021, 1, 19, 10, 38, 12, 196, DateTimeKind.Local).AddTicks(7549));
+                        .HasDefaultValue(new DateTime(2021, 1, 20, 10, 30, 18, 17, DateTimeKind.Local).AddTicks(1451));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -195,6 +195,30 @@ namespace DataProvisioningService.Migrations
                             Language = "vi",
                             ModuleName = "end_user_view.navbar_buttons.label.services",
                             Text = "Các dịch vụ"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatorId = 0,
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifierId = 0,
+                            Visibility = 0,
+                            Language = "en",
+                            ModuleName = "end_user_view.navbar_right_button.label.contract_checking",
+                            Text = "Check contract"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatorId = 0,
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifierId = 0,
+                            Visibility = 0,
+                            Language = "vi",
+                            ModuleName = "end_user_view.navbar_right_button.label.contract_checking",
+                            Text = "Kiểm tra hợp đồng"
                         });
                 });
 #pragma warning restore 612, 618

@@ -44,11 +44,12 @@ namespace DataAccessingService.MetadataProviding
                         // && presetValue.ModuleName == longKey
                         && presetValue
                             .ModuleName
-                            .Split(
-                                ".",
-                                StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries
-                            )
                             .Contains(PresetValue.Constant.ModuleName.NavBarButtons)
+                            // .Split(
+                            //     ".",
+                            //     StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries
+                            // )
+                            // .Contains(PresetValue.Constant.ModuleName.NavBarButtons)
                 )
                 .Select(presetValue => new NavBarButtonData(presetValue))
                 .ToList()

@@ -1,0 +1,16 @@
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataAccessingService.deps.json
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataAccessingService.dll
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/ref/DataAccessingService.dll
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataAccessingService.pdb
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService.dll
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService.pdb
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csprojAssemblyReference.cache
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.GeneratedMSBuildEditorConfig.editorconfig
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.AssemblyInfoInputs.cache
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.AssemblyInfo.cs
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csproj.CoreCompileInputs.cache
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csproj.CopyComplete
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.dll
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/ref/DataAccessingService.dll
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.pdb
