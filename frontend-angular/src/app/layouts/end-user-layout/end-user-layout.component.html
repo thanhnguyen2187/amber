@@ -1,0 +1,33 @@
+<mat-toolbar
+  color="primary"
+  class="top-toolbar"
+>
+  <button
+    mat-icon-button
+  >
+    <mat-icon
+      svgIcon="logo"
+    >
+      favorite
+    </mat-icon>
+  </button>
+  <span class="mat-small">
+    Phung Motorbike
+  </span>
+
+  <span class="spacer"></span>
+
+  <a
+    mat-button
+    *ngFor="let navigationItem of navigationItems;"
+    [routerLink]="navigationItem.reference"
+  >
+    {{navigationItem.label}}
+  </a>
+
+  <span class="spacer"></span>
+  <span>
+    English or Vietnamese
+  </span>
+</mat-toolbar>
+<router-outlet></router-outlet>

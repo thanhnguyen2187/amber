@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataProvisioningService.Migrations
 {
     [DbContext(typeof(AmberSystemDbContext))]
-    [Migration("20210120033018_InitialCreate")]
+    [Migration("20210123140031_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,12 +32,12 @@ namespace DataProvisioningService.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2021, 1, 20, 10, 30, 18, 13, DateTimeKind.Local).AddTicks(5633));
+                        .HasDefaultValue(new DateTime(2021, 1, 23, 21, 0, 31, 579, DateTimeKind.Local).AddTicks(759));
 
                     b.Property<DateTime>("DateModified")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2021, 1, 20, 10, 30, 18, 17, DateTimeKind.Local).AddTicks(1451));
+                        .HasDefaultValue(new DateTime(2021, 1, 23, 21, 0, 31, 582, DateTimeKind.Local).AddTicks(7247));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -76,6 +76,42 @@ namespace DataProvisioningService.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue("PresetValue");
+                });
+
+            modelBuilder.Entity("DataProvisioningService.Models.StaticValue", b =>
+                {
+                    b.HasBaseType("DataProvisioningService.Models.Base");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Default")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IconName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("StaticValue_Language");
+
+                    b.Property<string>("ModuleName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("StaticValue_ModuleName");
+
+                    b.Property<string>("Placeholder")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reference")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Source")
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("StaticValue");
 
                     b.HasData(
                         new
@@ -86,9 +122,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "Home",
+                            Key = "home",
                             Language = "en",
-                            ModuleName = "end_user_view.navbar_buttons.label.home",
-                            Text = "Homepage"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/Home"
                         },
                         new
                         {
@@ -98,9 +136,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
-                            Language = "vi",
-                            ModuleName = "end_user_view.navbar_buttons.label.home",
-                            Text = "Trang chủ"
+                            Content = "About Us",
+                            Key = "about_us",
+                            Language = "en",
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/AboutUs"
                         },
                         new
                         {
@@ -110,9 +150,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "For Sale",
+                            Key = "for_sale",
                             Language = "en",
-                            ModuleName = "end_user_view.navbar_buttons.label.about_us",
-                            Text = "About us"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/ForSale"
                         },
                         new
                         {
@@ -122,9 +164,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
-                            Language = "vi",
-                            ModuleName = "end_user_view.navbar_buttons.label.about_us",
-                            Text = "Giới thiệu"
+                            Content = "For Rent",
+                            Key = "for_rent",
+                            Language = "en",
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/ForRent"
                         },
                         new
                         {
@@ -134,9 +178,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "Services",
+                            Key = "services",
                             Language = "en",
-                            ModuleName = "end_user_view.navbar_buttons.label.for_sale",
-                            Text = "Đang bán"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/Services"
                         },
                         new
                         {
@@ -146,9 +192,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "Trang Chủ",
+                            Key = "home",
                             Language = "vi",
-                            ModuleName = "end_user_view.navbar_buttons.label.for_sale",
-                            Text = "For sale"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/Home"
                         },
                         new
                         {
@@ -158,9 +206,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
-                            Language = "en",
-                            ModuleName = "end_user_view.navbar_buttons.label.for_rent",
-                            Text = "Cho thuê"
+                            Content = "Thông Tin",
+                            Key = "about_us",
+                            Language = "vi",
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/AboutUs"
                         },
                         new
                         {
@@ -170,9 +220,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "Đang Bán",
+                            Key = "for_sale",
                             Language = "vi",
-                            ModuleName = "end_user_view.navbar_buttons.label.for_rent",
-                            Text = "For rent"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/ForSale"
                         },
                         new
                         {
@@ -182,9 +234,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
-                            Language = "en",
-                            ModuleName = "end_user_view.navbar_buttons.label.services",
-                            Text = "Services"
+                            Content = "Cho Thuê",
+                            Key = "for_rent",
+                            Language = "vi",
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/ForRent"
                         },
                         new
                         {
@@ -194,33 +248,11 @@ namespace DataProvisioningService.Migrations
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModifierId = 0,
                             Visibility = 0,
+                            Content = "Dịch Vụ",
+                            Key = "services",
                             Language = "vi",
-                            ModuleName = "end_user_view.navbar_buttons.label.services",
-                            Text = "Các dịch vụ"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CreatorId = 0,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModifierId = 0,
-                            Visibility = 0,
-                            Language = "en",
-                            ModuleName = "end_user_view.navbar_right_button.label.contract_checking",
-                            Text = "Check contract"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CreatorId = 0,
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModifierId = 0,
-                            Visibility = 0,
-                            Language = "vi",
-                            ModuleName = "end_user_view.navbar_right_button.label.contract_checking",
-                            Text = "Kiểm tra hợp đồng"
+                            ModuleName = "end_user_view.header.buttons",
+                            Reference = "~/Services"
                         });
                 });
 #pragma warning restore 612, 618

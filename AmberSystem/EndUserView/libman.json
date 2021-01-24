@@ -5,6 +5,10 @@
     {
       "library": "bootstrap@5.0.0-beta1",
       "destination": "wwwroot/js/bootstrap"
+    },
+    {
+      "library": "bulma@0.9.1",
+      "destination": "wwwroot/lib/bulma"
     }
   ]
 }

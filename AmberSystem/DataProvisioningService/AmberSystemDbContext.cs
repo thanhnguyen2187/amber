@@ -37,14 +37,11 @@ namespace DataProvisioningService
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // base.OnModelCreating(modelBuilder);
-            SetModelsDefaultValues(
-                modelBuilder: modelBuilder
-            );
-            SeedPresetValues(
-                modelBuilder: modelBuilder
-            );
+            SetModelsDefaultValues(modelBuilder: modelBuilder);
+            SeedData(modelBuilder: modelBuilder);
         }
 
         public DbSet<PresetValue> PresetValues { get; set; }
+        public DbSet<StaticValue> StaticValues { get; set; }
     }
 }

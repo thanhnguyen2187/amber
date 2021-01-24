@@ -6,7 +6,7 @@ namespace DataProvisioningService
 {
     public partial class AmberSystemDbContext
     {
-        protected void SetBaseModelDefaultValues(ModelBuilder modelBuilder)
+        protected void SetDefaultValuesBaseModel(ModelBuilder modelBuilder)
         {
             // Visibility
             modelBuilder
@@ -35,7 +35,7 @@ namespace DataProvisioningService
                 .HasDefaultValue(0);
         }
 
-        protected void SetPresetValueModelDefaultValues(ModelBuilder modelBuilder)
+        protected void SetDefaultValuesStaticValueModel(ModelBuilder modelBuilder)
         {
             // Language
             modelBuilder
@@ -46,12 +46,8 @@ namespace DataProvisioningService
 
         protected void SetModelsDefaultValues(ModelBuilder modelBuilder)
         {
-            SetBaseModelDefaultValues(
-                modelBuilder: modelBuilder
-            );
-            SetPresetValueModelDefaultValues(
-                modelBuilder: modelBuilder
-            );
+            SetDefaultValuesBaseModel(modelBuilder: modelBuilder);
+            SetDefaultValuesStaticValueModel(modelBuilder: modelBuilder);
         }
     }
 }

@@ -1,69 +1,115 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en" >
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta
+        charset="utf-8"/>
+    <meta
+        content="width=device-width, initial-scale=1.0"
+        name="viewport"/>
     <title>@ViewData["Title"] - EndUserView</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link
+        href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+        rel="stylesheet"/>
+    <link
+        href="~/css/site.css"
+        rel="stylesheet"/>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">
-                Phung Motorbike
+    <nav
+        class="bg-light navbar navbar-expand-lg navbar-light" 
+    >
+        <div
+            class="container-fluid" 
+        >
+            <a
+                asp-area=""
+                asp-page="/Index"
+                class="navbar-brand" >
+                <object
+                    data="~/svg/500px-brands.svg"
+                    style="width: 24px;"
+                    type="image/svg+xml" 
+                >
+                </object>
             </a>
             <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target=".navbar-collapse"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent"
+                data-bs-toggle="collapse"
+                type="button" 
             >
-                <span class="navbar-toggler-icon">
+                <span
+                    class="navbar-toggler-icon" >
                 </span>
             </button>
             <div
-                class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
+                class="collapse navbar-collapse justify-content-between"
+                id="navbarSupportedContent" 
             >
-                <ul class="navbar-nav flex-grow-1">
-                    @foreach (var navBarButtonData in AdministrationViewProvider.GetNavBarButtonData(language: "en"))
+                <ul
+                    class="mb-2 mb-lg-0 me-auto navbar-nav justify-content-center flex-row" 
+                >
+                    @foreach (var headerButtonData in AdministrationViewProvider.GetHeaderButtonsData(language: "en"))
                     {
-                        <li class="nav-item">
+                        <li
+                            class="nav-item" >
                             <a
-                                class="nav-link text-dark"
                                 asp-area=""
-                                asp-page="/Index"
-                            >
-                                @navBarButtonData.Label
+                                asp-page="@headerButtonData.Reference"
+                                class="nav-link" >
+                                @headerButtonData.Content
                             </a>
                         </li>
                     }
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                    </li>
                 </ul>
+                <form
+                    class="d-flex" >
+                    <input
+                        aria-label="Search"
+                        class="form-control me-2"
+                        placeholder="Search"
+                        type="search" >
+                    <button
+                        class="btn btn-outline-success"
+                        type="submit" >
+                        Search
+                    </button>
+                </form>
             </div>
         </div>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
+<div
+    class="container" >
+    <main
+        class="pb-3"
+        role="main" >
         @RenderBody()
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2021 - EndUserView - <a asp-area="" asp-page="/Privacy">Privacy</a>
+<footer
+    class="border-top footer text-muted" >
+    <div
+        class="container" 
+    >
+        &copy; 2021 - EndUserView - <a asp-area="" asp-page="/Privacy" > Privacy </a>
     </div>
 </footer>
 
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-@* <script src="~/js/site.js" asp-append-version="true"></script> *@
+<script
+    src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
+@*
+<script
+    src="~/js/site.js"
+    asp-append-version="true"
+></script>
+*@
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>

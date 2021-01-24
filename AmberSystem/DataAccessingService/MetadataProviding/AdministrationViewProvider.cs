@@ -8,55 +8,41 @@ namespace DataAccessingService.MetadataProviding
 {
     public static class AdministrationViewProvider
     {
-        public class NavBarButtonData
+        public class HeaderButtonData
         {
-            public string Label { get; set; }
-            public string LongKey { get; set; }
-            public string ShortKey { get; set; }
+            public string Content { get; set; }
+            public string Reference { get; set; }
             public string Language { get; set; }
             
-            public NavBarButtonData() {}
+            public HeaderButtonData() {}
 
-            public NavBarButtonData(PresetValue presetValue)
+            public HeaderButtonData(StaticValue staticValue)
             {
-                Label = presetValue.Text;
-                LongKey = presetValue.ModuleName; 
-                // should evaluate to "administration_view.navbar_buttons.label.some_thing"
-                ShortKey = LongKey.Split(separator: ".")[3];
-                // should evaluate to "something"
-                Language = presetValue.Language;
+                Content = staticValue.Content;
+                Reference = staticValue.Reference;
+                Language = staticValue.Language;
             }
         }
         
-        public static List<NavBarButtonData> GetNavBarButtonData(
-            // string longKey,
+        public static List<HeaderButtonData> GetHeaderButtonsData(
             string language = PresetValue.Constant.Language.English
         )
         {
             using var context = new AmberSystemDbContext();
-            var navBarButtonsData =
+            var headerButtonsData =
             (
                 context
-                .PresetValues
+                .StaticValues
                 .Where(
-                    presetValue =>
-                        presetValue.Language == language
-                        // && presetValue.ModuleName == longKey
-                        && presetValue
-                            .ModuleName
-                            .Contains(PresetValue.Constant.ModuleName.NavBarButtons)
-                            // .Split(
-                            //     ".",
-                            //     StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries
-                            // )
-                            // .Contains(PresetValue.Constant.ModuleName.NavBarButtons)
+                    staticValue =>
+                        staticValue.Language == language
+                        && staticValue.ModuleName == StaticValue.Constant.ModuleName.EndUserHeaderButtons
                 )
-                .Select(presetValue => new NavBarButtonData(presetValue))
+                .Select(staticValue => new HeaderButtonData(staticValue))
                 .ToList()
-                // .First()
             );
             
-            return navBarButtonsData;
+            return headerButtonsData;
         }
     }
 }
