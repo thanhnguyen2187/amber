@@ -1,0 +1,12 @@
+@page
+@using DataAccessingService.ContentManagementService
+@model EndUserView.Pages.AboutUs
+
+@{
+    // Layout = null;
+}
+
+<div class="">
+    @AboutUsContentController.GetAboutUsContent().RawHTMLString
+</div>
+

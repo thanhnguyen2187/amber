@@ -2,14 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6524f9b-9584-4566-83d9-9ee27966ce58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/.idea.AmberBackend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/AmberBackend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/AmberBackend.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/StaticValue/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/AdministrationViewProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/AdministrationViewProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/DataAccessingService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/DataAccessingService.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext_DataSeeding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext_DataSeeding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext_DefaultValuesSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/AmberSystemDbContext_DefaultValuesSetting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/DataProvisioningService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/DataProvisioningService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Migrations/20210123140031_InitialCreate.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Migrations/20210123140031_InitialCreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Migrations/AmberSystemDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Migrations/AmberSystemDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/Base.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/Base.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/PresetValue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/StaticValue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/StaticValue_Constant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/Models/StaticValue/Constant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/DataProvisioningService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/DataProvisioningService.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/EndUserView.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/EndUserView.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/EndUserView.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/EndUserView.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/recreate_database.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/wwwroot/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system-structure-backend-modules.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/system-structure-backend-modules.adoc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +108,9 @@
       <workItem from="1610852228025" duration="1992000" />
       <workItem from="1610955807997" duration="2501000" />
       <workItem from="1611028804916" duration="7332000" />
+      <workItem from="1611494830583" duration="883000" />
+      <workItem from="1611770700550" duration="2883000" />
+      <workItem from="1611929095194" duration="1636000" />
     </task>
     <servers />
   </component>

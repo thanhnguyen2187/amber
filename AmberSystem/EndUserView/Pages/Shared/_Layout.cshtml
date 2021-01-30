@@ -18,7 +18,7 @@
 <body>
 <header>
     <nav
-        class="bg-light navbar navbar-expand-lg navbar-light" 
+        class="bg-light navbar navbar-expand-lg navbar-light fixed-top" 
     >
         <div
             class="container-fluid" 
@@ -48,20 +48,21 @@
                 </span>
             </button>
             <div
-                class="collapse navbar-collapse justify-content-between"
+                class="collapse navbar-collapse"
                 id="navbarSupportedContent" 
             >
                 <ul
-                    class="mb-2 mb-lg-0 me-auto navbar-nav justify-content-center flex-row" 
+                    class="mb-2 mb-lg-0 me-auto navbar-nav" 
                 >
                     @foreach (var headerButtonData in AdministrationViewProvider.GetHeaderButtonsData(language: "en"))
                     {
                         <li
-                            class="nav-item" >
+                            class="nav-item" 
+                        >
                             <a
-                                asp-area=""
                                 asp-page="@headerButtonData.Reference"
-                                class="nav-link" >
+                                class="nav-link" 
+                            >
                                 @headerButtonData.Content
                             </a>
                         </li>
@@ -84,22 +85,22 @@
         </div>
     </nav>
 </header>
-<div
-    class="container" >
-    <main
-        class="pb-3"
-        role="main" >
-        @RenderBody()
-    </main>
-</div>
+
+<main
+    class=""
+    role="main" 
+>
+    @RenderBody()
+</main>
 
 <footer
-    class="border-top footer text-muted" >
-    <div
-        class="container" 
+    class="footer text-muted fixed-bottom bg-light" 
+>
+    <span
+        class="text-muted m-2 float-end" 
     >
         &copy; 2021 - EndUserView - <a asp-area="" asp-page="/Privacy" > Privacy </a>
-    </div>
+    </span>
 </footer>
 
 <script

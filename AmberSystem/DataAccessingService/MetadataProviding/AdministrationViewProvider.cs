@@ -18,14 +18,14 @@ namespace DataAccessingService.MetadataProviding
 
             public HeaderButtonData(StaticValue staticValue)
             {
-                Content = staticValue.Content;
+                Content = staticValue.Text;
                 Reference = staticValue.Reference;
                 Language = staticValue.Language;
             }
         }
         
         public static List<HeaderButtonData> GetHeaderButtonsData(
-            string language = PresetValue.Constant.Language.English
+            string language = StaticValue.Constant.Language.English
         )
         {
             using var context = new AmberSystemDbContext();

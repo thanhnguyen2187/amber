@@ -1,130 +1,49 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
+using System.IO;
 using DataProvisioningService.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace DataProvisioningService
 {
     public partial class AmberSystemDbContext
     {
-        private IEnumerator<int> generateIdIterator()
+        private void SeedData_Images(ModelBuilder modelBuilder)
         {
-            var id = 1;
-            while (true)
-            {
-                yield return id;
-                id += 1;
-            }
+            modelBuilder
+                .Entity<MediaFile>()
+                .HasData(data: MediaFile.Data.ImageFiles);
         }
 
-        protected void SeedStaticValues_EndUserViewHeaderButtons(ModelBuilder modelBuilder)
+        private void SeedData_StaticValues_EndUserHeaderButtons(ModelBuilder modelBuilder)
         {
-            var currentIdIterator = generateIdIterator();
-
-            StaticValue CreateEndUserHeaderButtonStaticValuesEnglish(
-                string key,
-                string content,
-                string reference
-            ) =>
-                new()
-                {
-                    Id = currentIdIterator.MoveNext() ? currentIdIterator.Current : -1,
-                    ModuleName = StaticValue.Constant.ModuleName.EndUserHeaderButtons,
-                    Key = key,
-                    Content = content,
-                    Reference = reference,
-                    Language = StaticValue.Constant.Language.English,
-                };
-
-            StaticValue CreateEndUserHeaderButtonStaticValuesVietnamese(string key, string content, string reference) =>
-                new()
-                {
-                    Id = currentIdIterator.MoveNext() ? currentIdIterator.Current : -1,
-                    ModuleName = StaticValue.Constant.ModuleName.EndUserHeaderButtons,
-                    Key = key,
-                    Content = content,
-                    Reference = reference,
-                    Language = StaticValue.Constant.Language.Vietnamese,
-                };
-
-            var endUserHeaderButtonDataEnglish = new[]
-            {
-                Tuple.Create(
-                    StaticValue.Constant.Key.Home, // key
-                    "Home", // content
-                    StaticValue.Constant.Reference.Home // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.AboutUs, // key
-                    "About Us", // content
-                    StaticValue.Constant.Reference.AboutUs // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.ForSale, // key
-                    "For Sale", // content
-                    StaticValue.Constant.Reference.ForSale // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.ForRent, // key
-                    "For Rent", // content
-                    StaticValue.Constant.Reference.ForRent // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.Services, // key
-                    "Services", // content
-                    StaticValue.Constant.Reference.Services // reference
-                ),
-            };
-            var endUserHeaderButtonDataVietnamese = new[]
-            {
-                Tuple.Create(
-                    StaticValue.Constant.Key.Home, // key
-                    "Trang Chủ", // content
-                    StaticValue.Constant.Reference.Home // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.AboutUs, // key
-                    "Thông Tin", // content
-                    StaticValue.Constant.Reference.AboutUs // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.ForSale, // key
-                    "Đang Bán", // content
-                    StaticValue.Constant.Reference.ForSale // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.ForRent, // key
-                    "Cho Thuê", // content
-                    StaticValue.Constant.Reference.ForRent // reference
-                ),
-                Tuple.Create(
-                    StaticValue.Constant.Key.Services, // key
-                    "Dịch Vụ", // content
-                    StaticValue.Constant.Reference.Services // reference
-                ),
-            };
-
             var endUserHeaderButtonStaticValuesEnglish =
-                endUserHeaderButtonDataEnglish.Select(
-                    tuple =>
-                        CreateEndUserHeaderButtonStaticValuesEnglish(
-                            key: tuple.Item1,
-                            content: tuple.Item2,
-                            reference: tuple.Item3
-                        )
-                );
+                StaticValue
+                    .Data
+                    .EndUserButtonsEnglish
+                    .Select(
+                        tuple =>
+                            StaticValue.CreateEndUserHeaderButtonEnglish(
+                                key: tuple.Key,
+                                content: tuple.Content,
+                                reference: tuple.Reference
+                            )
+                    )
+            ;
             var endUserHeaderButtonStaticValuesVietnamese =
-                endUserHeaderButtonDataVietnamese.Select(
-                    tuple =>
-                        CreateEndUserHeaderButtonStaticValuesVietnamese(
-                            key: tuple.Item1,
-                            content: tuple.Item2,
-                            reference: tuple.Item3
-                        )
-                );
+                StaticValue
+                    .Data
+                    .EndUserButtonsVietnamese
+                    .Select(
+                        tuple =>
+                            StaticValue.CreateEndUserHeaderButtonVietnamese(
+                                key: tuple.Key,
+                                content: tuple.Content,
+                                reference: tuple.Reference
+                            )
+                    )
+            ;
 
             modelBuilder
                 .Entity<StaticValue>()
@@ -135,10 +54,64 @@ namespace DataProvisioningService
                         .ToList()
                 );
         }
-        
-        protected void SeedData(ModelBuilder modelBuilder)
+
+        private void SeedData_StaticValues_EndUserBodyAboutUs(ModelBuilder modelBuilder)
         {
-            SeedStaticValues_EndUserViewHeaderButtons(modelBuilder: modelBuilder);
+            // a work around like this is needed since the text file is placed in another folder
+            var rawContentFileFolderPath =
+                Path.Join(
+                    new[]
+                    {
+                        "DataProvisioningService",
+                        "SeedingData",
+                    }
+                );
+            var rawContentFileName = "AboutUsHTML.txt";
+            var rawContentFilePath =
+                Path.Join(
+                    new[]
+                    {
+                        Directory
+                            .GetParent(Environment.CurrentDirectory)
+                            ?.FullName,
+                        rawContentFileFolderPath,
+                        rawContentFileName,
+                    }
+                );
+            var rawContent = File.ReadAllText(path: rawContentFilePath);
+
+            modelBuilder
+                .Entity<StaticValue>()
+                .HasData(
+                    StaticValue.CreateEndUserBodyAboutUs(
+                        rawContent: rawContent
+                    )
+                );
+        }
+
+        private void SeedData_StaticValues_EndUserBodyHomeCarouselImages(ModelBuilder modelBuilder)
+        {
+            var indexIterator = IBase.GenerateSequenceIterator();
+            for (var index = 1; index <= 3; index++)
+            {
+                modelBuilder
+                    .Entity<StaticValue>()
+                    .HasData(
+                        StaticValue.CreateEndUserBodyHomeCarouselImage(
+                            index: index,
+                            key: index.ToString(),
+                            language: StaticValue.Constant.Language.English
+                        )
+                    );
+            }
+        }
+
+        private void SeedData(ModelBuilder modelBuilder)
+        {
+            SeedData_Images(modelBuilder: modelBuilder);
+            SeedData_StaticValues_EndUserHeaderButtons(modelBuilder: modelBuilder);
+            SeedData_StaticValues_EndUserBodyAboutUs(modelBuilder: modelBuilder);
+            SeedData_StaticValues_EndUserBodyHomeCarouselImages(modelBuilder: modelBuilder);
         }
     }
 }

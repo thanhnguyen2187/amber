@@ -11,14 +11,13 @@ namespace DataProvisioningService
         //     : base(options: options)
         // {
         // }
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        private static string CreateSqliteConnectionString()
         {
-            // TODO: Switch to a production-ready DBMS
-            var homeDirectory = Environment.GetFolderPath(
-                folder: Environment.SpecialFolder.UserProfile
-            );
-            var databaseFilePath = Path.Combine(
+            var homeDirectory =
+                Environment.GetFolderPath(
+                    folder: Environment.SpecialFolder.UserProfile
+                );
+            var databaseFilePath = Path.Join(
                 paths: new[]
                 {
                     homeDirectory,
@@ -26,22 +25,64 @@ namespace DataProvisioningService
                     "amber.db",
                 }
             ); // should evaluate to "~/Amber/amber.db"
-            optionsBuilder.UseSqlite(
-                connectionString: $@"Data Source={databaseFilePath}"
-            );
-            base.OnConfiguring(
-                optionsBuilder: optionsBuilder
-            );
+            var connectionString = $@"Data Source={databaseFilePath}";
+
+            return connectionString;
+        }
+
+        // ReSharper disable once InconsistentNaming
+        private static string CreateMariaDBConnectionString()
+        {
+            var username = "amber";
+            var password = "amber";
+            var serverAddress = "127.0.0.1";
+            var port = "3306";
+            var databaseName = "amber";
+
+            var connectionString = string.Join(
+                separator: "; ",
+                value: new[]
+                {
+                    $"Server={serverAddress}",
+                    $"Port={port}",
+                    $"Database={databaseName}",
+                    $"Uid={username}",
+                    $"Pwd={password}",
+                }
+            ); // should evaluate to "Server=...; Port=...; Database=...; ..."
+
+            return connectionString;
+        }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .UseSqlite(connectionString: CreateSqliteConnectionString())
+                // .UseMySQL(connectionString: CreateMariaDBConnectionString())
+                .EnableSensitiveDataLogging()
+            ;
+            
+            base.OnConfiguring(optionsBuilder: optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // base.OnModelCreating(modelBuilder);
-            SetModelsDefaultValues(modelBuilder: modelBuilder);
+            // modelBuilder.Entity<Base>().ToTable("Base");
+
+            // modelBuilder
+            //     .Entity<StaticValue>()
+            //     .ToTable("StaticValues")
+            // ;
+            // modelBuilder
+            //     .Entity<MediaFile>()
+            //     .ToTable("MediaFiles")
+            // ;
+            SetDefaultValues(modelBuilder: modelBuilder);
             SeedData(modelBuilder: modelBuilder);
         }
 
-        public DbSet<PresetValue> PresetValues { get; set; }
         public DbSet<StaticValue> StaticValues { get; set; }
+        public DbSet<MediaFile> MediaFiles { get; set; }
     }
 }

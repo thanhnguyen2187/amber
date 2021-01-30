@@ -11,15 +11,14 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\Constants" />
+      <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
+      <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
     </ItemGroup>
 
 </Project>
