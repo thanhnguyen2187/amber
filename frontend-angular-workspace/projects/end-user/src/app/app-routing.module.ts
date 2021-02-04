@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HomeContentComponent } from './components/home-content/home-content.component';
+import { BodyHomeComponent } from './components/body-home/body-home.component';
+import { BodyAboutUsComponent } from './components/body-about-us/body-about-us.component';
 
 const routes: Routes = [
   {
@@ -12,8 +12,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeContentComponent,
-      }
+        component: BodyHomeComponent,
+        data: {
+          breadcrumb: 'Home',
+        },
+      },
+      {
+        path: 'about-us',
+        component: BodyAboutUsComponent,
+        data: {
+          breadcrumb: 'About Us',
+        },
+      },
     ]
   }
 ];

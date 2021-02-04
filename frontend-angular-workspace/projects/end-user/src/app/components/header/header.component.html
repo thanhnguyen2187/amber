@@ -1,21 +1,83 @@
 <div
-  style="
-    align-items: center;
-  "
   class="
     bg-amber-600
+    h-20
     flex
+    items-center
+    text-white
+    font-semibold
+    uppercase
   "
 >
+  <!--Padding block-->
+  <div
+    class="
+      flex-initial
+      ml-12
+    "
+  ></div>
+  <!--Left logo image-->
   <img
     src="assets/logo.png"
     class="
-      h-12
+      h-16
+      mb-2
+      mt-2
+      ml-4
+      mr-4
+      flex-initial
+    "
+  />
+  <!--Padding block-->
+  <div
+    class="
+      flex-auto
+    "
+  >
+  </div>
+  <!--Middle block-->
+  <div
+    class="
+      flex-initial
+      flex
+    "
+  >
+    <a
+      *ngFor="let item of items"
+      class="
+        flex-initial
+        mr-4
+        ml-4
+      "
+      [href]="item.reference"
+    >
+      {{item.text}}
+    </a>
+  </div>
+  <!--Padding block-->
+  <div
+    class="
+      flex-auto
+    "
+  >
+  </div>
+  <!--Right block-->
+  <div
+    class="
+      flex-initial
       mb-2
       mt-2
       ml-4
       mr-4
     "
-  />
-  Header works
+  >
+    Something
+  </div>
+  <!--Padding block-->
+  <div
+    class="
+      flex-initial
+      mr-12
+    "
+  ></div>
 </div>

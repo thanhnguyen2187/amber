@@ -21,8 +21,14 @@ export class HomeGalleryImageService {
       alternateText: 'Motorcycle',
     },
     {
-      source: 'https://ridermagazine.com/wp-content/uploads/2019/08/2020-Aprilia-RS-660-3qtr.jpg',
-      thumbnailSource: 'https://ridermagazine.com/wp-content/uploads/2019/08/2020-Aprilia-RS-660-3qtr.jpg',
+      source: 'https://img.redbull.com/images/c_crop,x_0,y_88,h_1800,w_3200/c_fill,w_1500,h_1000/q_auto,f_auto/redbullcom/2016/10/14/1331823686966_1/casey-stoner',
+      thumbnailSource: 'https://img.redbull.com/images/c_crop,x_0,y_88,h_1800,w_3200/c_fill,w_1500,h_1000/q_auto,f_auto/redbullcom/2016/10/14/1331823686966_1/casey-stoner',
+      title: 'Racing',
+      alternateText: 'Racing',
+    },
+    {
+      source: 'https://wallpaperaccess.com/full/467615.jpg',
+      thumbnailSource: 'https://wallpaperaccess.com/full/467615.jpg',
       title: 'Wheelie',
       alternateText: 'Wheelie',
     },

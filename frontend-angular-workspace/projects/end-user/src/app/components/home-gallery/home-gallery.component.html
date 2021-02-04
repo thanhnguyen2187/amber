@@ -1,3 +1,83 @@
-<p>
-  Home gallery works
-</p>
+<div
+  *ngIf="images.length > 0"
+  [style.backgroundImage]="'url(' + images[currentImageIndex].source + ')'"
+  (click)="applyLightboxStyles = !applyLightboxStyles"
+  [@fadeIn]="animatingToggle"
+  class="
+    w-full
+    h-full
+    bg-center
+    bg-cover
+    flex
+  "
+>
+  <!--Left Arrow-->
+  <div
+    style="
+      background-image: url('assets/cheveron-left.svg');
+      background-size: 6em;
+    "
+    class="
+      opacity-0
+      hover:opacity-25
+      active:opacity-100
+      flex-initial
+      w-60
+      bg-center
+      bg-no-repeat
+      cursor-pointer
+    "
+    (click)="decreaseImageIndex(); $event.stopPropagation()"
+  >
+  </div>
+  <!--Indicators-->
+  <div
+    class="
+      flex-auto
+      flex
+      justify-center
+      items-end
+      pb-6
+    "
+  >
+    <div
+      *ngFor="let image of images; let index = index"
+      [class.opacity-100]="index == currentImageIndex"
+      (click)="setImageIndex(index)"
+      class="
+        w-4
+        h-4
+        ml-1
+        mr-1
+        hover:ring-2
+        opacity-50
+        hover:opacity-75
+        active:opacity-100
+        rounded-full
+        bg-black
+      "
+    >
+    </div>
+  </div>
+  <!--Right Arrow-->
+  <div
+      style="
+        background-image: url('assets/cheveron-right.svg');
+        background-size: 6em;
+      "
+      class="
+        opacity-0
+        hover:opacity-25
+        active:opacity-100
+        flex-initial
+        w-60
+        bg-center
+        bg-no-repeat
+        cursor-pointer
+      "
+      (click)="increaseImageIndex(); $event.stopPropagation()"
+    >
+    </div>
+
+</div>
+

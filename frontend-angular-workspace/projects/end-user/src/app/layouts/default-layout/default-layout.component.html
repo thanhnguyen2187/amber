@@ -1,18 +1,34 @@
 <div
   style="
-    grid-template-rows: auto 1fr auto;
     height: 100vh;
   "
   class="
-    grid
+    flex
+    flex-col
     font-sans
     text-base
     antialiased
   "
 >
-  <app-header></app-header>
-  <div>
+  <div
+    class="
+      flex-initial
+    "
+  >
+    <app-header></app-header>
+  </div>
+  <div
+    class="
+      flex-auto
+    "
+  >
     <router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
+  <div
+    class="
+      flex-initial
+    "
+  >
+    <app-footer></app-footer>
+  </div>
 </div>

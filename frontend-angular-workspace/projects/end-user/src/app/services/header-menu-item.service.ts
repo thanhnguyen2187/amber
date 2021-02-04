@@ -2,41 +2,44 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { MenuItem } from 'primeng/api';
+export interface HeaderMenuItem {
+  text: string;
+  reference: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderMenuItemService {
 
-  menuItems: MenuItem[] = [
+  menuItems: HeaderMenuItem[] = [
     {
-      label: 'Home',
-      url: '',
+      text: 'Home',
+      reference: '',
     },
     {
-      label: 'About Us',
-      url: '',
+      text: 'About Us',
+      reference: 'about-us',
     },
     {
-      label: 'For Sale',
-      url: '',
+      text: 'For Sale',
+      reference: '',
     },
     {
-      label: 'For Rent',
-      url: '',
+      text: 'For Rent',
+      reference: '',
     },
     {
-      label: 'Services',
-      url: '',
+      text: 'Services',
+      reference: '',
     },
     {
-      label: 'Articles',
-      url: '',
+      text: 'Articles',
+      reference: '',
     },
   ];
 
-  getAll(): Observable<MenuItem[]> {
+  getAll(): Observable<HeaderMenuItem[]> {
     return of(this.menuItems);
   }
 

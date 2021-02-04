@@ -419,6 +419,22 @@ module.exports = {
           animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
         },
       },
+      fadein: {
+        from: {
+          opacity: '0',
+        },
+        to: {
+          opacity: '1',
+        },
+      },
+      fadeout: {
+        from: {
+          opacity: '1',
+        },
+        to: {
+          opacity: '0',
+        },
+      }
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -723,6 +739,13 @@ module.exports = {
       40: '40',
       50: '50',
     },
+
+    extend: {
+      animation: {
+        fadein: 'fadein 1s ease-in-out',
+        fadeout: 'fadeout 1s ease-in-out',
+      }
+    }
   },
   variantOrder: [
     'first',
@@ -813,7 +836,7 @@ module.exports = {
     minWidth: ['responsive'],
     objectFit: ['responsive'],
     objectPosition: ['responsive'],
-    opacity: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus'],
+    opacity: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus', 'active'],
     order: ['responsive'],
     outline: ['responsive', 'focus-within', 'focus'],
     overflow: ['responsive'],
@@ -831,7 +854,7 @@ module.exports = {
     ringOffsetColor: ['responsive', 'dark', 'focus-within', 'focus'],
     ringOffsetWidth: ['responsive', 'focus-within', 'focus'],
     ringOpacity: ['responsive', 'focus-within', 'focus'],
-    ringWidth: ['responsive', 'focus-within', 'focus'],
+    ringWidth: ['responsive', 'focus-within', 'hover', 'focus', 'active'],
     rotate: ['responsive', 'hover', 'focus'],
     scale: ['responsive', 'hover', 'focus'],
     skew: ['responsive', 'hover', 'focus'],

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MenuItem } from 'primeng/api';
-import { Menu } from 'primeng/menu';
-
-import { HeaderMenuItemService } from '../../services/header-menu-item.service';
+import {
+  HeaderMenuItem,
+  HeaderMenuItemService,
+} from '../../services/header-menu-item.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   ) {
   }
 
-  items: MenuItem[] = [];
+  items: HeaderMenuItem[] = [];
 
   ngOnInit(): void {
     this
