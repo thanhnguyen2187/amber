@@ -23,19 +23,19 @@ export class HeaderMenuItemService {
     },
     {
       text: 'For Sale',
-      reference: '',
+      reference: 'for-sale',
     },
     {
       text: 'For Rent',
-      reference: '',
+      reference: 'for-rent',
     },
     {
       text: 'Services',
-      reference: '',
+      reference: 'services',
     },
     {
       text: 'Articles',
-      reference: '',
+      reference: 'articles',
     },
   ];
 

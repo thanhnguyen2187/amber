@@ -4,5 +4,12 @@
 @tailwind screens;
 @tailwind utilities;
 
-@layer utilities {
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }

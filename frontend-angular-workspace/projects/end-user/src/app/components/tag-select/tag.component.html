@@ -1,0 +1,27 @@
+<div
+  class="
+    flex-initial
+    border-2
+    h-6
+    rounded-xl
+    ml-2
+    mt-2
+    pl-2
+    pr-1
+    cursor-pointer
+  "
+>
+  {{label}}
+  <img
+    src="assets/close-outline.svg"
+    alt="x"
+    class="
+      inline
+      w-4
+      pb-1.5
+      opacity-25
+      hover:opacity-75
+    "
+    (click)="$event.stopPropagation()"
+  />
+</div>

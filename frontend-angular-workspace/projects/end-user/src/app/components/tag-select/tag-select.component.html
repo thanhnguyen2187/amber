@@ -1,0 +1,32 @@
+<div
+  class="
+    relative
+    flex
+    flex-wrap
+    items-center
+    border-2
+    pb-2
+    pr-2
+  "
+  (click)="showDropdown = !showDropdown"
+>
+  <app-tag
+    [label]="'first'"
+  ></app-tag>
+  <app-tag
+    [label]="'second'"
+  ></app-tag>
+  <app-tag
+    [label]="'third'"
+  ></app-tag>
+  <app-tag
+    [label]="'fourth'"
+  ></app-tag>
+  <app-tag-select-dropdown
+    [visibility]="showDropdown"
+    [parentYPosition]="hasEnoughHeightForDropdown ? 0 : 0"
+    [dropdownDirection]="hasEnoughHeightForDropdown ? 'down' : 'up'"
+  ></app-tag-select-dropdown>
+  {{availableDropdownHeight}}
+
+</div>

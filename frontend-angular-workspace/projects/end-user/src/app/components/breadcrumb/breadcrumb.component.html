@@ -1,1 +1,23 @@
-<p>breadcrump works!</p>
+<div
+  class=""
+>
+  <span
+    *ngFor="let breadcrumb of breadcrumbs; last as isLast"
+  >
+    <a
+      [routerLink]="breadcrumb.reference"
+    >
+      {{breadcrumb.label}}
+    </a>
+    <img
+      class="
+        inline
+        h-6
+        mb-0.5
+      "
+      *ngIf="!isLast"
+      src="assets/cheveron-right.svg"
+    />
+
+  </span>
+</div>

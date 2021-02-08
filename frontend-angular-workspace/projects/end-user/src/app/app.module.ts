@@ -17,6 +17,9 @@ import { ServicesContentComponent } from './components/services-content/services
 import { BodyArticlesComponent } from './components/body-articles/body-articles.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { TagSelectComponent } from './components/tag-select/tag-select.component';
+import { TagSelectDropdownComponent } from './components/tag-select/tag-select-dropdown.component';
+import { TagComponent } from './components/tag-select/tag.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     BodyArticlesComponent,
     LightboxComponent,
     BreadcrumbComponent,
+    TagSelectComponent,
+    TagSelectDropdownComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
