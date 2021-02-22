@@ -1,0 +1,84 @@
+<div
+  class="
+    flex
+    flex-col
+  "
+>
+  <div
+    class="
+      grid
+      grid-cols-4
+      gap-2
+    "
+  >
+    <div
+      *ngFor="let item of items"
+      class="
+        flex
+        flex-col
+        items-center
+      "
+    >
+      <div
+        style="
+          background-image: url('{{item.imageReference}}');
+          width: 300px;
+          height: 200px;
+        "
+        class="
+          bg-center
+          bg-cover
+        "
+      ></div>
+      <div
+        style="
+          width: 300px;
+        "
+      >
+        <div
+          class="
+            mt-2
+            text-2xl
+          "
+        >
+          {{item.title}}
+        </div>
+        <div
+          class="
+          "
+        >
+          Price:
+          <span
+            class="
+              font-semibold
+              text-red-500
+            "
+          >
+            {{item?.priceForSale}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Pagination bar-->
+  <div
+    class="
+      mt-4
+      flex
+      flex-row-reverse
+    "
+  >
+    <app-pagination-bar
+      [currentPageNumber]="1"
+      [numberOfPages]="100"
+      (currentPageNumberChange)="setCurrentPageNumber($event)"
+    ></app-pagination-bar>
+  </div>
+
+  <div
+    class="
+    "
+  >
+  </div>
+
+</div>

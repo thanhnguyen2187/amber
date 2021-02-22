@@ -172,11 +172,11 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
+        // 'ui-sans-serif',
+        // 'system-ui',
+        // '-apple-system',
+        // 'BlinkMacSystemFont',
+        // '"Segoe UI"',
         'Roboto',
         '"Helvetica Neue"',
         'Arial',
@@ -187,9 +187,16 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: [
+        // 'ui-serif',
+        'Georgia',
+        'Cambria',
+        '"Times New Roman"',
+        'Times',
+        'serif',
+      ],
       mono: [
-        'ui-monospace',
+        // 'ui-monospace',
         'SFMono-Regular',
         'Menlo',
         'Monaco',
@@ -433,6 +440,26 @@ module.exports = {
         },
         to: {
           opacity: '0',
+        },
+      },
+      'scale-up': {
+        '0%': {
+          transform: 'scale(0)',
+          // animationTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1) both',
+        },
+        '100%': {
+          transform: 'scale(1)',
+          // animationTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1) both',
+        },
+      },
+      'slide-left': {
+        '0%': {
+          transform: 'translateX(100%)',
+          // animationTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1) both',
+        },
+        '100%': {
+          transform: 'translateX(0px)',
+          // animationTimingFunction: 'cubic-bezier(0.39, 0.575, 0.565, 1) both',
         },
       }
     },
@@ -744,6 +771,8 @@ module.exports = {
       animation: {
         fadein: 'fadein 1s ease-in-out',
         fadeout: 'fadeout 1s ease-in-out',
+        'scale-up': 'scale-up 1s cubic-bezier(0.390, 0.575, 0.565, 1) both',
+        'slide-left': 'slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
       }
     }
   },

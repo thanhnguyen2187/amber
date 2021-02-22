@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DefaultLayoutComponent } from './default-layout.component';
+import { CheckboxComponent } from './checkbox.component';
 
-describe('DefaultLayoutComponent', () => {
-  let component: DefaultLayoutComponent;
-  let fixture: ComponentFixture<DefaultLayoutComponent>;
+describe('CheckboxComponent', () => {
+  let component: CheckboxComponent;
+  let fixture: ComponentFixture<CheckboxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DefaultLayoutComponent ]
+      declarations: [ CheckboxComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DefaultLayoutComponent);
+    fixture = TestBed.createComponent(CheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

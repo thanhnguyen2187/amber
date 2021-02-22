@@ -4,16 +4,23 @@ import {
   ElementRef,
   OnInit,
   OnDestroy,
+  AfterViewInit,
+  ViewChild,
 } from '@angular/core';
 import {
   fromEvent,
-  interval, Observable, Subscription,
+  interval,
+  Observable,
+  Subscription,
 } from 'rxjs';
 import {
   debounceTime,
   tap,
   throttle,
 } from 'rxjs/operators';
+import {
+  TagSelectDropdownStyleService,
+} from './tag-select-dropdown-style.service';
 
 @Component({
   selector: 'app-tag-select',
@@ -22,25 +29,36 @@ import {
 })
 export class TagSelectComponent implements
   OnInit,
-  OnDestroy
+  OnDestroy,
+  AfterViewInit
 {
-  showDropdown = false;
-  scrollEventSubscription: Subscription | undefined;
-  availableDropdownHeight = 0;
-  currentYPosition = 0;
-  get hasEnoughHeightForDropdown(
-  ): boolean {
-    return true;
-  }
 
-  updateAvailableDropdownHeight(): void {
+  get currentHeight(): number {
     const rectangle = this.elementRef.nativeElement.getBoundingClientRect();
-    this.availableDropdownHeight = window.innerHeight - rectangle.bottom;
+    return rectangle.height;
   }
 
   constructor(
     private elementRef: ElementRef,
+    public tagSelectDropdownStyleService: TagSelectDropdownStyleService,
   ) {
+  }
+  showDropdown = false;
+  scrollEventSubscription: Subscription | undefined;
+  availableDropdownHeight = 0;
+
+  @ViewChild('dropdown') dropdown: ElementRef | undefined;
+
+  updateAvailableDropdownHeight(): void {
+    this.availableDropdownHeight = window.innerHeight - this.currentHeight;
+  }
+
+  get dropdownHeight(): number {
+    return (
+      this.dropdown
+        ? this.dropdown.nativeElement.getBoundingClientRect().height
+        : 0
+    );
   }
 
   ngOnInit(): void {
@@ -55,6 +73,9 @@ export class TagSelectComponent implements
         }
       )
     );
+  }
+
+  ngAfterViewInit(): void {
   }
 
   ngOnDestroy(): void {

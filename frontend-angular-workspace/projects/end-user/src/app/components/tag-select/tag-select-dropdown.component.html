@@ -2,9 +2,19 @@
   class="
     absolute
     left-0
+    flex
+    bg-white
+    border-2
+    divide-y-2
   "
-  [ngClass]="visibility ? '' : 'invisible'"
-  [style.top]="'-' + currentHeightInPx"
 >
-  Tag select dropdown works!
+  <app-tag-select-dropdown-item
+    label="one"
+  ></app-tag-select-dropdown-item>
+  <app-tag-select-dropdown-item
+    label="three"
+  ></app-tag-select-dropdown-item>
+  <app-tag-select-dropdown-item
+    label="two"
+  ></app-tag-select-dropdown-item>
 </div>

@@ -1,66 +1,29 @@
-<div
-  class="
-    flex
-    flex-col
-    h-full
-  "
+<app-layout-body-with-cover
+  coverImageReference="https://www.itl.cat/pngfile/big/214-2141088_desktop-bike-stunt-images-wallpaper-motorcycle-vs-car.jpg"
 >
-  <!--Cover Image-->
-  <div
-    style="
-      height: calc(100vh - 12rem);
-      background-image: url('https://www.itl.cat/pngfile/big/214-2141088_desktop-bike-stunt-images-wallpaper-motorcycle-vs-car.jpg');
-    "
-    class="
-      bg-center
-      bg-cover
-      animate-fadein
-    "
-  >
-  </div>
-
-  <!--Content-->
   <div
     class="
-      pl-24
-      pr-24
-      whitespace-pre-line
-    "
-  >
-    <div
-      class="
-        pt-4
-        pb-2
-        border-b-2
-      "
-    >
-      <app-breadcrumb></app-breadcrumb>
-    </div>
-
-    <div
-      class="
-        mt-2
+        mt-6
         mb-4
         flex
       "
-    >
-      <div
-        class="
+  >
+    <div
+      class="
           ml-4
           w-1/6
         "
-      >
-        <app-tag-select></app-tag-select>
-      </div>
-      <div
-        class="
+    >
+      <app-filter></app-filter>
+    </div>
+    <div
+      class="
           ml-4
           mr-4
+          w-full
         "
-      >
-        Something here
-      </div>
+    >
+      <app-item-grid></app-item-grid>
     </div>
   </div>
-
-</div>
+</app-layout-body-with-cover>

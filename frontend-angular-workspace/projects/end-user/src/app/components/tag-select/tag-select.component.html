@@ -7,8 +7,11 @@
     border-2
     pb-2
     pr-2
+    outline-none
   "
-  (click)="showDropdown = !showDropdown"
+  tabindex="0"
+  (focusin)="showDropdown = true; input.focus()"
+  (focusout)="showDropdown = false"
 >
   <app-tag
     [label]="'first'"
@@ -22,11 +25,25 @@
   <app-tag
     [label]="'fourth'"
   ></app-tag>
+  <div
+    #input
+    class="
+      flex-auto
+      h-6
+      ml-2
+      mt-2
+      pl-1
+      pr-1
+      outline-none
+    "
+    contenteditable="true"
+  >
+  </div>
+
   <app-tag-select-dropdown
-    [visibility]="showDropdown"
-    [parentYPosition]="hasEnoughHeightForDropdown ? 0 : 0"
-    [dropdownDirection]="hasEnoughHeightForDropdown ? 'down' : 'up'"
+    #dropdown
+    [ngStyle]="tagSelectDropdownStyleService.calculate(currentHeight, availableDropdownHeight, dropdownHeight, showDropdown).styles"
+    [ngClass]="tagSelectDropdownStyleService.calculate(currentHeight, availableDropdownHeight, dropdownHeight, showDropdown).classes"
   ></app-tag-select-dropdown>
-  {{availableDropdownHeight}}
 
 </div>

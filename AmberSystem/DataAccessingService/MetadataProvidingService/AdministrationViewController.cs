@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataProvisioningService;
 using DataProvisioningService.Models;
 
-namespace DataAccessingService.MetadataProviding
+namespace DataAccessingService.MetadataProvidingService
 {
     public static class AdministrationViewProvider
     {

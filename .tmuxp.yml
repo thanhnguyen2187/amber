@@ -1,0 +1,27 @@
+session_name: amber
+windows:
+
+- window_name: frontend
+  layout: main-horizontal
+  # layout: 9f9a,184x49,0,0[184x36,0,0,2,184x12,0,37,3]
+  options:
+    main-pane-height: 38
+    automatic-rename: 'off'
+  panes:
+  - shell_command: nvim
+    focus: 'true'
+  - shell_command: ng serve
+    start_directory: /home/thanh/Projects/amber/frontend-angular-workspace
+  focus: 'true'
+
+- window_name: backend
+  start_directory: /home/thanh/Projects/amber/AmberSystem
+  layout: main-horizontal
+  # layout: 9f9a,184x49,0,0[184x36,0,0,2,184x12,0,37,3]
+  options:
+    main-pane-height: 38
+    automatic-rename: 'off'
+  panes:
+  - shell_command: null
+  - shell_command: null
+    focus: 'true'

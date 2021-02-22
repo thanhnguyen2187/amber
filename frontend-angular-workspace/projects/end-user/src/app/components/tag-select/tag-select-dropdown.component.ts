@@ -1,7 +1,11 @@
 import {
-  Component, ElementRef,
+  Component,
   Input,
-  OnInit
+  ElementRef,
+  ViewChild,
+  OnInit,
+  OnChanges,
+  AfterViewInit, SimpleChanges,
 } from '@angular/core';
 
 interface Position {
@@ -19,32 +23,25 @@ interface LineItem {
   templateUrl: './tag-select-dropdown.component.html',
   styleUrls: ['./tag-select-dropdown.component.scss']
 })
-export class TagSelectDropdownComponent implements OnInit {
+export class TagSelectDropdownComponent implements
+  OnInit
+{
 
-  @Input() visibility = false;
-  @Input() dropdownDirection: 'down' | 'up' = 'down';
-  @Input() parentYPosition = 0;
-  get currentHeightInPx(): string {
-    return this.rectangle
-      ? this.rectangle.height.toString()
-      : '0' + 'px';
-  }
-  rectangle: undefined | DOMRect;
+  currentHeight = 0;
+  @Input() isVisible = false;
+  @Input() availableHeight = 0;
+  @Input() parentHeight = 0;
 
   constructor(
-    private elementRef: ElementRef,
+    public elementRef: ElementRef,
   ) {
-    this.rectangle = elementRef.nativeElement.getBoundingClientRect();
   }
 
-
-  calculateDropdownDirection(
-    availableDropdownHeight: number,
-  ): 'up' | 'down' {
-    return 'up';
+  updateCurrentHeight(): void {
+    this.currentHeight = this.elementRef.nativeElement.getBoundingClientRect().height;
   }
 
   ngOnInit(): void {
+    this.updateCurrentHeight();
   }
-
 }

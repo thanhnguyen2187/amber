@@ -1,0 +1,29 @@
+<div
+  class="
+    flex
+    border-2
+    divide-x-2
+    rounded-md
+  "
+>
+  <div
+    class="
+      w-9
+      h-9
+      flex
+      justify-center
+      items-center
+      cursor-pointer
+    "
+    [ngClass]="getCellClasses(cell.type)"
+    *ngFor="let cell of cells"
+    (click)="executeCellAction(cell)"
+  >
+    <div
+    >
+      {{cell.label}}
+    </div>
+  </div>
+</div>
+
+

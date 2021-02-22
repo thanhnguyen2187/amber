@@ -56,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -117,14 +117,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.2, )"
-            },
-            "MySql.Data.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.22, )"
-            },
-            "MySql.Data.EntityFrameworkCore.Design": {
-              "target": "Package",
-              "version": "[8.0.19, )"
             }
           },
           "imports": [
@@ -142,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
       }
     }

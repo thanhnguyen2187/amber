@@ -1,0 +1,45 @@
+<div
+  class="
+    flex
+    flex-col
+  "
+>
+  <!--Header-->
+  <div
+    class="
+      flex
+      justify-between
+    "
+  >
+    <div
+      class="
+        uppercase
+        font-semibold
+      "
+    >
+      {{title}}
+    </div>
+    <div
+      style="
+        background-size: 1em;
+      "
+      [style.background-image]="(isOpen ? 'assets/cheveron-up.svg' : 'assets/cheveron-down.svg') | urlWrap"
+      class="
+        flex-initial
+        w-4
+        bg-center
+        bg-no-repeat
+        cursor-pointer
+      "
+      (click)="isOpen = !isOpen"
+    >
+    </div>
+  </div>
+
+  <!--Content-->
+  <div
+    *ngIf="isOpen"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

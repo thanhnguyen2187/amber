@@ -1,0 +1,20 @@
+#+TITLE: Notes for Amber
+
+* Tasks
+** Database Design Checklist [16%]
+   - [ ] Bikes searching
+   - [X] Metadata
+   - [ ] ...
+   - [ ] ...
+   - [ ] ...
+   - [ ] ...
+** Something Else
+
+* Backlog
+
+* References
+  
+* Blocks
+** Orgmode functionality
+
+* Something I Learned

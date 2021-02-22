@@ -1,0 +1,87 @@
+<div
+  class="
+    relative
+    flex
+    flex-wrap
+    items-center
+    border-2
+    pb-2
+    pr-2
+    outline-none
+  "
+  tabindex="0"
+  (focusin)="isDropdownVisible = true"
+  (focusout)="isDropdownVisible = false"
+>
+  <!--Tags-->
+  <div
+    *ngFor="let tag of checkedTags"
+    class="
+      flex-initial
+      border-2
+      rounded-xl
+      ml-2
+      mt-2
+      pl-2
+      pr-1
+      cursor-pointer
+      animate-scale-up
+    "
+  >
+    {{tag.label}}
+    <img
+      src="assets/close-outline.svg"
+      alt="x"
+      class="
+        inline
+        w-4
+        pb-0.5
+        opacity-25
+        hover:opacity-75
+      "
+      tabindex="0"
+      (focusin)="setTagAsUnchecked(tag)"
+    />
+  </div>
+
+  <!--Dropdown-->
+  <div
+    class="
+      absolute
+      flex
+      flex-col
+      bg-white
+      border-2
+      divide-y-2
+      animate-fadein
+    "
+    *ngIf="isDropdownVisible && uncheckedTags.length > 0"
+    [style.top.px]="currentHeight - 2"
+    [style.left.px]="-2"
+  >
+    <div
+      *ngFor="let tag of uncheckedTags"
+      class="
+        pl-1
+        pr-1.5
+        whitespace-normal
+        cursor-pointer
+        animate-slide-left
+      "
+      (click)="setTagAsChecked(tag)"
+    >
+      {{tag.label}}
+    </div>
+  </div>
+
+  <!--Input-->
+  <div
+    class="
+      flex-auto
+      ml-2
+      mt-2
+      h-8
+      outline-none
+    "
+  ></div>
+</div>
