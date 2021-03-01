@@ -2,56 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6524f9b-9584-4566-83d9-9ee27966ce58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/layout-default/layout-default.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/Controllers/EndUserViewController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.tmuxp.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.tmuxp.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AmberSystem/AmberSystem.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/AmberSystem.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/ContentManagementService/AboutUsContentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/ContentManagement/AboutUsContentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/ContentManagementService/HomeContentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/ContentManagement/HomeContentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/AdministrationViewProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProvidingService/AdministrationViewController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/EndUserViewProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProvidingService/EndUserViewController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/DataAccessingService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/DataAccessingService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/BusinessLogicEndpointService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/BusinessLogicService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/Controllers/EndUserViewEndPointController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/Controllers/WeatherForecastController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/BusinessLogicEndpointService/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/BusinessLogicService/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProvidingService/AdministrationViewController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/AdministrationViewController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProvidingService/EndUserViewController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/MetadataProviding/EndUserViewController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataAccessingService/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/DataProvisioningService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/DataProvisioningService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/DataProvisioningService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/DataProvisioningService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/DataProvisioningService.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/apphost" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/Debug/net5.0/apphost" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/DataProvisioningService/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/Pages/_ViewImports.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/Debug/net5.0/EndUserView.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/EndUserView.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/EndUserView.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../AmberSystem/EndUserView/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.docs.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-about-us/body-about-us.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-about-us/body-about-us.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-articles/body-articles.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-articles/body-articles.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-articles/body-articles.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-articles/body-articles.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-for-rent/body-for-rent.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/body-for-rent/body-for-rent.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select-dropdown.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select-dropdown.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select-dropdown.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select-dropdown.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag-select.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/components/tag-select/tag.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/default-layout/default-layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/layout-default/layout-default.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/default-layout/default-layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/layout-default/layout-default.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/default-layout/default-layout.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/layout-default/layout-default.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/src/app/layouts/default-layout/default-layout.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/projects/end-user/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend-angular-workspace/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-angular-workspace/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/../todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notes.org" beforeDir="false" afterPath="$PROJECT_DIR$/../notes.org" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +93,10 @@
       <workItem from="1613566896250" duration="622000" />
       <workItem from="1613633210520" duration="1206000" />
       <workItem from="1613722900040" duration="1135000" />
+      <workItem from="1613967074901" duration="122000" />
+      <workItem from="1613967669257" duration="119000" />
+      <workItem from="1613968283613" duration="2920000" />
+      <workItem from="1614047389367" duration="605000" />
     </task>
     <servers />
   </component>

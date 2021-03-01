@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  CommonPageData,
+  defaultCommonPageData,
+  CommonPageDataService,
+} from '../../services/common-page-data.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  commonPageData: CommonPageData = defaultCommonPageData;
+
+  constructor(
+    private commonPageDataService: CommonPageDataService,
+  ) {
+    commonPageDataService.commonPageData$.subscribe(
+      (value) => this.commonPageData = value
+    );
+  }
 
   ngOnInit(): void {
   }

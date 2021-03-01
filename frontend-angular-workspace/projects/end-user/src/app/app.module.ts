@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,8 @@ import { AccordionComponent } from './components/accordion/accordion.component';
 import { UrlWrapPipe } from './pipes/url-wrap.pipe';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
+import { StaticConfigurationProvider } from './services/static-configuration.provider';
+import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 
 @NgModule({
   declarations: [
@@ -63,13 +66,17 @@ import { BodyServicesComponent } from './components/body-services/body-services.
     CheckboxComponent,
     BodyServicesComponent,
     LayoutBodyWithCoverComponent,
+    LoginLayoutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    StaticConfigurationProvider,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

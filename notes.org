@@ -1,20 +1,33 @@
 #+TITLE: Notes for Amber
 
 * Tasks
-** Database Design Checklist [16%]
+** Database Design Checklist [12%]
    - [ ] Bikes searching
    - [X] Metadata
    - [ ] ...
    - [ ] ...
    - [ ] ...
    - [ ] ...
-** Something Else
+   - [ ] ...
+   - [ ] ...
+** Backend Checklist
+   - [X] End-user View Metadata
+     - [X] Refactor Backend Structure
+       - [X] Find a better name for the files
+       - [X] Structure the classes
+       - [X] Clean up
+** Frontend Checklist
+** Integrate backend and frontend
+** The design
 
 * Backlog
 
 * References
+  - https://coschedule.com/blog/less-is-more/
+  - https://backlinko.com/hub/content/blog-post-templates
   
 * Blocks
-** Orgmode functionality
+** DONE Orgmode functionality
 
 * Something I Learned
+** PUML

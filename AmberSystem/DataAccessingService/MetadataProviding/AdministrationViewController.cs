@@ -3,7 +3,7 @@ using System.Linq;
 using DataProvisioningService;
 using DataProvisioningService.Models;
 
-namespace DataAccessingService.MetadataProvidingService
+namespace DataAccessingService.MetadataProviding
 {
     public static class AdministrationViewProvider
     {

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { PrefixedHttpClientService } from './prefixed-http-client.service';
+import { PrefixedHttpClientConstants } from './prefixed-http-client.constants';
+import { pluck } from 'rxjs/operators';
 
 export interface GalleryImage {
   source: string;
-  thumbnailSource: string;
-  title: string;
-  alternateText: string;
+  thumbnailSource?: string;
+  title?: string;
+  alternateText?: string;
 }
 
 @Injectable({
@@ -35,8 +38,20 @@ export class HomeGalleryImageService {
   ];
 
   getAll(): Observable<GalleryImage[]> {
-    return of(this.galleryImages);
+    // return of(this.galleryImages);
+    return (
+      this
+        .prefixedHttpClientService
+        .get(
+          PrefixedHttpClientConstants.homePageDataApiUrl
+        )
+        .pipe(
+          pluck('galleryItems')
+        )
+    );
   }
 
-  constructor() { }
+  constructor(
+    private prefixedHttpClientService: PrefixedHttpClientService,
+  ) { }
 }

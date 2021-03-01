@@ -2,14 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>BusinessLogicService</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.0.7" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\DataAccessingService\DataAccessingService.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="MetadataProviding\AdministrationView" />
     </ItemGroup>
 
 </Project>

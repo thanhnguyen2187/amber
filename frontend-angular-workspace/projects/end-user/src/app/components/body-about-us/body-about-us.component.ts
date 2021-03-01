@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PrefixedHttpClientService } from '../../services/prefixed-http-client.service';
+import { PrefixedHttpClientConstants } from '../../services/prefixed-http-client.constants';
 
 @Component({
   selector: 'app-about-us-content',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyAboutUsComponent implements OnInit {
 
-  constructor() { }
+  testValue = '';
+
+  constructor(
+  ) {
+    // this.testValue = JSON.stringify(staticConfigurationService.staticConfiguration);
+  }
 
   ngOnInit(): void {
   }

@@ -58,6 +58,7 @@ export class HomeGalleryComponent implements OnInit {
       .homeGalleryImageService
       .getAll()
       .subscribe(
+        // TODO: CIRCLE WHILE LOADING
         images => this.images = images
       );
     this.clearInterval();
@@ -66,6 +67,7 @@ export class HomeGalleryComponent implements OnInit {
 
   clearInterval(): void {
     if (this.autoSkipIntervalId) {
+      // look like an unlimited recursive function but actually is not
       clearInterval(this.autoSkipIntervalId);
     }
   }

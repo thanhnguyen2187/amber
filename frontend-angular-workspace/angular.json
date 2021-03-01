@@ -25,7 +25,9 @@
             "aot": true,
             "assets": [
               "projects/end-user/src/favicon.ico",
-              "projects/end-user/src/assets"
+              "projects/end-user/src/assets",
+              "projects/end-user/src/app.config.json",
+              "projects/end-user/src/environment.js"
             ],
             "styles": [
               "projects/end-user/src/styles.scss"
@@ -188,8 +190,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
+            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "outputPath": "dist/administration",
             "index": "projects/administration/src/index.html",
             "main": "projects/administration/src/main.ts",
@@ -236,8 +239,9 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
+            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "browserTarget": "administration:build"
           },
           "configurations": {
@@ -253,8 +257,9 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
+            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "main": "projects/administration/src/test.ts",
             "polyfills": "projects/administration/src/polyfills.ts",
             "tsConfig": "projects/administration/tsconfig.spec.json",

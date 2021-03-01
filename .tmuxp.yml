@@ -1,4 +1,5 @@
 session_name: amber
+start_directory: ${HOME}/Projects/amber
 windows:
 
 - window_name: frontend
@@ -10,18 +11,29 @@ windows:
   panes:
   - shell_command: nvim
     focus: 'true'
-  - shell_command: ng serve
-    start_directory: /home/thanh/Projects/amber/frontend-angular-workspace
+  - shell_command:
+    - clear
+    - ng serve --project end-user --port 4200
+    start_directory: ${HOME}/Projects/amber/frontend-angular-workspace
+  - shell_command:
+    - clear
+    - ng serve --project administration --port 4210
+    start_directory: ${HOME}/Projects/amber/frontend-angular-workspace
   focus: 'true'
 
 - window_name: backend
-  start_directory: /home/thanh/Projects/amber/AmberSystem
+  start_directory: ${HOME}/Projects/amber/AmberSystem
   layout: main-horizontal
   # layout: 9f9a,184x49,0,0[184x36,0,0,2,184x12,0,37,3]
   options:
     main-pane-height: 38
     automatic-rename: 'off'
   panes:
-  - shell_command: null
-  - shell_command: null
+  - shell_command: clear
+  - shell_command:
+    - clear
+    - dotnet watch run
+    start_directory: ${HOME}/Projects/amber/AmberSystem/BusinessLogicService
     focus: 'true'
+  - shell_command: clear
+
