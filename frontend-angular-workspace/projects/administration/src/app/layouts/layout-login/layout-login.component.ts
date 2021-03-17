@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-layout',
@@ -8,31 +9,74 @@ import { FormControl } from '@angular/forms';
 })
 export class LayoutLoginComponent implements OnInit {
 
-  errorMessage = '';
-  usernameFormControl = new FormControl('');
-  passwordFormControl = new FormControl('');
+  // message = '';
+  usernameFormControl = new FormControl(
+    '',
+    [
+      Validators.required,
+    ],
+  );
+  passwordFormControl = new FormControl(
+    '',
+    [
+      Validators.required,
+    ]
+  );
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.usernameFormControl.valueChanges.subscribe(
-      () => this.resetErrorMessage()
+      () => this.resetMessage()
     );
     this.passwordFormControl.valueChanges.subscribe(
-      () => this.resetErrorMessage()
+      () => this.resetMessage()
     );
   }
 
-  resetErrorMessage(): void {
-    this.errorMessage = '';
+  resetMessage(): void {
+    // this.message = '';
+  }
+
+  get message(): string {
+    if (
+      (
+        this.usernameFormControl.touched ||
+        this.usernameFormControl.dirty
+      ) &&
+      this.usernameFormControl.value === ''
+    ) {
+      return 'Username cannot be blank!';
+    }
+    if (
+      (
+        this.passwordFormControl.touched ||
+        this.passwordFormControl.dirty
+      ) &&
+      this.passwordFormControl.value === ''
+    ) {
+      return 'Password cannot be blank!';
+    }
+    // if (
+    //   this.usernameFormControl.dirty &&
+    //   this.passwordFormControl.dirty &&
+    //   this.usernameFormControl.value !== 'admin' &&
+    //   this.passwordFormControl.value !== 'admin'
+    // ) {
+    //   return 'Wrong username or password!';
+    // }
+    return '';
   }
 
   login(): void {
     if (
-      this.usernameFormControl.value !== 'admin' &&
-      this.passwordFormControl.value !== 'admin'
+      this.usernameFormControl.value === 'admin' &&
+      this.passwordFormControl.value === 'admin'
     ) {
-      this.errorMessage = 'Wrong username or password!';
+      // console.log('Navigating...');
+      this.router.navigateByUrl('/dashboard');
     }
   }
 }

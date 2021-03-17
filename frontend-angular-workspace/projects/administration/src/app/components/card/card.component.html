@@ -1,0 +1,22 @@
+<div
+  class="
+    border-2
+    p-2
+    rounded
+    divide-y-2
+  "
+>
+  <div
+    *ngIf="title"
+    class="
+      flex
+      text-xl
+      font-semibold
+    "
+  >
+    <div>
+      {{title}}
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

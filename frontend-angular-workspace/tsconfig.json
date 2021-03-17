@@ -3,6 +3,16 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "amber-core": [
+        "dist/amber-core/amber-core",
+        "dist/amber-core"
+      ],
+      "common": [
+        "dist/common/common",
+        "dist/common"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

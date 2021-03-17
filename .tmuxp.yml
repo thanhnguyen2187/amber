@@ -3,22 +3,22 @@ start_directory: ${HOME}/Projects/amber
 windows:
 
 - window_name: frontend
-  layout: main-horizontal
+  # layout: main-horizontal
+  layout: tiled
   # layout: 9f9a,184x49,0,0[184x36,0,0,2,184x12,0,37,3]
+  start_directory: ${HOME}/Projects/amber/frontend-angular-workspace
   options:
-    main-pane-height: 38
+    # main-pane-height: 38
     automatic-rename: 'off'
   panes:
-  - shell_command: nvim
+  - shell_command: null
     focus: 'true'
   - shell_command:
-    - clear
-    - ng serve --project end-user --port 4200
-    start_directory: ${HOME}/Projects/amber/frontend-angular-workspace
+    - ng build --project amber-core --watch
   - shell_command:
-    - clear
+    - ng serve --project end-user --port 4200
+  - shell_command:
     - ng serve --project administration --port 4210
-    start_directory: ${HOME}/Projects/amber/frontend-angular-workspace
   focus: 'true'
 
 - window_name: backend

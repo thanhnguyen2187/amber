@@ -14,3 +14,6 @@
 /home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.dll
 /home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/ref/DataAccessingService.dll
 /home/thanh/Projects/amber/AmberSystem/DataAccessingService/obj/Debug/net5.0/DataAccessingService.pdb
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService.deps.json
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService.runtimeconfig.json
+/home/thanh/Projects/amber/AmberSystem/DataAccessingService/bin/Debug/net5.0/DataProvisioningService.runtimeconfig.dev.json

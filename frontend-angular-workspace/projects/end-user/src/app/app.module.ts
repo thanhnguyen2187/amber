@@ -31,11 +31,12 @@ import { ItemGridComponent } from './components/item-grid/item-grid.component';
 import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
-import { UrlWrapPipe } from './pipes/url-wrap.pipe';
+// import { UrlWrapPipe } from './pipes/url-wrap.pipe';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
 import { StaticConfigurationProvider } from './services/static-configuration.provider';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
+import { AmberCoreModule } from 'amber-core';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
     PaginationBarComponent,
     FilterComponent,
     AccordionComponent,
-    UrlWrapPipe,
+    // UrlWrapPipe,
     CheckboxComponent,
     BodyServicesComponent,
     LayoutBodyWithCoverComponent,
@@ -73,6 +74,7 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    AmberCoreModule,
   ],
   providers: [
     StaticConfigurationProvider,

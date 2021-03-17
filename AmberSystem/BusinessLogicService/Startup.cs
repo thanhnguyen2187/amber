@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,18 @@ namespace BusinessLogicService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddAuthentication(
+                    CertificateAuthenticationDefaults.AuthenticationScheme
+                )
+                .AddCertificate(
+                    options =>
+                    {
+                        options.AllowedCertificateTypes = CertificateTypes.All;
+                    }
+                )
+                .AddCertificateCache()
+            ;
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -65,6 +79,17 @@ namespace BusinessLogicService
                 );
                 c.DocInclusionPredicate((name, apiDescription) => true);
             });
+
+            // services
+            //     .AddHttpClient("HttpClientWithSSLUntrusted")
+            //     .ConfigurePrimaryHttpMessageHandler(
+            //         () => new HttpClientHandler
+            //         {
+            //             ClientCertificateOptions = ClientCertificateOption.Manual,
+            //             ServerCertificateCustomValidationCallback =
+            //                 (message, certificate, certificateChain, policyErrors) => true
+            //         }
+            //     );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

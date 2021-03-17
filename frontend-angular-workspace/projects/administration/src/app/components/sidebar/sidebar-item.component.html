@@ -1,0 +1,61 @@
+<div
+  class="
+    cursor-pointer
+    flex
+    hover:bg-green-400
+    active:bg-green-700
+    outline-none
+    focus:ring-2
+  "
+  [class.bg-green-700]="selected"
+  tabindex="0"
+>
+  <!--Item Icon Button-->
+  <div
+    class="
+      bg-center
+      bg-cover
+      w-6
+      h-6
+      m-2
+    "
+    [style.backgroundImage]="iconUrl | urlWrap"
+  ></div>
+  <div
+    class="
+      flex-auto
+      flex
+      items-center
+    "
+    *ngIf="open"
+  >
+    <span
+      class="
+        text-white
+        select-none
+      "
+    >
+      {{content}}
+    </span>
+  </div>
+  <div
+    class="
+      bg-center
+      bg-cover
+      w-6
+      h-6
+      m-2
+      rounded-full
+      hover:bg-green-700
+      outline-none
+      focus:ring-2
+    "
+    *ngIf="open && hasChildren"
+    [style.backgroundImage]="(expand ? 'assets/cheveron-down-white.svg' : 'assets/cheveron-right-white.svg') | urlWrap"
+    (click)="expand = !expand; $event.stopPropagation()"
+    (keyup.enter)="expand = !expand; $event.stopPropagation()"
+    (keyup.space)="expand = !expand; $event.stopPropagation()"
+    tabindex="0"
+  ></div>
+</div>
+<ng-content></ng-content>

@@ -32,8 +32,7 @@
             "styles": [
               "projects/end-user/src/styles.scss"
             ],
-            "scripts": [],
-            "extraWebpackConfig": "projects/end-user/webpack.config.js"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -68,8 +67,7 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "end-user:build",
-            "extraWebpackConfig": "projects/end-user/webpack.config.js"
+            "browserTarget": "end-user:build"
           },
           "configurations": {
             "production": {
@@ -98,8 +96,7 @@
               "projects/end-user/src/styles.scss"
             ],
             "scripts": []
-          },
-          "extraWebpackConfig": "projects/end-user/webpack.config.js"
+          }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -152,8 +149,7 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
             "browserTarget": "end-user:build",
-            "serverTarget": "end-user:server",
-            "extraWebpackConfig": "projects/end-user/webpack.config.js"
+            "serverTarget": "end-user:server"
           },
           "configurations": {
             "production": {
@@ -167,7 +163,6 @@
           "options": {
             "browserTarget": "end-user:build:production",
             "serverTarget": "end-user:server:production",
-            "extraWebpackConfig": "projects/end-user/webpack.config.js",
             "routes": [
               "/"
             ]
@@ -192,7 +187,6 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "outputPath": "dist/administration",
             "index": "projects/administration/src/index.html",
             "main": "projects/administration/src/main.ts",
@@ -241,7 +235,6 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "browserTarget": "administration:build"
           },
           "configurations": {
@@ -259,7 +252,6 @@
         "test": {
           "builder": "ngx-build-plus:karma",
           "options": {
-            "extraWebpackConfig": "projects/administration/webpack.config.js",
             "main": "projects/administration/src/test.ts",
             "polyfills": "projects/administration/src/polyfills.ts",
             "tsConfig": "projects/administration/tsconfig.spec.json",
@@ -297,6 +289,46 @@
             "production": {
               "devServerTarget": "administration:serve:production"
             }
+          }
+        }
+      }
+    },
+    "amber-core": {
+      "projectType": "library",
+      "root": "projects/amber-core",
+      "sourceRoot": "projects/amber-core/src",
+      "prefix": "amber",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/amber-core/tsconfig.lib.json",
+            "project": "projects/amber-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/amber-core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/amber-core/src/test.ts",
+            "tsConfig": "projects/amber-core/tsconfig.spec.json",
+            "karmaConfig": "projects/amber-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/amber-core/tsconfig.lib.json",
+              "projects/amber-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

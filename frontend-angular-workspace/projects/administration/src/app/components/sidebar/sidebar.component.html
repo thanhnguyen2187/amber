@@ -1,0 +1,72 @@
+<div
+  [ngStyle]="containerStyleByState"
+  class="
+    flex
+    flex-col
+    bg-amber-600
+    h-screen
+  "
+>
+  <!--Open/Collapse Button-->
+  <div
+    class="
+      flex
+      flex-row-reverse
+      pt-0.5
+      pb-1.5
+    "
+    [ngClass]="!stateOpen ? ['justify-center'] : ['mr-2']"
+  >
+    <div
+      [ngStyle]="buttonStyleByState"
+      class="
+        bg-cover
+        bg-center
+        cursor-pointer
+        rounded
+        outline-none
+        focus:ring-2
+      "
+      (click)="stateOpen = !stateOpen"
+      (keyup.enter)="stateOpen = !stateOpen"
+      (keyup.space)="stateOpen = !stateOpen"
+      tabindex="0"
+    >
+    </div>
+  </div>
+
+  <!--Sidebar Items-->
+  <ng-container
+    *ngFor="let item of sidebarItems"
+  >
+    <app-sidebar-item
+      [content]="item.displayData.content"
+      [iconUrl]="item.displayData.iconUrl"
+      [open]="stateOpen"
+      [(expand)]="item.logicData.expanded"
+      [selected]="sidebarItemIsSelected(item.generatedUrl)"
+      [hasChildren]="item.logicData.children.length > 0"
+      (click)="navigate(item.generatedUrl)"
+      (keyup.enter)="navigate(item.generatedUrl)"
+      (keyup.space)="navigate(item.generatedUrl)"
+    >
+    </app-sidebar-item>
+    <ng-container
+      *ngFor="let subItem of item.logicData.children"
+    >
+      <app-sidebar-item
+        *ngIf="item.logicData.expanded && stateOpen"
+        [content]="subItem.displayData.content"
+        [iconUrl]="subItem.displayData.iconUrl"
+        [open]="stateOpen"
+        [selected]="sidebarItemIsSelected(subItem.generatedUrl)"
+        (click)="navigate(subItem.generatedUrl)"
+        (keyup.enter)="navigate(subItem.generatedUrl)"
+        (keyup.space)="navigate(subItem.generatedUrl)"
+      ></app-sidebar-item>
+    </ng-container>
+  </ng-container>
+
+
+
+</div>
