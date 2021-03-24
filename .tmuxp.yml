@@ -14,11 +14,13 @@ windows:
   - shell_command: null
     focus: 'true'
   - shell_command:
-    - ng build --project amber-core --watch
+    - ./build_core.sh
   - shell_command:
-    - ng serve --project end-user --port 4200
+    - sleep 5
+    - ./serve_end_user.sh
   - shell_command:
-    - ng serve --project administration --port 4210
+    - sleep 5
+    - ./serve_administration.sh
   focus: 'true'
 
 - window_name: backend
@@ -30,10 +32,29 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command: clear
+    focus: 'true'
   - shell_command:
     - clear
     - dotnet watch run
     start_directory: ${HOME}/Projects/amber/AmberSystem/BusinessLogicService
-    focus: 'true'
+  - shell_command:
+    - clear
+    # - sudo pkill -f caddy
+    # - sudo caddy run --watch
+    start_directory: ${HOME}/Projects/amber/AmberSystem/SystemProvisioning
+
+- window_name: database
+  start_directory: ${HOME}/Projects/amber/database-provisioning
+  layout: tiled
+  options:
+    automatic-rename: 'off'
+  panes:
   - shell_command: clear
+    focus: 'true'
+  - shell_command:
+    - clear
+  - shell_command:
+    - clear
+  - shell_command:
+    - clear
 

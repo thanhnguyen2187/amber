@@ -22,11 +22,11 @@ export class HeaderMenuItemService {
       reference: 'about-us',
     },
     {
-      text: 'For Sale',
-      reference: 'for-sale',
+      text: 'Contact Us',
+      reference: '',
     },
     {
-      text: 'For Rent',
+      text: 'Bikes',
       reference: 'for-rent',
     },
     {

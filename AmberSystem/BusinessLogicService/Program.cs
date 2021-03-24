@@ -24,24 +24,24 @@ namespace BusinessLogicService
                     webBuilder =>
                     {
                         webBuilder.UseStartup<Startup>();
-                        webBuilder.ConfigureKestrel(
-                            options: options =>
-                            {
-                                options.ConfigureHttpsDefaults(
-                                    configureOptions: httpsOptions =>
-                                    {
-                                        // httpsOptions.ClientCertificateMode = ClientCertificateMode.RequireCertificate;
-                                        httpsOptions.ServerCertificate = X509Certificate2.CreateFromPemFile(
-                                            certPemFilePath: "../HttpsCertificateGenerating/amber.pem",
-                                            keyPemFilePath: "../HttpsCertificateGenerating/amber-key.pem"
-                                        );
-                                        // httpsOptions.ServerCertificate = X509Certificate2.CreateFromPemFile(
-                                        //     certPemFilePath: "../HttpsCertificateGenerating/amber.key.pem"
-                                        // );
-                                    }
-                                );
-                            }
-                        );
+                        // webBuilder.ConfigureKestrel(
+                        //     options: options =>
+                        //     {
+                        //         options.ConfigureHttpsDefaults(
+                        //             configureOptions: httpsOptions =>
+                        //             {
+                        //                 // httpsOptions.ClientCertificateMode = ClientCertificateMode.RequireCertificate;
+                        //                 httpsOptions.ServerCertificate = X509Certificate2.CreateFromPemFile(
+                        //                     certPemFilePath: "../HttpsCertificateGenerating/amber.pem",
+                        //                     keyPemFilePath: "../HttpsCertificateGenerating/amber-key.pem"
+                        //                 );
+                        //                 // httpsOptions.ServerCertificate = X509Certificate2.CreateFromPemFile(
+                        //                 //     certPemFilePath: "../HttpsCertificateGenerating/amber.key.pem"
+                        //                 // );
+                        //             }
+                        //         );
+                        //     }
+                        // );
                     }
                 )
             ;

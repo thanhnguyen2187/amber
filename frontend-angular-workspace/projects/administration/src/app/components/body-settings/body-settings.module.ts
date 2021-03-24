@@ -5,11 +5,13 @@ import { CardModule } from '../card/card.module';
 import { AmberCoreModule } from 'amber-core';
 import { BodySettingsRoutingModule } from './body-settings-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SettingItemsComponent } from './setting-items.component';
 
 
 @NgModule({
   declarations: [
     BodySettingsComponent,
+    SettingItemsComponent,
   ],
   imports: [
     AmberCoreModule,

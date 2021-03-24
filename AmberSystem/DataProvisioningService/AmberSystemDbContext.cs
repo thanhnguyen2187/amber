@@ -56,6 +56,7 @@ namespace DataProvisioningService
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // TODO: split connection creation somewhere else
             optionsBuilder
                 .UseSqlite(connectionString: CreateSqliteConnectionString())
                 // .UseMySQL(connectionString: CreateMariaDBConnectionString())
@@ -67,17 +68,6 @@ namespace DataProvisioningService
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // base.OnModelCreating(modelBuilder);
-            // modelBuilder.Entity<Base>().ToTable("Base");
-
-            // modelBuilder
-            //     .Entity<StaticValue>()
-            //     .ToTable("StaticValues")
-            // ;
-            // modelBuilder
-            //     .Entity<MediaFile>()
-            //     .ToTable("MediaFiles")
-            // ;
             SetDefaultValues(modelBuilder: modelBuilder);
             SeedData(modelBuilder: modelBuilder);
         }

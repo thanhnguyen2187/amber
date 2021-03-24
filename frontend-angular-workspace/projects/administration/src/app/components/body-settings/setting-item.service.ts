@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { SettingItem } from './settings-item.model';
+import { SettingItem } from './setting-item.model';
 // import { BodySettingsModule } from './body-settings.module';
 // import { BodySettingsComponent } from './body-settings.component';
 
 @Injectable()
-export class SettingsItemService {
+export class SettingItemService {
 
   constructor() { }
 

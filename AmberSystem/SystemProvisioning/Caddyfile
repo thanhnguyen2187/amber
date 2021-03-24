@@ -1,0 +1,56 @@
+(reverse_proxy_header_options) {
+
+}
+api.amber.dev {
+    tls ../HttpsCertificateGenerating/amber.pem ../HttpsCertificateGenerating/amber-key.pem
+
+    reverse_proxy localhost:5000 {
+        header_up Host {host}
+        header_up Origin {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Server {host}
+        header_up X-Forwarded-Port {port}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+
+        header_down Access-Control-Allow-Origin *
+        header_down Access-Control-Allow-Credentials true
+    }
+}
+
+amber.dev {
+    tls ../HttpsCertificateGenerating/amber.pem ../HttpsCertificateGenerating/amber-key.pem
+
+    reverse_proxy localhost:4200 {
+        header_up Host {host}
+        header_up Origin {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Server {host}
+        header_up X-Forwarded-Port {port}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+
+        header_down Access-Control-Allow-Origin *
+        header_down Access-Control-Allow-Credentials true
+    }
+}
+
+admin.amber.dev {
+    tls ../HttpsCertificateGenerating/amber.pem ../HttpsCertificateGenerating/amber-key.pem
+
+    reverse_proxy localhost:4210 {
+        header_up Host {host}
+        header_up Origin {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Server {host}
+        header_up X-Forwarded-Port {port}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+
+        header_down Access-Control-Allow-Origin *
+        header_down Access-Control-Allow-Credentials true
+    }
+}

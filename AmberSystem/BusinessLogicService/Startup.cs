@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -31,18 +32,25 @@ namespace BusinessLogicService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddAuthentication(
-                    CertificateAuthenticationDefaults.AuthenticationScheme
-                )
-                .AddCertificate(
-                    options =>
-                    {
-                        options.AllowedCertificateTypes = CertificateTypes.All;
-                    }
-                )
-                .AddCertificateCache()
-            ;
+            // services.Configure<ForwardedHeadersOptions>(
+            //     options =>
+            //     {
+            //         options.ForwardedHeaders =
+            //             ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            //     }
+            // );
+            // services
+            //     .AddAuthentication(
+            //         CertificateAuthenticationDefaults.AuthenticationScheme
+            //     )
+            //     .AddCertificate(
+            //         options =>
+            //         {
+            //             options.AllowedCertificateTypes = CertificateTypes.All;
+            //         }
+            //     )
+            //     .AddCertificateCache()
+            // ;
             services.AddCors(options =>
             {
                 options.AddPolicy(
@@ -95,6 +103,13 @@ namespace BusinessLogicService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.Use((context, next) =>
+            {
+                context.Request.Scheme = "https";
+                return next();
+            });
+            // app.UsePathBase("api.amber.dev");
+            app.UseForwardedHeaders();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -102,7 +117,7 @@ namespace BusinessLogicService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BusinessLogicService v1"));
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsItemService } from './settings-item.service';
-import { SettingItem } from './settings-item.model';
-import set = Reflect.set;
+import { SettingItemService } from './setting-item.service';
+import { SettingItem } from './setting-item.model';
 
 @Component({
   selector: 'app-body-settings',
   templateUrl: './body-settings.component.html',
   styleUrls: ['./body-settings.component.scss'],
   providers: [
-    SettingsItemService,
+    SettingItemService,
   ]
 })
 export class BodySettingsComponent implements OnInit {
 
-  items: SettingItem[] = [];
+  contactItems: SettingItem[] = [];
   socialMediaItems: SettingItem[] = [];
 
   constructor(
-    private settingsItemService: SettingsItemService,
+    private settingsItemService: SettingItemService,
   ) {
     settingsItemService.getSettingItems().subscribe(
-      (items) => this.items = items
+      (items) => this.contactItems = items
     );
     settingsItemService.getSocialMediaSettingItems().subscribe(
       (items) => this.socialMediaItems = items

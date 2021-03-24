@@ -1,0 +1,61 @@
+@startwbs
+* Amber Features
+
+'** Multi-currency
+'*** Multi-currency Storage
+'**** Rental Booking
+'**** Sale Contract
+'**** Rental Contract
+'**** Buying Contract
+'*** Multi-currency Calculation
+
+'** Multi-language
+'*** Multi-language Interface
+
+** Bike
+*** Bike Management
+**** Bike Listing
+**** Bike Creating
+**** Bike Updating
+**** Bike Deleting
+*** Bike Maintaining Notification
+
+** Booking
+*** Booking Request
+*** Booking Handling
+*** Booking Management
+
+** Contract
+*** Contract Generating
+**** Template Contract Uploading
+*** Contract Checking
+*** Contract Management
+**** Contract Listing
+**** Contract Creating
+**** Contract Updating
+**** Contract Deleting
+*** Contract Changes Tracking
+
+** Customer Care
+*** Customer Management
+*** Automatic Contacting
+**** Send Message After Rent
+**** Send Message After Buy
+
+** Content
+*** Content Management
+*** Content Display
+**** Bikes List
+**** Blog Posts
+**** Promotion Posts
+
+** Visualization
+*** ...
+
+** Authentication
+*** Login
+*** Logout
+
+** Authorization
+*** Hierarchical Functionality
+@endwbs

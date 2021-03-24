@@ -12,6 +12,7 @@
       flex
       flex-col
       space-y-2
+      items-start
     "
   >
     <app-card
@@ -20,10 +21,10 @@
       <div
         class="
           flex
-          p-2
           space-x-4
         "
       >
+        <!--Logo-->
         <div
           class="
             flex
@@ -56,130 +57,21 @@
           </div>
         </div>
         <!--TODO: add the custom style to Tailwind-->
-        <div
-          style="grid-template-columns: repeat(3, auto);"
-          class="
-            grid
-            auto-rows-min
-            gap-2
-            items-center
-          "
-        >
-          <ng-container
-            *ngFor="let item of items"
-          >
-            <div>{{item.displayText}}</div>
-            <div>
-              <input
-                class="
-                  border-2
-                  rounded
-                  outline-none
-                  focus:ring-2
-                  disabled:opacity-50
-                "
-                [disabled]="item.editingState === 'closed'"
-                [(ngModel)]="item.value"
-              />
-            </div>
-            <div
-              class="
-                flex
-                space-x-1
-              "
-            >
-              <amber-icon
-                *ngIf="item.editingState === 'closed'"
-                (click)="item.editingState = 'editing'"
-                backgroundImageUrl="assets/edit.svg"
-                size="1em"
-              ></amber-icon>
-              <amber-icon
-                *ngIf="item.editingState === 'editing'"
-                (click)="item.editingState = 'closed'"
-                backgroundImageUrl="assets/close.svg"
-                size="1em"
-              ></amber-icon>
-              <amber-icon
-                *ngIf="item.editingState === 'editing' && item._values.length > 1"
-                (click)="item.editingState = 'editing'; item.resetValue()"
-                backgroundImageUrl="assets/undo.svg"
-                size="1em"
-              ></amber-icon>
-              <amber-icon
-                *ngIf="item.editingState === 'editing' && item._values.length > 1"
-                (click)="item.editingState = 'closed'; item.saveValue()"
-                backgroundImageUrl="assets/checkmark.svg"
-                size="1em"
-              ></amber-icon>
-            </div>
-          </ng-container>
-        </div>
+        <app-setting-items
+          [items]="contactItems"
+        ></app-setting-items>
       </div>
     </app-card>
+
     <app-card
       title="Social Media"
     >
-      <div
-        style="grid-template-columns: repeat(3, auto);"
-        class="
-          grid
-          auto-rows-min
-          gap-2
-          items-center
-        "
-      >
-        <ng-container
-          *ngFor="let item of socialMediaItems"
-        >
-          <div>{{item.displayText}}</div>
-          <div>
-            <input
-              class="
-                  border-2
-                  rounded
-                  outline-none
-                  focus:ring-2
-                  disabled:opacity-50
-                "
-              [disabled]="item.editingState === 'closed'"
-              [(ngModel)]="item.value"
-            />
-          </div>
-          <div
-            class="
-                flex
-                space-x-1
-              "
-          >
-            <amber-icon
-              *ngIf="item.editingState === 'closed'"
-              (click)="item.editingState = 'editing'"
-              backgroundImageUrl="assets/edit.svg"
-              size="1em"
-            ></amber-icon>
-            <amber-icon
-              *ngIf="item.editingState === 'editing'"
-              (click)="item.editingState = 'closed'"
-              backgroundImageUrl="assets/close.svg"
-              size="1em"
-            ></amber-icon>
-            <amber-icon
-              *ngIf="item.editingState === 'editing' && item._values.length > 1"
-              (click)="item.editingState = 'editing'; item.resetValue()"
-              backgroundImageUrl="assets/undo.svg"
-              size="1em"
-            ></amber-icon>
-            <amber-icon
-              *ngIf="item.editingState === 'editing' && item._values.length > 1"
-              (click)="item.editingState = 'closed'; item.saveValue()"
-              backgroundImageUrl="assets/checkmark.svg"
-              size="1em"
-            ></amber-icon>
-          </div>
-        </ng-container>
-      </div>
+      <app-setting-items
+        [items]="socialMediaItems"
+      ></app-setting-items>
     </app-card>
+
+
   </div>
 
 
