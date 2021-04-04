@@ -10,7 +10,7 @@ import {
 } from '@angular/animations';
 
 import {
-  GalleryImage,
+  CoverImage,
   HomeGalleryImageService,
 } from '../../services/home-gallery-image.service';
 
@@ -32,7 +32,7 @@ export class HomeGalleryComponent implements OnInit {
   animatingToggle = true;
 
   currentImageIndex = 0;
-  images: GalleryImage[] = [];
+  images: CoverImage[] = [];
 
   autoSkipIntervalId = 0;
   autoSkipIntervalTimeout = 5000;

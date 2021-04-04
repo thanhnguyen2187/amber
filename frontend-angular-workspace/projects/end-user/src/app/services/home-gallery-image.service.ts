@@ -4,7 +4,7 @@ import { PrefixedHttpClientService } from './prefixed-http-client.service';
 import { PrefixedHttpClientConstants } from './prefixed-http-client.constants';
 import { pluck } from 'rxjs/operators';
 
-export interface GalleryImage {
+export interface CoverImage {
   source: string;
   thumbnailSource?: string;
   title?: string;
@@ -16,7 +16,7 @@ export interface GalleryImage {
 })
 export class HomeGalleryImageService {
 
-  galleryImages: GalleryImage[] = [
+  coverImages: CoverImage[] = [
     {
       source: 'https://scontent-hkt1-1.xx.fbcdn.net/v/t1.15752-9/101948311_581310539195339_3679346352084353253_n.jpg?_nc_cat=106&ccb=2&_nc_sid=ae9488&_nc_ohc=nDX7mAtSw1UAX-XHEAX&_nc_ht=scontent-hkt1-1.xx&oh=26e5f4fd25e21b0ff99e57d61199cd05&oe=6038097B',
       thumbnailSource: 'https://scontent-hkt1-1.xx.fbcdn.net/v/t1.15752-9/101948311_581310539195339_3679346352084353253_n.jpg?_nc_cat=106&ccb=2&_nc_sid=ae9488&_nc_ohc=nDX7mAtSw1UAX-XHEAX&_nc_ht=scontent-hkt1-1.xx&oh=26e5f4fd25e21b0ff99e57d61199cd05&oe=6038097B',
@@ -37,16 +37,17 @@ export class HomeGalleryImageService {
     },
   ];
 
-  getAll(): Observable<GalleryImage[]> {
+  getAll(): Observable<CoverImage[]> {
     // return of(this.galleryImages);
     return (
       this
         .prefixedHttpClientService
         .get(
-          PrefixedHttpClientConstants.homePageDataApiUrl
+          PrefixedHttpClientConstants.homePageDataApiUrl,
         )
         .pipe(
-          pluck('galleryItems')
+          // pluck('galleryItems'),
+          pluck('coverImages'),
         )
     );
   }

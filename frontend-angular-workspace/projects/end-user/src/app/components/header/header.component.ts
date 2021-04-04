@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   HeaderMenuItem,
   HeaderMenuItemService,
-} from '../../services/header-menu-item.service';
+} from './header-menu-item.service';
 
 @Component({
   selector: 'app-header',

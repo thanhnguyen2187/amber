@@ -1,0 +1,11 @@
+default-character-set=utf8mb4
+default-collation=utf8mb4_general_ci
+generator=skeema:1.5.0-community
+schema=amber
+
+[production]
+flavor=mariadb:10.5
+host=127.0.0.1
+port=3306
+user=amber
+password=amber

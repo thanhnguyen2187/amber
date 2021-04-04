@@ -24,9 +24,25 @@ windows:
   focus: 'true'
 
 - window_name: backend
-  start_directory: ${HOME}/Projects/amber/AmberSystem
+  start_directory: ${HOME}/Projects/amber/backend-golang
   layout: main-horizontal
   # layout: 9f9a,184x49,0,0[184x36,0,0,2,184x12,0,37,3]
+  options:
+    main-pane-height: 38
+    automatic-rename: 'off'
+  panes:
+  - shell_command: go run .
+    focus: 'true'
+  - shell_command:
+    - sudo pkill -f caddy && sudo caddy run --watch
+    start_directory: ${HOME}/Projects/amber/web-server
+  - shell_command: null
+    # - sudo pkill -f caddy
+    # - sudo caddy run --watch
+
+- window_name: database
+  start_directory: ${HOME}/Projects/amber/database-provisioning
+  layout: main-horizontal
   options:
     main-pane-height: 38
     automatic-rename: 'off'
@@ -34,27 +50,8 @@ windows:
   - shell_command: clear
     focus: 'true'
   - shell_command:
-    - clear
-    - dotnet watch run
-    start_directory: ${HOME}/Projects/amber/AmberSystem/BusinessLogicService
-  - shell_command:
-    - clear
-    # - sudo pkill -f caddy
-    # - sudo caddy run --watch
-    start_directory: ${HOME}/Projects/amber/AmberSystem/SystemProvisioning
-
-- window_name: database
-  start_directory: ${HOME}/Projects/amber/database-provisioning
-  layout: tiled
-  options:
-    automatic-rename: 'off'
-  panes:
-  - shell_command: clear
-    focus: 'true'
-  - shell_command:
-    - clear
-  - shell_command:
-    - clear
-  - shell_command:
-    - clear
+    - ./start_database_server.sh && sleep 5 && ./run_mysqldef.sh && ./do_seed.sh
+  - shell_command: null
+  # - shell_command:
+  #   - clear
 

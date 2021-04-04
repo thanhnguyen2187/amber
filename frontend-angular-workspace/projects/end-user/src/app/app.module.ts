@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
 import { LayoutBodyWithCoverComponent } from './layouts/layout-body-with-cover/layout-body-with-cover.component';
 
-import { HeaderComponent } from './components/header/header.component';
+// import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { BodyHomeComponent } from './components/body-home/body-home.component';
@@ -30,20 +30,20 @@ import { TagSelectV2Component } from './components/tag-select-v2/tag-select-v2.c
 import { ItemGridComponent } from './components/item-grid/item-grid.component';
 import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { AccordionComponent } from './components/accordion/accordion.component';
-// import { UrlWrapPipe } from './pipes/url-wrap.pipe';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
 import { StaticConfigurationProvider } from './services/static-configuration.provider';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { AmberCoreModule } from 'amber-core';
+import { AccordionModule } from './components/accordion/accordion.module';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutDefaultComponent,
 
-    HeaderComponent,
+    // HeaderComponent,
     FooterComponent,
     BodyHomeComponent,
     HomeGalleryComponent,
@@ -62,8 +62,6 @@ import { AmberCoreModule } from 'amber-core';
     ItemGridComponent,
     PaginationBarComponent,
     FilterComponent,
-    AccordionComponent,
-    // UrlWrapPipe,
     CheckboxComponent,
     BodyServicesComponent,
     LayoutBodyWithCoverComponent,
@@ -75,6 +73,9 @@ import { AmberCoreModule } from 'amber-core';
     AppRoutingModule,
     HttpClientModule,
     AmberCoreModule,
+
+    HeaderModule,
+    AccordionModule,
   ],
   providers: [
     StaticConfigurationProvider,
