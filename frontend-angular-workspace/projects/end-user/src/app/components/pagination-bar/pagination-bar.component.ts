@@ -9,7 +9,18 @@ import { Cell, CellType, PaginationBarCellService, } from './pagination-bar-cell
 export class PaginationBarComponent implements OnInit {
 
   cells: Cell[] = [];
-  @Input() numberOfPages = 1;
+  // tslint:disable-next-line:variable-name
+  _numberOfPages = 1;
+  @Input() get numberOfPages(): number {
+    return this._numberOfPages;
+  }
+  set numberOfPages(value: number) {
+    this._numberOfPages =
+      value >= 1
+        ? value
+        : 1;
+    this.updateCells();
+  }
   @Input() currentPageNumber = 1;
   @Output() currentPageNumberChange: EventEmitter<number> = new EventEmitter<number>();
 

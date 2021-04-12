@@ -8,3 +8,5 @@ export * from './lib/amber-core.module';
 
 export * from './lib/pipes/url-wrap.pipe';
 export * from './lib/components/icon/icon.component';
+
+export * from './lib/utility-functions/range';

@@ -1,0 +1,54 @@
+<div
+  class="
+    rounded-xl
+    flex
+    items-center
+    p-2
+    w-72
+    gap-3
+    fixed
+    bottom-4
+    right-4
+    bg-gray-200
+  "
+  *ngIf="display"
+  @showHide
+>
+  <div
+    class="
+      ml-2
+      mr-1
+    "
+  >
+    <amber-icon
+      backgroundImageUrl="assets/checkmark.svg"
+      size="2em"
+    ></amber-icon>
+  </div>
+
+  <div
+    class="
+      flex-auto
+      flex
+      flex-col
+      mr-2
+    "
+  >
+    <div
+      class="
+        text-lg
+        font-semibold
+      "
+    >
+      {{title}}
+    </div>
+    <div
+      class="
+      "
+    >
+      {{content}}
+    </div>
+  </div>
+</div>
+
+

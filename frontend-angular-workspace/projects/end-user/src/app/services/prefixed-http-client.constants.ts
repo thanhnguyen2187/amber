@@ -4,4 +4,5 @@ export const PrefixedHttpClientConstants = {
   commonPageDataApiUrl: 'metadata/common-page-data',
   homePageDataApiUrl: 'metadata/home-page-data',
   aboutUsDataApiUrl: 'Metadata/EndUserView/AboutUs/Data',
+  bikeModelsApiUrl: 'bike-models',
 };

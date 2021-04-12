@@ -1,0 +1,72 @@
+<div
+  class="
+    flex
+    flex-col
+    space-y-1
+  "
+>
+  <div
+    [style.backgroundImage]="item.imageReference | urlWrap"
+    style="
+    "
+    class="
+      w-80
+      h-60
+      bg-center
+      bg-cover
+    "
+  ></div>
+  <div
+    style="
+    "
+    class="
+      w-80
+    "
+  >
+    <!--Title-->
+
+    <div
+      class="
+        mt-2
+        text-2xl
+      "
+    >
+      {{item.name}}
+    </div>
+    <!--Price-->
+    <div
+      style="grid-template-columns: repeat(3, auto)"
+      class="
+        grid
+        gap-1
+        items-center
+      "
+    >
+      <app-item-card-row
+        label="Price for Sale:"
+        value="{{item?.priceForSale}}"
+        *ngIf="item?.priceForSale"
+        icon="cart"
+        (click)="addToCart()"
+      ></app-item-card-row>
+      <app-item-card-row
+        label="Price for Rent:"
+        value="{{item?.priceForRentInsideCity}}/day inside city"
+        *ngIf="item?.priceForRentInsideCity"
+        icon="calendar"
+      ></app-item-card-row>
+      <app-item-card-row
+        label=""
+        value="{{item?.priceForRentTraveling}}/day traveling"
+        *ngIf="item?.priceForRentTraveling"
+        icon="calendar"
+      ></app-item-card-row>
+      <app-item-card-row
+        label=""
+        value="{{item?.priceForRentMonthly}}/month"
+        *ngIf="item?.priceForRentMonthly"
+        icon="calendar"
+      ></app-item-card-row>
+    </div>
+  </div>
+</div>

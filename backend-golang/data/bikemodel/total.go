@@ -22,7 +22,8 @@ func Total(
 					From("bike_tag_map").
 					Where(
 						goqu.C("tag_key").In(tags),
-					),
+					).
+					Distinct(),
 			),
 		)
 	}

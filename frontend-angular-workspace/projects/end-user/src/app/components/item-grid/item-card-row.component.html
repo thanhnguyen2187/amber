@@ -1,0 +1,22 @@
+<div>{{label}}</div>
+<div
+  class="
+    font-semibold
+    text-red-500
+  "
+>
+  {{value}}
+</div>
+<amber-icon
+  *ngIf="icon === 'cart'"
+  backgroundImageUrl="assets/cart-outline.svg"
+  hoverBackgroundImageUrl="assets/cart-solid.svg"
+  size="1.5em"
+></amber-icon>
+<amber-icon
+  *ngIf="icon === 'calendar'"
+  backgroundImageUrl="assets/calendar-outline.svg"
+  hoverBackgroundImageUrl="assets/calendar-solid.svg"
+  size="1.5em"
+  (click)="calendarDynamicService.toggleCalendar($event)"
+></amber-icon>

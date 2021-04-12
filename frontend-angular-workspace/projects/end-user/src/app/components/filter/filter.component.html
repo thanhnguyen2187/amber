@@ -23,7 +23,10 @@
     >
       <app-checkbox
         *ngFor="let filterItem of filterGroup.items"
+        [checked]="filterItem.checked"
+        (click)="invertFilterItem(filterItem); correctCheckedTags(filterItem)"
       >
+        <!--TODO: prettify the code-->
         {{filterItem.label}}
       </app-checkbox>
     </div>
@@ -35,5 +38,9 @@
 <!--      "-->
 <!--    ></div>-->
   </app-accordion>
-
+<!--  <ng-container-->
+<!--    *ngFor="let tag of checkedTags"-->
+<!--  >-->
+<!--    {{tag}}-->
+<!--  </ng-container>-->
 </div>

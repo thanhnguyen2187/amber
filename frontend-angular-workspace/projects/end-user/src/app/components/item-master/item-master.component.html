@@ -1,0 +1,45 @@
+<div
+  class="
+    mt-6
+    mb-4
+    flex
+  "
+>
+  <div
+    class="
+      ml-4
+      w-1/6
+    "
+  >
+    <app-filter
+      [filterGroups]="filterGroups"
+      (checkedTagsChange)="checkedTags = $event; updateItems(true)"
+    >
+    </app-filter>
+  </div>
+  <div
+    class="
+      ml-4
+      mr-4
+      w-full
+    "
+  >
+    <app-item-grid
+      [items]="items"
+    >
+    </app-item-grid>
+    <div
+      class="
+        mt-4
+        flex
+        flex-row-reverse
+      "
+    >
+      <app-pagination-bar
+        [currentPageNumber]="currentPageNumber"
+        (currentPageNumberChange)="currentPageNumber = $event; updateItems(false)"
+        [numberOfPages]="numberOfPages"
+      ></app-pagination-bar>
+    </div>
+  </div>
+</div>

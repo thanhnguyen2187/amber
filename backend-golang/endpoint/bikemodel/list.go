@@ -9,6 +9,20 @@ import (
 	"net/http"
 )
 
+//type endUserBikeModel struct {
+//	ImageReference string `json:"imageReference"`
+//	Name string `json:"name"`
+//	PriceForSale string `json:"priceForSale"`
+//	PriceForRentInCity string `json:"priceForRentInCity"`
+//}
+
+//func transform(
+//	bikeModels []model.BikeModel,
+//) []struct {
+//} {
+//
+//}
+
 func List(
 	w http.ResponseWriter,
 	r *http.Request,
@@ -16,11 +30,9 @@ func List(
 	size := param.DefaultInt(r, "size", 12)
 	page := param.DefaultInt(r, "page", 1)
 	tags := param.DefaultStringArray(r, "tags", make([]string, 0))
-	tags_, _ := param.StringArray(r, "tags")
-	log.Printf("Something %v", tags_)
 	orders := param.DefaultStringArray(r, "orders", make([]string, 0))
 
-	bikeModels, total, err := bikemodel.List(
+	simBikeModels, total, err := bikemodel.List(
 		size,
 		page,
 		tags,
@@ -30,11 +42,13 @@ func List(
 		log.Printf("Errors happened when calling business function: %v", err)
 	} else {
 		type returnData struct {
-			BikeModels []model.BikeModel `json:"bikeModels"`
-			Total int `json:"total"`
+			BikeModels []model.SimBikeModel `json:"bikeModels"`
+			Size       int                  `json:"size"`
+			Total      int                  `json:"total"`
 		}
 		b, err := json.Marshal(returnData{
-			BikeModels: bikeModels,
+			BikeModels: simBikeModels,
+			Size:       size,
 			Total:      total,
 		})
 		if err != nil {

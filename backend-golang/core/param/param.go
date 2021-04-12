@@ -17,7 +17,8 @@ func String(
 	string,
 	error,
 ) {
-	v := chi.URLParam(r, key)
+	//v := chi.URLParam(r, key)
+	v := r.URL.Query().Get(key)
 	if len(v) == 0 {
 		return "", ErrInvalidParam
 	} else {
@@ -89,7 +90,8 @@ func Int(
 	error,
 ) {
 	v, err := strconv.ParseInt(
-		chi.URLParam(r, key),
+		//chi.URLParam(r, key),
+		r.URL.Query().Get(key),
 		10,
 		8,
 	)

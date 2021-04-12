@@ -11,7 +11,7 @@ func List(
 	tags []string,
 	orders []string,
 ) (
-	[]model.BikeModel,
+	[]model.SimBikeModel,
 	int,
 	error,
 ) {
@@ -31,5 +31,7 @@ func List(
 		return nil, 0, err
 	}
 
-	return bikeModels, total, nil
+	return model.TransformBikeModels(bikeModels),
+		total,
+		nil
 }

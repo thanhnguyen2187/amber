@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
 import { fromArray } from 'rxjs/internal/observable/fromArray';
-import { repeat } from 'rxjs/operators';
+import { map, pluck, repeat, take } from 'rxjs/operators';
 import { PrefixedHttpClientService } from '../../services/prefixed-http-client.service';
+import { PrefixedHttpClientConstants } from '../../services/prefixed-http-client.constants';
+import { HttpParams } from '@angular/common/http';
 
 export interface Item {
   imageReference: string;
-  title: string;
+  name: string;
   priceForSale?: string;
-  priceForRentUrban?: string;
+  priceForRentInsideCity?: string;
   priceForRentTraveling?: string;
+  priceForRentMonthly?: string;
+}
+
+export interface BikeModelsReturnResult {
+  bikeModels: Item[];
+  size: number;
+  total: number;
 }
 
 @Injectable({
@@ -20,36 +29,65 @@ export class ItemService {
   items: Item[] = [
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      title: 'Honda XR 150',
+      name: 'Honda XR 150',
       priceForSale: '2500 USD',
-      priceForRentUrban: '12 USD per day',
-      priceForRentTraveling: '25 USD per day',
+      priceForRentInsideCity: '12 USD',
+      priceForRentTraveling: '25 USD',
+      priceForRentMonthly: '5 000 000 VND'
     },
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      title: 'Honda XR 150',
+      name: 'Honda XR 150',
       priceForSale: '2500 USD',
-      priceForRentUrban: '12 USD per day',
-      priceForRentTraveling: '25 USD per day',
+      priceForRentInsideCity: '12 USD',
+      priceForRentTraveling: '25 USD',
+      priceForRentMonthly: '5 000 000 VND'
     },
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      title: 'Honda XR 150',
+      name: 'Honda XR 150',
       priceForSale: '2500 USD',
-      priceForRentUrban: '12 USD per day',
-      priceForRentTraveling: '25 USD per day',
+      priceForRentInsideCity: '12 USD',
+      priceForRentTraveling: '25 USD',
+      priceForRentMonthly: '5 000 000 VND'
     },
   ];
 
-  getItems(): Observable<Item[]> {
-    return of(
-      // [].concat(
-      //   ... Array(10).fill(this.items)
-      // )
-      Array<Item[]>(4)
-      .fill(this.items)
-      .flat()
+  getItems(
+    tags: string[],
+    pageNumber: number,
+    pageSize: number,
+  ): Observable<BikeModelsReturnResult> {
+    // return of(
+    //   // [].concat(
+    //   //   ... Array(10).fill(this.items)
+    //   // )
+    //   Array<Item[]>(4)
+    //   .fill(this.items)
+    //   .flat()
+    // );
+    let params: HttpParams = new HttpParams().appendAll(
+      {
+        page: pageNumber.toString(),
+        size: pageSize.toString(),
+      }
     );
+    tags.forEach(
+      (tag) => {
+        params = params.append('tags', tag);
+      }
+    );
+    return this
+      .httpClient
+      .get(
+        PrefixedHttpClientConstants.bikeModelsApiUrl,
+        params,
+      )
+      .pipe(
+        take(1),
+        map(value => value as BikeModelsReturnResult),
+      )
+    ;
   }
 
   constructor(

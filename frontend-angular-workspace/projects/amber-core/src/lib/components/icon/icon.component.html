@@ -1,5 +1,5 @@
 <div
-  [style.backgroundImage]="backgroundImageUrl | urlWrap"
+  [style.backgroundImage]="getBackgroundImageUrl() | urlWrap"
   [style.width]="size"
   [style.height]="size"
   class="
@@ -7,9 +7,12 @@
     bg-cover
     bg-center
     outline-none
-    focus:ring-2
+    hover:ring-1
+    active:ring-2
     rounded
   "
+  (mouseenter)="hovering = true"
+  (mouseleave)="hovering = false"
   tabindex="0"
 >
 </div>

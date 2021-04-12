@@ -7,11 +7,12 @@
   <div
     class="
       grid
+      justify-items-center
       2xl:grid-cols-4
       xl:grid-cols-3
       lg:grid-cols-2
       md:grid-cols-1
-      gap-2
+      gap-6
     "
   >
     <div
@@ -19,106 +20,12 @@
       class="
         flex
         flex-col
-        items-center
       "
     >
-      <div
-        [style.backgroundImage]="item.imageReference | urlWrap"
-        style="
-          width: 300px;
-          height: 200px;
-        "
-        class="
-          bg-center
-          bg-cover
-        "
-      ></div>
-      <div
-        style="
-          width: 300px;
-        "
-      >
-        <!--Title-->
-        <div
-          class="
-            mt-2
-            text-2xl
-          "
-        >
-          {{item.title}}
-        </div>
-        <!--Price for sale-->
-        <div
-          class="
-          "
-        >
-          Price for Sale:
-          <span
-            class="
-              font-semibold
-              text-red-500
-            "
-          >
-            {{item?.priceForSale}}
-          </span>
-        </div>
-        <!--Price for rent-->
-        <div
-          class="
-            flex
-          "
-        >
-          <div>
-            Price for Rent:
-          </div>
-          <div
-            class="
-              ml-1
-              inline-block
-              flex
-              flex-col
-            "
-          >
-            <div
-              class="
-                font-semibold
-                text-red-500
-              "
-            >
-              {{item?.priceForRentUrban}}
-            </div>
-            <div
-              class="
-                font-semibold
-                text-red-500
-              "
-            >
-              {{item?.priceForRentTraveling}}
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-item-card
+        [item]="item"
+      ></app-item-card>
     </div>
   </div>
   <!--Pagination bar-->
-  <div
-    class="
-      mt-4
-      flex
-      flex-row-reverse
-    "
-  >
-    <app-pagination-bar
-      [currentPageNumber]="1"
-      [numberOfPages]="100"
-      (currentPageNumberChange)="setCurrentPageNumber($event)"
-    ></app-pagination-bar>
-  </div>
-
-  <div
-    class="
-    "
-  >
-  </div>
-
 </div>

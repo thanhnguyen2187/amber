@@ -11,9 +11,12 @@ create table bike_model (
         "name": "...",
         "capacity": "...",
         "cost": "...",
-        "daily_rental_fee_inside_city": 0,
-        "daily_rental_fee_traveling": 0,
-        "monthly_rental_fee": 0
+        "daily_rental_fee_inside_city": 0, // VND
+        "daily_rental_fee_inside_city_display": "0 USD",
+        "daily_rental_fee_traveling": 0, // VND
+        "daily_rental_fee_traveling_display": "0 USD",
+        "monthly_rental_fee": 0 // VND
+        "monthly_rental_fee_display": "0 VND"
     }
     */
     

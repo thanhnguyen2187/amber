@@ -27,16 +27,17 @@ import { TagSelectDropdownComponent } from './components/tag-select/tag-select-d
 import { TagComponent } from './components/tag-select/tag.component';
 import { TagSelectDropdownItemComponent } from './components/tag-select/tag-select-dropdown-item.component';
 import { TagSelectV2Component } from './components/tag-select-v2/tag-select-v2.component';
-import { ItemGridComponent } from './components/item-grid/item-grid.component';
-import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
-import { FilterComponent } from './components/filter/filter.component';
-import { CheckboxComponent } from './components/checkbox/checkbox.component';
+// import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
+// import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
 import { StaticConfigurationProvider } from './services/static-configuration.provider';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { AmberCoreModule } from 'amber-core';
 import { AccordionModule } from './components/accordion/accordion.module';
 import { HeaderModule } from './components/header/header.module';
+import { ItemGridModule } from './components/item-grid/item-grid.module';
+import { NotificationModule } from './components/notification/notification.module';
+import { CalendarModule } from './components/calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -59,10 +60,6 @@ import { HeaderModule } from './components/header/header.module';
     TagComponent,
     TagSelectDropdownItemComponent,
     TagSelectV2Component,
-    ItemGridComponent,
-    PaginationBarComponent,
-    FilterComponent,
-    CheckboxComponent,
     BodyServicesComponent,
     LayoutBodyWithCoverComponent,
     LoginLayoutComponent,
@@ -72,10 +69,14 @@ import { HeaderModule } from './components/header/header.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+
     AmberCoreModule,
 
     HeaderModule,
     AccordionModule,
+    ItemGridModule,
+    NotificationModule,
+    CalendarModule,
   ],
   providers: [
     StaticConfigurationProvider,

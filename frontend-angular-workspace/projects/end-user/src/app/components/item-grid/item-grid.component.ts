@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   Item,
   ItemService,
@@ -11,26 +11,23 @@ import {
 })
 export class ItemGridComponent implements OnInit {
 
-  currentPageNumber = 1;
-  items: Item[] = [];
+  @Input() items: Item[] = [];
 
   setCurrentPageNumber(pageNumber: number): void {
-    this.currentPageNumber = pageNumber;
   }
 
   constructor(
-    private itemService: ItemService,
   ) { }
 
   ngOnInit(): void {
-    (
-      this
-      .itemService
-      .getItems()
-      .subscribe(
-        (items) => this.items = items
-      )
-    );
+    // (
+    //   this
+    //   .itemService
+    //   .getItems()
+    //   .subscribe(
+    //     (items) => this.items = items
+    //   )
+    // );
   }
 
 }

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-tmuxp load .tmuxp.yml
+yes | tmuxp load .tmuxp.yml

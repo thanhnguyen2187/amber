@@ -10,7 +10,16 @@ export class IconComponent implements OnInit {
 
   constructor() { }
 
+  hovering = false;
   @Input() backgroundImageUrl = '';
+  @Input() hoverBackgroundImageUrl = '';
+  getBackgroundImageUrl(): string {
+    if (!this.hoverBackgroundImageUrl || !this.hovering) {
+      return this.backgroundImageUrl;
+    } else {
+      return this.hoverBackgroundImageUrl;
+    }
+  }
   @Input() size = '';
 
   ngOnInit(): void {
