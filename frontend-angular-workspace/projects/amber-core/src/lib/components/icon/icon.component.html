@@ -13,6 +13,6 @@
   "
   (mouseenter)="hovering = true"
   (mouseleave)="hovering = false"
-  tabindex="0"
+  [attr.tabindex]="disableTabIndex ? '' : 0"
 >
 </div>

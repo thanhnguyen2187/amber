@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CalendarCell, CalendarCellType } from './calendar-cell.model';
 import { CalendarStaticService } from './calendar-static.service';
 import { CalendarDynamicService } from './calendar-dynamic.service';
@@ -12,7 +12,10 @@ import { map } from 'rxjs/operators';
 export class CalendarBoxComponent implements OnInit {
 
   @Input() date: Date = new Date();
-  view: 'week' | 'month' = 'week';
+  visibility = false;
+  x = 0;
+  y = 0;
+  @ViewChild('mainBox') mainBox!: ElementRef;
   titleCell: CalendarCell = {
     // tslint:disable-next-line:no-bitwise
     type: CalendarCellType.default | CalendarCellType.display,
@@ -57,18 +60,8 @@ export class CalendarBoxComponent implements OnInit {
   mapDayOfMonthCellsAction(cells: CalendarCell[]): CalendarCell[] {
     return cells.map(
       (cell) => {
-        let type = cell.type;
-        // (() => {
-          // use a Immediately Invoked Function to avoid
-        if (
-          this
-            .calendarDynamicService
-            .isBetweenSelectedDate(cell.date)
-        ) {
-          // tslint:disable-next-line:no-bitwise
-          type |= CalendarCellType.selected;
-        }
-        // })();
+        // tslint:disable-next-line:no-bitwise
+        const type = cell.type | this.calendarDynamicService.getCellType(cell.date);
         return {
           ...cell,
           type,
@@ -76,6 +69,9 @@ export class CalendarBoxComponent implements OnInit {
             this
               .calendarDynamicService
               .selectDate(cell.date);
+            this
+              .calendarDynamicService
+              .updateSubjects();
           },
         };
       }
@@ -92,7 +88,9 @@ export class CalendarBoxComponent implements OnInit {
       .calendarDynamicService
       .titleCell$
       .pipe(
-        map(this.mapTitleCellAction),
+        // use a closure to avoid
+        // 'cannot read property ... of undefined'
+        map((cell) => this.mapTitleCellAction(cell)),
       )
       .subscribe(
         (cell) => this.titleCell = cell
@@ -101,11 +99,12 @@ export class CalendarBoxComponent implements OnInit {
       .calendarDynamicService
       .monthCells$
       .pipe(
-        map(this.mapMonthCellsAction),
+        // use a closure to avoid
+        // 'cannot read property ... of undefined'
+        map((cells) => this.mapMonthCellsAction(cells)),
       )
       .subscribe(
-        (cells) =>
-          this.monthCells = cells
+        (cells) => this.monthCells = cells
       )
     ;
     this
@@ -113,14 +112,42 @@ export class CalendarBoxComponent implements OnInit {
       .dayOfMonthCells$
       .pipe(
         // use a closure to avoid
-        // 'cannot read property isBetweenSelectedDate of undefined'
+        // 'cannot read property ... of undefined'
         map((cells) => this.mapDayOfMonthCellsAction(cells)),
       )
       .subscribe(
         (cells) =>
           this.dayOfMonthCells = cells
       );
-    this.calendarDynamicService.updateSubjects();
+    this
+      .calendarDynamicService
+      .position$
+      .subscribe(
+        (position) => {
+          this.visibility = true;
+          const availableWidth = document.body.scrollWidth - position.x;
+          const availableHeight = document.body.scrollHeight - position.y;
+          const width = this.mainBox.nativeElement.getBoundingClientRect().width;
+          const height = this.mainBox.nativeElement.getBoundingClientRect().height;
+          if (availableWidth > width) {
+            this.x = position.x;
+          } else {
+            this.x = position.x - width;
+          }
+          if (availableHeight > height) {
+            this.y = position.y;
+          } else {
+            this.y = position.y - height;
+          }
+          if (this.visibility) {
+            setTimeout(() => {
+              this.mainBox.nativeElement.focus();
+            }, 0);
+          }
+        },
+      )
+    ;
+    // this.calendarDynamicService.updateSubjects();
   }
 
   next(): void {
@@ -136,6 +163,13 @@ export class CalendarBoxComponent implements OnInit {
     } else if (this.calendarDynamicService.calendarMode === 'quarter') {
       this.calendarDynamicService.moveAnchorPreviousYear();
     }
+  }
+
+  accept(): void {
+  }
+
+  cancel(): void {
+    this.visibility = false;
   }
 
   ngOnInit(): void {

@@ -8,5 +8,7 @@ export * from './lib/amber-core.module';
 
 export * from './lib/pipes/url-wrap.pipe';
 export * from './lib/components/icon/icon.component';
+export * from './lib/components/overlay/overlay.module';
+export * from './lib/components/overlay/overlay.component';
 
 export * from './lib/utility-functions/range';

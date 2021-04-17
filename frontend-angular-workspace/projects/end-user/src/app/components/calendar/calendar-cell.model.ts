@@ -3,11 +3,15 @@ import format from 'date-fns/format';
 
 export enum CalendarCellType {
   /*tslint:disable:no-bitwise*/
+  none = 0,
   default = (1 << 0),
   inactive = (1 << 1),
   current = (1 << 2),
-  selected = (1 << 3),
-  display = (1 << 4),
+  selectedOnly = (1 << 3),
+  selectedFirst = (1 << 4),
+  selectedSecond = (1 << 5),
+  selectedBetween = (1 << 6),
+  display = (1 << 7),
   /*tslint:enable:no-bitwise*/
 }
 export type CalendarMode = 'month' | 'quarter';

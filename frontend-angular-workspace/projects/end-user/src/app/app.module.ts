@@ -6,11 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
-import { LayoutBodyWithCoverComponent } from './layouts/layout-body-with-cover/layout-body-with-cover.component';
+// import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
+// import { LayoutBodyWithCoverComponent } from './layouts/layout-body-with-cover/layout-body-with-cover.component';
 
 // import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+// import { FooterComponent } from './components/footer/footer.component';
 
 import { BodyHomeComponent } from './components/body-home/body-home.component';
 import { BodyAboutUsComponent } from './components/body-about-us/body-about-us.component';
@@ -21,31 +21,28 @@ import { BodyArticlesComponent } from './components/body-articles/body-articles.
 import { HomeGalleryComponent } from './components/home-gallery/home-gallery.component';
 import { ServicesContentComponent } from './components/services-content/services-content.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+// import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { TagSelectComponent } from './components/tag-select/tag-select.component';
 import { TagSelectDropdownComponent } from './components/tag-select/tag-select-dropdown.component';
 import { TagComponent } from './components/tag-select/tag.component';
 import { TagSelectDropdownItemComponent } from './components/tag-select/tag-select-dropdown-item.component';
 import { TagSelectV2Component } from './components/tag-select-v2/tag-select-v2.component';
-// import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
-// import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
 import { StaticConfigurationProvider } from './services/static-configuration.provider';
-import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { AmberCoreModule } from 'amber-core';
 import { AccordionModule } from './components/accordion/accordion.module';
 import { HeaderModule } from './components/header/header.module';
 import { ItemGridModule } from './components/item-grid/item-grid.module';
 import { NotificationModule } from './components/notification/notification.module';
 import { CalendarModule } from './components/calendar/calendar.module';
+import { LayoutsModule } from './layouts/layouts.module';
+import { FooterModule } from './components/footer/footer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutDefaultComponent,
+    // LayoutDefaultComponent,
 
-    // HeaderComponent,
-    FooterComponent,
     BodyHomeComponent,
     HomeGalleryComponent,
     BodyAboutUsComponent,
@@ -54,25 +51,25 @@ import { CalendarModule } from './components/calendar/calendar.module';
     ServicesContentComponent,
     BodyArticlesComponent,
     LightboxComponent,
-    BreadcrumbComponent,
+    // BreadcrumbComponent,
     TagSelectComponent,
     TagSelectDropdownComponent,
     TagComponent,
     TagSelectDropdownItemComponent,
     TagSelectV2Component,
     BodyServicesComponent,
-    LayoutBodyWithCoverComponent,
-    LoginLayoutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    LayoutsModule,
 
     AmberCoreModule,
 
     HeaderModule,
+    FooterModule,
     AccordionModule,
     ItemGridModule,
     NotificationModule,
@@ -80,6 +77,9 @@ import { CalendarModule } from './components/calendar/calendar.module';
   ],
   providers: [
     StaticConfigurationProvider,
+  ],
+  exports: [
+    // LayoutBodyWithCoverComponent
   ],
   bootstrap: [AppComponent]
 })

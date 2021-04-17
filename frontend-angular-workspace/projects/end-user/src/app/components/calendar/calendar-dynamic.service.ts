@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { CalendarCell, CalendarCellFactory, CalendarMode } from './calendar-cell.model';
+import { Subject } from 'rxjs';
+import { CalendarCell, CalendarCellType, CalendarMode } from './calendar-cell.model';
 import { CalendarStaticService } from './calendar-static.service';
-import { addDays, endOfYear, isAfter, isBefore, lastDayOfMonth, startOfMonth, startOfYear, subDays } from 'date-fns';
+import { addDays, endOfYear, isAfter, isBefore, isSameDay, lastDayOfMonth, startOfMonth, startOfYear, subDays } from 'date-fns';
+
+export interface CalendarPosition {
+  x: number;
+  y: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarDynamicService {
 
-  visibility = false;
-  x = 0;
-  y = 0;
+  position$: Subject<CalendarPosition> = new Subject<CalendarPosition>();
 
   anchor: Date = new Date();
   calendarMode: CalendarMode = 'month';
@@ -111,13 +114,17 @@ export class CalendarDynamicService {
   }
 
   toggleCalendar($event: MouseEvent): void {
-    if (!this.visibility) {
-      this.visibility = true;
-      this.x = $event.pageX;
-      this.y = $event.pageY;
-    } else {
-      this.visibility = false;
-    }
+    this.position$.next({
+      x: $event.pageX,
+      y: $event.pageY,
+    });
+    // if (!this.visibility) {
+    //   this.visibility = true;
+    //   this.x = $event.pageX;
+    //   this.y = $event.pageY;
+    // } else {
+    //   this.visibility = false;
+    // }
   }
 
   selectDate(date: Date): void {
@@ -126,36 +133,66 @@ export class CalendarDynamicService {
         this.selectedDates.push(date);
         break;
       case 1:
-        if (isAfter(this.selectedDates[0], date)) {
+        if (
+          this
+            .calendarStaticService
+            .isSameDay(
+              this.selectedDates[0],
+              date,
+            )
+        ) {
+          this.selectedDates = [];
+        } else if (
+          isBefore(this.selectedDates[0], date)
+        ) {
           this.selectedDates.push(date);
         } else {
           this.selectedDates[0] = date;
         }
         break;
       case 2:
-        this.selectedDates = [];
-        this.selectedDates.push(date);
+        this.selectedDates = [date];
         break;
+    }
+  }
+
+  getCellType(date: Date): CalendarCellType {
+    switch (this.selectedDates.length) {
+      case 0:
+        return CalendarCellType.none;
+      case 1:
+        if (isSameDay(date, this.selectedDates[0])) {
+          return CalendarCellType.selectedOnly;
+        } else {
+          return CalendarCellType.none;
+        }
+      case 2:
+        if (isSameDay(date, this.selectedDates[0])) {
+          return CalendarCellType.selectedFirst;
+        } else if (this.isBetweenSelectedDate(date)) {
+          return CalendarCellType.selectedBetween;
+        } else if (isSameDay(date, this.selectedDates[1])) {
+          return CalendarCellType.selectedSecond;
+        } else {
+          return CalendarCellType.none;
+        }
+      default:
+        return CalendarCellType.none;
     }
   }
 
   isBetweenSelectedDate(date: Date): boolean {
     switch (this.selectedDates.length) {
       case 0:
-        return false;
       case 1:
-        return (
-          this.calendarStaticService.sameDate(
-            this.selectedDates[0],
-            date,
-          )
-        );
+        return false;
       case 2:
         return (
           isAfter(
             date,
             this.selectedDates[0],
-          ) && isBefore(
+          ) &&
+          isBefore(
             date,
             this.selectedDates[1],
           )
@@ -163,6 +200,12 @@ export class CalendarDynamicService {
       default:
         return false;
     }
+  }
+
+  resetCalendarBox(): void {
+    this.anchor = new Date();
+    this.selectedDates = [];
+    this.updateSubjects();
   }
 
   constructor(

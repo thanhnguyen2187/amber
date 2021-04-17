@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CalendarCell, CalendarCellType, CalendarMode } from './calendar-cell.model';
 import { range } from 'amber-core';
-import locale from 'date-fns/locale/en-US';
+import { enUS } from 'date-fns/esm/locale';
 import { eachDayOfInterval, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class CalendarStaticService {
         stop: 7,
       }).map(
         (index) =>
-          locale.localize?.day(
+          enUS.localize?.day(
             (this.firstDayOfWeek + index) % 7,
             // index,
             { width: 'abbreviated' },
@@ -59,14 +59,14 @@ export class CalendarStaticService {
         start: 0,
         stop: 12,
       }).map(index => {
-        return locale.localize?.month(
+        return enUS.localize?.month(
           index,
         );
       })
     ];
   }
 
-  sameDate(firstDate: Date, secondDate: Date): boolean {
+  isSameDay(firstDate: Date, secondDate: Date): boolean {
     return (
       firstDate.getFullYear() === secondDate.getFullYear() &&
       firstDate.getMonth() === secondDate.getMonth() &&
@@ -121,7 +121,7 @@ export class CalendarStaticService {
           /*tslint:disable:no-bitwise*/
           if (day.getMonth() < anchor.getMonth()) {
             cellType |= CalendarCellType.inactive;
-          } else if (this.sameDate(new Date(), day)) {
+          } else if (this.isSameDay(new Date(), day)) {
             cellType |= CalendarCellType.current;
           } else if (day.getMonth() > anchor.getMonth()) {
             cellType |= CalendarCellType.inactive;

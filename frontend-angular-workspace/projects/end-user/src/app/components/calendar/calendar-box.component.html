@@ -1,101 +1,168 @@
 <div
-  class="
-    bg-gray-200
-    w-80
-    rounded-lg
-    p-2
-    flex
-    flex-col
-    gap-1
-    absolute
-  "
-  *ngIf="calendarDynamicService.visibility"
-  [style.left.px]="calendarDynamicService.x"
-  [style.top.px]="calendarDynamicService.y"
-  (focusout)="calendarDynamicService.visibility = false"
-  tabindex="0"
+  [ngStyle]="visibility ? {} : {visibility: 'hidden'}"
 >
-  <!--Navigation Bar and Title Cell-->
   <div
     class="
+      bg-gray-200
+      w-80
+      rounded-lg
+      p-2
+      flex
+      flex-col
+      gap-1
+      absolute
+      outline-none
+    "
+    #mainBox
+    [style.left.px]="x"
+    [style.top.px]="y"
+    (focusout)="visibility = false"
+    tabindex="0"
+  >
+    <!--Navigation Bar and Title Cell-->
+    <div
+      class="
       flex
       items-center
       justify-between
     "
-  >
-    <amber-icon
-      backgroundImageUrl="assets/cheveron-left.svg"
-      size="1.25em"
-      (click)="previous()"
-    ></amber-icon>
-    <app-calendar-cell
-      [calendarCell]="titleCell"
-    ></app-calendar-cell>
-    <amber-icon
-      backgroundImageUrl="assets/cheveron-right.svg"
-      size="1.25em"
-      (click)="next()"
-    ></amber-icon>
-  </div>
+    >
+      <amber-icon
+        backgroundImageUrl="assets/cheveron-left.svg"
+        size="1.25em"
+        [disableTabIndex]="true"
+        (click)="previous()"
+      ></amber-icon>
+      <app-calendar-cell
+        [calendarCell]="titleCell"
+      ></app-calendar-cell>
+      <amber-icon
+        backgroundImageUrl="assets/cheveron-right.svg"
+        size="1.25em"
+        [disableTabIndex]="true"
+        (click)="next()"
+      ></amber-icon>
+    </div>
 
-  <!--Day Selector-->
-  <ng-container
-    *ngIf="calendarDynamicService.calendarMode === 'month'"
-  >
-    <div
-      class="
+    <!--Day Selector-->
+    <ng-container
+      *ngIf="calendarDynamicService.calendarMode === 'month'"
+    >
+      <div
+        class="
         grid
         grid-cols-7
         bg-gray-400
         p-1
         rounded-xl
       "
-    >
-      <ng-container
-        *ngFor="let cell of dayOfWeekCells"
       >
-        <app-calendar-cell
-          [calendarCell]="cell"
-        ></app-calendar-cell>
-      </ng-container>
-    </div>
-    <div
-      class="
+        <ng-container
+          *ngFor="let cell of dayOfWeekCells"
+        >
+          <app-calendar-cell
+            [calendarCell]="cell"
+          ></app-calendar-cell>
+        </ng-container>
+      </div>
+      <div
+        class="
         grid
         grid-cols-7
         p-1
+        gap-y-1
       "
-    >
-      <ng-container
-        *ngFor="let cell of dayOfMonthCells"
       >
-        <app-calendar-cell
-          [calendarCell]="cell"
-        ></app-calendar-cell>
-      </ng-container>
-    </div>
+        <ng-container
+          *ngFor="let cell of dayOfMonthCells"
+        >
+          <app-calendar-cell
+            [calendarCell]="cell"
+          ></app-calendar-cell>
+        </ng-container>
+      </div>
 
-  </ng-container>
+    </ng-container>
 
-  <!--Month Selector-->
-  <ng-container
-    *ngIf="calendarDynamicService.calendarMode === 'quarter'"
-  >
-    <div
-      class="
+    <!--Month Selector-->
+    <ng-container
+      *ngIf="calendarDynamicService.calendarMode === 'quarter'"
+    >
+      <div
+        class="
         grid
         grid-cols-3
       "
-    >
-      <ng-container
-        *ngFor="let cell of monthCells"
       >
-        <app-calendar-cell
-          [calendarCell]="cell"
-        ></app-calendar-cell>
-      </ng-container>
-    </div>
-  </ng-container>
+        <ng-container
+          *ngFor="let cell of monthCells"
+        >
+          <app-calendar-cell
+            [calendarCell]="cell"
+          ></app-calendar-cell>
+        </ng-container>
+      </div>
+    </ng-container>
 
-  <ng-content></ng-content>
+    <!--Buttons-->
+    <div
+      class="
+      flex
+      space-x-2
+    "
+    >
+      <div
+        class="
+          rounded
+          bg-orange-500
+          flex-1
+          flex
+          justify-center
+          items-center
+          space-x-2
+          p-1
+          cursor-pointer
+          hover:ring-1
+          active:ring-2
+          select-none
+        "
+        (click)="cancel()"
+      >
+        <amber-icon
+          backgroundImageUrl="assets/close.svg"
+          size="1em"
+          [disableTabIndex]="true"
+        ></amber-icon>
+        <div>
+          Cancel
+        </div>
+      </div>
+      <div
+        class="
+          rounded
+          bg-green-400
+          flex-1
+          flex
+          justify-center
+          items-center
+          space-x-2
+          p-1
+          cursor-pointer
+          hover:ring-1
+          active:ring-2
+          select-none
+        "
+      >
+        <amber-icon
+          backgroundImageUrl="assets/checkmark.svg"
+          size="1em"
+          [disableTabIndex]="true"
+        ></amber-icon>
+        <div>
+          Accept
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

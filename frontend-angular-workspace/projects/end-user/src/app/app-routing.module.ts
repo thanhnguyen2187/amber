@@ -59,6 +59,14 @@ const routes: Routes = [
           breadcrumb: 'Articles',
         },
       },
+      {
+        path: 'cart',
+        loadChildren: () =>
+          import('./components/body-cart/body-cart.module')
+            .then(
+              module => module.BodyCartModule,
+            )
+      },
     ]
   }
 ];

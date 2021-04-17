@@ -28,7 +28,6 @@ export class CalendarCellComponent implements OnInit {
         'text-center',
         'hover:ring-1',
         'active:ring-2',
-        'px-2',
       ].forEach(
         (value) => classes.add(value)
       );
@@ -47,11 +46,38 @@ export class CalendarCellComponent implements OnInit {
         (value) => classes.add(value)
       );
     }
-    if (this.calendarCell.type & CalendarCellType.selected) {
+    if (this.calendarCell.type & CalendarCellType.selectedOnly) {
       [
         'rounded-full',
-        'border-2',
-        'border-white',
+        'bg-blue-400',
+      ].forEach(
+        (value) => classes.add(value)
+      );
+    }
+    if (this.calendarCell.type & CalendarCellType.selectedFirst) {
+      [
+        'rounded-l-full',
+        'bg-blue-400',
+      ].forEach(
+        (value) => classes.add(value)
+      );
+    }
+    if (this.calendarCell.type & CalendarCellType.selectedBetween) {
+      [
+        'bg-blue-400',
+      ].forEach(
+        (value) => classes.add(value)
+      );
+      [
+        'rounded',
+      ].forEach(
+        value => classes.delete(value)
+      );
+    }
+    if (this.calendarCell.type & CalendarCellType.selectedSecond) {
+      [
+        'rounded-r-full',
+        'bg-blue-400',
       ].forEach(
         (value) => classes.add(value)
       );
