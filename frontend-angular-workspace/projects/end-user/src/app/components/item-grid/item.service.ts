@@ -9,10 +9,15 @@ import { HttpParams } from '@angular/common/http';
 export interface Item {
   imageReference: string;
   name: string;
-  priceForSale?: string;
-  priceForRentInsideCity?: string;
-  priceForRentTraveling?: string;
-  priceForRentMonthly?: string;
+  priceForSale?: number;
+  priceForRentInsideCity?: number;
+  priceForRentTraveling?: number;
+  priceForRentMonthly?: number;
+
+  priceForSaleDisplay?: string;
+  priceForRentInsideCityDisplay?: string;
+  priceForRentTravelingDisplay?: string;
+  priceForRentMonthlyDisplay?: string;
 }
 
 export interface BikeModelsReturnResult {
@@ -30,26 +35,26 @@ export class ItemService {
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
       name: 'Honda XR 150',
-      priceForSale: '2500 USD',
-      priceForRentInsideCity: '12 USD',
-      priceForRentTraveling: '25 USD',
-      priceForRentMonthly: '5 000 000 VND'
+      priceForSaleDisplay: '2500 USD',
+      priceForRentInsideCityDisplay: '12 USD',
+      priceForRentTravelingDisplay: '25 USD',
+      priceForRentMonthlyDisplay: '5 000 000 VND'
     },
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
       name: 'Honda XR 150',
-      priceForSale: '2500 USD',
-      priceForRentInsideCity: '12 USD',
-      priceForRentTraveling: '25 USD',
-      priceForRentMonthly: '5 000 000 VND'
+      priceForSaleDisplay: '2500 USD',
+      priceForRentInsideCityDisplay: '12 USD',
+      priceForRentTravelingDisplay: '25 USD',
+      priceForRentMonthlyDisplay: '5 000 000 VND'
     },
     {
       imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
       name: 'Honda XR 150',
-      priceForSale: '2500 USD',
-      priceForRentInsideCity: '12 USD',
-      priceForRentTraveling: '25 USD',
-      priceForRentMonthly: '5 000 000 VND'
+      priceForSaleDisplay: '2500 USD',
+      priceForRentInsideCityDisplay: '12 USD',
+      priceForRentTravelingDisplay: '25 USD',
+      priceForRentMonthlyDisplay: '5 000 000 VND'
     },
   ];
 

@@ -26,6 +26,7 @@
     "@angular/platform-server": "~11.2.3",
     "@angular/router": "~11.2.3",
     "@nguniversal/express-engine": "^11.1.1",
+    "@ngx-pwa/local-storage": "^11.1.0",
     "amber-core": "file:projects/amber-core",
     "date-fns": "^2.20.1",
     "express": "^4.15.2",

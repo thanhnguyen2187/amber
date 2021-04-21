@@ -40,11 +40,8 @@ func List(
 	d = d.Offset(uint(size * (page - 1)))
 	d = d.Limit(uint(size))
 	query, _, _ := d.ToSQL()
-	//log.Println(query)
 	rows, err := db.Db.Query(
 		query,
-		//size,
-		//(page-1)*size,
 	)
 	if err != nil {
 		return nil, err

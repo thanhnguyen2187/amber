@@ -11,6 +11,7 @@ export class IconComponent implements OnInit {
   constructor() { }
 
   hovering = false;
+  @Input() useHovering = false;
   @Input() disableTabIndex = false;
   @Input() backgroundImageUrl = '';
   @Input() hoverBackgroundImageUrl = '';
