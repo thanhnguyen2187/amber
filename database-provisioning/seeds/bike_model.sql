@@ -16,14 +16,10 @@ begin
                 {
                     "name": "Honda Win copy 100cc",
                     "capacity": 100,
-                    "cost": 5000000,
-                    "cost_display": "280 USD",
-                    "daily_rental_fee_inside_city": 100000,
-                    "daily_rental_fee_inside_city_display": "5 USD",
-                    "daily_rental_fee_traveling": 200000,
-                    "daily_rental_fee_traveling_display": "10 USD",
-                    "monthly_rental_fee": 1000000,
-                    "monthly_rental_fee_display": "1 000 000 VND"
+                    "cost": 280,
+                    "daily_rental_fee_inside_city": 5,
+                    "daily_rental_fee_traveling": 10,
+                    "monthly_rental_fee": 45
                 }
                 ',
                 '
@@ -49,14 +45,11 @@ begin
                 {
                     "name": "Detech Win 110cc",
                     "capacity": 125,
-                    "cost": 8000000,
+                    "cost": 750,
                     "cost_display": "500 USD",
-                    "daily_rental_fee_inside_city": 150000,
-                    "daily_rental_fee_inside_city_display": "7.5 USD",
-                    "daily_rental_fee_traveling": 250000,
-                    "daily_rental_fee_traveling_display": "15 USD",
-                    "monthly_rental_fee": 1200000,
-                    "monthly_rental_fee_display": "1 200 000 VND"
+                    "daily_rental_fee_inside_city": 7.5,
+                    "daily_rental_fee_traveling": 15,
+                    "monthly_rental_fee": 50
                 }
                 ',
                 '
@@ -82,14 +75,10 @@ begin
                 {
                     "name": "Yamaha Nouvo LX",
                     "capacity": 135,
-                    "cost": 8000000,
-                    "cost_display": "350 USD",
-                    "daily_rental_fee_inside_city": 150000,
-                    "daily_rental_fee_inside_city_display": "7.5 USD",
-                    "daily_rental_fee_traveling": 250000,
-                    "daily_rental_fee_traveling_display": "15 USD",
-                    "monthly_rental_fee": 1200000,
-                    "monthly_rental_fee_display": "1 500 000 VND"
+                    "cost": 350,
+                    "daily_rental_fee_inside_city": 7.5,
+                    "daily_rental_fee_traveling": 15,
+                    "monthly_rental_fee": 50
                 }
                 ',
                 '
@@ -111,14 +100,11 @@ begin
                 {
                     "name": "Honda XR 150",
                     "capacity": 150,
-                    "cost": 60000000,
-                    "cost_display": "2500 USD",
-                    "daily_rental_fee_inside_city": 250000,
-                    "daily_rental_fee_inside_city_display": "12 USD",
-                    "daily_rental_fee_traveling": 500000,
-                    "daily_rental_fee_traveling_display": "25 USD",
-                    "monthly_rental_fee": 2500000,
-                    "monthly_rental_fee_display": "250 USD"
+                    "cost": 2500,
+                    "daily_rental_fee_inside_city": 12.5,
+                    "daily_rental_fee_traveling": 25,
+                    "monthly_rental_fee": 250,
+                    "monthly_rental_fee_display": 250
                 }
                 ',
                 '
@@ -140,14 +126,10 @@ begin
                 {
                     "name": "Suzuki EN 150",
                     "capacity": 150,
-                    "cost": 60000000,
-                    "cost_display": "1000 USD",
-                    "daily_rental_fee_inside_city": 250000,
-                    "daily_rental_fee_inside_city_display": "12 USD",
-                    "daily_rental_fee_traveling": 500000,
-                    "daily_rental_fee_traveling_display": "25 USD",
-                    "monthly_rental_fee": 2500000,
-                    "monthly_rental_fee_display": "250 USD"
+                    "cost": 2000,
+                    "daily_rental_fee_inside_city": 10,
+                    "daily_rental_fee_traveling": 20,
+                    "monthly_rental_fee": 200
                 }
                 ',
                 '

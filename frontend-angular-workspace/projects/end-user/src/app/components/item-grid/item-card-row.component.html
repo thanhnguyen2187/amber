@@ -12,11 +12,12 @@
   backgroundImageUrl="assets/cart-outline.svg"
   hoverBackgroundImageUrl="assets/cart-solid.svg"
   size="1.5em"
+  (click)="addBikeSale()"
 ></amber-icon>
 <amber-icon
   *ngIf="icon === 'calendar'"
   backgroundImageUrl="assets/calendar-outline.svg"
   hoverBackgroundImageUrl="assets/calendar-solid.svg"
   size="1.5em"
-  (click)="calendarDynamicService.resetCalendarBox(); calendarDynamicService.toggleCalendar($event)"
+  (click)="toggleCalendar($event)"
 ></amber-icon>

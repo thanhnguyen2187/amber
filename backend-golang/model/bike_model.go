@@ -3,20 +3,17 @@ package model
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 )
 
 type BikeModelData struct {
-	Brand                           string `json:"brand"`
-	Name                            string `json:"name"`
-	Capacity                        int    `json:"capacity"`
-	Cost                            int    `json:"cost"`
-	CostDisplay                     string    `json:"cost_display"`
-	DailyRentalFeeInsideCity        int    `json:"daily_rental_fee_inside_city"`
-	DailyRentalFeeInsideCityDisplay string `json:"daily_rental_fee_inside_city_display"`
-	DailyRentalFeeTraveling         int    `json:"daily_rental_fee_traveling"`
-	DailyRentalFeeTravelingDisplay  string `json:"daily_rental_fee_traveling_display"`
-	MonthlyRentalFee                int    `json:"monthly_rental_fee"`
-	MonthlyRentalFeeDisplay         string `json:"monthly_rental_fee_display"`
+	Brand                    string  `json:"brand"`
+	Name                     string  `json:"name"`
+	Capacity                 int     `json:"capacity"`
+	Cost                     float32 `json:"cost"`
+	DailyRentalFeeInsideCity float32 `json:"daily_rental_fee_inside_city"`
+	DailyRentalFeeTraveling  float32 `json:"daily_rental_fee_traveling"`
+	MonthlyRentalFee         float32 `json:"monthly_rental_fee"`
 }
 
 func (d *BikeModelData) Scan(val interface{}) error {
@@ -31,17 +28,13 @@ func (d *BikeModelData) Scan(val interface{}) error {
 
 func (d BikeModelData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(struct {
-		Brand                           string `json:"brand"`
-		Name                            string `json:"name"`
-		Capacity                        int    `json:"capacity"`
-		Cost                            int    `json:"cost"`
-		CostDisplay                     string `json:"costDisplay"`
-		DailyRentalFeeInsideCity        int    `json:"dailyRentalFeeInsideCity"`
-		DailyRentalFeeInsideCityDisplay string `json:"dailyRentalFeeInsideCityDisplay"`
-		DailyRentalFeeTraveling         int    `json:"dailyRentalFeeTraveling"`
-		DailyRentalFeeTravelingDisplay  string `json:"dailyRentalFeeTravelingDisplay"`
-		MonthlyRentalFee                int    `json:"monthlyRentalFee"`
-		MonthlyRentalFeeDisplay         string `json:"monthlyRentalFeeDisplay"`
+		Brand                    string  `json:"brand"`
+		Name                     string  `json:"name"`
+		Capacity                 int     `json:"capacity"`
+		Cost                     float32 `json:"cost"`
+		DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
+		DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
+		MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
 	}(d))
 }
 
@@ -59,15 +52,19 @@ func (m BikeModel) MarshalJSON() ([]byte, error) {
 	}(m))
 }
 
-//Simplified Bike Model
+//SimplifiedBikeModel
 type SimBikeModel struct {
-	Id                     int    `json:"id"`
-	ImageReference         string `json:"imageReference"`
-	Name                   string `json:"name"`
-	PriceForSale           string `json:"priceForSale"`
-	PriceForRentInsideCity string `json:"priceForRentInsideCity"`
-	PriceForRentTraveling  string `json:"priceForRentTraveling"`
-	PriceForRentMonthly    string `json:"priceForRentMonthly"`
+	Id                            int     `json:"id"`
+	ImageReference                string  `json:"imageReference"`
+	Name                          string  `json:"name"`
+	PriceForSale                  float32 `json:"priceForSale"`
+	PriceForSaleDisplay           string  `json:"priceForSaleDisplay"`
+	PriceForRentInsideCity        float32 `json:"priceForRentInsideCity"`
+	PriceForRentInsideCityDisplay string  `json:"priceForRentInsideCityDisplay"`
+	PriceForRentTraveling         float32 `json:"priceForRentTraveling"`
+	PriceForRentTravelingDisplay  string  `json:"priceForRentTravelingDisplay"`
+	PriceForRentMonthly           float32 `json:"priceForRentMonthly"`
+	PriceForRentMonthlyDisplay    string  `json:"priceForRentMonthlyDisplay"`
 }
 
 func TransformBikeModels(
@@ -79,16 +76,24 @@ func TransformBikeModels(
 		if len(bikeModel.MediaFiles) > 0 {
 			source = bikeModel.MediaFiles[0].Source
 		}
+		priceForSaleDisplay := fmt.Sprintf("%g", bikeModel.ModelData.Cost) + " USD"
+		priceForRentInsideCityDisplay := fmt.Sprintf("%g", bikeModel.ModelData.DailyRentalFeeInsideCity) + " USD"
+		priceForRentTravelingDisplay := fmt.Sprintf("%g", bikeModel.ModelData.DailyRentalFeeTraveling) + " USD"
+		priceForRentMonthlyDisplay := fmt.Sprintf("%g", bikeModel.ModelData.MonthlyRentalFee) + " USD"
 		simBikeModels = append(
 			simBikeModels,
 			SimBikeModel{
-				Id:                     bikeModel.Id,
-				ImageReference:         source,
-				Name:                   bikeModel.ModelData.Name,
-				PriceForSale:           bikeModel.ModelData.CostDisplay,
-				PriceForRentInsideCity: bikeModel.ModelData.DailyRentalFeeInsideCityDisplay,
-				PriceForRentTraveling:  bikeModel.ModelData.DailyRentalFeeTravelingDisplay,
-				PriceForRentMonthly:    bikeModel.ModelData.MonthlyRentalFeeDisplay,
+				Id:                            bikeModel.Id,
+				ImageReference:                source,
+				Name:                          bikeModel.ModelData.Name,
+				PriceForSale:                  bikeModel.ModelData.Cost,
+				PriceForRentInsideCity:        bikeModel.ModelData.DailyRentalFeeInsideCity,
+				PriceForRentTraveling:         bikeModel.ModelData.DailyRentalFeeTraveling,
+				PriceForRentMonthly:           bikeModel.ModelData.MonthlyRentalFee,
+				PriceForSaleDisplay:           priceForSaleDisplay,
+				PriceForRentInsideCityDisplay: priceForRentInsideCityDisplay,
+				PriceForRentTravelingDisplay:  priceForRentTravelingDisplay,
+				PriceForRentMonthlyDisplay:    priceForRentMonthlyDisplay,
 			},
 		)
 	}

@@ -44,27 +44,27 @@
     >
       <app-item-card-row
         label="Price for Sale:"
-        value="{{item?.priceForSale}}"
-        *ngIf="item?.priceForSale"
+        value="{{item?.priceForSaleDisplay}}"
+        *ngIf="item?.priceForSaleDisplay"
         icon="cart"
-        (click)="addToCart()"
+        [item]="item"
       ></app-item-card-row>
       <app-item-card-row
         label="Price for Rent:"
-        value="{{item?.priceForRentInsideCity}}/day inside city"
-        *ngIf="item?.priceForRentInsideCity"
+        value="{{item?.priceForRentInsideCityDisplay}}/day inside city"
+        *ngIf="item?.priceForRentInsideCityDisplay"
         icon="calendar"
       ></app-item-card-row>
       <app-item-card-row
         label=""
-        value="{{item?.priceForRentTraveling}}/day traveling"
-        *ngIf="item?.priceForRentTraveling"
+        value="{{item?.priceForRentTravelingDisplay}}/day traveling"
+        *ngIf="item?.priceForRentTravelingDisplay"
         icon="calendar"
       ></app-item-card-row>
       <app-item-card-row
         label=""
-        value="{{item?.priceForRentMonthly}}/month"
-        *ngIf="item?.priceForRentMonthly"
+        value="{{item?.priceForRentMonthlyDisplay}}/month"
+        *ngIf="item?.priceForRentMonthlyDisplay"
         icon="calendar"
       ></app-item-card-row>
     </div>

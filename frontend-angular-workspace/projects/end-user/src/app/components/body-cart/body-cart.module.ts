@@ -6,6 +6,7 @@ import { Routes } from '@angular/router';
 import { BodyCartRoutingModule } from './body-cart-routing.module';
 import { LayoutsModule } from '../../layouts/layouts.module';
 import { AccordionModule } from '../accordion/accordion.module';
+import { TableModule } from '../table/table.module';
 
 const routes: Routes = [
   {
@@ -17,12 +18,13 @@ const routes: Routes = [
   declarations: [
     BodyCartComponent,
   ],
-  imports: [
-    CommonModule,
-    AmberCoreModule,
-    BodyCartRoutingModule,
-    LayoutsModule,
-    AccordionModule,
-  ],
+    imports: [
+        CommonModule,
+        AmberCoreModule,
+        BodyCartRoutingModule,
+        LayoutsModule,
+        AccordionModule,
+        TableModule,
+    ],
 })
 export class BodyCartModule { }

@@ -24,6 +24,7 @@ export class CalendarDynamicService {
   daySelectTitle$: Subject<string> = new Subject<string>();
   monthSelectTitle$: Subject<string> = new Subject<string>();
   titleCell$: Subject<CalendarCell> = new Subject<CalendarCell>();
+  action = () => {};
 
   updateSubjects(): void {
     // TODO: split the function
@@ -203,6 +204,7 @@ export class CalendarDynamicService {
   }
 
   resetCalendarBox(): void {
+    this.action = () => {};
     this.anchor = new Date();
     this.selectedDates = [];
     this.updateSubjects();

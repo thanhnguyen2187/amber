@@ -23,7 +23,6 @@ export class ItemMasterComponent implements OnInit, AfterContentInit {
   constructor(
     private filterGroupService: FilterGroupService,
     private itemService: ItemService,
-    private httpClientService: PrefixedHttpClientService,
   ) {
   }
 

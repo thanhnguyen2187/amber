@@ -9,9 +9,7 @@ import { FilterComponent } from '../filter/filter.component';
 import { PaginationBarComponent } from '../pagination-bar/pagination-bar.component';
 import { AccordionModule } from '../accordion/accordion.module';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { AccordionComponent } from '../accordion/accordion.component';
 import { NotificationModule } from '../notification/notification.module';
-
 
 
 @NgModule({

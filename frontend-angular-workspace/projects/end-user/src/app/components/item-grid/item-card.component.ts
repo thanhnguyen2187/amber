@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Item } from './item.service';
 import { NotificationService } from '../notification/notification.service';
+import { TableDynamicService } from '../table/table-dynamic.service';
+import { BikeSale } from '../table/table-data.model';
 
 @Component({
   selector: 'app-item-card',
@@ -12,13 +14,22 @@ export class ItemCardComponent implements OnInit {
   @Input() item: Item = {
     name: '',
     imageReference: 'https://via.placeholder.com/300x200',
-    priceForSale: '300 USD',
-    priceForRentTraveling: '10 USD',
-    priceForRentInsideCity: '5 USD',
-    priceForRentMonthly: '1 000 000 VND',
+    priceForSaleDisplay: '300 USD',
+    priceForRentTravelingDisplay: '10 USD',
+    priceForRentInsideCityDisplay: '5 USD',
+    priceForRentMonthlyDisplay: '1 000 000 VND',
   };
 
   addToCart(): void {
+    this.tableDynamicService.addBikeSale(
+      new BikeSale(
+        this.item.imageReference,
+        this.item.name,
+        this.item.priceForSale ?? 0,
+        this.item.priceForSaleDisplay ?? '',
+        1,
+      )
+    );
     this.notificationService.notify(
       'Success!',
       `${this.item.name} added to cart successfully!`,
@@ -27,7 +38,9 @@ export class ItemCardComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-  ) { }
+    private tableDynamicService: TableDynamicService,
+  ) {
+  }
 
   ngOnInit(): void {
   }
