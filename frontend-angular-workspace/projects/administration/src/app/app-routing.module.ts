@@ -5,6 +5,7 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { BodyContentComponent } from './components/body-content/body-content.component';
 import { BodyContractComponent } from './components/body-contract/body-contract.component';
 import { BodySettingsComponent } from './components/body-settings/body-settings.component';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 
 const routes: Routes = [
   {
@@ -19,40 +20,57 @@ const routes: Routes = [
     children: [
       {
         path: 'content',
-        // component: BodyContentComponent,
         data: {
-          sidebarActivatedKeys: ['dashboard', 'content', 'list', ],
+          sidebarActivatedKeys: [
+            'dashboard',
+            'content',
+            'list',
+          ],
         },
         children: [
           {
             path: '',
-            component: BodyContentComponent,
+            component: UnderConstructionComponent,
           },
           {
             path: 'list',
-            component: BodyContentComponent,
+            component: UnderConstructionComponent,
           },
           {
             path: 'create',
-            component: BodyContractComponent,
+            component: UnderConstructionComponent,
           },
         ],
       },
       {
         path: 'contract',
-        component: BodyContractComponent,
+        component: UnderConstructionComponent,
+        children: [
+          {
+            path: '',
+            component: UnderConstructionComponent,
+          },
+          {
+            path: 'list',
+            component: UnderConstructionComponent,
+          },
+          {
+            path: 'create',
+            component: UnderConstructionComponent,
+          },
+        ],
       },
       {
         path: 'customer',
-        component: BodyContractComponent,
+        component: UnderConstructionComponent,
       },
       {
         path: 'bike',
-        component: BodyContractComponent,
+        component: UnderConstructionComponent,
       },
       {
         path: 'statistics',
-        component: BodyContractComponent,
+        component: UnderConstructionComponent,
       },
       {
         path: 'settings',

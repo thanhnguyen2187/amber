@@ -12,11 +12,18 @@ func List(
 	page int,
 	tags []string,
 	orders []string,
-) ([]model.BikeModel, error) {
+) (
+	[]model.BikeModel,
+	error,
+) {
 
 	dialect := goqu.Dialect("mysql")
 	d := dialect.
-		Select("id", "model_data", "media_files").
+		Select(
+			"id",
+			"model_data",
+			"media_files",
+		).
 		From("bike_model")
 	if len(tags) > 0 {
 		d = d.Where(
@@ -47,7 +54,10 @@ func List(
 		return nil, err
 	}
 
-	var bikeModels = make([]model.BikeModel, 0)
+	var bikeModels = make(
+		[]model.BikeModel,
+		0,
+	)
 	for rows.Next() {
 		var (
 			id         int
@@ -67,7 +77,10 @@ func List(
 				ModelData:  modelData,
 				MediaFiles: mediaFiles,
 			}
-			bikeModels = append(bikeModels, bikeModel)
+			bikeModels = append(
+				bikeModels,
+				bikeModel,
+			)
 		}
 	}
 	return bikeModels, nil

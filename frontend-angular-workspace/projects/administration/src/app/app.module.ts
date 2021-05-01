@@ -16,6 +16,7 @@ import { SidebarModule } from './components/sidebar/sidebar.module';
 // import { CardComponent } from './components/card/card.component';
 import { BodySettingsModule } from './components/body-settings/body-settings.module';
 import { CardModule } from './components/card/card.module';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CardModule } from './components/card/card.module';
     // SidebarComponent,
     BodyContentComponent,
     BodyContractComponent,
+    UnderConstructionComponent,
     // BodySettingsComponent,
     // CardComponent,
     // SidebarItemComponent

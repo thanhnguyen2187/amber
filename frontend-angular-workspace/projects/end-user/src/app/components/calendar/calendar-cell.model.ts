@@ -12,6 +12,7 @@ export enum CalendarCellType {
   selectedSecond = (1 << 5),
   selectedBetween = (1 << 6),
   display = (1 << 7),
+  disabled = (1 << 8),
   /*tslint:enable:no-bitwise*/
 }
 export type CalendarMode = 'month' | 'quarter';

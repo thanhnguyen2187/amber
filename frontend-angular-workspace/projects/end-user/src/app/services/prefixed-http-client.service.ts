@@ -17,8 +17,16 @@ export class PrefixedHttpClientService {
   staticConfiguration: StaticConfiguration = {
     apiBaseUrl: '',
   };
-  httpHeaders = new HttpHeaders();
-  httpOptions = {};
+  httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'no-cache',
+    // tslint:disable-next-line:object-literal-key-quotes
+    // 'Accept': '*',
+    // 'Accept-Encoding': 'gzip, deflate, br',
+    // tslint:disable-next-line:object-literal-key-quotes
+    // 'Connection': 'keep-alive',
+  });
 
   constructor(
     private httpClient: HttpClient,
@@ -27,14 +35,6 @@ export class PrefixedHttpClientService {
     this.staticConfiguration = staticConfigurationService.staticConfiguration ?? {
       apiBaseUrl: '',
     };
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache',
-      })
-    };
-    this.httpHeaders = new HttpHeaders(this.httpOptions);
   }
 
   stripSlashes(
@@ -74,6 +74,32 @@ export class PrefixedHttpClientService {
       .httpClient
       .get(
         this.prefixUrl(url),
+        {
+          headers,
+          params,
+        }
+      )
+    );
+  }
+
+  post(
+    {
+      url,
+      headers = this.httpHeaders,
+      params,
+      body,
+    }:
+    {
+      url: string,
+      headers?: HttpHeaders,
+      params?: HttpParams,
+      body?: {},
+    }
+  ): Observable<object> {
+    return (
+      this.httpClient.post(
+        this.prefixUrl(url),
+        body,
         {
           headers,
           params,

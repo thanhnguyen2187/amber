@@ -22,13 +22,17 @@ func List(
 		orders,
 	)
 	if err != nil {
-		return nil, 0, err
+		return nil,
+			0,
+			err
 	}
 	total, err := bikemodel.Total(
 		tags,
 	)
 	if err != nil {
-		return nil, 0, err
+		return nil,
+			0,
+			err
 	}
 
 	return model.TransformBikeModels(bikeModels),

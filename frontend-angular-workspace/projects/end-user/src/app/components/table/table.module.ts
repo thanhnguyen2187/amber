@@ -12,6 +12,7 @@ import { TableCellDateComponent } from './table-cell/table-cell-date.component';
 import { TableMasterForRentComponent } from './table-master/table-master-for-rent.component';
 import { TableMasterForSaleComponent } from './table-master/table-master-for-sale.component';
 import { TableRowForSaleComponent } from './table-row/table-row-for-sale.component';
+import { TableRowForRentComponent } from './table-row/table-row-for-rent.component';
 
 
 @NgModule({
@@ -26,11 +27,13 @@ import { TableRowForSaleComponent } from './table-row/table-row-for-sale.compone
     TableMasterForRentComponent,
     TableMasterForSaleComponent,
     TableRowForSaleComponent,
+    TableRowForRentComponent,
   ],
-  exports: [
-    TableMasterComponent,
-    TableMasterForSaleComponent,
-  ],
+    exports: [
+        // TableMasterComponent,
+        TableMasterForSaleComponent,
+        TableMasterForRentComponent,
+    ],
   imports: [
     CommonModule,
     AmberCoreModule,

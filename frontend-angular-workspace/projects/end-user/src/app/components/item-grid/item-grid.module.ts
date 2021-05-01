@@ -10,6 +10,7 @@ import { PaginationBarComponent } from '../pagination-bar/pagination-bar.compone
 import { AccordionModule } from '../accordion/accordion.module';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { NotificationModule } from '../notification/notification.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NotificationModule } from '../notification/notification.module';
     AmberCoreModule,
     AccordionModule,
     NotificationModule,
+    RouterModule,
   ],
   exports: [
     // ItemGridComponent,
@@ -37,6 +39,7 @@ import { NotificationModule } from '../notification/notification.module';
     // CheckboxComponent,
     // AccordionComponent,
     ItemMasterComponent,
+    ItemCardRowComponent,
   ]
 })
 export class ItemGridModule { }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CoverImage, HomeGalleryImageService } from '../../services/home-gallery-image.service';
 
 @Component({
   selector: 'app-body-home',
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyHomeComponent implements OnInit {
 
-  constructor() { }
+  images: CoverImage[] = [];
+
+  constructor(
+    private homeGalleryImageService: HomeGalleryImageService,
+  ) {
+    this
+    .homeGalleryImageService
+    .getAll()
+    .subscribe(
+      // TODO: CIRCLE WHILE LOADING
+      images => this.images = images
+    );
+  }
 
   ngOnInit(): void {
   }

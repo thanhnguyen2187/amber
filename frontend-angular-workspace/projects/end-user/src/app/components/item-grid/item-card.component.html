@@ -5,17 +5,22 @@
     space-y-1
   "
 >
-  <div
-    [style.backgroundImage]="item.imageReference | urlWrap"
-    style="
-    "
-    class="
-      w-80
-      h-60
-      bg-center
-      bg-cover
-    "
-  ></div>
+  <a
+    [routerLink]="['/bike-details', item.id]"
+    [state]="{item: item}"
+  >
+    <div
+      [style.backgroundImage]="item.imageReference | urlWrap"
+      style="
+      "
+      class="
+        w-80
+        h-60
+        bg-center
+        bg-cover
+      "
+    ></div>
+  </a>
   <div
     style="
     "
@@ -24,7 +29,6 @@
     "
   >
     <!--Title-->
-
     <div
       class="
         mt-2
@@ -48,24 +52,31 @@
         *ngIf="item?.priceForSaleDisplay"
         icon="cart"
         [item]="item"
+        itemStoreName="forSale"
       ></app-item-card-row>
       <app-item-card-row
         label="Price for Rent:"
         value="{{item?.priceForRentInsideCityDisplay}}/day inside city"
         *ngIf="item?.priceForRentInsideCityDisplay"
         icon="calendar"
+        [item]="item"
+        itemStoreName="dailyInsideCity"
       ></app-item-card-row>
       <app-item-card-row
         label=""
         value="{{item?.priceForRentTravelingDisplay}}/day traveling"
         *ngIf="item?.priceForRentTravelingDisplay"
         icon="calendar"
+        [item]="item"
+        itemStoreName="dailyTraveling"
       ></app-item-card-row>
       <app-item-card-row
         label=""
         value="{{item?.priceForRentMonthlyDisplay}}/month"
         *ngIf="item?.priceForRentMonthlyDisplay"
         icon="calendar"
+        [item]="item"
+        itemStoreName="monthly"
       ></app-item-card-row>
     </div>
   </div>

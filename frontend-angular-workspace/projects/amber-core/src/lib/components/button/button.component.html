@@ -1,0 +1,25 @@
+<div
+  class="
+    p-1
+    border-2
+    rounded-xl
+    px-4
+    select-none
+    outline-none
+  "
+  [style.backgroundColor]="disabled ? disabledBackgroundColor : backgroundColor"
+  [style.borderColor]="disabled ? disabledBorderColor : borderColor"
+  [class]="disabled ? ['cursor-not-allowed'] : ['cursor-pointer', 'hover:ring-1', 'active:ring-2']"
+  [tabIndex]="0"
+>
+  <div
+    class="
+      flex
+      gap-2
+      items-center
+      justify-items-center
+    "
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

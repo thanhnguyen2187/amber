@@ -2,7 +2,19 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CalendarCell, CalendarCellType, CalendarMode } from './calendar-cell.model';
 import { CalendarStaticService } from './calendar-static.service';
-import { addDays, endOfYear, isAfter, isBefore, isSameDay, lastDayOfMonth, startOfMonth, startOfYear, subDays } from 'date-fns';
+import {
+  addDays, addMonths,
+  compareAsc,
+  endOfYear,
+  isAfter,
+  isBefore,
+  isSameDay,
+  lastDayOfMonth,
+  startOfDay,
+  startOfMonth,
+  startOfYear,
+  subDays
+} from 'date-fns';
 
 export interface CalendarPosition {
   x: number;
@@ -24,7 +36,12 @@ export class CalendarDynamicService {
   daySelectTitle$: Subject<string> = new Subject<string>();
   monthSelectTitle$: Subject<string> = new Subject<string>();
   titleCell$: Subject<CalendarCell> = new Subject<CalendarCell>();
+
+  message = '';
   action = () => {};
+  allowAction = (): boolean => {
+    return true;
+  }
 
   updateSubjects(): void {
     // TODO: split the function
@@ -119,45 +136,63 @@ export class CalendarDynamicService {
       x: $event.pageX,
       y: $event.pageY,
     });
-    // if (!this.visibility) {
-    //   this.visibility = true;
-    //   this.x = $event.pageX;
-    //   this.y = $event.pageY;
-    // } else {
-    //   this.visibility = false;
-    // }
   }
 
   selectDate(date: Date): void {
-    switch (this.selectedDates.length) {
-      case 0:
-        this.selectedDates.push(date);
-        break;
-      case 1:
-        if (
-          this
-            .calendarStaticService
-            .isSameDay(
-              this.selectedDates[0],
-              date,
-            )
-        ) {
-          this.selectedDates = [];
-        } else if (
-          isBefore(this.selectedDates[0], date)
-        ) {
+    if (
+      compareAsc(
+        date,
+        startOfDay(new Date()),
+      ) >= 0
+    ) {
+      switch (this.selectedDates.length) {
+        case 0:
           this.selectedDates.push(date);
-        } else {
-          this.selectedDates[0] = date;
-        }
-        break;
-      case 2:
-        this.selectedDates = [date];
-        break;
+          break;
+        case 1:
+          if (
+            this
+            .calendarStaticService
+            .isSameDay(this.selectedDates[0], date)
+          ) {
+            this.selectedDates = [];
+          } else if (
+            isBefore(this.selectedDates[0], date)
+          ) {
+            this.selectedDates.push(date);
+          } else {
+            this.selectedDates[0] = date;
+          }
+          break;
+        case 2:
+          if (
+            this
+            .calendarStaticService
+            .isSameDay(this.selectedDates[1], date)
+          ) {
+            this.selectedDates = [];
+          } else if (
+            isBefore(this.selectedDates[0], date)
+          ) {
+            this.selectedDates[1] = date;
+          } else {
+            this.selectedDates = [date];
+          }
+          break;
+      }
     }
   }
 
   getCellType(date: Date): CalendarCellType {
+    if (
+      compareAsc(
+        date,
+        startOfDay(new Date()),
+      ) === -1
+    ) {
+      // tslint:disable-next-line:no-bitwise
+      return CalendarCellType.display | CalendarCellType.disabled;
+    }
     switch (this.selectedDates.length) {
       case 0:
         return CalendarCellType.none;
@@ -168,7 +203,12 @@ export class CalendarDynamicService {
           return CalendarCellType.none;
         }
       case 2:
-        if (isSameDay(date, this.selectedDates[0])) {
+        if (
+          isSameDay(date, this.selectedDates[0]) &&
+          isSameDay(date, this.selectedDates[1])
+        ) {
+          return CalendarCellType.selectedOnly;
+        } else if (isSameDay(date, this.selectedDates[0])) {
           return CalendarCellType.selectedFirst;
         } else if (this.isBetweenSelectedDate(date)) {
           return CalendarCellType.selectedBetween;
@@ -203,10 +243,57 @@ export class CalendarDynamicService {
     }
   }
 
-  resetCalendarBox(): void {
-    this.action = () => {};
+  resetCalendarBox(
+    {
+      defaultSelectedDate,
+      dateStart,
+      dateEnd,
+      action,
+    }: {
+      defaultSelectedDate:
+        'none'
+        | '3-days'
+        | '7-days'
+        | '30-days'
+      ,
+      dateStart?: Date,
+      dateEnd?: Date,
+      action?: () => void,
+    }
+  ): void {
+    this.action = action ?? (() => {});
     this.anchor = new Date();
-    this.selectedDates = [];
+    const today = startOfDay(new Date());
+    switch (defaultSelectedDate) {
+      case 'none':
+        if (dateStart && dateEnd) {
+          this.selectedDates = [
+            dateStart,
+            dateEnd,
+          ];
+        } else {
+          this.selectedDates = [];
+        }
+        break;
+      case '3-days':
+        this.selectedDates = [
+          today,
+          addDays(today, 2),
+        ];
+        break;
+      case '7-days':
+        this.selectedDates = [
+          today,
+          addDays(today, 6),
+        ];
+        break;
+      case '30-days':
+        this.selectedDates = [
+          today,
+          addDays(today, 29),
+        ];
+        break;
+    }
     this.updateSubjects();
   }
 

@@ -23,11 +23,11 @@ export class HeaderMenuItemService {
     },
     {
       text: 'Contact Us',
-      reference: '',
+      reference: 'contact-us',
     },
     {
       text: 'Bikes',
-      reference: 'for-rent',
+      reference: 'bikes',
     },
     {
       text: 'Services',

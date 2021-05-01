@@ -5,10 +5,18 @@ import { map, pluck, repeat, take } from 'rxjs/operators';
 import { PrefixedHttpClientService } from '../../services/prefixed-http-client.service';
 import { PrefixedHttpClientConstants } from '../../services/prefixed-http-client.constants';
 import { HttpParams } from '@angular/common/http';
+import { CoverImage } from '../../services/home-gallery-image.service';
 
 export interface Item {
   imageReference: string;
   name: string;
+  id: number;
+  images: CoverImage[];
+
+  capacity: number;
+  typeDisplay: string;
+  description: string;
+
   priceForSale?: number;
   priceForRentInsideCity?: number;
   priceForRentTraveling?: number;
@@ -30,33 +38,6 @@ export interface BikeModelsReturnResult {
   providedIn: 'root'
 })
 export class ItemService {
-
-  items: Item[] = [
-    {
-      imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      name: 'Honda XR 150',
-      priceForSaleDisplay: '2500 USD',
-      priceForRentInsideCityDisplay: '12 USD',
-      priceForRentTravelingDisplay: '25 USD',
-      priceForRentMonthlyDisplay: '5 000 000 VND'
-    },
-    {
-      imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      name: 'Honda XR 150',
-      priceForSaleDisplay: '2500 USD',
-      priceForRentInsideCityDisplay: '12 USD',
-      priceForRentTravelingDisplay: '25 USD',
-      priceForRentMonthlyDisplay: '5 000 000 VND'
-    },
-    {
-      imageReference: 'https://i0.wp.com/cdn.inevn.com/img/thumb/23873.1kx.isij?resize=776,517&w=776&quality=100&strip=all',
-      name: 'Honda XR 150',
-      priceForSaleDisplay: '2500 USD',
-      priceForRentInsideCityDisplay: '12 USD',
-      priceForRentTravelingDisplay: '25 USD',
-      priceForRentMonthlyDisplay: '5 000 000 VND'
-    },
-  ];
 
   getItems(
     tags: string[],

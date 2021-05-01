@@ -1,0 +1,42 @@
+<div
+  *ngIf="display"
+  class="
+    fixed
+    top-0
+    left-0
+  "
+>
+  <div
+    class="
+      absolute
+      w-screen
+      h-screen
+      bg-black
+      opacity-5
+    "
+    (click)="display = false"
+  >
+  </div>
+  <div
+    style="
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    "
+    class="
+      fixed
+    "
+  >
+    <ng-content></ng-content>
+  </div>
+</div>
+<!--<div-->
+<!--  style="transform: translate(-50%, -50%)"-->
+<!--  class="-->
+<!--    fixed-->
+<!--    left-1/2-->
+<!--    top-1/2-->
+<!--  "-->
+<!--&gt;-->
+<!--  Make me feel something-->
+<!--</div>-->

@@ -91,6 +91,16 @@ export class CalendarCellComponent implements OnInit {
         (value) => classes.delete(value)
       );
     }
+    if (this.calendarCell.type & CalendarCellType.disabled) {
+      [
+        'cursor-not-allowed',
+      ].forEach(
+        (value) => classes.add(value)
+      );
+      if (!(this.calendarCell.type & CalendarCellType.inactive)) {
+        classes.add('text-gray-500');
+      }
+    }
     /*tslint:enable:no-bitwise*/
     return [...classes];
   }

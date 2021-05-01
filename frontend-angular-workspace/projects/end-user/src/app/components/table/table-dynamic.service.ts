@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BikeRental, BikeSale, TableCell, TableRowForSale } from './table-data.model';
+import { BikeRental, BikeSale, TableCell, TableRowForRent, TableRowForSale } from './table-data.model';
 import { TableStaticService } from './table-static.service';
 import { ItemStoreService } from '../item-grid/item-store.service';
 import { Observable, of } from 'rxjs';
@@ -15,7 +15,7 @@ export class TableDynamicService {
     private itemStoreService: ItemStoreService,
   ) { }
 
-  saleRows$: Observable<TableRowForSale[]> =
+  rowsForSale$: Observable<TableRowForSale[]> =
     this.itemStoreService.bikeSales$.pipe(
       map(bikeSales => {
         bikeSales = bikeSales ?? [];
@@ -24,14 +24,19 @@ export class TableDynamicService {
         );
       })
     );
-  dailyInsideCityRentals: BikeRental[] = [];
+  rowsForRentDailyInsideCity$: Observable<TableRowForRent[]> =
+    this.itemStoreService.bikeRentalsDailyInsideCity$.pipe(
+      map(
+        bikeRentals => {
+          bikeRentals = bikeRentals ?? [];
+          return bikeRentals.map(
+            bikeRental => this.tableStaticService.bikeRentalToRow(bikeRental)
+          );
+        }
+      )
+    );
+  rowsForRentDailyInsideCity: BikeRental[] = [];
   sales: BikeSale[] = [];
-
-  addBikeRentalInsideCity(
-    bikeRental: BikeRental,
-  ): void {
-    this.dailyInsideCityRentals.push(bikeRental);
-  }
 
   addBikeSale(
     bikeSale: BikeSale,
@@ -50,7 +55,7 @@ export class TableDynamicService {
             bikeSale.bikeName,
             bikeSale.priceDisplay,
             bikeSale.price,
-            1,
+            bikeSale.amount ?? 1,
           );
         }
       );
@@ -69,7 +74,7 @@ export class TableDynamicService {
             bikeSale.bikeName,
             bikeSale.price,
             bikeSale.priceDisplay,
-            1,
+            bikeSale.amount,
           );
           saleCells.push(
             ...this.tableStaticService.bikeSaleToCells(typedBikeSale) // Cells

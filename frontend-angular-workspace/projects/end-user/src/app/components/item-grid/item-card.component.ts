@@ -12,13 +12,24 @@ import { BikeSale } from '../table/table-data.model';
 export class ItemCardComponent implements OnInit {
 
   @Input() item: Item = {
+    id: 0,
     name: '',
+    images: [],
+    capacity: 100,
+    typeDisplay: 'Manual',
+    description: 'Description',
     imageReference: 'https://via.placeholder.com/300x200',
     priceForSaleDisplay: '300 USD',
     priceForRentTravelingDisplay: '10 USD',
     priceForRentInsideCityDisplay: '5 USD',
     priceForRentMonthlyDisplay: '1 000 000 VND',
   };
+
+  copyItem(): Item {
+    return {
+      ...this.item
+    };
+  }
 
   addToCart(): void {
     this.tableDynamicService.addBikeSale(

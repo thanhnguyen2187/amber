@@ -10,5 +10,7 @@ export * from './lib/pipes/url-wrap.pipe';
 export * from './lib/components/icon/icon.component';
 export * from './lib/components/overlay/overlay.module';
 export * from './lib/components/overlay/overlay.component';
+export * from './lib/components/button/button.component';
+export * from './lib/components/modal/modal.component';
 
 export * from './lib/utility-functions/range';

@@ -1,4 +1,4 @@
-import { differenceInDays } from 'date-fns';
+import { differenceInDays, formatISO } from 'date-fns';
 
 export class TableCell {
   type:
@@ -88,7 +88,6 @@ export class TableRowForRent {
 
   increaseAmount(value = 1): void {
     this.amount += value;
-    console.log(this);
   }
   decreaseAmount(value = 1): void {
     if (this.amount - value > 0) {
@@ -96,35 +95,53 @@ export class TableRowForRent {
     }
   }
 
+  get prettifiedDateStart(): string {
+    return formatISO(
+      this.dateStart,
+      {
+        representation: 'date',
+      }
+  );
+  }
+
+  get prettifiedDateEnd(): string {
+    return formatISO(
+      this.dateEnd,
+      {
+        representation: 'date',
+      }
+    );
+  }
+
   get dayCount(): number {
     return differenceInDays(
-      this.dateStart,
       this.dateEnd,
-    );
+      this.dateStart,
+    ) + 1;
   }
   get total(): number {
     return this.priceValue * this.amount * this.dayCount;
   }
 
   constructor(
-    public imageUrl = '',
-    public bikeName = '',
-    public priceDisplay = '',
-    public priceValue = 0,
-    public amount = 1,
-    public dateStart = new Date(),
-    public dateEnd = new Date(),
+    public imageUrl: string ,
+    public bikeName: string ,
+    public priceDisplay: string,
+    public priceValue: number,
+    public amount: number,
+    public dateStart: Date,
+    public dateEnd: Date,
   ) {
   }
 }
 
 export class BikeRental {
-  imageUrl = '';
-  bikeName = '';
-  priceDisplay = '';
-  amount = 0;
-  dateStart: Date = new Date();
-  dateEnd: Date = new Date();
+  // imageUrl = '';
+  // bikeName = '';
+  // priceDisplay = '';
+  // amount = 0;
+  // dateStart: Date = new Date();
+  // dateEnd: Date = new Date();
   get dayCount(): number {
     return differenceInDays(
       this.dateStart,
@@ -132,6 +149,17 @@ export class BikeRental {
     );
   }
   total = 0;
+
+  constructor(
+    public imageUrl: string,
+    public bikeName: string,
+    public priceDisplay = '',
+    public priceValue = 0,
+    public amount: number,
+    public dateStart: Date,
+    public dateEnd: Date,
+  ) {
+  }
 }
 
 export class BikeSale {
@@ -140,18 +168,18 @@ export class BikeSale {
   // price = 0;
   // priceDisplay = '';
   // amountValue = 0;
-  get amount(): number {
-    return this.amountValue;
-  }
-  set amount(value) {
-    this.amountValue = value;
-  }
-  increaseAmount(): void {
-    this.amountValue += 1;
-  }
-  decreaseAmount(): void {
-    this.amountValue -= 1;
-  }
+  // get amount(): number {
+  //   return this.amountValue;
+  // }
+  // set amount(value) {
+  //   this.amountValue = value;
+  // }
+  // increaseAmount(value: number = 1): void {
+  //   this.amountValue += value;
+  // }
+  // decreaseAmount(value: number = 1): void {
+  //   this.amountValue -= value;
+  // }
 
   get total(): number {
     return this.price * this.amount;
@@ -162,7 +190,7 @@ export class BikeSale {
     public bikeName: string,
     public price: number,
     public priceDisplay: string,
-    public amountValue: number = 1,
+    public amount: number,
   ) {
   }
 }

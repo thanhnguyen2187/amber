@@ -15,14 +15,14 @@
     {{title}}
   </div>
   <div
-    style="grid-template-columns: 20em repeat(3, 1fr) 15em;"
+    style="grid-template-columns: 20em repeat(6, 1fr) 15em;"
     class="
       grid
     "
   >
     <!--Header Row-->
     <ng-container
-      *ngFor="let display of tableStaticService.saleHeaderDisplays"
+      *ngFor="let display of tableStaticService.rentalHeaderDisplays"
     >
       <div
         class="
@@ -40,139 +40,18 @@
     </ng-container>
     <!--Rows-->
     <ng-container
-      *ngFor="let row of rows; index as index"
+      *ngFor="let row of rows"
     >
-      <!--Image-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          border-b-2
-        "
-      >
-        <div
-          [style]="{backgroundImage: row.imageUrl | urlWrap}"
-          class="
-            bg-center
-            bg-cover
-            w-60
-            h-40
-          "
-        ></div>
-      </div>
-      <!--Bike Name-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          border-b-2
-        "
-      >
-        {{row.bikeName}}
-      </div>
-      <!--Price-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          border-b-2
-        "
-      >
-        {{row.priceDisplay}}
-      </div>
-      <!--Amount-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          gap-2
-          border-b-2
-        "
-      >
-        <amber-icon
-          backgroundImageUrl="assets/minus.svg"
-          size="1em"
-          (click)="row.decreaseAmount()"
-        ></amber-icon>
-        <input
-          [(ngModel)]="row.amount"
-          type="number"
-          class="
-            text-center
-            w-20
-            outline-none
-            border-2
-            rounded
-          "
-        />
-        <amber-icon
-          backgroundImageUrl="assets/plus.svg"
-          size="1em"
-          (click)="row.increaseAmount()"
-        ></amber-icon>
-      </div>
-      <!--Date Start-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          gap-2
-          border-b-2
-        "
-      >
-        {{row.dateStart}}
-      </div>
-      <!--Date End-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          gap-2
-          border-b-2
-        "
-      >
-        {{row.dateEnd}}
-      </div>
-      <!--Total-->
-      <div
-        class="
-          p-1
-          flex
-          justify-center
-          items-center
-          border-b-2
-        "
-      >
-        <div>
-          {{row.total}} USD
-        </div>
-        <amber-icon
-          class="
-            ml-2
-            mb-0.5
-          "
-          backgroundImageUrl="assets/close.svg"
-          size="1em"
-        ></amber-icon>
-      </div>
+      <app-table-row-for-rent
+        [itemStoreName]="itemStoreName"
+        [row]="row"
+      ></app-table-row-for-rent>
     </ng-container>
     <!--Total-->
     <ng-container>
       <div
         class="
-          col-span-4
+          col-span-7
         "
       ></div>
       <div

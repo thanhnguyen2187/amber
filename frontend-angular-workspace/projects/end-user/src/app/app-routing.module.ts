@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
 import { BodyHomeComponent } from './components/body-home/body-home.component';
 import { BodyAboutUsComponent } from './components/body-about-us/body-about-us.component';
-import { BodyForRentComponent } from './components/body-for-rent/body-for-rent.component';
+import { BodyBikesComponent } from './components/body-bikes/body-bikes.component';
 import { BodyServicesComponent } from './components/body-services/body-services.component';
 import { BodyForSaleComponent } from './components/body-for-sale/body-for-sale.component';
 import { BodyArticlesComponent } from './components/body-articles/body-articles.component';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
+import { BodyBikeDetailsComponent } from './components/body-bike-details/body-bike-details.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,15 @@ const routes: Routes = [
         },
       },
       {
+        path: 'contact-us',
+        component: UnderConstructionComponent,
+        data: {
+          breadcrumb: 'Contact Us',
+        },
+      },
+      {
         path: 'about-us',
-        component: BodyAboutUsComponent,
+        component: UnderConstructionComponent,
         data: {
           breadcrumb: 'About Us',
         },
@@ -39,15 +48,22 @@ const routes: Routes = [
         },
       },
       {
-        path: 'for-rent',
-        component: BodyForRentComponent,
+        path: 'bikes',
+        component: BodyBikesComponent,
         data: {
-          breadcrumb: 'For Rent',
+          breadcrumb: 'Bikes',
+        },
+      },
+      {
+        path: 'bike-details/:id',
+        component: BodyBikeDetailsComponent,
+        data: {
+          breadcrumb: 'Bike Details',
         },
       },
       {
         path: 'services',
-        component: BodyServicesComponent,
+        component: UnderConstructionComponent,
         data: {
           breadcrumb: 'Services',
         },

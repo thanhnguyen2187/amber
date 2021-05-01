@@ -16,6 +16,7 @@ begin
                 {
                     "name": "Honda Win copy 100cc",
                     "capacity": 100,
+                    "type": "manual",
                     "cost": 280,
                     "daily_rental_fee_inside_city": 5,
                     "daily_rental_fee_traveling": 10,
@@ -45,6 +46,7 @@ begin
                 {
                     "name": "Detech Win 110cc",
                     "capacity": 125,
+                    "type": "manual",
                     "cost": 750,
                     "cost_display": "500 USD",
                     "daily_rental_fee_inside_city": 7.5,
@@ -75,6 +77,7 @@ begin
                 {
                     "name": "Yamaha Nouvo LX",
                     "capacity": 135,
+                    "type": "automatic",
                     "cost": 350,
                     "daily_rental_fee_inside_city": 7.5,
                     "daily_rental_fee_traveling": 15,
@@ -100,6 +103,7 @@ begin
                 {
                     "name": "Honda XR 150",
                     "capacity": 150,
+                    "type": "manual",
                     "cost": 2500,
                     "daily_rental_fee_inside_city": 12.5,
                     "daily_rental_fee_traveling": 25,
@@ -126,6 +130,7 @@ begin
                 {
                     "name": "Suzuki EN 150",
                     "capacity": 150,
+                    "type": "manual",
                     "cost": 2000,
                     "daily_rental_fee_inside_city": 10,
                     "daily_rental_fee_traveling": 20,

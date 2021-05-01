@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, Input,
   OnInit,
 } from '@angular/core';
 import {
@@ -32,7 +32,7 @@ export class HomeGalleryComponent implements OnInit {
   animatingToggle = true;
 
   currentImageIndex = 0;
-  images: CoverImage[] = [];
+  @Input() images: CoverImage[] = [];
 
   autoSkipIntervalId = 0;
   autoSkipIntervalTimeout = 5000;
@@ -49,25 +49,16 @@ export class HomeGalleryComponent implements OnInit {
   };
 
   constructor(
-    private homeGalleryImageService: HomeGalleryImageService,
   ) { }
 
   ngOnInit(): void {
-    // fetch the images
-    this
-      .homeGalleryImageService
-      .getAll()
-      .subscribe(
-        // TODO: CIRCLE WHILE LOADING
-        images => this.images = images
-      );
     this.clearInterval();
     this.startInterval();
   }
 
   clearInterval(): void {
     if (this.autoSkipIntervalId) {
-      // look like an unlimited recursive function but actually is not
+      // looks like an unlimited recursive function but actually is not
       clearInterval(this.autoSkipIntervalId);
     }
   }

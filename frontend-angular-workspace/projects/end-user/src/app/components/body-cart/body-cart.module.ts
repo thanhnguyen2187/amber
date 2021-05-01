@@ -6,7 +6,9 @@ import { Routes } from '@angular/router';
 import { BodyCartRoutingModule } from './body-cart-routing.module';
 import { LayoutsModule } from '../../layouts/layouts.module';
 import { AccordionModule } from '../accordion/accordion.module';
-import { TableModule } from '../table/table.module';
+// import { TableModule } from '../table/table.module';
+import { TableV2Module } from '../table-v2/table-v2.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -18,13 +20,15 @@ const routes: Routes = [
   declarations: [
     BodyCartComponent,
   ],
-    imports: [
-        CommonModule,
-        AmberCoreModule,
-        BodyCartRoutingModule,
-        LayoutsModule,
-        AccordionModule,
-        TableModule,
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AmberCoreModule,
+    BodyCartRoutingModule,
+    LayoutsModule,
+    AccordionModule,
+    // TableModule,
+    TableV2Module,
+  ],
 })
 export class BodyCartModule { }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  BikeRental,
   BikeSale,
   TableCell,
   TableCellAmount, TableCellDate,
@@ -47,7 +48,19 @@ export class TableStaticService {
       bikeSale.bikeName,
       bikeSale.priceDisplay,
       bikeSale.price,
-      1,
+      bikeSale.amount,
+    );
+  }
+
+  bikeRentalToRow(bikeRental: BikeRental): TableRowForRent {
+    return new TableRowForRent(
+      bikeRental.imageUrl,
+      bikeRental.bikeName,
+      bikeRental.priceDisplay,
+      bikeRental.priceValue,
+      bikeRental.amount,
+      bikeRental.dateStart,
+      bikeRental.dateEnd,
     );
   }
 

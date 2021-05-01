@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { BodyHomeComponent } from './components/body-home/body-home.component';
 import { BodyAboutUsComponent } from './components/body-about-us/body-about-us.component';
 import { BodyForSaleComponent } from './components/body-for-sale/body-for-sale.component';
-import { BodyForRentComponent } from './components/body-for-rent/body-for-rent.component';
+import { BodyBikesComponent } from './components/body-bikes/body-bikes.component';
 import { BodyArticlesComponent } from './components/body-articles/body-articles.component';
 
 import { HomeGalleryComponent } from './components/home-gallery/home-gallery.component';
@@ -37,6 +37,8 @@ import { NotificationModule } from './components/notification/notification.modul
 import { CalendarModule } from './components/calendar/calendar.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { FooterModule } from './components/footer/footer.module';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
+import { BodyBikeDetailsComponent } from './components/body-bike-details/body-bike-details.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { FooterModule } from './components/footer/footer.module';
     HomeGalleryComponent,
     BodyAboutUsComponent,
     BodyForSaleComponent,
-    BodyForRentComponent,
+    BodyBikesComponent,
     ServicesContentComponent,
     BodyArticlesComponent,
     LightboxComponent,
@@ -58,6 +60,8 @@ import { FooterModule } from './components/footer/footer.module';
     TagSelectDropdownItemComponent,
     TagSelectV2Component,
     BodyServicesComponent,
+    UnderConstructionComponent,
+    BodyBikeDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

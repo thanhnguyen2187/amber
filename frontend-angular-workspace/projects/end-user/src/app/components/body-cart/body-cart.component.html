@@ -9,7 +9,7 @@
   >
     <div
       class="
-        w-40
+        xl:w-40
       "
     ></div>
     <div
@@ -20,23 +20,363 @@
         gap-2
       "
     >
-      <app-table-master
-        title="Daily Rental Inside City"
-      ></app-table-master>
-      <app-table-master
-        title="Daily Rental Traveling"
-      ></app-table-master>
-      <app-table-master
-        title="Monthly Rental"
-      ></app-table-master>
-      <app-table-master-for-sale
-        title="For Sale"
-        [rows]="rowsForSale"
-      ></app-table-master-for-sale>
+      <ng-container
+        *ngFor="let rowsData of rowsDataArray"
+      >
+        <app-table-master
+          [headerLabels]="rowsData.headerLabels"
+          [title]="rowsData.title"
+          [rows]="rowsData.rows"
+          [itemStoreName]="rowsData.storeName"
+          [type]="rowsData.masterType"
+        ></app-table-master>
+      </ng-container>
+      <!--Accept and Cancel-->
+      <div
+        style=""
+        class="
+          p-2
+          flex
+          flex-row-reverse
+          gap-2
+        "
+      >
+        <amber-button
+          backgroundColor="#4bdb84"
+          borderColor="#4bdb84"
+          (click)="toggleSendRequest()"
+          [disabled]="total === 0"
+        >
+          <amber-icon
+            backgroundImageUrl="assets/checkmark.svg"
+            size="1em"
+          ></amber-icon>
+          Accept
+        </amber-button>
+        <amber-button
+          backgroundColor="#b8d1c2"
+          borderColor="#b8d1c2"
+          (click)="toggleClear()"
+          [disabled]="!areActionsAvailable"
+        >
+          <amber-icon
+            backgroundImageUrl="assets/trash.svg"
+            size="1em"
+          ></amber-icon>
+          Clear
+        </amber-button>
+      </div>
+      <!--Send Request Modal-->
+      <amber-modal
+        [(display)]="displaySendRequest"
+      >
+        <div
+          class="
+            border-4
+            rounded-xl
+            p-4
+            bg-white
+            flex
+            flex-col
+            gap-y-2
+          "
+        >
+          <div
+            class="
+              border-b-4
+              text-xl
+              mb-1
+              font-semibold
+            "
+          >
+            Confirm
+          </div>
+          <div
+            class="
+              flex
+              flex-col
+              gap-y-2
+            "
+          >
+            <div>
+              Chosen bikes:
+            </div>
+            <div
+              style="
+                grid-template-columns: repeat(4, max-content);
+              "
+              class="
+                border-2
+                rounded-lg
+                p-2
+                grid
+                gap-x-4
+                gap-y-2
+              "
+            >
+              <!--Header-->
+              <ng-container
+                *ngFor="let label of resultHeaderLabels"
+              >
+                <div
+                  class="
+                    text-center
+                    font-semibold
+                  "
+                >
+                  {{label}}
+                </div>
+              </ng-container>
+              <!--Rows-->
+              <ng-container
+                *ngFor="let rowsData of rowsDataArray"
+              >
+                <ng-container
+                  *ngFor="let rowData of rowsData.rows"
+                >
+                  <div
+                    class="
+                    "
+                  >
+                    {{rowsData.title}}
+                  </div>
+                  <div
+                    class="
+                    "
+                  >
+                    {{rowData.bikeName}}
+                  </div>
+                  <div
+                    class="
+                      text-center
+                    "
+                  >
+                    {{rowData.amountValue}}
+                  </div>
+                  <div
+                    class="
+                      text-center
+                    "
+                  >
+                    {{rowData.total}} USD
+                  </div>
+                </ng-container>
+              </ng-container>
+              <!--Total-->
+              <ng-container>
+                <div
+                  class="
+                    col-span-3
+                  "
+                ></div>
+                <div
+                  class="
+                    text-center
+                  "
+                >
+                  {{total}} USD
+                </div>
+              </ng-container>
+            </div>
+            <form
+              [formGroup]="cartContactFormGroup"
+              style="display: contents;"
+            >
+              <div
+                style="grid-template-columns: repeat(2, max-content)"
+                class="
+                  grid
+                  gap-2
+                "
+              >
+                <div>Full name:</div>
+                <div>
+                  <input
+                    formControlName="name"
+                    required
+                    maxlength="50"
+                    class="
+                      border-2
+                      rounded
+                      outline-none
+                      px-1
+                    "
+                    placeholder="John Smith"
+                  /> (*)
+                </div>
+                <div>Email address:</div>
+                <div>
+                  <input
+                    formControlName="email"
+                    maxlength="50"
+                    required
+                    class="
+                      border-2
+                      rounded
+                      outline-none
+                      px-1
+                    "
+                    placeholder="johnsmith@domain.com"
+                  /> (*)
+                </div>
+                <div>Phone number:</div>
+                <div>
+                  <input
+                    formControlName="phoneNumber"
+                    maxlength="50"
+                    class="
+                      border-2
+                      rounded
+                      outline-none
+                      px-1
+                    "
+                    placeholder="(+01) 234 567 89"
+                  />
+                </div>
+              </div>
+              <div>
+                Note
+              </div>
+              <textarea
+                formControlName="note"
+                class="
+                  border-2
+                  rounded
+                  p-1
+                  outline-none
+                "
+                placeholder="Other means to contact you, or special requests..."
+              ></textarea>
+            </form>
+            <div
+              class="
+                flex
+                flex-row-reverse
+              "
+            >
+              <amber-button
+                backgroundColor="#5dabf5"
+                borderColor="#5dabf5"
+                [disabled]="cartContactFormGroup.invalid"
+                (click)="send()"
+              >
+                <amber-icon
+                  [disabled]="cartContactFormGroup.invalid"
+                  backgroundImageUrl="assets/paper-airplane.svg"
+                  size="1em"
+                ></amber-icon>
+                Send
+              </amber-button>
+            </div>
+          </div>
+        </div>
+      </amber-modal>
+      <!--Clear Modal-->
+      <amber-modal
+        [(display)]="displayConfirmClear"
+      >
+        <div
+          class="
+            border-4
+            rounded-xl
+            p-4
+            bg-white
+            flex
+            flex-col
+            gap-y-2
+          "
+        >
+          <div
+            class="
+              border-b-4
+              text-xl
+              mb-1
+              font-semibold
+            "
+          >
+            Confirm
+          </div>
+          <div
+            class="
+              flex
+              flex-col
+              gap-y-2
+            "
+          >
+            <div>
+              Do you really want to clear everything?<br/>
+              Please beware that the action cannot be undone.
+            </div>
+            <div
+              class="
+                flex
+                flex-row-reverse
+              "
+            >
+              <amber-button
+                backgroundColor="#ff6d4f"
+                borderColor="#ff6d4f"
+                (click)="clearAll()"
+              >
+                <amber-icon
+                  backgroundImageUrl="assets/trash.svg"
+                  size="1em"
+                ></amber-icon>
+                Clear
+              </amber-button>
+            </div>
+
+          </div>
+        </div>
+      </amber-modal>
+      <!--Success Modal-->
+      <amber-modal
+        [(display)]="displaySuccess"
+      >
+        <div
+          class="
+            border-4
+            rounded-xl
+            p-4
+            bg-white
+            flex
+            flex-col
+            gap-y-2
+          "
+        >
+          <div
+            class="
+              border-b-4
+              text-xl
+              mb-1
+              font-semibold
+            "
+          >
+            Success
+          </div>
+          <div
+            class="
+              flex
+              flex-col
+              gap-y-2
+            "
+          >
+            <!--TODO: make the contact information dynamic-->
+            <div>
+              We received your request! We will contact you as soon as possible!<br/>
+              If in 3 days, you did hear nothing from us, please reach us directly via:<br/>
+              - Phone number: (+84) 904 253 491<br/>
+              - or email address: 2wheelsvietnam@gmail.com<br/>
+              <br/>
+              Thank you for your interest!
+            </div>
+          </div>
+        </div>
+      </amber-modal>
     </div>
     <div
       class="
-        w-40
+        xl:w-40
       "
     ></div>
   </div>
