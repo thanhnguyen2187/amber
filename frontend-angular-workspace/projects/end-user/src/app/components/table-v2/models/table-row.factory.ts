@@ -25,12 +25,14 @@ export class TableRowFactory {
 
   static createTableRowForSale(
     {
+      id,
       imageUrl,
       bikeName,
       priceDisplay,
       priceValue,
       amountValue,
     }: {
+      id: number,
       imageUrl: string,
       bikeName: string,
       priceDisplay: string,
@@ -39,6 +41,7 @@ export class TableRowFactory {
     }
   ): TableRowForSale {
     const tableRow = new TableRowForSale();
+    tableRow.id = id;
     tableRow.imageUrl = imageUrl;
     tableRow.bikeName = bikeName;
     tableRow.priceDisplay = priceDisplay;
@@ -49,6 +52,7 @@ export class TableRowFactory {
 
   static createTableRowForRent(
     {
+      id,
       imageUrl,
       bikeName,
       priceDisplay,
@@ -57,6 +61,7 @@ export class TableRowFactory {
       dateStart,
       dateEnd,
     }: {
+      id: number,
       imageUrl: string,
       bikeName: string,
       priceDisplay: string,
@@ -67,6 +72,7 @@ export class TableRowFactory {
     }
   ): TableRowForRent {
     const tableRow = new TableRowForRent();
+    tableRow.id = id;
     tableRow.imageUrl = imageUrl;
     tableRow.bikeName = bikeName;
     tableRow.priceDisplay = priceDisplay;
@@ -79,6 +85,7 @@ export class TableRowFactory {
 
   static createTableRowForRentMonthly(
     {
+      id,
       imageUrl,
       bikeName,
       priceDisplay,
@@ -87,6 +94,7 @@ export class TableRowFactory {
       dateStart,
       dateEnd,
     }: {
+      id: number,
       imageUrl: string,
       bikeName: string,
       priceDisplay: string,
@@ -97,6 +105,7 @@ export class TableRowFactory {
     }
   ): TableRowForRentMonthly {
     const tableRow = new TableRowForRentMonthly();
+    tableRow.id = id;
     tableRow.imageUrl = imageUrl;
     tableRow.bikeName = bikeName;
     tableRow.priceDisplay = priceDisplay;

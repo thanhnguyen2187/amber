@@ -1,12 +1,12 @@
-drop procedure if exists seed_bike_model;
-delimiter //
+/* drop procedure if exists seed_bike_model; */
+/* delimiter // */
 
-create procedure seed_bike_model()
-begin
-    set @id = 0;
-    set @index = 0;
+/* create procedure seed_bike_model() */
+/* begin */
+/*     set @id = 0; */
+/*     set @index = 0; */
     delete from bike_model;
-    while @index <= 10 do
+    /* while @index <= 10 do */
         insert into bike_model
             (id, model_data, media_files)
         values
@@ -14,28 +14,25 @@ begin
                 (select generate_next_id()), -- ID 1
                 '
                 {
-                    "name": "Honda Win copy 100cc",
+                    "name": "Honda Win Chinese copy",
                     "capacity": 100,
                     "type": "manual",
-                    "cost": 280,
-                    "daily_rental_fee_inside_city": 5,
-                    "daily_rental_fee_traveling": 10,
-                    "monthly_rental_fee": 45
+                    "cost": 280
                 }
                 ',
                 '
                 [
                     {
-                        "title": "Sport Bike In Desert",
-                        "source": "https://images.unsplash.com/photo-1514826863517-464eed44915d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80"
+                        "title": "Chinese win copy",
+                        "source": "https://offroadvietnam.com/media/real-honda-win-offroad-vietnam-motorbike-adventures.jpg"
                     },
                     {
-                        "title": "Honda Win on The Way",
-                        "source": "https://images.unsplash.com/photo-1560260240-1150d596dbff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        "title": "Chinese win copy",
+                        "source": "https://offroadvietnam.com/media/chinese-copy-honda-win-not-recommended-by-offroad-vietnam-motorbike-adventures.jpg"
                     },
                     {
-                        "title": "Detech Win on The Way",
-                        "source": "https://images.unsplash.com/photo-1561056524-89ccded076e0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
+                        "title": "Sufat Win",
+                        "source": "https://www.gt-rider.com/se-asia-motorcycling/attachments/4h6vwn-jpg.70823/"
                     }
                 ]
                 '
@@ -44,29 +41,27 @@ begin
                 (select generate_next_id()), -- ID 2
                 '
                 {
-                    "name": "Detech Win 110cc",
+                    "name": "Honda Wave",
                     "capacity": 125,
-                    "type": "manual",
-                    "cost": 750,
-                    "cost_display": "500 USD",
-                    "daily_rental_fee_inside_city": 7.5,
-                    "daily_rental_fee_traveling": 15,
-                    "monthly_rental_fee": 50
+                    "type": "semi-automatic",
+                    "daily_rental_fee_inside_city": 5,
+                    "daily_rental_fee_traveling": 10,
+                    "monthly_rental_fee": 45
                 }
                 ',
                 '
                 [
                     {
-                        "title": "Man Looking At Bike",
-                        "source": "https://images.unsplash.com/photo-1506424482693-1f123321fa53?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1292&q=80"
+                        "title": "Honda Wave",
+                        "source": "https://vietnamoffroad.com/images/vietnam-offroad-semi-automatic-scooter-hire-hanoi-honda-wave-s-110cc.JPG"
                     },
                     {
-                        "title": "Honda Win on The Way",
-                        "source": "https://images.unsplash.com/photo-1560260240-1150d596dbff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        "title": "Black Honda Wave",
+                        "source": "https://vietnamoffroad.com/images/vietnam-offroad-semi-automatic-scooter-hire-hanoi-honda-wave-alpha-110cc.JPG"
                     },
                     {
-                        "title": "Detech Win on The Way",
-                        "source": "https://images.unsplash.com/photo-1561056524-89ccded076e0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
+                        "title": "White Honda Wave",
+                        "source": "https://hanoimotorbikerental.com/images/hanoi-motorbike-rental-tours-from-hanoi-semi-automatic-scooter.jpg?6bfec1&6bfec1"
                     }
                 ]
                 '
@@ -75,10 +70,10 @@ begin
                 (select generate_next_id()), -- ID 3
                 '
                 {
-                    "name": "Yamaha Nouvo LX",
-                    "capacity": 135,
+                    "name": "Yamaha Nouvo",
+                    "capacity": 110,
                     "type": "automatic",
-                    "cost": 350,
+                    "cost": 280,
                     "daily_rental_fee_inside_city": 7.5,
                     "daily_rental_fee_traveling": 15,
                     "monthly_rental_fee": 50
@@ -87,12 +82,20 @@ begin
                 '
                 [
                     {
-                        "title": "Vario",
-                        "source": "https://images.unsplash.com/photo-1516289637866-1e298d7c6a54?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
+                        "title": "Black Yamaha Nouvo",
+                        "source": "https://chugiong.com/uploads/nouvo-huyen-hoa-binh-15338004047278410.jpg"
                     },
                     {
-                        "title": "Yamaha Nouvo 55P1 6320, Air Blade 59C2 220.13",
-                        "source": "https://images.unsplash.com/photo-1504359738601-66545b01e803?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
+                        "title": "Black Yamaha Nouvo",
+                        "source": "https://s1.storage.2banh.vn/image/2018/04/yamaha-nouvo-2-mat-2007-den-cuc-chat-xe-con-dep-bien-hn-50155-1524152646-5ad8b9465c712.jpg"
+                    },
+                    {
+                        "title": "Red Yamaha Nouvo",
+                        "source": "https://cohoi.tuoitre.vn/upload/items/170516_nouvo2_4.jpg"
+                    },
+                    {
+                        "title": "Red Yamaha Nouvo",
+                        "source": "https://chugiong.com/uploads/20170914104218_5581385_xe_nouvo_2_co_hao_xang_khong_2.jpg"
                     }
                 ]
                 '
@@ -107,15 +110,14 @@ begin
                     "cost": 2500,
                     "daily_rental_fee_inside_city": 12.5,
                     "daily_rental_fee_traveling": 25,
-                    "monthly_rental_fee": 250,
-                    "monthly_rental_fee_display": 250
+                    "monthly_rental_fee": 250
                 }
                 ',
                 '
                 [
                     {
                         "title": "Honda XR 150",
-                        "source": "https://motosaigon.vn/wp-content/uploads/2019/11/honda-xr150-2020-danh-gia-xe-motosaigon-1.jpg"
+                        "source": "https://rentabikevn.com/wp-content/uploads/2020/07/Honda-XR-150-right-wide.jpg"
                     },
                     {
                         "title": "Honda XR 150",
@@ -132,7 +134,6 @@ begin
                     "capacity": 150,
                     "type": "manual",
                     "cost": 2000,
-                    "daily_rental_fee_inside_city": 10,
                     "daily_rental_fee_traveling": 20,
                     "monthly_rental_fee": 200
                 }
@@ -140,20 +141,78 @@ begin
                 '
                 [
                     {
-                        "title": "Honda XR 150",
-                        "source": "https://motosaigon.vn/wp-content/uploads/2016/05/4-80.jpg"
+                        "title": "Black Suzuki EN 150",
+                        "source": "https://www.motogiare.com/uploads/Suzuki/Suzuki%20EN%20150-A/pkc1357802126.jpg"
                     },
                     {
-                        "title": "Honda XR 150",
-                        "source": "https://www.weridevietnam.com/wp-content/uploads/2015/08/We-Ride-Vietnam-Honda-XR-150.2-1024x768.jpg"
+                        "title": "Blue Suzuki EN 150",
+                        "source": "https://znews-photo.zadn.vn/w660/Uploaded/dqvpxpck/2019_04_30/1_EN150A_zing.jpg"
+                    },
+                    {
+                        "title": "Black Suzuki EN 150",
+                        "source": "https://motosaigon.vn/wp-content/uploads/2016/05/4-80.jpg"
                     }
                 ]
                 '
-            );
-        set @index = @index + 1;
-    end while;
-end//
+            ),
+            (
+                (select generate_next_id()), -- ID 6
+                '
+                {
+                    "name": "Honda XR 250",
+                    "capacity": 250,
+                    "type": "manual",
+                    "cost": 3000,
+                    "daily_rental_fee_traveling": 40
+                }
+                ',
+                '
+                [
+                    {
+                        "title": "White Honda XR 250",
+                        "source": "https://imgwebikevn-8743.kxcdn.com/Mm1lcaLx-wPOYJCsDIdX2YESF5E=/master/series/1015_xr-250.jpg"
+                    },
+                    {
+                        "title": "Blue Honda XR 250",
+                        "source": "https://offroadvietnam.com/Images/motorbikes/xr.jpg"
+                    },
+                    {
+                        "title": "Black Honda XR 250",
+                        "source": "https://global.honda/content/dam/site/global/newsroom/cq_img/news/2003/2030418/01.jpg"
+                    }
+                ]
+                '
+            ),
+            (
+                (select generate_next_id()), -- ID 7
+                '
+                {
+                    "name": "Yamaha Sirius",
+                    "capacity": 115,
+                    "type": "semi-automatic",
+                    "cost": 1000,
+                    "daily_rental_fee_inside_city": 7,
+                    "daily_rental_fee_traveling": 14
+                }
+                ',
+                '
+                [
+                    {
+                        "title": "Black Yamaha Sirius",
+                        "source": "https://photo-baomoi.zadn.vn/w700_r1/2020_10_20_293_36754087/c04ad4da2f99c6c79f88.jpg"
+                    },
+                    {
+                        "title": "Black Honda XR 250",
+                        "source": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/e4/0e/66.jpg"
+                    }
+                ]
+                '
+            )
+        ;
+        /* set @index = @index + 1; */
+    /* end while; */
+/* end// */
 
-delimiter ;
+/* delimiter ; */
 
-call seed_bike_model();
+/* call seed_bike_model(); */

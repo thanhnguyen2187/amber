@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../item-grid/item.service';
+import { CardRowData, generateCardRowData } from '../item-grid/item-card.component';
 
 @Component({
   selector: 'app-body-bike-details',
@@ -8,6 +9,8 @@ import { Item } from '../item-grid/item.service';
   styleUrls: ['./body-bike-details.component.scss']
 })
 export class BodyBikeDetailsComponent implements OnInit {
+
+  cardRowData: CardRowData[] = [];
 
   id = 0;
   @Input() item: Item = {
@@ -37,6 +40,7 @@ export class BodyBikeDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cardRowData = generateCardRowData(this.item);
   }
 
 }

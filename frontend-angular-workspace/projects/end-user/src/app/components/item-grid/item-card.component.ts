@@ -3,6 +3,71 @@ import { Item } from './item.service';
 import { NotificationService } from '../notification/notification.service';
 import { TableDynamicService } from '../table/table-dynamic.service';
 import { BikeSale } from '../table/table-data.model';
+import { ItemStoreName } from './item-store-v2.service';
+
+export interface CardRowData {
+  label: string;
+  value: number;
+  priceDisplay: string;
+  icon: 'calendar' | 'cart';
+  itemStoreName: ItemStoreName;
+}
+
+export function generateCardRowData(item: Item): CardRowData[] {
+  function* consumeLabels(): Iterator<string> {
+    // yield 'Price for Sale:';
+    yield 'Price for Rent:';
+    while (true) {
+      yield '';
+    }
+  }
+  const labelsGenerator = consumeLabels();
+  let cardRowData: CardRowData[] = [
+    {
+      label: 'Price for Sale:',
+      priceDisplay: item.priceForSaleDisplay ?? '',
+      value: item.priceForSale ?? 0,
+      icon: 'cart',
+      itemStoreName: 'forSale',
+    },
+    {
+      label: '',
+      priceDisplay: (item.priceForRentInsideCityDisplay ?? '') + '/day inside city',
+      value: item.priceForRentInsideCity ?? 0,
+      icon: 'calendar',
+      itemStoreName: 'dailyInsideCity',
+    },
+    {
+      label: '',
+      priceDisplay: (item.priceForRentTravelingDisplay ?? '') + '/day traveling',
+      value: item.priceForRentTraveling ?? 0,
+      icon: 'calendar',
+      itemStoreName: 'dailyTraveling',
+    },
+    {
+      label: '',
+      priceDisplay: (item.priceForRentMonthlyDisplay ?? '') + '/month',
+      value: item.priceForRentMonthly ?? 0,
+      icon: 'calendar',
+      itemStoreName: 'monthly',
+    },
+  ];
+
+  cardRowData = cardRowData.filter(
+    (data) => {
+      return data.value > 0;
+    }
+  );
+  cardRowData.forEach(
+    (data) => {
+      if (!data.label) {
+        data.label = labelsGenerator.next().value;
+      }
+    }
+  );
+
+  return cardRowData;
+}
 
 @Component({
   selector: 'app-item-card',
@@ -10,6 +75,8 @@ import { BikeSale } from '../table/table-data.model';
   styleUrls: ['./item-card.component.scss']
 })
 export class ItemCardComponent implements OnInit {
+
+  cardRowData: CardRowData[] = [];
 
   @Input() item: Item = {
     id: 0,
@@ -54,6 +121,6 @@ export class ItemCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cardRowData = generateCardRowData(this.item);
   }
-
 }

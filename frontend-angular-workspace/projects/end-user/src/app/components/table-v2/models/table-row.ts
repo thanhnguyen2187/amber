@@ -16,6 +16,7 @@ function round(
 }
 
 export class TableRow {
+  id = 0;
   imageUrl = '';
   bikeName = '';
   priceDisplay = '';

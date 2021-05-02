@@ -23,7 +23,7 @@ export class ItemCardRowComponent implements OnInit {
   ) { }
 
   @Input() label = '';
-  @Input() value = '';
+  @Input() priceDisplay = '';
   @Input() itemStoreName: ItemStoreName = 'forSale';
   // TODO: remove the icon type
   @Input() icon: 'cart' | 'calendar' = 'cart';
@@ -41,6 +41,7 @@ export class ItemCardRowComponent implements OnInit {
     this.itemStoreService.addItem({
       itemStoreName: 'forSale',
       item: TableRowFactory.createTableRowForSale({
+        id: this.item.id,
         imageUrl: this.item.imageReference,
         bikeName: this.item.name,
         priceDisplay: this.item.priceForSaleDisplay ?? '',
@@ -80,6 +81,7 @@ export class ItemCardRowComponent implements OnInit {
             itemStoreName: this.itemStoreName,
             item: TableRowFactory.createTableRowForRent(
               {
+                id: this.item.id,
                 imageUrl: this.item.imageReference,
                 bikeName: this.item.name,
                 priceDisplay: this.item.priceForRentInsideCityDisplay ?? '',
@@ -98,6 +100,7 @@ export class ItemCardRowComponent implements OnInit {
             itemStoreName: this.itemStoreName,
             item: TableRowFactory.createTableRowForRent(
               {
+                id: this.item.id,
                 imageUrl: this.item.imageReference,
                 bikeName: this.item.name,
                 priceDisplay: this.item.priceForRentTravelingDisplay ?? '',
@@ -116,6 +119,7 @@ export class ItemCardRowComponent implements OnInit {
             itemStoreName: this.itemStoreName,
             item: TableRowFactory.createTableRowForRentMonthly(
               {
+                id: this.item.id,
                 imageUrl: this.item.imageReference,
                 bikeName: this.item.name,
                 priceDisplay: this.item.priceForRentMonthlyDisplay ?? '',

@@ -9,6 +9,7 @@ sudo docker run \
     -e MYSQL_DATABASE=amber \
     -e MYSQL_USER=amber \
     -e MYSQL_PASSWORD=amber \
+    -v "mariadb-data:/var/lib/mysql" \
     -d \
     mariadb:10.5.9-focal
 

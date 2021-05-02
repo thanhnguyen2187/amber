@@ -21,11 +21,6 @@ export class PrefixedHttpClientService {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Cache-Control': 'no-cache',
-    // tslint:disable-next-line:object-literal-key-quotes
-    // 'Accept': '*',
-    // 'Accept-Encoding': 'gzip, deflate, br',
-    // tslint:disable-next-line:object-literal-key-quotes
-    // 'Connection': 'keep-alive',
   });
 
   constructor(

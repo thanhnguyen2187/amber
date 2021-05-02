@@ -146,10 +146,47 @@ export class BodyCartComponent implements OnInit {
           url: 'contract/process-request',
           body: {
             requests: {
-              rentalsDailyInsideCity: [],
-              rentalsDailyTraveling: [],
-              rentalsMonthly: [],
-              sales: [],
+              dailyInsideCity: this.rowsDataMap.dailyInsideCity.rows.map(
+                (row) => {
+                  return {
+                    bikeModelId: row.id,
+                    amount: row.amountValue,
+                    type: 0, // DailyInsideCity
+                    dateStart: (row as TableRowForRent).dateStart,
+                    dateEnd: (row as TableRowForRent).dateEnd,
+                  };
+                }
+              ),
+              dailyTraveling: this.rowsDataMap.dailyTraveling.rows.map(
+                (row) => {
+                  return {
+                    bikeModelId: row.id,
+                    amount: row.amountValue,
+                    type: 1, // DailyTraveling
+                    dateStart: (row as TableRowForRent).dateStart,
+                    dateEnd: (row as TableRowForRent).dateEnd,
+                  };
+                }
+              ),
+              monthly: this.rowsDataMap.monthly.rows.map(
+                (row) => {
+                  return {
+                    bikeModelId: row.id,
+                    amount: row.amountValue,
+                    type: 2, // Monthly
+                    dateStart: (row as TableRowForRent).dateStart,
+                    dateEnd: (row as TableRowForRent).dateEnd,
+                  };
+                }
+              ),
+              forSale: this.rowsDataMap.forSale.rows.map(
+                (row) => {
+                  return {
+                    bikeModelId: row.id,
+                    amount: row.amountValue,
+                  };
+                }
+              ),
             },
             fullName: this.cartContactFormGroup.controls.name.value,
             email: this.cartContactFormGroup.controls.email.value,

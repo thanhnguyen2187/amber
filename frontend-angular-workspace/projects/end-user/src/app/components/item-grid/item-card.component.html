@@ -46,38 +46,17 @@
         items-center
       "
     >
-      <app-item-card-row
-        label="Price for Sale:"
-        value="{{item?.priceForSaleDisplay}}"
-        *ngIf="item?.priceForSaleDisplay"
-        icon="cart"
-        [item]="item"
-        itemStoreName="forSale"
-      ></app-item-card-row>
-      <app-item-card-row
-        label="Price for Rent:"
-        value="{{item?.priceForRentInsideCityDisplay}}/day inside city"
-        *ngIf="item?.priceForRentInsideCityDisplay"
-        icon="calendar"
-        [item]="item"
-        itemStoreName="dailyInsideCity"
-      ></app-item-card-row>
-      <app-item-card-row
-        label=""
-        value="{{item?.priceForRentTravelingDisplay}}/day traveling"
-        *ngIf="item?.priceForRentTravelingDisplay"
-        icon="calendar"
-        [item]="item"
-        itemStoreName="dailyTraveling"
-      ></app-item-card-row>
-      <app-item-card-row
-        label=""
-        value="{{item?.priceForRentMonthlyDisplay}}/month"
-        *ngIf="item?.priceForRentMonthlyDisplay"
-        icon="calendar"
-        [item]="item"
-        itemStoreName="monthly"
-      ></app-item-card-row>
+      <ng-container
+        *ngFor="let data of cardRowData"
+      >
+        <app-item-card-row
+          [label]="data.label"
+          [priceDisplay]="data.priceDisplay"
+          [icon]="data.icon"
+          [item]="item"
+          [itemStoreName]="data.itemStoreName"
+        ></app-item-card-row>
+      </ng-container>
     </div>
   </div>
 </div>
