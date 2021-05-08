@@ -195,7 +195,8 @@
             "aot": true,
             "assets": [
               "projects/administration/src/favicon.ico",
-              "projects/administration/src/assets"
+              "projects/administration/src/assets",
+              "projects/administration/src/environment.js"
             ],
             "styles": [
               "projects/administration/src/styles.scss"

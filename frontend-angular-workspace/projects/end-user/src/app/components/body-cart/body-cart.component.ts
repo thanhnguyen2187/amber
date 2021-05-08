@@ -184,6 +184,7 @@ export class BodyCartComponent implements OnInit {
                   return {
                     bikeModelId: row.id,
                     amount: row.amountValue,
+                    type: 10, // Sale
                   };
                 }
               ),

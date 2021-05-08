@@ -6,6 +6,8 @@ import { OverlayModule } from './components/overlay/overlay.module';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,10 +17,12 @@ import { CommonModule } from '@angular/common';
     IconComponent,
     ButtonComponent,
     ModalComponent,
+    DynamicFormComponent,
   ],
   imports: [
     OverlayModule,
     CommonModule,
+    FormsModule,
   ],
   exports: [
     AmberCoreComponent,
@@ -27,6 +31,7 @@ import { CommonModule } from '@angular/common';
     OverlayModule,
     ButtonComponent,
     ModalComponent,
+    DynamicFormComponent,
   ]
 })
 export class AmberCoreModule { }

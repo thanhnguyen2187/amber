@@ -9,4 +9,4 @@ const (
 	Finished = 4
 	Overdue = 5
 )
-
+type State int

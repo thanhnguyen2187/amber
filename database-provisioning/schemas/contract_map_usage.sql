@@ -12,7 +12,13 @@ create table contract_map_usage (
 
     model_id int,
     model_data json,
+    /* model_name varchar(50) character set utf8, */
     amount tinyint,
+
+    /* hour_count smallint, */
+    day_count smallint,
+    month_count decimal(9, 2),
+
     price decimal(9, 2),
     date_start date,
     date_end date,

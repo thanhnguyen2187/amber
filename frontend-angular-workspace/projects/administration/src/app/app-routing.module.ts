@@ -44,21 +44,11 @@ const routes: Routes = [
       },
       {
         path: 'contract',
-        component: UnderConstructionComponent,
-        children: [
-          {
-            path: '',
-            component: UnderConstructionComponent,
-          },
-          {
-            path: 'list',
-            component: UnderConstructionComponent,
-          },
-          {
-            path: 'create',
-            component: UnderConstructionComponent,
-          },
-        ],
+        loadChildren:
+          () => import('./components/body-contract/body-contract.module').then(
+            module => module.BodyContractModule,
+          )
+        ,
       },
       {
         path: 'customer',
@@ -74,11 +64,11 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        // component: BodySettingsComponent,
-        loadChildren: () =>
-          import('./components/body-settings/body-settings.module').then(
+        loadChildren:
+          () => import('./components/body-settings/body-settings.module').then(
             module => module.BodySettingsModule
           )
+        ,
       },
     ],
   },

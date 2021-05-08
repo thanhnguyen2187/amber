@@ -1,6 +1,8 @@
 package customer
 
 import (
+	"encoding/json"
+	"errors"
 	"time"
 )
 
@@ -17,4 +19,17 @@ type Customer struct {
 	VisaNumber              string    `json:"visaNumber,omitempty" db:"visa_number"`
 	VisaNumberValidityFrom  time.Time `json:"visaNumberValidityFrom,omitempty" db:"visa_number_validity_from"`
 	VisaNumberValidityTo    time.Time `json:"visaNumberValidityTo,omitempty" db:"visa_number_validity_to"`
+}
+
+func (d *Customer) Scan(val interface{}) error {
+	b, ok := val.([]byte)
+	if ok {
+		err := json.Unmarshal(
+			b,
+			&d,
+		)
+		return err
+	} else {
+		return errors.New("invalid customer data")
+	}
 }

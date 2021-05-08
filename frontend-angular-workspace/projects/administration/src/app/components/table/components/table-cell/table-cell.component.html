@@ -1,0 +1,21 @@
+<div
+  class="
+    py-2
+    px-4
+    border-b-2
+  "
+  [ngClass]="extendedClasses"
+>
+  <div
+    *ngIf="tableCell.type === 'header' || tableCell.type === 'text'"
+    [ngClass]="tableCell.type === 'header' ? ['font-semibold', 'text-center'] : []"
+  >
+    {{tableCell.display}}
+  </div>
+  <ng-container
+    *ngIf="tableCell.type === 'custom'"
+  >
+    <ng-content></ng-content>
+  </ng-container>
+</div>
+

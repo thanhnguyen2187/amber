@@ -13,7 +13,7 @@ func main() {
 	defer core.Terminate()
 
 	_ = http.ListenAndServe(
-		":" + strconv.Itoa(conf.Config.Port),
+		":" + strconv.Itoa(conf.Config.ServerPort),
 		router.Router(),
 	)
 }

@@ -1,0 +1,173 @@
+<app-table-master
+  [columnCount]="5"
+>
+  <ng-container>
+    <app-table-cell
+      [tableCell]="customCell"
+      [extendedClasses]="['col-span-full']"
+    >
+      <div
+        class="
+          flex
+          justify-between
+        "
+      >
+        <div
+          class="
+            text-xl
+            font-semibold
+          "
+        >
+          Contract List
+        </div>
+        <div
+          class="
+            flex
+            gap-1
+            items-center
+          "
+        >
+          <amber-icon
+            backgroundImageUrl="assets/refresh.svg"
+            size="1.25em"
+            (click)="reloadDataV2()"
+          ></amber-icon>
+          <amber-icon
+            backgroundImageUrl="assets/search.svg"
+            size="1.25em"
+            (click)="displaySearch = true"
+          ></amber-icon>
+          <amber-modal
+            [(display)]="displaySearch"
+            [dismissAction]="reloadDataV2.bind(this)"
+          >
+            <div
+              class="
+                border-4
+                rounded-xl
+                p-4
+                bg-white
+                flex
+                flex-col
+                gap-y-2
+              "
+            >
+              <div
+                class="
+                  border-b-4
+                  text-xl
+                  mb-1
+                  font-semibold
+                "
+              >
+                Search
+              </div>
+              <div
+                style="grid-template-columns: repeat(2, max-content)"
+                class="
+                  flex
+                  flex-col
+                  gap-y-4
+                  items-baseline
+                "
+              >
+                <amber-dynamic-form
+                  [dynamicFormGroups]="dynamicFormGroups"
+                ></amber-dynamic-form>
+              </div>
+            </div>
+          </amber-modal>
+        </div>
+      </div>
+    </app-table-cell>
+  </ng-container>
+
+
+  <ng-container
+    *ngFor="let headerCell of headerCells"
+  >
+    <app-table-cell
+      [tableCell]="headerCell"
+    ></app-table-cell>
+
+  </ng-container>
+  <ng-container
+    *ngFor="let cookedContract of cookedContracts"
+  >
+    <app-table-cell
+      [tableCell]="customCell"
+    >
+      {{cookedContract.id}}
+    </app-table-cell>
+    <app-table-cell
+      [tableCell]="customCell"
+    >
+      {{cookedContract.stateDisplay}}
+    </app-table-cell>
+    <app-table-cell
+      [tableCell]="customCell"
+    >
+      {{cookedContract.customerData.fullName}} <br/>
+      {{cookedContract.customerData.email}} <br/>
+      {{cookedContract.customerData.phoneNumber}}
+    </app-table-cell>
+    <app-table-cell
+      [tableCell]="customCell"
+    >
+      <div
+        class="
+          grid
+          grid-cols-2
+          gap-2
+        "
+      >
+        <ng-container
+          *ngFor="let vehicleUsage of cookedContract.vehicleUsages"
+        >
+          <div>
+            {{vehicleUsage.typeDisplay}}
+          </div>
+          <div>
+            {{vehicleUsage.bikeModelData.name}}
+          </div>
+        </ng-container>
+      </div>
+    </app-table-cell>
+    <app-table-cell
+      [tableCell]="customCell"
+    >
+      <div
+        class="
+          flex
+          gap-1
+        "
+      >
+        <amber-icon
+          backgroundImageUrl="assets/zoom-in.svg"
+          size="1.25em"
+        ></amber-icon>
+        <amber-icon
+          backgroundImageUrl="assets/dollar.svg"
+          size="1.25em"
+        ></amber-icon>
+        <amber-icon
+          backgroundImageUrl="assets/print.svg"
+          size="1.25em"
+        ></amber-icon>
+        <amber-icon
+          backgroundImageUrl="assets/view-show.svg"
+          size="1.25em"
+          *ngIf="cookedContract.visibility === 0"
+          (click)="toggleContractVisibility(cookedContract)"
+        ></amber-icon>
+        <amber-icon
+          backgroundImageUrl="assets/view-hide.svg"
+          size="1.25em"
+          *ngIf="cookedContract.visibility === 1"
+          (click)="toggleContractVisibility(cookedContract)"
+        ></amber-icon>
+      </div>
+    </app-table-cell>
+  </ng-container>
+
+</app-table-master>

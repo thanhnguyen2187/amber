@@ -1,0 +1,2 @@
+- pipeline.id: amber-contract
+  path.config: "/usr/share/logstash/pipeline/amber-contract.conf"

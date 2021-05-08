@@ -9,21 +9,24 @@ create table contract (
 
     customer_id int default 0,
     customer_data json,
-    -- customer_id
+    -- customerId
     -- fullname
     -- email
     -- phoneNumber
 
     state tinyint default 0,
-    -- -10: invalid
-    --  00: created
-    --  10: pending, the customer send request
-    --  20: booked, the customer paid partly
-    --  30: in effect, the customer paid fully
-    --  40: finished, the customer returned the bikes
-    --  50: ondue, the customer did not return the bikes on time
-    contract_data json
+    -- -1: invalid
+    --  0: created
+    --  1: pending, the customer send request
+    --  2: booked, the customer paid partly
+    --  3: in effect, the customer paid fully
+    --  4: finished, the customer returned the bikes
+    --  5: overdue, the customer did not return the bikes on time
+    contract_data json,
     -- deposit
     -- equipment
     -- note
+
+    total decimal(9, 2),
+    total_paid decimal(9,2) default 0
 );

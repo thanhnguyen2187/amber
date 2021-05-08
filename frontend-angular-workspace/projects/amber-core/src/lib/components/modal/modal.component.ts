@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'amber-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
@@ -17,6 +18,8 @@ export class ModalComponent implements OnInit {
     this.displayChange.emit(value);
   }
   @Output() displayChange = new EventEmitter<boolean>();
+
+  @Input() dismissAction: () => void = () => {};
 
   constructor() { }
 

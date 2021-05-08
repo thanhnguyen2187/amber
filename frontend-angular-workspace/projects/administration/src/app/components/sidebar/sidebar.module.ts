@@ -4,12 +4,12 @@ import { SidebarComponent } from './sidebar.component';
 // import { SidebarItemService } from './sidebar-item.service';
 import { AmberCoreModule } from 'amber-core';
 import { SidebarItemComponent } from './sidebar-item.component';
+import { LayoutsModule } from '../../layouts/layouts.module';
 
 @NgModule({
   declarations: [
     SidebarComponent,
     SidebarItemComponent,
-    // SidebarItemService,
   ],
   imports: [
     CommonModule,

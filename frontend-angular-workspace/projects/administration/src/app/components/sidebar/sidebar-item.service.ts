@@ -121,16 +121,16 @@ export class SidebarItemService {
           key: 'contract',
         },
         childrenData: [
-          {
-            iconUrl: '',
-            content: 'List',
-            key: 'list',
-          },
-          {
-            iconUrl: '',
-            content: 'Create',
-            key: 'create',
-          },
+          // {
+          //   iconUrl: '',
+          //   content: 'List',
+          //   key: 'list',
+          // },
+          // {
+          //   iconUrl: '',
+          //   content: 'Create',
+          //   key: 'create',
+          // },
         ],
       },
       {

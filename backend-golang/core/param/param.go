@@ -3,7 +3,6 @@ package param
 import (
 	"errors"
 	"github.com/go-chi/chi/v5"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -17,7 +16,6 @@ func String(
 	string,
 	error,
 ) {
-	//v := chi.URLParam(r, key)
 	v := r.URL.Query().Get(key)
 	if len(v) == 0 {
 		return "", ErrInvalidParam
@@ -35,12 +33,12 @@ func DefaultString(
 ) {
 	v, err := String(r, key)
 	if err != nil {
-		log.Printf(
-			"Error happened with URL parameter %v: %v",
-			key,
-			err,
-		)
-		log.Printf("Returning default value: %v", dVal)
+		// log.Printf(
+		// 	"Error happened with URL parameter %v: %v",
+		// 	key,
+		// 	err,
+		// )
+		// log.Printf("Returning default value: %v", dVal)
 		return dVal
 	}
 	return v
@@ -70,12 +68,12 @@ func DefaultStringArray(
 ) {
 	values, err := StringArray(r, key)
 	if err != nil {
-		log.Printf(
-			"Error happened with URL parameter %v: %v",
-			key,
-			err,
-		)
-		log.Printf("Returning default value: %v", dVal)
+		// log.Printf(
+		// 	"Error happened with URL parameter %v: %v",
+		// 	key,
+		// 	err,
+		// )
+		// log.Printf("Returning default value: %v", dVal)
 		return dVal
 	} else {
 		return values
@@ -90,7 +88,6 @@ func Int(
 	error,
 ) {
 	v, err := strconv.ParseInt(
-		//chi.URLParam(r, key),
 		r.URL.Query().Get(key),
 		10,
 		8,
@@ -107,12 +104,12 @@ func DefaultInt(
 ) {
 	v, err := Int(r, key)
 	if err != nil {
-		log.Printf(
-			"Error happened with URL parameter %v: %v",
-			key,
-			err,
-		)
-		log.Printf("Returning default value: %v", dVal)
+		// log.Printf(
+		// 	"Error happened with URL parameter %v: %v",
+		// 	key,
+		// 	err,
+		// )
+		// log.Printf("Returning default value: %v", dVal)
 		return dVal
 	}
 	return v

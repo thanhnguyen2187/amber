@@ -1,48 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutLoginComponent } from './layouts/layout-login/layout-login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
-// import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 import { AmberCoreModule } from 'amber-core';
 import { BodyContentComponent } from './components/body-content/body-content.component';
-import { BodyContractComponent } from './components/body-contract/body-contract.component';
-// import { SidebarItemComponent } from './components/sidebar/sidebar-item.component';
-import { SidebarModule } from './components/sidebar/sidebar.module';
-// import { BodySettingsComponent } from './components/body-settings/body-settings.component';
-// import { CardComponent } from './components/card/card.component';
 import { BodySettingsModule } from './components/body-settings/body-settings.module';
-import { CardModule } from './components/card/card.module';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
+import { TableModule } from './components/table/table.module';
+import { LayoutsModule } from './layouts/layouts.module';
+import { StaticConfigurationProvider } from './services/static-configuration.provider';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutLoginComponent,
-    DashboardLayoutComponent,
-    // SidebarComponent,
     BodyContentComponent,
-    BodyContractComponent,
     UnderConstructionComponent,
-    // BodySettingsComponent,
-    // CardComponent,
-    // SidebarItemComponent
   ],
   imports: [
     // Angular
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     // Core
     AmberCoreModule,
     // Internal
-    SidebarModule,
+    LayoutsModule,
     BodySettingsModule,
+    TableModule,
   ],
-  providers: [],
+  providers: [
+    StaticConfigurationProvider,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,95 @@
+<div
+  class="
+    flex
+    flex-col
+    gap-y-4
+  "
+>
+  <ng-container
+    *ngFor="let formGroup of dynamicFormGroups; let groupIndex = index"
+  >
+    <div
+      class="
+        text-lg
+      "
+      *ngIf="formGroup.title"
+    >
+      {{formGroup.title}}
+    </div>
+    <div
+      style="grid-template-rows: repeat({{formGroup.rowsCount}}, max-content)"
+      class="
+        grid
+        gap-2
+        items-center
+        px-4
+        grid-flow-col
+      "
+    >
+      <div
+        class="
+          flex
+          gap-2
+          items-center
+        "
+        *ngFor="let dynamicFormControl of formGroup.formControls; let controlIndex = index"
+      >
+        <!--Text-->
+        <ng-container
+          *ngIf="dynamicFormControl.type === 'text'"
+        >
+          <div
+            class="
+              w-32
+            "
+          >
+            {{dynamicFormControl.label}}
+          </div>
+          <input
+            [attr.type]="dynamicFormControl.type"
+            [(ngModel)]="dynamicFormControl.value"
+            class="
+              px-1
+              border-2
+              rounded
+              outline-none
+            "
+          />
+        </ng-container>
+        <!--Checkbox-->
+        <ng-container
+          *ngIf="dynamicFormControl.type === 'checkbox'"
+        >
+          <input
+            [attr.type]="dynamicFormControl.type"
+            class="
+              w-4
+              h-4
+            "
+            [checked]="dynamicFormControl.value"
+            (change)="dynamicFormControl.value = !dynamicFormControl.value"
+          />
+          <div>
+            {{dynamicFormControl.label}}
+          </div>
+        </ng-container>
+        <!--Textarea-->
+        <ng-container
+          *ngIf="dynamicFormControl.type === 'textarea'"
+        >
+          <textarea
+            class="
+              border-2
+              rounded
+              outline-none
+              px-1
+            "
+            [cols]="32"
+            [rows]="4"
+            [(ngModel)]="dynamicFormControl.value"
+          ></textarea>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>

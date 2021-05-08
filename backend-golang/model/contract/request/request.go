@@ -1,14 +1,18 @@
 package request
 
 import (
+	"encoding/json"
+	"errors"
 	"time"
 )
 
 type RentalType int
+
 const (
 	DailyInsideCity = 0
-	DailyTraveling = 1
-	Monthly = 2
+	DailyTraveling  = 1
+	Monthly         = 2
+	ForSale         = 10
 )
 
 type Rental struct {
@@ -28,10 +32,24 @@ type Body struct {
 		RentalsDailyInsideCity []Rental `json:"dailyInsideCity,omitempty"`
 		RentalsDailyTraveling  []Rental `json:"dailyTraveling,omitempty"`
 		RentalsMonthly         []Rental `json:"monthly,omitempty"`
-		Sales                  []Sale   `json:"forSale,omitempty"`
+		Sales                  []Rental `json:"forSale,omitempty"`
 	} `json:"requests"`
 	FullName    string `json:"fullName"`
 	Email       string `json:"email"`
-	PhoneNumber string `json:"phone_number"`
+	PhoneNumber string `json:"phoneNumber"`
 	Note        string `json:"note"`
 }
+
+func (d *Rental) Scan(val interface{}) error {
+	b, ok := val.([]byte)
+	if ok {
+		err := json.Unmarshal(
+			b,
+			&d,
+		)
+		return err
+	} else {
+		return errors.New("invalid rental usage data")
+	}
+}
+

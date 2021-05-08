@@ -6,7 +6,7 @@ import (
 )
 
 type MediaFile struct {
-	Title string `json:"title"`
+	Title  string `json:"title"`
 	Source string `json:"source"`
 }
 

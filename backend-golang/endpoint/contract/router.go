@@ -11,5 +11,17 @@ func Router() http.Handler {
 		"/process-request",
 		ProcessRequest,
 	)
+	r.Get(
+		"/cooked-contracts",
+		List,
+	)
+	r.Post(
+		"/cooked-contracts-v2",
+		ListV2,
+	)
+	r.Post(
+		"/update-visibility",
+		UpdateVisibility,
+	)
 	return r
 }

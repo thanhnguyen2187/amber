@@ -44,9 +44,9 @@
                     "name": "Honda Wave",
                     "capacity": 125,
                     "type": "semi-automatic",
-                    "daily_rental_fee_inside_city": 5,
-                    "daily_rental_fee_traveling": 10,
-                    "monthly_rental_fee": 45
+                    "dailyRentalFeeInsideCity": 5,
+                    "dailyRentalFeeTraveling": 10,
+                    "monthlyRentalFee": 45
                 }
                 ',
                 '
@@ -74,9 +74,9 @@
                     "capacity": 110,
                     "type": "automatic",
                     "cost": 280,
-                    "daily_rental_fee_inside_city": 7.5,
-                    "daily_rental_fee_traveling": 15,
-                    "monthly_rental_fee": 50
+                    "dailyRentalFeeInsideCity": 7.5,
+                    "dailyRentalFeeTraveling": 15,
+                    "monthlyRentalFee": 50
                 }
                 ',
                 '
@@ -108,9 +108,9 @@
                     "capacity": 150,
                     "type": "manual",
                     "cost": 2500,
-                    "daily_rental_fee_inside_city": 12.5,
-                    "daily_rental_fee_traveling": 25,
-                    "monthly_rental_fee": 250
+                    "dailyRentalFeeInsideCity": 12.5,
+                    "dailyRentalFeeTraveling": 25,
+                    "monthlyRentalFee": 250
                 }
                 ',
                 '
@@ -134,8 +134,8 @@
                     "capacity": 150,
                     "type": "manual",
                     "cost": 2000,
-                    "daily_rental_fee_traveling": 20,
-                    "monthly_rental_fee": 200
+                    "dailyRentalFeeTraveling": 20,
+                    "monthlyRentalFee": 200
                 }
                 ',
                 '
@@ -163,7 +163,7 @@
                     "capacity": 250,
                     "type": "manual",
                     "cost": 3000,
-                    "daily_rental_fee_traveling": 40
+                    "dailyRentalFeeTraveling": 40
                 }
                 ',
                 '
@@ -191,8 +191,8 @@
                     "capacity": 115,
                     "type": "semi-automatic",
                     "cost": 1000,
-                    "daily_rental_fee_inside_city": 7,
-                    "daily_rental_fee_traveling": 14
+                    "dailyRentalFeeInsideCity": 7,
+                    "dailyRentalFeeTraveling": 14
                 }
                 ',
                 '

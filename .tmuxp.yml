@@ -50,7 +50,7 @@ windows:
   - shell_command: clear
     focus: 'true'
   - shell_command:
-    - ./start_database_server.sh && sleep 5 && ./run_mysqldef.sh && ./do_seed.sh
+    - ./start_database_server.sh # && sleep 5 && ./run_mysqldef.sh && ./do_seed.sh
   - shell_command: null
   # - shell_command:
   #   - clear

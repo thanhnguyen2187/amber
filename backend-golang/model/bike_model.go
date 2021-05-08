@@ -13,9 +13,9 @@ type BikeModelData struct {
 	Type                     string  `json:"type"`
 	Capacity                 int     `json:"capacity"`
 	Cost                     float32 `json:"cost"`
-	DailyRentalFeeInsideCity float32 `json:"daily_rental_fee_inside_city"`
-	DailyRentalFeeTraveling  float32 `json:"daily_rental_fee_traveling"`
-	MonthlyRentalFee         float32 `json:"monthly_rental_fee"`
+	DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
+	DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
+	MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
 }
 
 func (d *BikeModelData) Scan(val interface{}) error {
@@ -31,23 +31,23 @@ func (d *BikeModelData) Scan(val interface{}) error {
 	}
 }
 
-func (d BikeModelData) MarshalJSON() (
-	[]byte,
-	error,
-) {
-	return json.Marshal(
-		struct {
-			Brand                    string  `json:"brand"`
-			Name                     string  `json:"name"`
-			Type                     string  `json:"type"`
-			Capacity                 int     `json:"capacity"`
-			Cost                     float32 `json:"cost"`
-			DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
-			DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
-			MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
-		}(d),
-	)
-}
+// func (d BikeModelData) MarshalJSON() (
+// 	[]byte,
+// 	error,
+// ) {
+// 	return json.Marshal(
+// 		struct {
+// 			Brand                    string  `json:"brand"`
+// 			Name                     string  `json:"name"`
+// 			Type                     string  `json:"type"`
+// 			Capacity                 int     `json:"capacity"`
+// 			Cost                     float32 `json:"cost"`
+// 			DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
+// 			DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
+// 			MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
+// 		}(d),
+// 	)
+// }
 
 type BikeModel struct {
 	Id         int           `json:"id"`

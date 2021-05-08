@@ -66,7 +66,7 @@ func List(
 		)
 		if err != nil {
 			log.Printf(
-				"Error happened when unmarshaling: %v",
+				"Errors happened when marshaling: %v",
 				err,
 			)
 		} else {
