@@ -40,56 +40,23 @@
           <amber-modal
             [(display)]="displaySearch"
             [dismissAction]="reloadDataV2.bind(this)"
+            title="Search"
           >
-            <div
-              class="
-                border-4
-                rounded-xl
-                p-4
-                bg-white
-                flex
-                flex-col
-                gap-y-2
-              "
+            <amber-dynamic-form
+              [dynamicFormGroups]="dynamicFormGroups"
             >
-              <div
-                class="
-                  border-b-4
-                  text-xl
-                  mb-1
-                  font-semibold
-                "
-              >
-                Search
-              </div>
-              <div
-                style="grid-template-columns: repeat(2, max-content)"
-                class="
-                  flex
-                  flex-col
-                  gap-y-4
-                  items-baseline
-                "
-              >
-                <amber-dynamic-form
-                  [dynamicFormGroups]="dynamicFormGroups"
-                ></amber-dynamic-form>
-              </div>
-            </div>
+            </amber-dynamic-form>
           </amber-modal>
         </div>
       </div>
     </app-table-cell>
   </ng-container>
-
-
   <ng-container
     *ngFor="let headerCell of headerCells"
   >
     <app-table-cell
       [tableCell]="headerCell"
     ></app-table-cell>
-
   </ng-container>
   <ng-container
     *ngFor="let cookedContract of cookedContracts"
@@ -145,6 +112,11 @@
         <amber-icon
           backgroundImageUrl="assets/zoom-in.svg"
           size="1.25em"
+          (click)="cookedContract.displayDetails = true"
+        ></amber-icon>
+        <amber-icon
+          backgroundImageUrl="assets/records.svg"
+          size="1.25em"
         ></amber-icon>
         <amber-icon
           backgroundImageUrl="assets/dollar.svg"
@@ -166,8 +138,12 @@
           *ngIf="cookedContract.visibility === 1"
           (click)="toggleContractVisibility(cookedContract)"
         ></amber-icon>
+        <app-contract-details
+          [(display)]="cookedContract.displayDetails"
+          [cookedContract]="cookedContract"
+        ></app-contract-details>
       </div>
     </app-table-cell>
-  </ng-container>
 
+  </ng-container>
 </app-table-master>

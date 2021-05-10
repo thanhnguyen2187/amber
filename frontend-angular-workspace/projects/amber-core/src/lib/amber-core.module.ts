@@ -8,6 +8,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { FormsModule } from '@angular/forms';
+import { CommonSelectDirective } from './directives/common-select.directive';
+import { CommonInputTextDirective } from './directives/common-input-text.directive';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { FormsModule } from '@angular/forms';
     ButtonComponent,
     ModalComponent,
     DynamicFormComponent,
+    CommonSelectDirective,
+    CommonInputTextDirective,
   ],
   imports: [
     OverlayModule,
@@ -32,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     ButtonComponent,
     ModalComponent,
     DynamicFormComponent,
+    CommonSelectDirective,
   ]
 })
 export class AmberCoreModule { }

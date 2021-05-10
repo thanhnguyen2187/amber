@@ -16,3 +16,5 @@ export * from './lib/components/dynamic-form/dynamic-form.component';
 
 export * from './lib/utility-functions/range';
 export * from './lib/components/dynamic-form/dynamic-form.interfaces';
+
+export * from './lib/directives/common-select.directive';

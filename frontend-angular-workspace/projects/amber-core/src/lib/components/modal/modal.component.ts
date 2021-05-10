@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ModalComponent implements OnInit {
 
   displayValue = false;
+  @Input() title = '';
 
   @Input() get display(): boolean {
     return this.displayValue;

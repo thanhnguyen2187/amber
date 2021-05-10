@@ -1,0 +1,114 @@
+<div
+  style="grid-template-columns: repeat(2, max-content)"
+  class="
+    grid
+    gap-2
+  "
+>
+  <!--Type-->
+  <div>
+    Type
+  </div>
+  <div>
+    <select
+      [(ngModel)]="vehicleUsage.type"
+      amberCommonSelect
+    >
+      <option
+        *ngFor="let vehicleUsageType of vehicleUsageTypes"
+        [ngValue]="vehicleUsageType.value"
+      >
+        {{vehicleUsageType.label}}
+      </option>
+    </select>
+  </div>
+
+  <!--Bike Model-->
+  <div>
+    Bike Model
+  </div>
+  <div>
+    <select
+      amberCommonSelect
+    >
+      <option>Honda Win...</option>
+      <option>Honda Win...</option>
+      <option>Honda Win...</option>
+      <option>Honda Win...</option>
+    </select>
+  </div>
+
+  <!--Amount-->
+  <div>
+    Amount
+  </div>
+  <div
+    class="
+      flex
+      items-center
+      gap-2
+    "
+  >
+    <amber-icon
+      backgroundImageUrl="assets/minus.svg"
+      size="1em"
+    ></amber-icon>
+    <input
+      type="number"
+      class="
+        w-12
+        outline-none
+        border-2
+        rounded
+        flex-initial
+      "
+    />
+    <amber-icon
+      backgroundImageUrl="assets/plus.svg"
+      size="1em"
+    ></amber-icon>
+  </div>
+
+  <!--Date Start-->
+  <div>
+    Date Start
+  </div>
+  <div>
+    {{vehicleUsage.dateStart}}
+  </div>
+
+  <!--Date End-->
+  <div>
+    Date End
+  </div>
+  <div>
+    {{vehicleUsage.dateEnd}}
+  </div>
+
+  <!--Day Count-->
+  <div>
+    Day Count
+  </div>
+  <div>
+    {{vehicleUsage.dayCount}}
+  </div>
+
+  <!--Month Count-->
+  <ng-container>
+    <div>
+      Month Count
+    </div>
+    <div>
+      {{vehicleUsage.monthCount}}
+    </div>
+  </ng-container>
+
+  <!--Total-->
+  <div>
+    Total
+  </div>
+  <div>
+    Total
+  </div>
+
+</div>

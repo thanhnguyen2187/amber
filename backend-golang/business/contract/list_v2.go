@@ -12,14 +12,15 @@ func ListV2(
 	orders []string,
 	body list.ContractBody,
 ) (
-	[]contractModel.Cooked,
-	int,
-	error,
+	cookedContracts []contractModel.Cooked,
+	total int,
+	err error,
 ) {
-	return contractData.ListV2(
+	cookedContracts, total, err = contractData.ListV2(
 		size,
 		page,
 		orders,
 		body,
 	)
+	return cookedContracts, total, err
 }

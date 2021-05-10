@@ -7,6 +7,7 @@ import (
 	"amber-backend/model/customer"
 	"encoding/json"
 	"errors"
+	"time"
 )
 
 type Usage struct {
@@ -17,8 +18,8 @@ type Usage struct {
 	DayCount      float64             `json:"dayCount"`
 	MonthCount    float64             `json:"monthCount"`
 	Price         float64             `json:"price"`
-	DateStart     string              `json:"dateStart"`
-	DateEnd       string              `json:"dateEnd"`
+	DateStart     time.Time           `json:"dateStart"`
+	DateEnd       time.Time           `json:"dateEnd"`
 	Total         float64             `json:"total"`
 }
 

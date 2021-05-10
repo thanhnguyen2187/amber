@@ -7,13 +7,17 @@ import { LayoutsModule } from '../../layouts/layouts.module';
 import { TableModule } from '../table/table.module';
 import { AmberCoreModule } from 'amber-core';
 import { ContractTableComponent } from './components/contract-table/contract-table.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContractDetailsComponent } from './components/contract-details/contract-details.component';
+import { VehicleUsageDetailsComponent } from './components/vehicle-usage-details/vehicle-usage-details.component';
 
 
 @NgModule({
   declarations: [
     BodyContractComponent,
     ContractTableComponent,
+    ContractDetailsComponent,
+    VehicleUsageDetailsComponent,
   ],
     imports: [
         CommonModule,
@@ -22,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         AmberCoreModule,
         BodyContractRoutingModule,
         ReactiveFormsModule,
+        FormsModule,
     ],
 })
 export class BodyContractModule { }

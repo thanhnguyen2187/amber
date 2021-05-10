@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DynamicFormControl, DynamicFormControlType, DynamicFormGroup } from './dynamic-form.interfaces';
+import { toggleRadioButton } from './functions/dynamic-form-group.toggle-radio-button';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,6 +11,8 @@ import { DynamicFormControl, DynamicFormControlType, DynamicFormGroup } from './
 export class DynamicFormComponent implements OnInit {
 
   @Input() dynamicFormGroups: DynamicFormGroup[] = [];
+
+  toggleRadioButton = toggleRadioButton;
 
   constructor() { }
 

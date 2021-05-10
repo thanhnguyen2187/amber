@@ -1,0 +1,185 @@
+<amber-modal
+  [(display)]="display"
+  title="Contract Details"
+>
+  <div
+    class="
+      flex
+      flex-col
+      gap-y-4
+    "
+  >
+    <amber-dynamic-form
+      [dynamicFormGroups]="dynamicFormGroups"
+    ></amber-dynamic-form>
+    <div
+      class="
+        flex
+        flex-col
+        gap-y-4
+      "
+    >
+      <div
+        class="
+          text-lg
+        "
+      >
+        Vehicle List
+      </div>
+      <div
+        style="grid-template-columns: repeat({{headerLabels.length}}, max-content)"
+        class="
+          grid
+        "
+      >
+        <!--Header-->
+        <ng-container
+          *ngFor="let headerLabel of headerLabels"
+        >
+          <app-table-cell
+            [tableCell]="createHeaderCell(headerLabel)"
+          ></app-table-cell>
+        </ng-container>
+
+        <!--Body-->
+        <ng-container
+          *ngFor="let vehicleUsage of cookedContract.vehicleUsages"
+        >
+          <!--Purpose-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div>{{vehicleUsage.typeDisplay}}</div>
+          </app-table-cell>
+          <!--Bike Name-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div>{{vehicleUsage.bikeModelData.name}}</div>
+          </app-table-cell>
+          <!--Price-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div>{{vehicleUsage.price}} USD</div>
+          </app-table-cell>
+          <!--Amount-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div>{{vehicleUsage.amount}}</div>
+          </app-table-cell>
+          <!--Date Start-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div
+              *ngIf="vehicleUsage.type < 10"
+            >
+              {{vehicleUsage.dateStart}}
+            </div>
+          </app-table-cell>
+          <!--Date End-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div
+              *ngIf="vehicleUsage.type < 10"
+            >
+              {{vehicleUsage.dateEnd}}
+            </div>
+          </app-table-cell>
+          <!--Day Count-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div
+              *ngIf="vehicleUsage.type < 10"
+            >
+              {{vehicleUsage.dayCount}}
+            </div>
+          </app-table-cell>
+          <!--Month Count-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div
+              *ngIf="vehicleUsage.type === 2"
+            >
+              {{vehicleUsage.monthCount}}
+            </div>
+          </app-table-cell>
+          <!--Total-->
+          <app-table-cell
+            [tableCell]="customCell"
+          >
+            <div>
+              {{vehicleUsage.total}} USD
+            </div>
+          </app-table-cell>
+        </ng-container>
+
+        <!--Footer-->
+        <ng-container>
+          <div
+            class="
+              py-2
+              px-4
+              col-span-full
+              flex
+              justify-between
+            "
+          >
+            <div>
+              <amber-icon
+                backgroundImageUrl="assets/add-solid.svg"
+                size="1.25em"
+                (click)="displayUsage = true"
+              ></amber-icon>
+            </div>
+            <div>
+              {{usagesTotal}} USD
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div
+        class="
+          flex
+          flex-row-reverse
+          gap-2
+        "
+      >
+        <amber-button
+          backgroundColor="#4bdb84"
+          borderColor="#4bdb84"
+        >
+          <amber-icon
+            backgroundImageUrl="assets/checkmark.svg"
+            size="1em"
+          ></amber-icon>
+          Accept
+        </amber-button>
+        <amber-button
+          backgroundColor="#b8d1c2"
+          borderColor="#b8d1c2"
+        >
+          <amber-icon
+            backgroundImageUrl="assets/close.svg"
+            size="1em"
+          ></amber-icon>
+          Cancel
+        </amber-button>
+      </div>
+    </div>
+
+  </div>
+</amber-modal>
+
+<amber-modal
+  [(display)]="displayUsage"
+  title="Vehicle Usage"
+>
+  <app-vehicle-usage-details
+  ></app-vehicle-usage-details>
+</amber-modal>

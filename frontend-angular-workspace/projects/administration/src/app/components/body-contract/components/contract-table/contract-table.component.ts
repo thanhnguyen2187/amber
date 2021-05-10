@@ -36,6 +36,8 @@ export class ContractTableComponent implements OnInit {
     return JSON.stringify(this.dynamicFormGroups);
   }
 
+  displayDetails = false;
+
   constructor(
     private tableCellFactoryService: TableCellFactoryService,
     private dataService: BodyContractDataService,

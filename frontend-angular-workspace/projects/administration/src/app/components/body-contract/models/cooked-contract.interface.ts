@@ -10,4 +10,5 @@ export interface CookedContract {
   total: number;
   totalPaid: number;
   visibility: number;
+  displayDetails: boolean;
 }

@@ -6,18 +6,18 @@
   "
 >
   <ng-container
-    *ngFor="let formGroup of dynamicFormGroups; let groupIndex = index"
+    *ngFor="let dynamicFormGroup of dynamicFormGroups; let groupIndex = index"
   >
     <div
       class="
         text-lg
       "
-      *ngIf="formGroup.title"
+      *ngIf="dynamicFormGroup.title"
     >
-      {{formGroup.title}}
+      {{dynamicFormGroup.title}}
     </div>
     <div
-      style="grid-template-rows: repeat({{formGroup.rowsCount}}, max-content)"
+      style="grid-template-rows: repeat({{dynamicFormGroup.rowsCount}}, max-content);"
       class="
         grid
         gap-2
@@ -32,7 +32,7 @@
           gap-2
           items-center
         "
-        *ngFor="let dynamicFormControl of formGroup.formControls; let controlIndex = index"
+        *ngFor="let dynamicFormControl of dynamicFormGroup.formControls; let controlIndex = index"
       >
         <!--Text-->
         <ng-container
@@ -88,6 +88,37 @@
             [rows]="4"
             [(ngModel)]="dynamicFormControl.value"
           ></textarea>
+        </ng-container>
+        <!--Radiobutton-->
+        <ng-container
+          *ngIf="dynamicFormControl.type === 'radio'"
+        >
+          <input
+            class="
+              h-4
+              w-4
+            "
+            [type]="dynamicFormControl.type"
+            [name]="dynamicFormGroup.key"
+            [checked]="dynamicFormControl.value"
+            (change)="toggleRadioButton({dynamicFormGroup: dynamicFormGroup, controlIndex: controlIndex})"
+          />
+          <div
+            class="
+            "
+          >
+            {{dynamicFormControl.label}}
+          </div>
+        </ng-container>
+
+        <!--Blank-->
+        <ng-container
+          *ngIf="dynamicFormControl.type === 'blank'"
+        >
+          <!--
+            Nothing to be done here
+            since a div is wrapped outside
+          -->
         </ng-container>
       </div>
     </div>
