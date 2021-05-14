@@ -14,7 +14,7 @@ export * from './lib/components/button/button.component';
 export * from './lib/components/modal/modal.component';
 export * from './lib/components/dynamic-form/dynamic-form.component';
 
-export * from './lib/utility-functions/range';
+export * from './lib/utility-functions/public-api';
 export * from './lib/components/dynamic-form/dynamic-form.interfaces';
 
-export * from './lib/directives/common-select.directive';
+export * from './lib/directives/public-api';

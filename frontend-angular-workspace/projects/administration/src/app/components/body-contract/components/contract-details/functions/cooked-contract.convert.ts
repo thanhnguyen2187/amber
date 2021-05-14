@@ -24,7 +24,6 @@ export function convertCookedContract(
   ];
   stateGroup.formControls = stateLabelKeyPairs.map(
     ([label, key]) => {
-      console.log(label, key, cookedContract.stateValue);
       return {
         type: 'radio',
         label,

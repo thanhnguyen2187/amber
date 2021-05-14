@@ -2,6 +2,7 @@ package contract
 
 import (
 	"amber-backend/core/db"
+	"amber-backend/model"
 	"amber-backend/model/contract"
 	"amber-backend/model/contract/request"
 	contractState "amber-backend/model/contract/state"
@@ -67,7 +68,10 @@ func generateVehicleUsagesQuery(
 	dialect := goqu.Dialect("mysql")
 	d := dialect.
 		Select(
+			"id",
+			"contract_id",
 			"type",
+			"model_id",
 			"model_data",
 			"amount",
 			"day_count",
@@ -79,8 +83,8 @@ func generateVehicleUsagesQuery(
 		).
 		From("contract_map_usage").
 		Where(
-			goqu.C("contract_id").
-				Eq(contractId),
+			goqu.C("contract_id").Eq(contractId),
+			goqu.C("visibility").Eq(model.Visible),
 		)
 
 	query, _, err = d.ToSQL()
@@ -111,7 +115,10 @@ func listVehicleUsages(
 		vehicleUsage := contract.Usage{}
 
 		err := rows.Scan(
+			&vehicleUsage.UsageId,
+			&vehicleUsage.ContractId,
 			&vehicleUsage.Type,
+			&vehicleUsage.BikeModelId,
 			&vehicleUsage.BikeModelData,
 			&vehicleUsage.Amount,
 			&vehicleUsage.DayCount,
@@ -124,6 +131,9 @@ func listVehicleUsages(
 		if err != nil {
 			return nil, err
 		}
+
+		vehicleUsage.DateStartDisplay = vehicleUsage.DateStart.Format("2006-01-02")
+		vehicleUsage.DateEndDisplay = vehicleUsage.DateEnd.Format("2006-01-02")
 
 		switch vehicleUsage.Type {
 		case request.DailyInsideCity:

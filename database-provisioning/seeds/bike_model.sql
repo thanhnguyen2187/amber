@@ -3,7 +3,7 @@
 
 /* create procedure seed_bike_model() */
 /* begin */
-/*     set @id = 0; */
+    set @id = 0;
 /*     set @index = 0; */
     delete from bike_model;
     /* while @index <= 10 do */
@@ -17,7 +17,8 @@
                     "name": "Honda Win Chinese copy",
                     "capacity": 100,
                     "type": "manual",
-                    "cost": 280
+                    "cost": 280,
+                    "possibleUsageTypes": [10]
                 }
                 ',
                 '
@@ -46,7 +47,8 @@
                     "type": "semi-automatic",
                     "dailyRentalFeeInsideCity": 5,
                     "dailyRentalFeeTraveling": 10,
-                    "monthlyRentalFee": 45
+                    "monthlyRentalFee": 45,
+                    "possibleUsageTypes": [0, 1, 2]
                 }
                 ',
                 '
@@ -76,7 +78,8 @@
                     "cost": 280,
                     "dailyRentalFeeInsideCity": 7.5,
                     "dailyRentalFeeTraveling": 15,
-                    "monthlyRentalFee": 50
+                    "monthlyRentalFee": 50,
+                    "possibleUsageTypes": [0, 1, 2, 10]
                 }
                 ',
                 '
@@ -110,7 +113,8 @@
                     "cost": 2500,
                     "dailyRentalFeeInsideCity": 12.5,
                     "dailyRentalFeeTraveling": 25,
-                    "monthlyRentalFee": 250
+                    "monthlyRentalFee": 250,
+                    "possibleUsageTypes": [0, 1, 2, 10]
                 }
                 ',
                 '
@@ -135,7 +139,8 @@
                     "type": "manual",
                     "cost": 2000,
                     "dailyRentalFeeTraveling": 20,
-                    "monthlyRentalFee": 200
+                    "monthlyRentalFee": 200,
+                    "possibleUsageTypes": [1, 2, 10]
                 }
                 ',
                 '
@@ -163,7 +168,8 @@
                     "capacity": 250,
                     "type": "manual",
                     "cost": 3000,
-                    "dailyRentalFeeTraveling": 40
+                    "dailyRentalFeeTraveling": 40,
+                    "possibleUsageTypes": [1, 10]
                 }
                 ',
                 '
@@ -192,7 +198,8 @@
                     "type": "semi-automatic",
                     "cost": 1000,
                     "dailyRentalFeeInsideCity": 7,
-                    "dailyRentalFeeTraveling": 14
+                    "dailyRentalFeeTraveling": 14,
+                    "possibleUsageTypes": [0, 1, 10]
                 }
                 ',
                 '

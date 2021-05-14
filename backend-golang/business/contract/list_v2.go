@@ -22,5 +22,17 @@ func ListV2(
 		orders,
 		body,
 	)
+
+	// for i := range cookedContracts {
+	// 	cookedContract := &cookedContracts[i]
+	// 	for j := range cookedContract.VehicleUsages {
+	// 		vehicleUsage := &cookedContract.VehicleUsages[j]
+	// 		if vehicleUsage.Type == request.ForSale {
+	// 			vehicleUsage.DateStartDisplay = ""
+	// 			vehicleUsage.DateEndDisplay = ""
+	// 		}
+	// 	}
+	// }
+
 	return cookedContracts, total, err
 }

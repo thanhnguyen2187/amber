@@ -43,6 +43,52 @@ export class CalendarDynamicService {
     return true;
   }
 
+  allowDaily(): boolean {
+    switch (this.selectedDates.length) {
+      case 0:
+        this.message = 'Please select a date range or at least 1 day.';
+        return false;
+      case 1:
+      case 2:
+        this.message = '';
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  // I am sure that I will hate myself for this,
+  // but I will also pat myself in the shoulder
+  // for thinking of such a convoluted and messy way to solve the problem
+  allowMonthly(): boolean {
+    switch (this.selectedDates.length) {
+      case 0:
+      case 1:
+        this.message = 'Please select a date range of at least 30 days.';
+        return false;
+      case 2:
+        if (
+          this.calendarStaticService.dayCount(
+            this.selectedDates[0],
+            this.selectedDates[1],
+          ) >= 30
+        ) {
+          this.message = '';
+          return true;
+        } else {
+          this.message = 'Please select a date range of at least 30 days.';
+          return false;
+        }
+      default:
+        return false;
+    }
+  }
+
+  // getAllowAction(
+  //   rentalType: number
+  // ): () => boolean {
+  // }
+
   updateSubjects(): void {
     // TODO: split the function
     this.titleCell$.next(
@@ -249,6 +295,7 @@ export class CalendarDynamicService {
       dateStart,
       dateEnd,
       action,
+      allowAction,
     }: {
       defaultSelectedDate:
         'none'
@@ -259,9 +306,12 @@ export class CalendarDynamicService {
       dateStart?: Date,
       dateEnd?: Date,
       action?: () => void,
+      allowAction?: () => boolean,
     }
   ): void {
     this.action = action ?? (() => {});
+    this.allowAction = allowAction ?? (() => true);
+    this.message = '';
     this.anchor = new Date();
     const today = startOfDay(new Date());
     switch (defaultSelectedDate) {

@@ -11,16 +11,21 @@ import (
 )
 
 type Usage struct {
-	Type          request.RentalType  `json:"type"`
-	BikeModelData model.BikeModelData `json:"bikeModelData"`
-	Amount        int                 `json:"amount"`
-	TypeDisplay   string              `json:"typeDisplay"`
-	DayCount      float64             `json:"dayCount"`
-	MonthCount    float64             `json:"monthCount"`
-	Price         float64             `json:"price"`
-	DateStart     time.Time           `json:"dateStart"`
-	DateEnd       time.Time           `json:"dateEnd"`
-	Total         float64             `json:"total"`
+	UsageId          int                 `json:"usageId"`
+	ContractId       int                 `json:"contractId"`
+	Type             request.RentalType  `json:"type"`
+	BikeModelId      int                 `json:"bikeModelId"`
+	BikeModelData    model.BikeModelData `json:"bikeModelData"`
+	Amount           int                 `json:"amount"`
+	TypeDisplay      string              `json:"typeDisplay"`
+	DayCount         float64             `json:"dayCount"`
+	MonthCount       float64             `json:"monthCount"`
+	Price            float64             `json:"price"`
+	DateStart        time.Time           `json:"dateStart"`
+	DateStartDisplay string              `json:"dateStartDisplay"`
+	DateEnd          time.Time           `json:"dateEnd"`
+	DateEndDisplay   string              `json:"dateEndDisplay"`
+	Total            float64             `json:"total"`
 }
 
 type Cooked struct {
@@ -29,6 +34,7 @@ type Cooked struct {
 	StateDisplay  string              `json:"stateDisplay"`
 	CustomerData  customer.Customer   `json:"customerData"`
 	VehicleUsages []Usage             `json:"vehicleUsages"`
+	Payments      []Payment           `json:"payments"`
 	Total         float64             `json:"total"`
 	TotalPaid     float64             `json:"totalPaid"`
 	Visibility    model.Visibility    `json:"visibility"`

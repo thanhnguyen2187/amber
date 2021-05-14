@@ -1,5 +1,6 @@
 create table contract_map_usage (
     id integer not null auto_increment primary key,
+    visibility tinyint default 1,
     date_created timestamp(6) not null default current_timestamp,
     date_modified timestamp(6) not null default current_timestamp on update current_timestamp,
 

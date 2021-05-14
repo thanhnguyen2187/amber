@@ -3,6 +3,9 @@ import { PrefixedHttpClientService } from '../../../services/prefixed-http-clien
 import { Observable, Subject } from 'rxjs';
 import { CookedContractsResponse } from '../models/cooked-contracts-response.interface';
 import { convertDynamicFormGroup } from 'amber-core';
+import { map } from 'rxjs/operators';
+import { VehicleUsageFactory } from '../data/vehicle-usage.factory';
+import { PaymentFactory } from '../data/payment.factory';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +43,20 @@ export class BodyContractDataService {
           body,
         }
       ) as Observable<CookedContractsResponse>
+    ).pipe(
+      map((response) => {
+        response.cookedContracts.forEach(
+          (cookedContract) => {
+            cookedContract.vehicleUsages = cookedContract.vehicleUsages.map(
+              VehicleUsageFactory.augment
+            );
+            cookedContract.payments = cookedContract.payments.map(
+              PaymentFactory.augment
+            );
+          }
+        );
+        return response;
+      }),
     ).subscribe(
       (response) => this.cookedContractsV2$.next(response)
     );

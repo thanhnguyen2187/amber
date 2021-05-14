@@ -1,0 +1,266 @@
+<div
+  class="
+    flex
+    flex-col
+    gap-y-4
+  "
+>
+  <div
+    class="
+      flex
+      flex-col
+      gap-y-4
+    "
+  >
+    <div
+      style="grid-template-columns: repeat({{headerLabels.length}}, max-content)"
+      class="
+        grid
+      "
+    >
+      <!--Header-->
+      <ng-container
+        *ngFor="let headerLabel of headerLabels"
+      >
+        <app-table-cell
+          [tableCell]="createHeaderCell(headerLabel)"
+        ></app-table-cell>
+      </ng-container>
+
+      <!--Contract's Payments-->
+      <ng-container
+        *ngFor="let payment of cookedContract.payments; let index = index"
+      >
+        <!--Date Created-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div>{{payment.dateCreatedDisplay}}</div>
+        </app-table-cell>
+
+        <!--Note-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div
+            class="
+              w-60
+              px-1
+              whitespace-pre-line
+            "
+          >
+            {{payment.note}}
+          </div>
+        </app-table-cell>
+
+        <!--Amount-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div
+            class="
+              flex
+              gap-2
+            "
+          >
+            <div
+              class="
+                w-12
+                text-center
+              "
+            >
+              {{payment.amount}}
+            </div>
+            <div>
+              USD
+            </div>
+          </div>
+        </app-table-cell>
+
+        <!--Actions-->
+        <app-table-cell
+          [tableCell]="customCell"
+        ></app-table-cell>
+      </ng-container>
+
+      <!--New Payments-->
+      <ng-container
+        *ngFor="let payment of newPayments; let index = index"
+      >
+        <!--Date Created-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div>{{payment.dateCreatedDisplay}}</div>
+        </app-table-cell>
+
+        <!--Note-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div
+            class="
+              w-60
+              px-1
+              whitespace-pre-line
+            "
+            *ngIf="!payment.editing"
+          >
+            {{payment.note}}
+          </div>
+          <textarea
+            class="
+              w-60
+            "
+            *ngIf="payment.editing"
+            [(ngModel)]="payment.note"
+            amberCommonInputText
+          ></textarea>
+        </app-table-cell>
+
+        <!--Amount-->
+        <app-table-cell
+          [tableCell]="customCell"
+        >
+          <div
+            class="
+              flex
+              gap-2
+              justify-between
+              items-center
+            "
+          >
+            <div
+              class="
+                w-12
+                text-center
+              "
+              *ngIf="!payment.editing"
+            >
+              {{payment.amount}}
+            </div>
+            <input
+              class="
+                w-12
+                text-center
+              "
+              type="number"
+              *ngIf="payment.editing"
+              [(ngModel)]="payment.amount"
+              amberCommonInputText
+            />
+            <div>
+              USD
+            </div>
+          </div>
+
+        </app-table-cell>
+
+        <!--Actions-->
+        <div
+          class="
+            py-3
+            flex
+            gap-2
+            justify-center
+            border-b-2
+          "
+        >
+          <amber-icon
+            *ngIf="payment.paymentId === 0 && !payment.editing && !payment.removing"
+            backgroundImageUrl="assets/edit.svg"
+            (click)="payment.editing = true"
+            size="1em"
+          ></amber-icon>
+          <amber-icon
+            *ngIf="payment.paymentId === 0 && !payment.editing && !payment.removing"
+            backgroundImageUrl="assets/trash.svg"
+            size="1em"
+            (click)="payment.removing = true"
+          ></amber-icon>
+          <amber-icon
+            *ngIf="payment.paymentId === 0 && payment.editing && !payment.removing"
+            backgroundImageUrl="assets/checkmark.svg"
+            size="1em"
+            (click)="payment.editing = false"
+          ></amber-icon>
+          <amber-icon
+            *ngIf="payment.paymentId === 0 && payment.editing && !payment.removing"
+            size="1em"
+          ></amber-icon>
+          <amber-icon
+            *ngIf="payment.removing"
+            backgroundImageUrl="assets/checkmark.svg"
+            size="1em"
+            (click)="removePayment(index)"
+          ></amber-icon>
+          <amber-icon
+            *ngIf="payment.removing"
+            backgroundImageUrl="assets/close.svg"
+            size="1em"
+            (click)="payment.removing = false"
+          ></amber-icon>
+        </div>
+
+      </ng-container>
+
+      <!--Footer-->
+      <ng-container>
+        <div
+          style="grid-column: span {{headerLabels.length - 1}} / span {{headerLabels.length - 1}}"
+          class="
+            py-2
+            px-4
+            flex
+            justify-between
+          "
+        >
+          <div>
+            <amber-icon
+              backgroundImageUrl="assets/add-solid.svg"
+              size="1.25em"
+              (click)="addNewPayment()"
+            >
+            </amber-icon>
+          </div>
+          <div
+            class="font-semibold"
+          >
+            Paid {{totalPayments}} / {{totalVehicleUsages}} USD
+          </div>
+        </div>
+        <div></div>
+      </ng-container>
+    </div>
+    <div
+      class="
+        flex
+        flex-row-reverse
+        gap-2
+      "
+    >
+      <amber-button
+        backgroundColor="#4bdb84"
+        borderColor="#4bdb84"
+        [action]="accept.bind(this)"
+      >
+        <amber-icon
+          backgroundImageUrl="assets/checkmark.svg"
+          size="1em"
+        ></amber-icon>
+        Accept
+      </amber-button>
+      <amber-button
+        backgroundColor="#b8d1c2"
+        borderColor="#b8d1c2"
+        [action]="cancel.bind(this)"
+      >
+        <amber-icon
+          backgroundImageUrl="assets/close.svg"
+          size="1em"
+        ></amber-icon>
+        Cancel
+      </amber-button>
+    </div>
+  </div>
+</div>

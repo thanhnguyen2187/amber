@@ -17,6 +17,7 @@ create table bike_model (
         "daily_rental_fee_traveling_display": "0 USD",
         "monthly_rental_fee": 0 // USD
         "monthly_rental_fee_display": "0 VND"
+        "possible_usage_types": [0, 1, 2, 10],
     }
     */
     

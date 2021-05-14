@@ -7,4 +7,5 @@ export interface BikeModelData {
   dailyRentalFeeInsideCity: number;
   dailyRentalFeeTraveling: number;
   monthlyRentalFee: number;
+  possibleUsageTypes: number[];
 }

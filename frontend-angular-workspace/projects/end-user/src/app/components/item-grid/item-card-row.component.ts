@@ -148,9 +148,8 @@ export class ItemCardRowComponent implements OnInit {
         this.calendarDynamicService.resetCalendarBox(
           {
             defaultSelectedDate: '3-days',
-            action: () => {
-              this.addBikeRental();
-            }
+            action: this.addBikeRental.bind(this),
+            allowAction: this.calendarDynamicService.allowDaily.bind(this.calendarDynamicService),
           }
         );
         break;
@@ -158,9 +157,8 @@ export class ItemCardRowComponent implements OnInit {
         this.calendarDynamicService.resetCalendarBox(
           {
             defaultSelectedDate: '7-days',
-            action: () => {
-              this.addBikeRental();
-            }
+            action: this.addBikeRental.bind(this),
+            allowAction: this.calendarDynamicService.allowDaily.bind(this.calendarDynamicService),
           }
         );
         break;
@@ -168,9 +166,8 @@ export class ItemCardRowComponent implements OnInit {
         this.calendarDynamicService.resetCalendarBox(
           {
             defaultSelectedDate: '30-days',
-            action: () => {
-              this.addBikeRental();
-            }
+            action: this.addBikeRental.bind(this),
+            allowAction: this.calendarDynamicService.allowMonthly.bind(this.calendarDynamicService),
           }
         );
         break;

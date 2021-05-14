@@ -8,10 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
   @Input() disabled = false;
+  @Input() disableTabIndex = false;
   @Input() backgroundColor = 'white';
   @Input() borderColor = 'gray';
   @Input() disabledBackgroundColor = 'gray';
   @Input() disabledBorderColor = 'gray';
+  @Input() action = () => {};
+  doNothing(): void {}
 
   constructor() { }
 

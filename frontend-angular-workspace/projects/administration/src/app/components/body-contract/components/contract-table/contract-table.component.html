@@ -1,6 +1,7 @@
 <app-table-master
   [columnCount]="5"
 >
+  <!--Title and Reload, and Search Button-->
   <ng-container>
     <app-table-cell
       [tableCell]="customCell"
@@ -51,6 +52,8 @@
       </div>
     </app-table-cell>
   </ng-container>
+
+  <!--Header-->
   <ng-container
     *ngFor="let headerCell of headerCells"
   >
@@ -58,6 +61,8 @@
       [tableCell]="headerCell"
     ></app-table-cell>
   </ng-container>
+
+  <!--Body-->
   <ng-container
     *ngFor="let cookedContract of cookedContracts"
   >
@@ -109,6 +114,7 @@
           gap-1
         "
       >
+
         <amber-icon
           backgroundImageUrl="assets/zoom-in.svg"
           size="1.25em"
@@ -121,6 +127,7 @@
         <amber-icon
           backgroundImageUrl="assets/dollar.svg"
           size="1.25em"
+          (click)="cookedContract.displayPayments = true"
         ></amber-icon>
         <amber-icon
           backgroundImageUrl="assets/print.svg"
@@ -147,3 +154,4 @@
 
   </ng-container>
 </app-table-master>
+

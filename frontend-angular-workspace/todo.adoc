@@ -1,0 +1,39 @@
+= Todos
+
+== Administration
+
+=== Frontend
+
+* [ ] `PaymentDetails` amount input validation
+** [ ] If total of payments are more than total of usages, disallow accept button
+
+* [ ] `PaymentDetails` cancel button
+** [ ] Hide the modal
+
+* [ ] `PaymentDetails` accept button
+** [ ] Mutate the current payments
+** [ ] Hide the modal
+
+* [ ] `ContractDetails` date range input
+** [ ] Only allow one month or more for monthly rental
+
+* [ ] `ContractDetails` cancel button
+
+* [ ] `ContractDetails` accept button
+** [ ] Hide the modal
+** [ ] Send data to backend
+** [ ] Reload data
+
+* [ ] `ContractTable` multi call to `contract/bike-model/options`
+** [ ] Find a better way to structure code and avoid API call
+
+'''
+
+=== Backend
+
+* [ ] API for updating payments
+** [x] Create the payments
+** [x] Update the total paid
+** [ ] Switch the contract state
+
+== End-user

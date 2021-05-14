@@ -50,12 +50,12 @@
     >
       <div
         class="
-        grid
-        grid-cols-7
-        bg-gray-400
-        p-1
-        rounded-xl
-      "
+          grid
+          grid-cols-7
+          bg-gray-400
+          p-1
+          rounded-xl
+        "
       >
         <ng-container
           *ngFor="let cell of dayOfWeekCells"
@@ -67,11 +67,11 @@
       </div>
       <div
         class="
-        grid
-        grid-cols-7
-        p-1
-        gap-y-1
-      "
+          grid
+          grid-cols-7
+          p-1
+          gap-y-1
+        "
       >
         <ng-container
           *ngFor="let cell of dayOfMonthCells"
@@ -90,9 +90,9 @@
     >
       <div
         class="
-        grid
-        grid-cols-3
-      "
+          grid
+          grid-cols-3
+        "
       >
         <ng-container
           *ngFor="let cell of monthCells"
@@ -107,26 +107,16 @@
     <!--Buttons-->
     <div
       class="
-      flex
-      space-x-2
-    "
+        flex
+        justify-center
+        gap-2
+      "
     >
-      <div
-        class="
-          rounded
-          bg-orange-500
-          flex-1
-          flex
-          justify-center
-          items-center
-          space-x-2
-          p-1
-          cursor-pointer
-          hover:ring-1
-          active:ring-2
-          select-none
-        "
-        (click)="cancel()"
+      <amber-button
+        [disableTabIndex]="true"
+        backgroundColor="#b8d1c2"
+        borderColor="#b8d1c2"
+        [action]="cancel.bind(this)"
       >
         <amber-icon
           backgroundImageUrl="assets/close.svg"
@@ -136,23 +126,13 @@
         <div>
           Cancel
         </div>
-      </div>
-      <div
-        class="
-          rounded
-          bg-green-400
-          flex-1
-          flex
-          justify-center
-          items-center
-          space-x-2
-          p-1
-          cursor-pointer
-          hover:ring-1
-          active:ring-2
-          select-none
-        "
-        (click)="calendarDynamicService.action()"
+      </amber-button>
+      <amber-button
+        backgroundColor="#4bdb84"
+        borderColor="#4bdb84"
+        [disableTabIndex]="true"
+        [disabled]="!calendarDynamicService.allowAction()"
+        [action]="calendarDynamicService.action.bind(calendarDynamicService)"
       >
         <amber-icon
           backgroundImageUrl="assets/checkmark.svg"
@@ -162,12 +142,17 @@
         <div>
           Accept
         </div>
-      </div>
+      </amber-button>
     </div>
 
     <!--Message-->
     <div
       *ngIf="calendarDynamicService.message"
+      class="
+        px-4
+        py-2
+        font-semibold
+      "
     >
       {{calendarDynamicService.message}}
     </div>

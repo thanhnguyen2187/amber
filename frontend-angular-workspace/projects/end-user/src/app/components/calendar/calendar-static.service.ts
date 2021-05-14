@@ -2,7 +2,22 @@ import { Injectable } from '@angular/core';
 import { CalendarCell, CalendarCellType, CalendarMode } from './calendar-cell.model';
 import { range } from 'amber-core';
 import { enUS } from 'date-fns/esm/locale';
-import { eachDayOfInterval, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
+import { differenceInDays, eachDayOfInterval, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns';
+
+function round(
+  {
+    value,
+    step = 1,
+    mathFunction,
+  }: {
+    value: number,
+    step: number,
+    mathFunction: (x: number) => number,
+  }
+): number {
+  const inverse = 1 / step;
+  return mathFunction(value * inverse) / inverse;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -166,6 +181,30 @@ export class CalendarStaticService {
       date,
       action: () => {},
     };
+  }
+
+  // TODO: remove duplication of this and the function inside table row...
+  dayCount(
+    dateStart: Date,
+    dateEnd: Date,
+  ): number {
+    return differenceInDays(
+      dateEnd,
+      dateStart,
+    ) + 1;
+  }
+
+  monthCount(
+    dateStart: Date,
+    dateEnd: Date,
+  ): number {
+    return round(
+      {
+        value: this.dayCount(dateStart, dateEnd) / 30,
+        step: 0.2,
+        mathFunction: Math.ceil,
+      }
+    );
   }
 
   constructor() { }

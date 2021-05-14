@@ -13,6 +13,7 @@ export class CommonSelectDirective {
       'border-2',
       'rounded',
       'outline-none',
+      'w-56',
     ].join(' ');
   }
 

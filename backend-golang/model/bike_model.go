@@ -16,6 +16,7 @@ type BikeModelData struct {
 	DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
 	DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
 	MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
+	PossibleUsageTypes       []int   `json:"possibleUsageTypes"`
 }
 
 func (d *BikeModelData) Scan(val interface{}) error {

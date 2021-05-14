@@ -43,72 +43,53 @@
 
         <!--Body-->
         <ng-container
-          *ngFor="let vehicleUsage of cookedContract.vehicleUsages"
+          *ngFor="let vehicleUsage of cookedContract.vehicleUsages; let index = index"
         >
-          <!--Purpose-->
-          <app-table-cell
-            [tableCell]="customCell"
-          >
-            <div>{{vehicleUsage.typeDisplay}}</div>
-          </app-table-cell>
+
           <!--Bike Name-->
           <app-table-cell
             [tableCell]="customCell"
           >
             <div>{{vehicleUsage.bikeModelData.name}}</div>
           </app-table-cell>
+
           <!--Price-->
           <app-table-cell
             [tableCell]="customCell"
           >
             <div>{{vehicleUsage.price}} USD</div>
           </app-table-cell>
+
           <!--Amount-->
           <app-table-cell
             [tableCell]="customCell"
           >
             <div>{{vehicleUsage.amount}}</div>
           </app-table-cell>
-          <!--Date Start-->
+
+          <!--Purpose-->
           <app-table-cell
             [tableCell]="customCell"
           >
-            <div
-              *ngIf="vehicleUsage.type < 10"
-            >
-              {{vehicleUsage.dateStart}}
-            </div>
+            <div>{{vehicleUsage.typeDisplay}}</div>
           </app-table-cell>
-          <!--Date End-->
-          <app-table-cell
-            [tableCell]="customCell"
-          >
-            <div
-              *ngIf="vehicleUsage.type < 10"
-            >
-              {{vehicleUsage.dateEnd}}
-            </div>
-          </app-table-cell>
+
           <!--Day Count-->
           <app-table-cell
             [tableCell]="customCell"
           >
             <div
-              *ngIf="vehicleUsage.type < 10"
+              *ngIf="vehicleUsage.type <= 1"
             >
-              {{vehicleUsage.dayCount}}
+              {{vehicleUsage.dayCount}} day(s)
             </div>
-          </app-table-cell>
-          <!--Month Count-->
-          <app-table-cell
-            [tableCell]="customCell"
-          >
             <div
               *ngIf="vehicleUsage.type === 2"
             >
-              {{vehicleUsage.monthCount}}
+              {{vehicleUsage.monthCount}} month(s)
             </div>
           </app-table-cell>
+
           <!--Total-->
           <app-table-cell
             [tableCell]="customCell"
@@ -117,15 +98,37 @@
               {{vehicleUsage.total}} USD
             </div>
           </app-table-cell>
+
+          <!--Actions-->
+          <div
+            class="
+              flex
+              gap-2
+              items-center
+              justify-center
+              border-b-2
+            "
+          >
+            <amber-icon
+              backgroundImageUrl="assets/edit.svg"
+              size="1em"
+              (click)="selectedUsage = copyVehicleUsage(vehicleUsage); displayUsage = true; selectedUsageIndex = index"
+            ></amber-icon>
+            <amber-icon
+              backgroundImageUrl="assets/trash.svg"
+              size="1em"
+            ></amber-icon>
+          </div>
+
         </ng-container>
 
         <!--Footer-->
         <ng-container>
           <div
+            style="grid-column: span {{headerLabels.length - 1}} / span {{headerLabels.length - 1}}"
             class="
               py-2
               px-4
-              col-span-full
               flex
               justify-between
             "
@@ -134,12 +137,28 @@
               <amber-icon
                 backgroundImageUrl="assets/add-solid.svg"
                 size="1.25em"
-                (click)="displayUsage = true"
+                (click)="selectedUsage = VehicleUsageFactory.createDefault(); displayUsage = true; selectedUsageIndex = -1"
               ></amber-icon>
             </div>
-            <div>
-              {{usagesTotal}} USD
+            <div
+              class="font-semibold"
+            >
+              Paid {{paymentsTotal}} / {{usagesTotal}} USD
             </div>
+          </div>
+          <div
+            class="
+              py-2
+              px-4
+              flex
+              justify-between
+            "
+          >
+            <amber-icon
+              backgroundImageUrl="assets/dollar.svg"
+              size="1.25em"
+              (click)="cookedContract.displayPayments = true"
+            ></amber-icon>
           </div>
         </ng-container>
       </div>
@@ -163,6 +182,7 @@
         <amber-button
           backgroundColor="#b8d1c2"
           borderColor="#b8d1c2"
+          (click)="display = false"
         >
           <amber-icon
             backgroundImageUrl="assets/close.svg"
@@ -178,8 +198,20 @@
 
 <amber-modal
   [(display)]="displayUsage"
-  title="Vehicle Usage"
+  title="Vehicle Usage Details"
 >
   <app-vehicle-usage-details
+    [vehicleUsage]="selectedUsage"
+    (acceptEventEmitter)="acceptUsageChange($event)"
+    (cancelEventEmitter)="displayUsage = false"
   ></app-vehicle-usage-details>
+</amber-modal>
+
+<amber-modal
+  [(display)]="cookedContract.displayPayments"
+  title="Payment Details"
+>
+  <app-payment-details
+    [cookedContract]="cookedContract"
+  ></app-payment-details>
 </amber-modal>

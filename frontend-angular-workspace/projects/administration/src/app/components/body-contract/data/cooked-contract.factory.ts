@@ -9,10 +9,12 @@ export class CookedContractFactory {
       stateDisplay: '',
       customerData: CustomerDataFactory.createDefault(),
       vehicleUsages: [],
+      payments: [],
       total: 0,
       totalPaid: 0,
       visibility: 1,
       displayDetails: false,
+      displayPayments: false,
     };
   }
 }

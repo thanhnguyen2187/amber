@@ -1,5 +1,6 @@
 import { CustomerData } from './customer-data.interface';
 import { VehicleUsage } from './vehicle-usage.interface';
+import { Payment } from './payment.interface';
 
 export interface CookedContract {
   id: number;
@@ -7,8 +8,10 @@ export interface CookedContract {
   stateDisplay: string;
   customerData: CustomerData;
   vehicleUsages: VehicleUsage[];
+  payments: Payment[];
   total: number;
   totalPaid: number;
   visibility: number;
   displayDetails: boolean;
+  displayPayments: boolean;
 }

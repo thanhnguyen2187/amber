@@ -23,5 +23,9 @@ func Router() http.Handler {
 		"/update-visibility",
 		UpdateVisibility,
 	)
+	r.Post(
+		"/update-payments",
+		UpdatePayments,
+	)
 	return r
 }

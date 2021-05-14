@@ -2,99 +2,166 @@
   style="grid-template-columns: repeat(2, max-content)"
   class="
     grid
-    gap-2
+    gap-y-2
+    gap-x-8
   "
 >
-  <!--Type-->
-  <div>
-    Type
-  </div>
-  <div>
-    <select
-      [(ngModel)]="vehicleUsage.type"
-      amberCommonSelect
-    >
-      <option
-        *ngFor="let vehicleUsageType of vehicleUsageTypes"
-        [ngValue]="vehicleUsageType.value"
-      >
-        {{vehicleUsageType.label}}
-      </option>
-    </select>
-  </div>
-
   <!--Bike Model-->
-  <div>
-    Bike Model
-  </div>
-  <div>
-    <select
-      amberCommonSelect
-    >
-      <option>Honda Win...</option>
-      <option>Honda Win...</option>
-      <option>Honda Win...</option>
-      <option>Honda Win...</option>
-    </select>
-  </div>
+  <ng-container>
+    <div>
+      Bike Model
+    </div>
+    <div>
+      <select
+        amberCommonSelect
+        [(ngModel)]="vehicleUsage.bikeModelId"
+        (ngModelChange)="changeBikeModelOption($event)"
+      >
+        <option
+          *ngFor="let bikeModelOption of bikeModelOptions"
+          [ngValue]="bikeModelOption.bikeModelId"
+        >
+          {{bikeModelOption.bikeModelData.name}}
+        </option>
+      </select>
+    </div>
+  </ng-container>
+
+  <!--Type-->
+  <ng-container>
+    <div>
+      Type
+    </div>
+    <div>
+      <select
+        [(ngModel)]="vehicleUsage.type"
+        amberCommonSelect
+      >
+        <option
+          *ngFor="let vehicleUsageType of vehicleUsage.bikeModelData.possibleUsageTypes"
+          [ngValue]="vehicleUsageType"
+        >
+          {{vehicleUsageTypesMap[vehicleUsageType]}}
+        </option>
+      </select>
+    </div>
+  </ng-container>
+
+  <!--Price-->
+  <ng-container>
+    <div>
+      Price
+    </div>
+    <div>
+      {{vehicleUsage.price}} USD
+    </div>
+  </ng-container>
 
   <!--Amount-->
-  <div>
-    Amount
-  </div>
-  <div
-    class="
-      flex
-      items-center
-      gap-2
-    "
-  >
-    <amber-icon
-      backgroundImageUrl="assets/minus.svg"
-      size="1em"
-    ></amber-icon>
-    <input
-      type="number"
+  <ng-container>
+    <div>
+      Amount
+    </div>
+    <div
       class="
-        w-12
-        outline-none
-        border-2
-        rounded
-        flex-initial
+        flex
+        items-center
+        gap-2
       "
-    />
-    <amber-icon
-      backgroundImageUrl="assets/plus.svg"
-      size="1em"
-    ></amber-icon>
-  </div>
+    >
+      <amber-icon
+        backgroundImageUrl="assets/minus.svg"
+        size="1em"
+        (click)="decreaseAmount()"
+      ></amber-icon>
+      <input
+        type="number"
+        class="
+          text-center
+          w-12
+          outline-none
+          border-2
+          rounded
+          flex-initial
+        "
+        [(ngModel)]="vehicleUsage.amount"
+      />
+      <amber-icon
+        backgroundImageUrl="assets/plus.svg"
+        size="1em"
+        (click)="increaseAmount()"
+      ></amber-icon>
+    </div>
+  </ng-container>
 
   <!--Date Start-->
-  <div>
-    Date Start
-  </div>
-  <div>
-    {{vehicleUsage.dateStart}}
-  </div>
+  <ng-container
+    *ngIf="vehicleUsage.type <= vehicleUsageTypesEnum.MonthlyRental"
+  >
+    <div>
+      Date Start
+    </div>
+    <div
+      class="
+        cursor-pointer
+        select-none
+        underline
+      "
+    >
+      {{vehicleUsage.dateStartDisplay}}
+    </div>
+  </ng-container>
 
   <!--Date End-->
-  <div>
-    Date End
-  </div>
-  <div>
-    {{vehicleUsage.dateEnd}}
-  </div>
+  <ng-container
+    *ngIf="vehicleUsage.type <= vehicleUsageTypesEnum.MonthlyRental"
+  >
+    <div>
+      Date End
+    </div>
+    <div
+      class="
+        cursor-pointer
+        select-none
+        underline
+      "
+    >
+      {{vehicleUsage.dateEndDisplay}}
+    </div>
+  </ng-container>
+
+  <!--Range Picker-->
+  <ng-container
+  >
+    <div
+      class="
+        col-span-2
+      "
+    >
+      <app-range-picker-box
+        [(pickedDates)]="pickedDates"
+        [datePickingMode]="vehicleUsage.usageId === 0 ? 'create' : 'edit'"
+        [display]="vehicleUsage.type <= vehicleUsageTypesEnum.MonthlyRental"
+      ></app-range-picker-box>
+    </div>
+  </ng-container>
 
   <!--Day Count-->
-  <div>
-    Day Count
-  </div>
-  <div>
-    {{vehicleUsage.dayCount}}
-  </div>
+  <ng-container
+    *ngIf="vehicleUsage.type <= vehicleUsageTypesEnum.MonthlyRental"
+  >
+    <div>
+      Day Count
+    </div>
+    <div>
+      {{vehicleUsage.dayCount}}
+    </div>
+  </ng-container>
 
   <!--Month Count-->
-  <ng-container>
+  <ng-container
+    *ngIf="vehicleUsage.type === vehicleUsageTypesEnum.MonthlyRental"
+  >
     <div>
       Month Count
     </div>
@@ -104,11 +171,66 @@
   </ng-container>
 
   <!--Total-->
-  <div>
-    Total
-  </div>
-  <div>
-    Total
-  </div>
+  <ng-container>
+    <div>
+      Total
+    </div>
+    <div>
+      {{vehicleUsage.total}} USD
+    </div>
+  </ng-container>
 
+  <ng-container
+    *ngIf="message"
+  >
+    <div
+      class="
+      col-span-2
+    "
+    >
+      {{message}}
+    </div>
+  </ng-container>
+
+  <!--Buttons-->
+  <ng-container>
+    <div
+      class="
+      col-span-2
+      flex
+      justify-center
+      gap-2
+      "
+    >
+      <amber-button
+        [disableTabIndex]="true"
+        backgroundColor="#b8d1c2"
+        borderColor="#b8d1c2"
+        (click)="cancelEventEmitter.emit()"
+      >
+        <amber-icon
+          backgroundImageUrl="assets/close.svg"
+          size="1em"
+        ></amber-icon>
+        <div>
+          Cancel
+        </div>
+      </amber-button>
+      <amber-button
+        backgroundColor="#4bdb84"
+        borderColor="#4bdb84"
+        [disableTabIndex]="true"
+        [action]="accept.bind(this)"
+      >
+        <amber-icon
+          backgroundImageUrl="assets/checkmark.svg"
+          size="1em"
+          [disableTabIndex]="true"
+        ></amber-icon>
+        <div>
+          Accept
+        </div>
+      </amber-button>
+    </div>
+  </ng-container>
 </div>

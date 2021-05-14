@@ -11,6 +11,12 @@ export class BikeModelDataFactory {
       dailyRentalFeeInsideCity: 0,
       dailyRentalFeeTraveling: 0,
       monthlyRentalFee: 0,
+      possibleUsageTypes: [
+        0,
+        1,
+        2,
+        10,
+      ],
     };
   }
 }

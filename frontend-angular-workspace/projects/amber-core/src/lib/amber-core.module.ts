@@ -10,6 +10,7 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 import { FormsModule } from '@angular/forms';
 import { CommonSelectDirective } from './directives/common-select.directive';
 import { CommonInputTextDirective } from './directives/common-input-text.directive';
+import { CommonInputNumberDirective } from './directives/common-input-number.directive';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CommonInputTextDirective } from './directives/common-input-text.directi
     DynamicFormComponent,
     CommonSelectDirective,
     CommonInputTextDirective,
+    CommonInputNumberDirective,
   ],
   imports: [
     OverlayModule,
@@ -37,6 +39,8 @@ import { CommonInputTextDirective } from './directives/common-input-text.directi
     ModalComponent,
     DynamicFormComponent,
     CommonSelectDirective,
+    CommonInputTextDirective,
+    CommonInputNumberDirective,
   ]
 })
 export class AmberCoreModule { }

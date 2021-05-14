@@ -10,7 +10,8 @@
   [style.backgroundColor]="disabled ? disabledBackgroundColor : backgroundColor"
   [style.borderColor]="disabled ? disabledBorderColor : borderColor"
   [class]="disabled ? ['cursor-not-allowed'] : ['cursor-pointer', 'hover:ring-1', 'active:ring-2']"
-  [tabIndex]="0"
+  [attr.tabindex]="disableTabIndex ? '' : 0"
+  (click)="disabled ? doNothing() : action()"
 >
   <div
     class="

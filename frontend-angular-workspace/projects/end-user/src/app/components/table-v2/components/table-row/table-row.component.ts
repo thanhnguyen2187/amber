@@ -59,6 +59,18 @@ export class TableRowComponent implements OnInit {
   toggleCalendar($event: MouseEvent): void {
     let dateStart = new Date();
     let dateEnd = new Date();
+    let allowAction = () => true;
+    switch (this.itemStoreName) {
+      case 'dailyInsideCity':
+        allowAction = this.calendarDynamicService.allowDaily;
+        break;
+      case 'dailyTraveling':
+        allowAction = this.calendarDynamicService.allowDaily;
+        break;
+      case 'monthly':
+        allowAction = this.calendarDynamicService.allowMonthly;
+        break;
+    }
     this.calendarDynamicService.resetCalendarBox(
       {
         defaultSelectedDate: 'none',
@@ -91,6 +103,7 @@ export class TableRowComponent implements OnInit {
             }
           );
         },
+        allowAction,
       }
     );
     this.calendarDynamicService.toggleCalendar($event);

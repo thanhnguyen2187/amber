@@ -10,6 +10,8 @@ import { ContractTableComponent } from './components/contract-table/contract-tab
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContractDetailsComponent } from './components/contract-details/contract-details.component';
 import { VehicleUsageDetailsComponent } from './components/vehicle-usage-details/vehicle-usage-details.component';
+import { RangePickerModule } from '../range-picker/range-picker.module';
+import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 
 
 @NgModule({
@@ -18,15 +20,17 @@ import { VehicleUsageDetailsComponent } from './components/vehicle-usage-details
     ContractTableComponent,
     ContractDetailsComponent,
     VehicleUsageDetailsComponent,
+    PaymentDetailsComponent,
   ],
-    imports: [
-        CommonModule,
-        LayoutsModule,
-        TableModule,
-        AmberCoreModule,
-        BodyContractRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-    ],
+  imports: [
+    CommonModule,
+    LayoutsModule,
+    TableModule,
+    AmberCoreModule,
+    BodyContractRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RangePickerModule,
+  ],
 })
 export class BodyContractModule { }

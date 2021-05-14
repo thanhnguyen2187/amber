@@ -7,6 +7,13 @@ import (
 
 func Router() http.Handler {
 	r := chi.NewRouter()
-	r.Get("/", List)
+	r.Get(
+		"/",
+		List,
+	)
+	r.Get(
+		"/options",
+		ListOptions,
+	)
 	return r
 }

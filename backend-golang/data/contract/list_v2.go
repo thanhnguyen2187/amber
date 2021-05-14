@@ -246,12 +246,18 @@ func ListV2(
 			return nil, 0, err
 		}
 
+		payments, err := ListPayments(id)
+		if err != nil {
+			return nil, 0, err
+		}
+
 		cookedContract := contract.Cooked{
 			Id:            id,
 			StateValue:    state,
 			StateDisplay:  stateDisplay,
 			CustomerData:  customerData,
 			VehicleUsages: vehicleUsages,
+			Payments:      payments,
 			Total:         total,
 			TotalPaid:     totalPaid,
 			Visibility:    visibility,

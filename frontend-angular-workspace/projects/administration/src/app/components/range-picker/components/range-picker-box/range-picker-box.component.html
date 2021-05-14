@@ -1,0 +1,93 @@
+<div
+  *ngIf="display"
+  class="
+    bg-gray-200
+    rounded-lg
+    p-2
+    flex
+    flex-col
+    gap-1
+    outline-none
+  "
+>
+  <div
+    class="
+      flex
+      items-center
+      justify-between
+    "
+  >
+    <amber-icon
+      backgroundImageUrl="assets/cheveron-left.svg"
+      size="1.25em"
+      (click)="moveAnchorBackward()"
+    ></amber-icon>
+    <app-range-picker-cell
+      [rangePickerCellData]="headerData"
+      (click)="cycleMode()"
+    ></app-range-picker-cell>
+    <amber-icon
+      backgroundImageUrl="assets/cheveron-right.svg"
+      size="1.25em"
+      (click)="moveAnchorForward()"
+    ></amber-icon>
+  </div>
+
+  <!--Range Picking-->
+  <ng-container
+    *ngIf="mode === 'range'"
+  >
+    <div
+      class="
+        grid
+        grid-cols-7
+        bg-gray-400
+        p-1
+        rounded-xl
+      "
+    >
+      <app-range-picker-cell
+        *ngFor="let data of dayOfWeekCellData"
+        [rangePickerCellData]="data"
+      >
+      </app-range-picker-cell>
+    </div>
+    <div
+      class="
+        grid
+        grid-cols-7
+        p-1
+        gap-y-1
+      "
+    >
+      <app-range-picker-cell
+        *ngFor="let data of monthDatesCellData"
+        [rangePickerCellData]="data"
+        (click)="pickDate(data.date)"
+      >
+      </app-range-picker-cell>
+    </div>
+
+  </ng-container>
+
+  <!--Month Picking-->
+  <ng-container
+    *ngIf="mode === 'month'"
+  >
+    <div
+      class="
+        grid
+        grid-cols-3
+        gap-x-2
+        gap-y-1
+      "
+    >
+      <app-range-picker-cell
+        *ngFor="let data of monthOfYearCellData"
+        [rangePickerCellData]="data"
+      ></app-range-picker-cell>
+    </div>
+  </ng-container>
+
+  {{datePickingMode}}
+</div>
