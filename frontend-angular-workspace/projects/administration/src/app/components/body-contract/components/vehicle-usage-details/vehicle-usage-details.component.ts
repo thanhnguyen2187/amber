@@ -61,12 +61,15 @@ export class VehicleUsageDetailsComponent implements OnInit {
           this.message = 'Please select a model before accepting.';
           this.validated = false;
         } else {
-          this.acceptEventEmitter.emit(this.vehicleUsage);
+          this.acceptEventEmitter.emit(
+            this.vehicleUsage
+          );
           this.cancelEventEmitter.emit(); // to hide the component
         }
         break;
       case 'edit':
         this.acceptEventEmitter.emit(this.vehicleUsage);
+        this.cancelEventEmitter.emit(); // to hide the component
         break;
     }
   }

@@ -93,7 +93,7 @@ export class FilterGroupService {
           },
           {
             label: '250cc or more',
-            key: 'more-250',
+            key: '250-more',
             checked: false,
           },
         ],

@@ -1,13 +1,14 @@
 package contract
 
 import (
+	"fmt"
+
 	"amber-backend/core/db"
 	"amber-backend/model"
 	"amber-backend/model/contract"
 	"amber-backend/model/contract/list"
 	contractState "amber-backend/model/contract/state"
 	"amber-backend/model/customer"
-	"fmt"
 	"github.com/doug-martin/goqu/v9"
 )
 
@@ -35,6 +36,7 @@ func generateListV2Query(
 				"total",
 				"total_paid",
 				"visibility",
+				"change_id",
 			)
 	}
 
@@ -209,6 +211,7 @@ func ListV2(
 			total        float64
 			totalPaid    float64
 			visibility   model.Visibility
+			changeId     int
 		)
 		err := rows.Scan(
 			&id,
@@ -218,6 +221,7 @@ func ListV2(
 			&total,
 			&totalPaid,
 			&visibility,
+			&changeId,
 		)
 		if err != nil {
 			return nil, 0, err
@@ -236,12 +240,23 @@ func ListV2(
 		case contractState.InEffect:
 			stateDisplay = "In Effect"
 			break
+		case contractState.Finished:
+			stateDisplay = "Finished"
+			break
 		case contractState.Overdue:
 			stateDisplay = "Overdue"
 			break
 		}
 
-		vehicleUsages, err := listVehicleUsages(id)
+		vehicleUsages, err := listVehicleUsages(
+			id,
+			changeId,
+		)
+		if err != nil {
+			return nil, 0, err
+		}
+
+		vehicleUsagesLog, err := ListUsagesLog(id)
 		if err != nil {
 			return nil, 0, err
 		}
@@ -252,15 +267,16 @@ func ListV2(
 		}
 
 		cookedContract := contract.Cooked{
-			Id:            id,
-			StateValue:    state,
-			StateDisplay:  stateDisplay,
-			CustomerData:  customerData,
-			VehicleUsages: vehicleUsages,
-			Payments:      payments,
-			Total:         total,
-			TotalPaid:     totalPaid,
-			Visibility:    visibility,
+			Id:               id,
+			StateValue:       state,
+			StateDisplay:     stateDisplay,
+			CustomerData:     customerData,
+			VehicleUsages:    vehicleUsages,
+			VehicleUsagesLog: vehicleUsagesLog,
+			Payments:         payments,
+			Total:            total,
+			TotalPaid:        totalPaid,
+			Visibility:       visibility,
 		}
 		cookedContracts = append(
 			cookedContracts,

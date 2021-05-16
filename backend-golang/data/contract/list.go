@@ -61,6 +61,7 @@ func generateCountQuery(
 
 func generateVehicleUsagesQuery(
 	contractId int,
+	changeId int,
 ) (
 	query string,
 	err error,
@@ -68,6 +69,7 @@ func generateVehicleUsagesQuery(
 	dialect := goqu.Dialect("mysql")
 	d := dialect.
 		Select(
+			"date_created",
 			"id",
 			"contract_id",
 			"type",
@@ -85,6 +87,7 @@ func generateVehicleUsagesQuery(
 		Where(
 			goqu.C("contract_id").Eq(contractId),
 			goqu.C("visibility").Eq(model.Visible),
+			goqu.C("change_id").Eq(changeId),
 		)
 
 	query, _, err = d.ToSQL()
@@ -97,11 +100,15 @@ func generateVehicleUsagesQuery(
 
 func listVehicleUsages(
 	contractId int,
+	updateId int,
 ) (
 	vehicleUsages []contract.Usage,
 	err error,
 ) {
-	query, err := generateVehicleUsagesQuery(contractId)
+	query, err := generateVehicleUsagesQuery(
+		contractId,
+		updateId,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -115,6 +122,7 @@ func listVehicleUsages(
 		vehicleUsage := contract.Usage{}
 
 		err := rows.Scan(
+			&vehicleUsage.DateCreated,
 			&vehicleUsage.UsageId,
 			&vehicleUsage.ContractId,
 			&vehicleUsage.Type,
@@ -213,6 +221,7 @@ func List(
 			contractData contract.Data
 			total        float64
 			totalPaid    float64
+			updateId     int
 		)
 		err := rows.Scan(
 			&id,
@@ -221,6 +230,7 @@ func List(
 			&contractData,
 			&total,
 			&totalPaid,
+			&updateId,
 		)
 		if err != nil {
 			return nil, err
@@ -244,7 +254,7 @@ func List(
 			break
 		}
 
-		vehicleUsages, err := listVehicleUsages(id)
+		vehicleUsages, err := listVehicleUsages(id, updateId)
 		if err != nil {
 			return nil, err
 		}

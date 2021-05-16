@@ -28,5 +28,8 @@ create table contract (
     -- note
 
     total decimal(9, 2),
-    total_paid decimal(9,2) default 0
+    total_paid decimal(9,2) default 0,
+
+    change_id tinyint default 0
+    -- to version control the payments and the usages
 );

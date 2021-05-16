@@ -9,7 +9,7 @@ import {
   isPast,
   isSameDay,
   isSameMonth,
-  isToday,
+  isToday, startOfDay,
   startOfMonth,
   startOfWeek
 } from 'date-fns';
@@ -77,13 +77,17 @@ export class RangePickerCellDataFactory {
   ): RangePickerCellData[] {
     return eachDayOfInterval(
       {
-        start: startOfWeek(
-          startOfMonth(anchor),
-          {weekStartsOn},
+        start: startOfDay(
+          startOfWeek(
+            startOfMonth(anchor),
+            {weekStartsOn},
+          )
         ),
-        end: endOfWeek(
-          endOfMonth(anchor),
-          {weekStartsOn},
+        end: startOfDay(
+          endOfWeek(
+            endOfMonth(anchor),
+            {weekStartsOn},
+          )
         ),
       }
     ).map(

@@ -1,6 +1,8 @@
 import { BikeModelData } from './bike-model-data.interface';
 
 export interface VehicleUsage {
+  dateCreated: Date;
+  dateCreatedDisplay: string;
   usageId: number;
   contractId: number;
   type: number;
@@ -16,4 +18,5 @@ export interface VehicleUsage {
   dateEnd?: Date;
   dateEndDisplay: string;
   total: number;
+  removing: boolean;
 }

@@ -12,6 +12,7 @@ import { ContractDetailsComponent } from './components/contract-details/contract
 import { VehicleUsageDetailsComponent } from './components/vehicle-usage-details/vehicle-usage-details.component';
 import { RangePickerModule } from '../range-picker/range-picker.module';
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
+import { VehicleUsageLogsComponent } from './components/vehicle-usage-logs/vehicle-usage-logs.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PaymentDetailsComponent } from './components/payment-details/payment-de
     ContractDetailsComponent,
     VehicleUsageDetailsComponent,
     PaymentDetailsComponent,
+    VehicleUsageLogsComponent,
   ],
   imports: [
     CommonModule,

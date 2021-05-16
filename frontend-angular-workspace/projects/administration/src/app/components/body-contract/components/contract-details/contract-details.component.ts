@@ -11,6 +11,8 @@ import { VehicleUsageFactory } from '../../data/vehicle-usage.factory';
 import { VehicleUsage } from '../../models/vehicle-usage.interface';
 import { vehicleUsageTypesEnum } from '../../data/vehicle-usage-types.enum';
 import { calculateTotal as calculateTotalPayments } from '../../functions/payments.calculate-total';
+import { UpdateContractDetailsService } from '../../services/update-contract-details.service';
+import { convertDynamicFormGroups } from './functions/dynamic-form-groups.convert';
 
 @Component({
   selector: 'app-contract-details',
@@ -21,7 +23,6 @@ export class ContractDetailsComponent implements OnInit {
 
   displayValue = false;
   displayUsage = false;
-  displayPayment = false;
   selectedUsage = this.cookedContract?.vehicleUsages[0]
     ?? VehicleUsageFactory.createDefault();
   selectedUsageIndex = 0;
@@ -41,6 +42,9 @@ export class ContractDetailsComponent implements OnInit {
   cookedContractValue: CookedContract = CookedContractFactory.createDefault();
   dynamicFormGroups = dynamicFormGroups;
   headerLabels = headerLabels;
+  get headerLabelsJSON(): string {
+    return JSON.stringify(this.headerLabels);
+  }
   customCell = this.tableCellFactoryService.customCell;
   createHeaderCell = this.tableCellFactoryService.createHeaderCell;
 
@@ -65,7 +69,17 @@ export class ContractDetailsComponent implements OnInit {
   }
 
   copyVehicleUsage(vehicleUsage: VehicleUsage): VehicleUsage {
-    return Object.create(vehicleUsage);
+    const usage = VehicleUsageFactory.createDefault();
+    usage.dateCreated = vehicleUsage.dateCreated;
+    usage.usageId = vehicleUsage.usageId;
+    usage.contractId = vehicleUsage.contractId;
+    usage.type = vehicleUsage.type;
+    usage.bikeModelId = vehicleUsage.bikeModelId;
+    usage.bikeModelData = vehicleUsage.bikeModelData;
+    usage.amount = vehicleUsage.amount;
+    usage.dateStart = vehicleUsage.dateStart;
+    usage.dateEnd = vehicleUsage.dateEnd;
+    return VehicleUsageFactory.augment(usage);
   }
 
   acceptUsageChange(newVehicleUsage: VehicleUsage): void {
@@ -74,10 +88,34 @@ export class ContractDetailsComponent implements OnInit {
     } else { // editing an old one
       this.cookedContract.vehicleUsages[this.selectedUsageIndex] = newVehicleUsage;
     }
+    this.displayUsage = false;
+  }
+
+  remove(index: number): void {
+    this.cookedContract.vehicleUsages.splice(index, 1);
+  }
+
+  accept(): void {
+    const [state, customerData] = convertDynamicFormGroups(this.dynamicFormGroups);
+    this.updateContractDetailsService.update$(
+      {
+        contractId: this.cookedContract.id,
+        state,
+        customerData,
+        vehicleUsages: this.cookedContract.vehicleUsages,
+      }
+    ).subscribe(
+      () => {
+        this.cookedContract.customerData = customerData;
+        this.cookedContract.stateValue = state;
+        this.cookedContract.displayDetails = false;
+      }
+    );
   }
 
   constructor(
     private tableCellFactoryService: TableCellFactoryService,
+    private updateContractDetailsService: UpdateContractDetailsService,
   ) {
   }
 

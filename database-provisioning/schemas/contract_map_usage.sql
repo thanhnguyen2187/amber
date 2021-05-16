@@ -23,7 +23,9 @@ create table contract_map_usage (
     price decimal(9, 2),
     date_start date,
     date_end date,
-    total decimal(9, 2)
+    total decimal(9, 2),
+
+    change_id tinyint default 0
 
     /* current_odometers text, */
     /* odometer_changes */ 

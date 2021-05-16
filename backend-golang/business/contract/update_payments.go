@@ -1,9 +1,10 @@
 package contract
 
 import (
+	"errors"
+
 	contract2 "amber-backend/data/contract"
 	"amber-backend/model/contract"
-	"errors"
 )
 
 func UpdatePayments(

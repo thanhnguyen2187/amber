@@ -26,16 +26,18 @@ func List(
 		).
 		From("bike_model")
 	if len(tags) > 0 {
-		d = d.Where(
-			goqu.C("id").In(
-				dialect.
-					Select("bike_model_id").
-					From("bike_tag_map").
-					Where(
-						goqu.C("tag_key").In(tags),
-					),
-			),
-		)
+		for _, tag := range tags {
+			d = d.Where(
+				goqu.C("id").In(
+					dialect.
+						Select("bike_model_id").
+						From("bike_tag_map").
+						Where(
+							goqu.C("tag_key").Eq(tag),
+						),
+				),
+			)
+		}
 	}
 	if len(orders) > 0 {
 		for _, c := range orders {

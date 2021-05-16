@@ -1,6 +1,11 @@
 package contract
 
 import (
+	"database/sql"
+	"encoding/json"
+	"log"
+	"math"
+
 	"amber-backend/core/date"
 	"amber-backend/core/db"
 	"amber-backend/core/round"
@@ -9,12 +14,8 @@ import (
 	"amber-backend/model/contract/request"
 	"amber-backend/model/contract/state"
 	"amber-backend/model/customer"
-	"database/sql"
-	"encoding/json"
 	"github.com/doug-martin/goqu/v9"
 	_ "github.com/doug-martin/goqu/v9/dialect/mysql"
-	"log"
-	"math"
 )
 
 func generateCreateQuery(
@@ -47,7 +48,7 @@ func generateCreateQuery(
 			goqu.Record{
 				"customer_data": customerData,
 				"contract_data": contractData,
-				"state":         state.Created,
+				"state":         state.Pending,
 			},
 		)
 	query, _, err := d.ToSQL()
@@ -55,7 +56,7 @@ func generateCreateQuery(
 		err
 }
 
-func generateMapRentalQuery(
+func generateMapUsageQuery(
 	rentals []request.Rental,
 	contractId int64,
 ) (
@@ -173,7 +174,7 @@ func generateUpdateTotal(
 	return query, err
 }
 
-func CreateContractMap(
+func CreateContractMapUsage(
 	tx *sql.Tx,
 	rentals []request.Rental,
 	contractId int64,
@@ -181,7 +182,7 @@ func CreateContractMap(
 	float64,
 	error,
 ) {
-	query, total, err := generateMapRentalQuery(
+	query, total, err := generateMapUsageQuery(
 		rentals,
 		contractId,
 	)
@@ -232,7 +233,7 @@ func CreateFromBody(
 		return err
 	}
 
-	subTotal, err := CreateContractMap(
+	subTotal, err := CreateContractMapUsage(
 		tx,
 		body.Requests.RentalsDailyInsideCity,
 		contractId,
@@ -243,7 +244,7 @@ func CreateFromBody(
 	}
 	total += subTotal
 
-	subTotal, err = CreateContractMap(
+	subTotal, err = CreateContractMapUsage(
 		tx,
 		body.Requests.RentalsDailyTraveling,
 		contractId,
@@ -254,7 +255,7 @@ func CreateFromBody(
 	}
 	total += subTotal
 
-	subTotal, err = CreateContractMap(
+	subTotal, err = CreateContractMapUsage(
 		tx,
 		body.Requests.RentalsMonthly,
 		contractId,
@@ -265,7 +266,7 @@ func CreateFromBody(
 	}
 	total += subTotal
 
-	subTotal, err = CreateContractMap(
+	subTotal, err = CreateContractMapUsage(
 		tx,
 		body.Requests.Sales,
 		contractId,
@@ -275,6 +276,7 @@ func CreateFromBody(
 		return err
 	}
 	total += subTotal
+	// TODO: REMOVE THE DUPLICATION BY USING A SIMPLE CONCATENATE
 
 	updateTotalQuery, err := generateUpdateTotal(contractId, total)
 	if err != nil {

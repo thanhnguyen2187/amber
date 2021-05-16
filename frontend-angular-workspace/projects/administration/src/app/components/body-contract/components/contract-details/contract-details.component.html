@@ -110,13 +110,28 @@
             "
           >
             <amber-icon
+              *ngIf="!vehicleUsage.removing"
               backgroundImageUrl="assets/edit.svg"
               size="1em"
               (click)="selectedUsage = copyVehicleUsage(vehicleUsage); displayUsage = true; selectedUsageIndex = index"
             ></amber-icon>
             <amber-icon
+              *ngIf="!vehicleUsage.removing"
               backgroundImageUrl="assets/trash.svg"
               size="1em"
+              (click)="vehicleUsage.removing = true"
+            ></amber-icon>
+            <amber-icon
+              *ngIf="vehicleUsage.removing"
+              backgroundImageUrl="assets/checkmark.svg"
+              size="1em"
+              (click)="remove(index)"
+            ></amber-icon>
+            <amber-icon
+              *ngIf="vehicleUsage.removing"
+              backgroundImageUrl="assets/close.svg"
+              size="1em"
+              (click)="vehicleUsage.removing = false"
             ></amber-icon>
           </div>
 
@@ -172,6 +187,7 @@
         <amber-button
           backgroundColor="#4bdb84"
           borderColor="#4bdb84"
+          [action]="accept.bind(this)"
         >
           <amber-icon
             backgroundImageUrl="assets/checkmark.svg"
@@ -214,4 +230,13 @@
   <app-payment-details
     [cookedContract]="cookedContract"
   ></app-payment-details>
+</amber-modal>
+
+<amber-modal
+  [(display)]="cookedContract.displayUsagesLog"
+  title="Vehicle Usages Log"
+>
+  <app-vehicle-usage-logs
+    [cookedContract]="cookedContract"
+  ></app-vehicle-usage-logs>
 </amber-modal>

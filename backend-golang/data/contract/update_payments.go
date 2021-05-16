@@ -28,8 +28,8 @@ func generateUpdateContractTotalPaidQuery(
 				),
 			},
 		).Where(
-			goqu.C("id").Eq(contractId),
-		)
+		goqu.C("id").Eq(contractId),
+	)
 
 	query, _, err = d.ToSQL()
 	return
@@ -68,7 +68,10 @@ func UpdatePayments(
 	}
 
 	for _, payment := range payments {
-		query, err := generateUpdatePaymentQuery(contractId, payment)
+		query, err := generateUpdatePaymentQuery(
+			contractId,
+			payment,
+		)
 		if err != nil {
 			return err
 		}

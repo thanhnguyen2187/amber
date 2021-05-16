@@ -8,4 +8,12 @@ export class CustomerDataFactory {
       email: '',
     };
   }
+
+  static shrink(customerData: CustomerData): CustomerData {
+    return {
+      fullName: customerData.fullName,
+      phoneNumber: customerData.phoneNumber,
+      email: customerData.email,
+    };
+  }
 }

@@ -1,16 +1,18 @@
 package contract
 
 import (
+	"encoding/json"
+	"errors"
+	"time"
+
 	"amber-backend/model"
 	"amber-backend/model/contract/request"
 	contractState "amber-backend/model/contract/state"
 	"amber-backend/model/customer"
-	"encoding/json"
-	"errors"
-	"time"
 )
 
 type Usage struct {
+	DateCreated      time.Time           `json:"dateCreated"`
 	UsageId          int                 `json:"usageId"`
 	ContractId       int                 `json:"contractId"`
 	Type             request.RentalType  `json:"type"`
@@ -29,15 +31,16 @@ type Usage struct {
 }
 
 type Cooked struct {
-	Id            int                 `json:"id"`
-	StateValue    contractState.State `json:"stateValue"`
-	StateDisplay  string              `json:"stateDisplay"`
-	CustomerData  customer.Customer   `json:"customerData"`
-	VehicleUsages []Usage             `json:"vehicleUsages"`
-	Payments      []Payment           `json:"payments"`
-	Total         float64             `json:"total"`
-	TotalPaid     float64             `json:"totalPaid"`
-	Visibility    model.Visibility    `json:"visibility"`
+	Id               int                 `json:"id"`
+	StateValue       contractState.State `json:"stateValue"`
+	StateDisplay     string              `json:"stateDisplay"`
+	CustomerData     customer.Customer   `json:"customerData"`
+	VehicleUsages    []Usage             `json:"vehicleUsages"`
+	VehicleUsagesLog []Usage             `json:"vehicleUsagesLog"`
+	Payments         []Payment           `json:"payments"`
+	Total            float64             `json:"total"`
+	TotalPaid        float64             `json:"totalPaid"`
+	Visibility       model.Visibility    `json:"visibility"`
 }
 
 func (d *Usage) Scan(val interface{}) error {

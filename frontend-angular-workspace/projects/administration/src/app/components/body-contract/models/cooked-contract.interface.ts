@@ -8,10 +8,12 @@ export interface CookedContract {
   stateDisplay: string;
   customerData: CustomerData;
   vehicleUsages: VehicleUsage[];
+  vehicleUsagesLog: VehicleUsage[];
   payments: Payment[];
   total: number;
   totalPaid: number;
   visibility: number;
   displayDetails: boolean;
   displayPayments: boolean;
+  displayUsagesLog: boolean;
 }

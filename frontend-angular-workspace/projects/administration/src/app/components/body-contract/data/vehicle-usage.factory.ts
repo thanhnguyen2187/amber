@@ -15,6 +15,13 @@ export class VehicleUsageFactory {
 
   static augment(vehicleUsage: VehicleUsage): VehicleUsage {
     return {
+      dateCreated: parseJSON(vehicleUsage.dateCreated),
+      get dateCreatedDisplay(): string {
+        return format(
+          this.dateCreated,
+          'yyyy-MM-dd',
+        );
+      },
       usageId: vehicleUsage.usageId,
       contractId: vehicleUsage.contractId,
       type: vehicleUsage.type,
@@ -92,11 +99,14 @@ export class VehicleUsageFactory {
             return 0;
         }
       },
+      removing: vehicleUsage.removing,
     };
   }
 
   static createDefault(): VehicleUsage {
     const defaultUsage: VehicleUsage = {
+      dateCreated: new Date(),
+      dateCreatedDisplay: '',
       usageId: 0,
       contractId: 0,
       type: vehicleUsageTypesEnum.DailyRentalInsideCity,
@@ -112,6 +122,7 @@ export class VehicleUsageFactory {
       dateEnd: new Date(),
       dateEndDisplay: '',
       total: 0,
+      removing: false,
     };
     return this.augment(defaultUsage);
   }

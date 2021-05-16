@@ -7,12 +7,18 @@
 * [ ] `PaymentDetails` amount input validation
 ** [ ] If total of payments are more than total of usages, disallow accept button
 
-* [ ] `PaymentDetails` cancel button
-** [ ] Hide the modal
+* [x] `PaymentDetails` cancel button
+** [x] Hide the modal
 
 * [ ] `PaymentDetails` accept button
-** [ ] Mutate the current payments
+** [x] Mutate the current payments
 ** [ ] Hide the modal
+** [ ] Call the API
+
+* [ ] `PaymentDetails` trash button
+** [ ] Show the confirmation
+** [ ] Return if press 'x'
+** [ ] Remove if press 'v'
 
 * [ ] `ContractDetails` date range input
 ** [ ] Only allow one month or more for monthly rental
@@ -26,6 +32,8 @@
 
 * [ ] `ContractTable` multi call to `contract/bike-model/options`
 ** [ ] Find a better way to structure code and avoid API call
+
+* [ ] `Steps` component
 
 '''
 

@@ -6,6 +6,8 @@ import { convertDynamicFormGroup } from 'amber-core';
 import { map } from 'rxjs/operators';
 import { VehicleUsageFactory } from '../data/vehicle-usage.factory';
 import { PaymentFactory } from '../data/payment.factory';
+import { CustomerDataFactory } from '../data/customer-data.factory';
+import { CookedContractFactory } from '../data/cooked-contract.factory';
 
 @Injectable({
   providedIn: 'root'
@@ -45,15 +47,8 @@ export class BodyContractDataService {
       ) as Observable<CookedContractsResponse>
     ).pipe(
       map((response) => {
-        response.cookedContracts.forEach(
-          (cookedContract) => {
-            cookedContract.vehicleUsages = cookedContract.vehicleUsages.map(
-              VehicleUsageFactory.augment
-            );
-            cookedContract.payments = cookedContract.payments.map(
-              PaymentFactory.augment
-            );
-          }
+        response.cookedContracts = response.cookedContracts.map(
+          CookedContractFactory.augment
         );
         return response;
       }),
