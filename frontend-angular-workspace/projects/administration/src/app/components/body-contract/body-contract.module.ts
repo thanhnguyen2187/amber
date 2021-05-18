@@ -13,6 +13,7 @@ import { VehicleUsageDetailsComponent } from './components/vehicle-usage-details
 import { RangePickerModule } from '../range-picker/range-picker.module';
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 import { VehicleUsageLogsComponent } from './components/vehicle-usage-logs/vehicle-usage-logs.component';
+import { VehicleUsageLogsTableComponent } from './components/vehicle-usage-logs-table/vehicle-usage-logs-table.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { VehicleUsageLogsComponent } from './components/vehicle-usage-logs/vehic
     VehicleUsageDetailsComponent,
     PaymentDetailsComponent,
     VehicleUsageLogsComponent,
+    VehicleUsageLogsTableComponent,
   ],
   imports: [
     CommonModule,

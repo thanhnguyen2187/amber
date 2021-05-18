@@ -10,8 +10,8 @@ export function convertDynamicFormGroups(
     formControl => formControl.value
   )[0].key as number;
   const customerData: CustomerData = CustomerDataFactory.createDefault();
-  customerData.fullName = dynamicFormGroups[1].formControls[0].value.toString();
-  customerData.email = dynamicFormGroups[1].formControls[1].value.toString();
-  customerData.phoneNumber = dynamicFormGroups[1].formControls[2].value.toString();
+  customerData.fullName = dynamicFormGroups[1].formControls[0].value?.toString();
+  customerData.email = dynamicFormGroups[1].formControls[1].value?.toString();
+  customerData.phoneNumber = dynamicFormGroups[1].formControls[2].value?.toString();
   return [state, customerData];
 }

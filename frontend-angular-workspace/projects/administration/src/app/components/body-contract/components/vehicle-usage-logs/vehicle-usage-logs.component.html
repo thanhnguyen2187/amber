@@ -6,50 +6,16 @@
   "
 >
   <div
-    style="grid-template-columns: repeat({{headerLabels.length}}, max-content)"
-    class="
-      grid
-    "
+    class="text-lg"
   >
-    <!--Header-->
-    <ng-container
-      *ngFor="let headerLabel of headerLabels"
-    >
-      <app-table-cell
-        [tableCell]="createHeaderCell(headerLabel)"
-      ></app-table-cell>
-    </ng-container>
+    Old Vehicles Usages
+  </div>
+  <app-vehicle-usage-logs-table></app-vehicle-usage-logs-table>
 
-    <!--Content-->
-    <ng-container
-      *ngFor="let vehicleUsage of cookedContract.vehicleUsagesLog"
-    >
-      <app-table-cell
-        [tableCell]="customCell"
-      >
-        {{vehicleUsage.dateCreatedDisplay}}
-      </app-table-cell>
-      <app-table-cell
-        [tableCell]="customCell"
-      >
-        {{vehicleUsage.bikeModelData.name}}
-      </app-table-cell>
-      <app-table-cell
-        [tableCell]="customCell"
-      >
-        {{vehicleUsage.amount}}
-      </app-table-cell>
-      <app-table-cell
-        [tableCell]="customCell"
-      >
-        {{vehicleUsage.typeDisplay}}
-      </app-table-cell>
-      <app-table-cell
-        [tableCell]="customCell"
-      >
-        actions...
-      </app-table-cell>
-    </ng-container>
+  <div
+    class="text-lg"
+  >
+    Current Vehicle Usages
   </div>
 
 

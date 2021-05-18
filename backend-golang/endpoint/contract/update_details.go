@@ -16,13 +16,26 @@ func UpdateDetails(
 	r *http.Request,
 ) (
 ) {
-	var body struct {
-		ContractId    int               `json:"contractId"`
-		State         state.State       `json:"state"`
-		CustomerData  customer.Shrinked `json:"customerData"`
-		VehicleUsages []contract.Usage  `json:"vehicleUsages"`
-	}
-	err := json.NewDecoder(r.Body).Decode(&body)
+	var (
+		body struct {
+			ContractId    int               `json:"contractId"`
+			State         state.State       `json:"state"`
+			CustomerData  customer.Shrinked `json:"customerData"`
+			VehicleUsages []contract.Usage  `json:"vehicleUsages"`
+		}
+		err error
+		// b []byte
+	)
+	err = json.NewDecoder(r.Body).Decode(&body)
+	// b, err = ioutil.ReadAll(r.Body)
+	// if err != nil {
+	// 	w.WriteHeader(http.StatusBadRequest)
+	// 	log.Printf(
+	// 		"Errors happended reading body: %v",
+	// 		err,
+	// 	)
+	// }
+	// err = json.Unmarshal(b, &body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Printf(

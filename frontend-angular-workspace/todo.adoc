@@ -10,28 +10,37 @@
 * [x] `PaymentDetails` cancel button
 ** [x] Hide the modal
 
-* [ ] `PaymentDetails` accept button
+* [x] `PaymentDetails` accept button
 ** [x] Mutate the current payments
-** [ ] Hide the modal
-** [ ] Call the API
+** [x] Hide the modal
+** [x] Call the API
 
-* [ ] `PaymentDetails` trash button
-** [ ] Show the confirmation
-** [ ] Return if press 'x'
-** [ ] Remove if press 'v'
+* [x] `PaymentDetails` trash button
+** [x] Show the confirmation
+** [x] Return if press 'x'
+** [x] Remove if press 'v'
+
+'''
 
 * [ ] `ContractDetails` date range input
 ** [ ] Only allow one month or more for monthly rental
+** [ ]
 
-* [ ] `ContractDetails` cancel button
+* [x] `ContractDetails` cancel button
 
-* [ ] `ContractDetails` accept button
-** [ ] Hide the modal
-** [ ] Send data to backend
-** [ ] Reload data
+* [x] `ContractDetails` accept button
+** [x] Hide the modal
+** [x] Send data to backend
+** [x] Reload data
+
+* [x] `ContractDetails` display Date End instead of Interval
+
+'''
 
 * [ ] `ContractTable` multi call to `contract/bike-model/options`
 ** [ ] Find a better way to structure code and avoid API call
+
+'''
 
 * [ ] `Steps` component
 

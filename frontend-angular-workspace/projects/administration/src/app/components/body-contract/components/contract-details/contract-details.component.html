@@ -74,20 +74,15 @@
             <div>{{vehicleUsage.typeDisplay}}</div>
           </app-table-cell>
 
-          <!--Day Count-->
+          <!--Date End-->
           <app-table-cell
             [tableCell]="customCell"
           >
             <div
-              *ngIf="vehicleUsage.type <= 1"
             >
-              {{vehicleUsage.dayCount}} day(s)
+              {{vehicleUsage.dateEndDisplay}}
             </div>
-            <div
-              *ngIf="vehicleUsage.type === 2"
-            >
-              {{vehicleUsage.monthCount}} month(s)
-            </div>
+
           </app-table-cell>
 
           <!--Total-->

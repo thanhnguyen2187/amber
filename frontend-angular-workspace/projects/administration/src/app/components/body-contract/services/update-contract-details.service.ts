@@ -3,6 +3,7 @@ import { PrefixedHttpClientService } from '../../../services/prefixed-http-clien
 import { Observable } from 'rxjs';
 import { CustomerData } from '../models/customer-data.interface';
 import { VehicleUsage } from '../models/vehicle-usage.interface';
+import { format, formatISO } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,14 @@ export class UpdateContractDetailsService {
     // to avoid problems with date range
     const fixedVehicleUsages: any[] = vehicleUsages.map(
       vehicleUsage => {
+        const dateStart = vehicleUsage.dateStart ?? new Date();
+        const dateEnd = vehicleUsage.dateEnd ?? new Date();
         return {
           ...vehicleUsage,
-          dateStart: vehicleUsage.dateStart?.toJSON(),
-          dateEnd: vehicleUsage.dateEnd?.toJSON(),
+          dateStart: format(dateStart, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
+          dateEnd: format(dateEnd, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
+          // dateStart: dateStart.toJSON(),
+          // dateEnd: dateEnd.toJSON(),
         };
       }
     );

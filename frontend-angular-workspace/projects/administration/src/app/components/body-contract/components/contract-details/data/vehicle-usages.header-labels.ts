@@ -3,7 +3,7 @@ export const headerLabels: string[] = [
   'Price',
   'Amount',
   'Purpose',
-  'Interval',
+  'Date End',
   'Total',
   '',
 ];

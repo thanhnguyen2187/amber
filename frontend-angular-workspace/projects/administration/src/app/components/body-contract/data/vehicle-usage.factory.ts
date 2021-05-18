@@ -66,25 +66,29 @@ export class VehicleUsageFactory {
       },
       dateStart: vehicleUsage.dateStart ? parseJSON(vehicleUsage.dateStart) : undefined,
       get dateStartDisplay(): string {
-        return (
-          this.dateStart
-            ? format(
-                parseJSON(this.dateStart),
-                'yyyy-MM-dd',
-              )
-            : 'Unavailable'
-        );
+        switch (this.type) {
+          case vehicleUsageTypesEnum.ForSale:
+            return '';
+          default:
+            return (
+              this.dateStart
+                ? format(parseJSON(this.dateStart), 'yyyy-MM-dd')
+                : 'Unavailable'
+            );
+        }
       },
       dateEnd: vehicleUsage.dateEnd ? parseJSON(vehicleUsage.dateEnd) : undefined,
       get dateEndDisplay(): string {
-        return (
-          this.dateEnd
-            ? format(
-                parseJSON(this.dateEnd),
-                'yyyy-MM-dd',
-              )
-            : 'Unavailable'
-        );
+        switch (this.type) {
+          case vehicleUsageTypesEnum.ForSale:
+            return '';
+          default:
+            return (
+              this.dateEnd
+                ? format(parseJSON(this.dateEnd), 'yyyy-MM-dd')
+                : 'Unavailable'
+            );
+        }
       },
       get total(): number {
         switch (this.type) {

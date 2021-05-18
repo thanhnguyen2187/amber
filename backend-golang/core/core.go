@@ -1,16 +1,19 @@
 package core
 
 import (
+	"log"
+
 	"amber-backend/core/auth"
 	"amber-backend/core/conf"
 	"amber-backend/core/db"
 	"amber-backend/core/esclient"
-	"log"
+	"amber-backend/core/tz"
 )
 
 func Init() {
 	log.SetFlags(log.Llongfile)
 
+	tz.Init()
 	conf.Init()
 	db.Init(
 		conf.Config.DbDriver,

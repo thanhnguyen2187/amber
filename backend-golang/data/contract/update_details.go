@@ -122,8 +122,8 @@ func generateUpdateUsageQuery(
 				"day_count":   dayCount,
 				"month_count": monthCount,
 				"price":       price,
-				"date_start":  usage.DateStart,
-				"date_end":    usage.DateEnd,
+				"date_start":  usage.DateStart.Format("2006-01-02"),
+				"date_end":    usage.DateEnd.Format("2006-01-02"),
 				"total":       total,
 				"change_id": goqu.V(
 					dialect.
