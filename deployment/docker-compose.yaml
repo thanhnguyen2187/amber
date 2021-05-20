@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   amber-mariadb:
+    container_name: amber-mariadb
     restart: always
     image: mariadb:10.5.9-focal
     ports:
@@ -13,6 +14,19 @@ services:
       - MYSQL_PASSWORD=amber
     volumes:
       - "./mariadb-data:/var/lib/mysql"
+
+  amber-caddy:
+    container_name: amber-caddy
+    restart: always
+    image: caddy:2.4.0-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/certs/amber.pem:/etc/certs/amber.pem
+      - ./caddy/certs/amber-key.pem:/etc/certs/amber-key.pem
+    network_mode: host
 
   # amber-elasticsearch:
   #   restart: always

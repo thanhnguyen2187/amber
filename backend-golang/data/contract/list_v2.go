@@ -256,10 +256,10 @@ func ListV2(
 			return nil, 0, err
 		}
 
-		vehicleUsagesLog, err := ListUsagesLog(id)
-		if err != nil {
-			return nil, 0, err
-		}
+		// vehicleUsagesLog, err := ListUsagesLog(id)
+		// if err != nil {
+		// 	return nil, 0, err
+		// }
 
 		payments, err := ListPayments(id)
 		if err != nil {
@@ -271,8 +271,9 @@ func ListV2(
 			StateValue:       state,
 			StateDisplay:     stateDisplay,
 			CustomerData:     customerData,
+			ContractData:     contractData,
 			VehicleUsages:    vehicleUsages,
-			VehicleUsagesLog: vehicleUsagesLog,
+			// VehicleUsagesLog: vehicleUsagesLog,
 			Payments:         payments,
 			Total:            total,
 			TotalPaid:        totalPaid,

@@ -233,7 +233,7 @@
         <div
           class="font-semibold"
         >
-          Paid {{totalPayments}} / {{totalVehicleUsages}} USD
+          Paid {{totalPayments}} / {{cookedContract.total}} USD
         </div>
       </div>
       <div></div>
@@ -256,6 +256,30 @@
         size="1em"
       ></amber-icon>
       Accept
+    </amber-button>
+    <amber-button
+      backgroundColor="#4bdb84"
+      borderColor="#4bdb84"
+      [action]="payUp.bind(this)"
+      [disabled]="!displayPaymentButtons"
+    >
+      <amber-icon
+        backgroundImageUrl="assets/dollar.svg"
+        size="1em"
+      ></amber-icon>
+      Pay Up
+    </amber-button>
+    <amber-button
+      backgroundColor="#4bdb84"
+      borderColor="#4bdb84"
+      [action]="payOneThird.bind(this)"
+      [disabled]="!displayPaymentButtons"
+    >
+      <amber-icon
+        backgroundImageUrl="assets/dollar.svg"
+        size="1em"
+      ></amber-icon>
+      Pay 1/3
     </amber-button>
     <amber-button
       backgroundColor="#b8d1c2"

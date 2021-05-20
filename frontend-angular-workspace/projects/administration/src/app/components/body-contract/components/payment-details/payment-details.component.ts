@@ -7,6 +7,8 @@ import { calculateTotal as calculateTotalPayments } from '../../functions/paymen
 import { PaymentFactory } from '../../data/payment.factory';
 import { Payment } from '../../models/payment.interface';
 import { UpdatePaymentsService } from '../../services/update-payments.service';
+import { calculatePaymentAmount } from '../../functions/payment.calculate-amount';
+import { ContractStatesEnum } from '../../data/contract-states.enum';
 
 @Component({
   selector: 'app-payment-details',
@@ -36,9 +38,6 @@ export class PaymentDetailsComponent implements OnInit {
     );
   }
 
-  get totalVehicleUsages(): number {
-    return calculateTotalVehicleUsages(this.cookedContract.vehicleUsages);
-  }
   get totalPayments(): number {
     return calculateTotalPayments([
       ...this.cookedContract.payments,
@@ -62,6 +61,42 @@ export class PaymentDetailsComponent implements OnInit {
         this.newPayments = [];
         this.cookedContract.displayPayments = false;
       },
+    );
+  }
+
+  get displayPaymentButtons(): boolean {
+    return this.cookedContract.totalPaid < this.cookedContract.total;
+  }
+
+  payOneThird(): void {
+    this.cookedContract.stateValue = ContractStatesEnum.Booked;
+    this.newPayments.push(
+      PaymentFactory.createWithAmount(
+        this.cookedContract.id,
+        calculatePaymentAmount(
+          {
+            type: 'oneThird',
+            cookedContract: this.cookedContract,
+          }
+        )
+      )
+    );
+  }
+
+  payUp(): void {
+    this.cookedContract.stateValue = ContractStatesEnum.InEffect;
+    // TODO: implement "findMainUsagesType",
+    //       and switch the state accordingly
+    this.newPayments.push(
+      PaymentFactory.createWithAmount(
+        this.cookedContract.id,
+        calculatePaymentAmount(
+          {
+            type: 'all',
+            cookedContract: this.cookedContract,
+          }
+        )
+      )
     );
   }
 

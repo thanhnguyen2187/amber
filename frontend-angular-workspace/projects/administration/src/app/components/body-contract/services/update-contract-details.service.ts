@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CustomerData } from '../models/customer-data.interface';
 import { VehicleUsage } from '../models/vehicle-usage.interface';
 import { format, formatISO } from 'date-fns';
+import { ContractData } from '../models/contract-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,13 @@ export class UpdateContractDetailsService {
       contractId,
       state,
       customerData,
+      contractData,
       vehicleUsages,
     }: {
       contractId: number,
       state: number,
       customerData: CustomerData,
+      contractData: ContractData,
       vehicleUsages: VehicleUsage[],
     },
   ): Observable<any> {
@@ -44,6 +47,7 @@ export class UpdateContractDetailsService {
           contractId,
           state,
           customerData,
+          contractData,
           vehicleUsages: fixedVehicleUsages,
         },
       }

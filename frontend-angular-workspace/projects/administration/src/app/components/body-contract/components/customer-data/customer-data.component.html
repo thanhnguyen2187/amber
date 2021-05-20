@@ -1,0 +1,30 @@
+<div
+  style="grid-template-columns: repeat(2, max-content)"
+  class="
+    p-4
+    grid
+    gap-2
+  "
+>
+  <div>
+    Name:
+  </div>
+  <input
+    [(ngModel)]="customerData.fullName"
+    amberCommonInputText
+  />
+  <div>
+    Email:
+  </div>
+  <input
+    [(ngModel)]="customerData.email"
+    amberCommonInputText
+  />
+  <div>
+    Phone Number:
+  </div>
+  <input
+    [(ngModel)]="customerData.phoneNumber"
+    amberCommonInputText
+  />
+</div>

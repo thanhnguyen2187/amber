@@ -27,9 +27,18 @@ export class ContractTableComponent implements OnInit {
   displaySearch = false;
 
   cookedContracts: CookedContract[] = [];
-  page = 1;
+  currentValue = 1;
+  get current(): number {
+    return this.currentValue;
+  }
+  set current(newValue: number) {
+    this.currentValue = newValue;
+    this.reloadDataV2();
+  }
   size = 10;
-  total = 1;
+  get total(): number {
+    return Math.ceil(this.cookedContracts.length / this.size);
+  }
 
   dynamicFormGroups = dynamicFormGroups;
   get dynamicFormGroupsJSON(): string {
@@ -47,7 +56,6 @@ export class ContractTableComponent implements OnInit {
     this.dataService.cookedContractsV2$.subscribe(
       (cookedContractsResponse) => {
         this.cookedContracts = cookedContractsResponse.cookedContracts;
-        this.total = cookedContractsResponse.total;
       }
     );
     // this.reloadData();
@@ -60,6 +68,10 @@ export class ContractTableComponent implements OnInit {
 
   reloadDataV2(): void {
     const body = {};
+    const params = {
+      size: this.size,
+      page: this.current,
+    };
     Object.assign(
       body,
       ...this.dynamicFormGroups.map(
@@ -69,6 +81,7 @@ export class ContractTableComponent implements OnInit {
     this.dataService.reloadCookedContractsV2(
       {
         body,
+        params,
       }
     );
   }

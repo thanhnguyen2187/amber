@@ -21,6 +21,7 @@ func UpdateDetails(
 			ContractId    int               `json:"contractId"`
 			State         state.State       `json:"state"`
 			CustomerData  customer.Shrinked `json:"customerData"`
+			ContractData  contract.Data     `json:"contractData"`
 			VehicleUsages []contract.Usage  `json:"vehicleUsages"`
 		}
 		err error
@@ -48,6 +49,7 @@ func UpdateDetails(
 		body.ContractId,
 		body.State,
 		body.CustomerData,
+		body.ContractData,
 		body.VehicleUsages,
 	)
 	if err != nil {

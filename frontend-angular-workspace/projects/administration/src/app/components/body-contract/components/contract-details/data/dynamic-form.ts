@@ -71,4 +71,18 @@ export const dynamicFormGroups: DynamicFormGroup[] = [
       },
     ],
   },
+  {
+    title: 'Note',
+    type: 'textarea',
+    key: 'note',
+    rowsCount: 1,
+    formControls: [
+      {
+        type: 'textarea',
+        label: '',
+        value: '',
+        key: 'note',
+      },
+    ],
+  },
 ];

@@ -70,8 +70,24 @@ export function convertCookedContract(
     }
   );
 
+  const noteGroup: DynamicFormGroup = {
+    title: 'Note',
+    type: 'textarea',
+    key: 'note',
+    rowsCount: 1,
+    formControls: [
+      {
+        type: 'textarea',
+        key: '',
+        label: 'Note',
+        value: cookedContract.contractData.note,
+      }
+    ],
+  };
+
   return [
     stateGroup,
     customerDataGroup,
+    noteGroup,
   ];
 }

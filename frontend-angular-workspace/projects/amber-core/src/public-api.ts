@@ -13,6 +13,7 @@ export * from './lib/components/overlay/overlay.component';
 export * from './lib/components/button/button.component';
 export * from './lib/components/modal/modal.component';
 export * from './lib/components/dynamic-form/dynamic-form.component';
+export * from './lib/components/paginator/paginator.component';
 
 export * from './lib/utility-functions/public-api';
 export * from './lib/components/dynamic-form/dynamic-form.interfaces';

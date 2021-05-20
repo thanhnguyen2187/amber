@@ -6,6 +6,7 @@ import (
 	"amber-backend/endpoint/bikemodel"
 	"amber-backend/endpoint/contract"
 	"amber-backend/endpoint/metadata"
+	v2 "amber-backend/v2"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
@@ -42,6 +43,10 @@ func Router() chi.Router {
 			r.Mount(
 				"/contract",
 				contract.Router(),
+			)
+			r.Mount(
+				"/",
+				v2.Router(),
 			)
 		},
 	)

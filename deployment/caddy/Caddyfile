@@ -2,7 +2,7 @@
 
 }
 api.amber.dev {
-    tls ../https-certificate/amber.pem ../https-certificate/amber-key.pem
+    tls /etc/certs/amber.pem /etc/certs/amber-key.pem
 
     reverse_proxy localhost:5000 {
         header_up Host {host}
@@ -20,7 +20,7 @@ api.amber.dev {
 }
 
 amber.dev {
-    tls ../https-certificate/amber.pem ../https-certificate/amber-key.pem
+    tls /etc/certs/amber.pem /etc/certs/amber-key.pem
 
     reverse_proxy localhost:4200 {
         header_up Host {host}
@@ -38,7 +38,7 @@ amber.dev {
 }
 
 admin.amber.dev {
-    tls ../https-certificate/amber.pem ../https-certificate/amber-key.pem
+    tls /etc/certs/amber.pem /etc/certs/amber-key.pem
 
     reverse_proxy localhost:4210 {
         header_up Host {host}

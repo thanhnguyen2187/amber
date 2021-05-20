@@ -11,6 +11,7 @@ func UpdateDetails(
 	contractId int,
 	state state.State,
 	customerData customer.Shrinked,
+	contractData contract.Data,
 	vehicleUsages []contract.Usage,
 ) (
 	err error,
@@ -19,6 +20,7 @@ func UpdateDetails(
 		contractId,
 		state,
 		customerData,
+		contractData,
 		vehicleUsages,
 	)
 	return

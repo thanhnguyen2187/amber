@@ -2,6 +2,9 @@ import { CookedContract } from '../models/cooked-contract.interface';
 import { CustomerDataFactory } from './customer-data.factory';
 import { VehicleUsageFactory } from './vehicle-usage.factory';
 import { PaymentFactory } from './payment.factory';
+import { ContractDataFactory } from './contract-data.factory';
+import { calculateTotal as calculateTotalPayments } from '../functions/payments.calculate-total';
+import { calculateTotal } from '../functions/vehicle-usages.calculate-total';
 
 export class CookedContractFactory {
   static augment(cookedContract: CookedContract): CookedContract {
@@ -29,6 +32,7 @@ export class CookedContractFactory {
       customerData: CustomerDataFactory.shrink(
         cookedContract.customerData
       ),
+      contractData: cookedContract.contractData,
       vehicleUsages: cookedContract.vehicleUsages.map(
         VehicleUsageFactory.augment
       ),
@@ -38,8 +42,13 @@ export class CookedContractFactory {
       payments: cookedContract.payments.map(
         PaymentFactory.augment
       ),
-      total: cookedContract.total,
-      totalPaid: cookedContract.totalPaid,
+      // total: cookedContract.total,
+      get total(): number {
+        return calculateTotal(this.vehicleUsages);
+      },
+      get totalPaid(): number {
+        return calculateTotalPayments(this.payments);
+      },
       visibility: cookedContract.visibility,
       displayDetails: false,
       displayPayments: false,
@@ -53,6 +62,7 @@ export class CookedContractFactory {
       stateValue: 0,
       stateDisplay: '',
       customerData: CustomerDataFactory.createDefault(),
+      contractData: ContractDataFactory.createDefault(),
       vehicleUsages: [],
       vehicleUsagesLog: [],
       payments: [],

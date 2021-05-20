@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonSelectDirective } from './directives/common-select.directive';
 import { CommonInputTextDirective } from './directives/common-input-text.directive';
 import { CommonInputNumberDirective } from './directives/common-input-number.directive';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CommonInputNumberDirective } from './directives/common-input-number.dir
     CommonSelectDirective,
     CommonInputTextDirective,
     CommonInputNumberDirective,
+    PaginatorComponent,
   ],
   imports: [
     OverlayModule,
@@ -41,6 +43,7 @@ import { CommonInputNumberDirective } from './directives/common-input-number.dir
     CommonSelectDirective,
     CommonInputTextDirective,
     CommonInputNumberDirective,
+    PaginatorComponent,
   ]
 })
 export class AmberCoreModule { }

@@ -1,0 +1,24 @@
+<div
+  class="
+    flex
+    border-2
+    divide-x-2
+    rounded-md
+  "
+>
+  <div
+    class="
+      w-9
+      h-9
+      flex
+      justify-center
+      items-center
+      cursor-pointer
+    "
+    *ngFor="let cellData of cellsData"
+    [ngClass]="getCellClasses(cellData.type)"
+    (click)="cellData.action()"
+  >
+    {{cellData.label}}
+  </div>
+</div>

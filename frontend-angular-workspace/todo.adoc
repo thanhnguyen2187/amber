@@ -24,7 +24,10 @@
 
 * [ ] `ContractDetails` date range input
 ** [ ] Only allow one month or more for monthly rental
-** [ ]
+
+* [ ] `ContractDetails` quick payment
+** [ ] 1/3 payment
+** [ ] Full payment
 
 * [x] `ContractDetails` cancel button
 

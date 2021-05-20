@@ -21,6 +21,7 @@ func generateUpdateContractDetailsQuery(
 	contractId int,
 	state state.State,
 	customerData customer.Shrinked,
+	contractData contract.Data,
 ) (
 	query string,
 	err error,
@@ -31,11 +32,17 @@ func generateUpdateContractDetailsQuery(
 		return "", err
 	}
 
+	b2, err := json.Marshal(contractData)
+	if err != nil {
+		return "", err
+	}
+
 	d := dialect.
 		Update("contract").
 		Set(
 			goqu.Record{
 				"customer_data": b,
+				"contract_data": b2,
 				"change_id":     goqu.L("change_id + 1"),
 				"state":         state,
 			},
@@ -179,6 +186,7 @@ func UpdateDetails(
 	contractId int,
 	state state.State,
 	customerData customer.Shrinked,
+	contractData contract.Data,
 	vehicleUsages []contract.Usage,
 ) (
 	err error,
@@ -197,6 +205,7 @@ func UpdateDetails(
 		contractId,
 		state,
 		customerData,
+		contractData,
 	)
 	if err != nil {
 		return

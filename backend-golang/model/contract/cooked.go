@@ -35,6 +35,7 @@ type Cooked struct {
 	StateValue       contractState.State `json:"stateValue"`
 	StateDisplay     string              `json:"stateDisplay"`
 	CustomerData     customer.Customer   `json:"customerData"`
+	ContractData     Data                `json:"contractData"`
 	VehicleUsages    []Usage             `json:"vehicleUsages"`
 	VehicleUsagesLog []Usage             `json:"vehicleUsagesLog"`
 	Payments         []Payment           `json:"payments"`

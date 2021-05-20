@@ -30,16 +30,17 @@ import { RouterModule } from '@angular/router';
     NotificationModule,
     RouterModule,
   ],
-  exports: [
-    // ItemGridComponent,
-    // ItemCardComponent,
-    // ItemCardRowComponent,
-    // PaginationBarComponent,
-    // FilterComponent,
-    // CheckboxComponent,
-    // AccordionComponent,
-    ItemMasterComponent,
-    ItemCardRowComponent,
-  ]
+    exports: [
+        // ItemGridComponent,
+        // ItemCardComponent,
+        // ItemCardRowComponent,
+        // PaginationBarComponent,
+        // FilterComponent,
+        // CheckboxComponent,
+        // AccordionComponent,
+        ItemMasterComponent,
+        ItemCardRowComponent,
+        PaginationBarComponent,
+    ]
 })
 export class ItemGridModule { }

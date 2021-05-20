@@ -1,0 +1,20 @@
+<div
+  class="
+    w-60
+    grid
+    grid-flow-col
+    grid-rows-3
+    gap-2
+    p-4
+  "
+>
+  <div
+    *ngFor="let contractState of contractStates"
+  >
+    <input
+      type="radio"
+      [value]="contractState.value"
+      [(ngModel)]="state"
+    /> {{contractState.label}}
+  </div>
+</div>

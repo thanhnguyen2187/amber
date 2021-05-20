@@ -14,6 +14,9 @@ import { RangePickerModule } from '../range-picker/range-picker.module';
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 import { VehicleUsageLogsComponent } from './components/vehicle-usage-logs/vehicle-usage-logs.component';
 import { VehicleUsageLogsTableComponent } from './components/vehicle-usage-logs-table/vehicle-usage-logs-table.component';
+import { ContractStateComponent } from './components/contract-state/contract-state.component';
+import { CustomerDataComponent } from './components/customer-data/customer-data.component';
+import { ContractDataComponent } from './components/contract-data/contract-data.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { VehicleUsageLogsTableComponent } from './components/vehicle-usage-logs-
     PaymentDetailsComponent,
     VehicleUsageLogsComponent,
     VehicleUsageLogsTableComponent,
+    ContractStateComponent,
+    CustomerDataComponent,
+    ContractDataComponent,
   ],
   imports: [
     CommonModule,

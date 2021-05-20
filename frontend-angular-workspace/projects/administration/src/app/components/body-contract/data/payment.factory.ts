@@ -1,6 +1,7 @@
 import { Payment } from '../models/payment.interface';
 import { format, parseJSON } from 'date-fns';
 import { formatDate } from '@angular/common';
+import { CookedContract } from '../models/cooked-contract.interface';
 
 export class PaymentFactory {
   static augment(payment: Payment): Payment {
@@ -38,6 +39,20 @@ export class PaymentFactory {
     return {
       ...this.augment(payment),
       contractId,
+      editing: true,
+      removing: false,
+    };
+  }
+
+  static createWithAmount(
+    contractId: number,
+    amount: number,
+  ): Payment {
+    const payment = this.createDefault();
+    return {
+      ...this.augment(payment),
+      contractId,
+      amount,
       editing: true,
       removing: false,
     };

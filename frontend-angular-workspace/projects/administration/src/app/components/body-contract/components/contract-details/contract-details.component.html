@@ -9,9 +9,33 @@
       gap-y-4
     "
   >
-    <amber-dynamic-form
-      [dynamicFormGroups]="dynamicFormGroups"
-    ></amber-dynamic-form>
+    <div
+      class="
+        flex
+        gap-x-8
+      "
+    >
+      <div>
+        <div
+          class="text-lg"
+        >
+          State
+        </div>
+        <app-contract-state
+          [(state)]="cookedContract.stateValue"
+        ></app-contract-state>
+      </div>
+      <div>
+        <div
+          class="text-lg"
+        >
+          Customer Data
+        </div>
+        <app-customer-data
+          [customerData]="cookedContract.customerData"
+        ></app-customer-data>
+      </div>
+    </div>
     <div
       class="
         flex
@@ -19,6 +43,28 @@
         gap-y-4
       "
     >
+      <div>
+        <div
+          class="
+            text-lg
+          "
+        >
+          Note
+        </div>
+        <div
+          class="
+            p-4
+          "
+        >
+          <textarea
+            amberCommonInputText
+            cols="60"
+            rows="6"
+            [(ngModel)]="cookedContract.contractData.note"
+          ></textarea>
+        </div>
+
+      </div>
       <div
         class="
           text-lg
@@ -153,7 +199,7 @@
             <div
               class="font-semibold"
             >
-              Paid {{paymentsTotal}} / {{usagesTotal}} USD
+              Paid {{cookedContract.totalPaid}} / {{cookedContract.total}} USD
             </div>
           </div>
           <div
@@ -203,7 +249,6 @@
         </amber-button>
       </div>
     </div>
-
   </div>
 </amber-modal>
 

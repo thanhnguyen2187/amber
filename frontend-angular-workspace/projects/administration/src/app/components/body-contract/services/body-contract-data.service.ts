@@ -8,6 +8,7 @@ import { VehicleUsageFactory } from '../data/vehicle-usage.factory';
 import { PaymentFactory } from '../data/payment.factory';
 import { CustomerDataFactory } from '../data/customer-data.factory';
 import { CookedContractFactory } from '../data/cooked-contract.factory';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -34,14 +35,17 @@ export class BodyContractDataService {
   reloadCookedContractsV2(
     {
       body,
+      params,
     }: {
       body: {},
+      params: {},
     }
   ): void {
     (
       this.prefixedHttpClientService.post(
         {
           url: 'contract/cooked-contracts-v2',
+          params: new HttpParams().appendAll(params),
           body,
         }
       ) as Observable<CookedContractsResponse>

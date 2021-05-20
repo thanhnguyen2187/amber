@@ -55,7 +55,6 @@ export class ContractDetailsComponent implements OnInit {
   }
   set cookedContract(cookedContract: CookedContract) {
     this.cookedContractValue = cookedContract;
-    this.dynamicFormGroups = convertCookedContract(cookedContract);
   }
 
   get dynamicFormGroupsJSON(): string {
@@ -95,19 +94,24 @@ export class ContractDetailsComponent implements OnInit {
     this.cookedContract.vehicleUsages.splice(index, 1);
   }
 
-  accept(): void {
-    const [state, customerData] = convertDynamicFormGroups(this.dynamicFormGroups);
+  accept(): void  {
+    const [
+      state,
+      customerData,
+      contractData,
+    ] = convertDynamicFormGroups(this.dynamicFormGroups);
     this.updateContractDetailsService.update$(
       {
         contractId: this.cookedContract.id,
-        state,
-        customerData,
+        state: this.cookedContract.stateValue,
+        customerData: this.cookedContract.customerData,
+        contractData: this.cookedContract.contractData,
         vehicleUsages: this.cookedContract.vehicleUsages,
       }
     ).subscribe(
       () => {
-        this.cookedContract.customerData = customerData;
-        this.cookedContract.stateValue = state;
+        // this.cookedContract.customerData = customerData;
+        // this.cookedContract.stateValue = ;
         this.cookedContract.displayDetails = false;
       }
     );

@@ -33,12 +33,8 @@ windows:
   panes:
   - shell_command: go run .
     focus: 'true'
-  - shell_command:
-    - sudo pkill -f caddy && sudo caddy run --watch
-    start_directory: ${HOME}/Projects/amber/web-server
   - shell_command: null
-    # - sudo pkill -f caddy
-    # - sudo caddy run --watch
+  - shell_command: null
 
 - window_name: database
   start_directory: ${HOME}/Projects/amber/database-provisioning
@@ -47,10 +43,21 @@ windows:
     main-pane-height: 38
     automatic-rename: 'off'
   panes:
-  - shell_command: clear
+  - shell_command: nvim -S
     focus: 'true'
-  - shell_command:
-    - ./start_database_server.sh # && sleep 5 && ./run_mysqldef.sh && ./do_seed.sh
+  - shell_command: null
+  - shell_command: null
+
+- window_name: other
+  start_directory: ${HOME}/Projects/amber
+  layout: main-horizontal
+  options:
+    main-pane-height: 38
+    automatic-rename: 'off'
+  panes:
+  - shell_command: null
+    focus: 'true'
+  - shell_command: null
   - shell_command: null
   # - shell_command:
   #   - clear
