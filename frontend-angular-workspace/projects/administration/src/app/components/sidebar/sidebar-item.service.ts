@@ -95,25 +95,25 @@ export class SidebarItemService {
       parentData: SidebarItemDisplayData,
       childrenData: SidebarItemDisplayData[],
      }[] = [
-      {
-        parentData: {
-          iconUrl: 'assets/home-white.svg',
-          content: 'Content',
-          key: 'content',
-        },
-        childrenData: [
-          {
-            iconUrl: '',
-            content: 'List',
-            key: 'list',
-          },
-          {
-            iconUrl: '',
-            content: 'Create',
-            key: 'create',
-          },
-        ],
-      },
+      // {
+      //   parentData: {
+      //     iconUrl: 'assets/home-white.svg',
+      //     content: 'Content',
+      //     key: 'content',
+      //   },
+      //   childrenData: [
+      //     {
+      //       iconUrl: '',
+      //       content: 'List',
+      //       key: 'list',
+      //     },
+      //     {
+      //       iconUrl: '',
+      //       content: 'Create',
+      //       key: 'create',
+      //     },
+      //   ],
+      // },
       {
         parentData: {
           iconUrl: 'assets/contract-white.svg',
@@ -133,25 +133,25 @@ export class SidebarItemService {
           // },
         ],
       },
-      {
-        parentData: {
-          iconUrl: 'assets/customer-white.svg',
-          content: 'Customer',
-          key: 'customer',
-        },
-        childrenData: [
-          {
-            iconUrl: '',
-            content: 'List',
-            key: 'list',
-          },
-          {
-            iconUrl: '',
-            content: 'Create',
-            key: 'create',
-          },
-        ],
-      },
+      // {
+      //   parentData: {
+      //     iconUrl: 'assets/customer-white.svg',
+      //     content: 'Customer',
+      //     key: 'customer',
+      //   },
+      //   childrenData: [
+      //     {
+      //       iconUrl: '',
+      //       content: 'List',
+      //       key: 'list',
+      //     },
+      //     {
+      //       iconUrl: '',
+      //       content: 'Create',
+      //       key: 'create',
+      //     },
+      //   ],
+      // },
       {
         parentData: {
           iconUrl: 'assets/bike-white.svg',
@@ -159,16 +159,16 @@ export class SidebarItemService {
           key: 'bike',
         },
         childrenData: [
-          {
-            iconUrl: '',
-            content: 'List',
-            key: 'list',
-          },
-          {
-            iconUrl: '',
-            content: 'Create',
-            key: 'create',
-          },
+          // {
+          //   iconUrl: '',
+          //   content: 'List',
+          //   key: 'list',
+          // },
+          // {
+          //   iconUrl: '',
+          //   content: 'Create',
+          //   key: 'create',
+          // },
         ],
       },
       {
@@ -178,31 +178,31 @@ export class SidebarItemService {
           key: 'statistics',
         },
         childrenData: [
-          {
-            iconUrl: '',
-            content: 'First type graph',
-            key: 'list',
-          },
-          {
-            iconUrl: '',
-            content: 'Second type graph',
-            key: 'create',
-          },
-          {
-            iconUrl: '',
-            content: 'Third type graph',
-            key: 'create',
-          },
+          // {
+          //   iconUrl: '',
+          //   content: 'First type graph',
+          //   key: 'list',
+          // },
+          // {
+          //   iconUrl: '',
+          //   content: 'Second type graph',
+          //   key: 'create',
+          // },
+          // {
+          //   iconUrl: '',
+          //   content: 'Third type graph',
+          //   key: 'create',
+          // },
         ],
       },
-      {
-        parentData: {
-          iconUrl: 'assets/settings-white.svg',
-          content: 'Settings',
-          key: 'settings',
-        },
-        childrenData: [],
-      },
+      // {
+      //   parentData: {
+      //     iconUrl: 'assets/settings-white.svg',
+      //     content: 'Settings',
+      //     key: 'settings',
+      //   },
+      //   childrenData: [],
+      // },
     ];
 
     return of(displayData.map(

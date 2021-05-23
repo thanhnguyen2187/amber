@@ -25,7 +25,9 @@ export class BodyContractDataService {
   reloadCookedContracts(): void {
     (
       this.prefixedHttpClientService.get(
-        'contract/cooked-contracts',
+        {
+          url: 'contract/cooked-contracts',
+        }
       ) as Observable<CookedContractsResponse>
     ).subscribe(
       (response) => this.cookedContracts$.next(response)
@@ -81,6 +83,17 @@ export class BodyContractDataService {
     ).subscribe(
       () => {}
     );
+  }
+
+  openDownload(
+    {
+      contractId,
+    }: {
+      contractId: number,
+    }
+  ): void {
+    const url = this.prefixedHttpClientService.prefixUrl(`contracts/${contractId}/print`);
+    window.open(url);
   }
 
 }

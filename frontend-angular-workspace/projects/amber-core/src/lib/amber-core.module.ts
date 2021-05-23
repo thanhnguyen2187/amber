@@ -12,6 +12,7 @@ import { CommonSelectDirective } from './directives/common-select.directive';
 import { CommonInputTextDirective } from './directives/common-input-text.directive';
 import { CommonInputNumberDirective } from './directives/common-input-number.directive';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CommonInputCheckboxDirective } from './directives/common-input-checkbox.directive';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CommonInputTextDirective,
     CommonInputNumberDirective,
     PaginatorComponent,
+    CommonInputCheckboxDirective,
   ],
   imports: [
     OverlayModule,
@@ -43,6 +45,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CommonSelectDirective,
     CommonInputTextDirective,
     CommonInputNumberDirective,
+    CommonInputCheckboxDirective,
     PaginatorComponent,
   ]
 })

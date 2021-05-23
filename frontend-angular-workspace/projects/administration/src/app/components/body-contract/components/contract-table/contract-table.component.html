@@ -55,9 +55,9 @@
 
   <!--Header-->
   <ng-container
-    *ngFor="let headerCell of headerCells"
   >
     <app-table-cell
+      *ngFor="let headerCell of headerCells"
       [tableCell]="headerCell"
     ></app-table-cell>
   </ng-container>
@@ -132,6 +132,7 @@
         <amber-icon
           backgroundImageUrl="assets/print.svg"
           size="1.25em"
+          (click)="openDownload(cookedContract)"
         ></amber-icon>
         <amber-icon
           backgroundImageUrl="assets/view-show.svg"
@@ -152,6 +153,7 @@
       </div>
     </app-table-cell>
   </ng-container>
+
   <ng-container>
     <div
       class="
