@@ -129,7 +129,9 @@
           "options": {
             "outputPath": "dist/end-user/server",
             "main": "projects/end-user/server.ts",
-            "tsConfig": "projects/end-user/tsconfig.server.json"
+            "tsConfig": "projects/end-user/tsconfig.server.json",
+            "sourceMap": true,
+            "optimization": false
           },
           "configurations": {
             "production": {
