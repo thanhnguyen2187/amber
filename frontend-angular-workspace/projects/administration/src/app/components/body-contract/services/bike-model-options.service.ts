@@ -16,7 +16,7 @@ export class BikeModelOptionsService {
 
   get bikeModelOptions$(): Observable<BikeModelOption[]> {
     return (
-      this.prefixedHttpClientService.get('bike-models/options') as Observable<BikeModelOptionsResponse>
+      this.prefixedHttpClientService.get({url: 'bike-models/options'}) as Observable<BikeModelOptionsResponse>
     ).pipe(
       pluck('bikeModelOptions'),
     );

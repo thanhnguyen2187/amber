@@ -33,7 +33,7 @@ export class ContractTableComponent implements OnInit {
   }
   set current(newValue: number) {
     this.currentValue = newValue;
-    this.reloadDataV2();
+    // this.reloadDataV2();
   }
   size = 10;
   get total(): number {
@@ -100,6 +100,14 @@ export class ContractTableComponent implements OnInit {
     );
     setTimeout(
       () => this.reloadDataV2(),
+    );
+  }
+
+  openDownload(cookedContract: CookedContract): void {
+    this.dataService.openDownload(
+      {
+        contractId: cookedContract.id,
+      }
     );
   }
 
