@@ -10,6 +10,5 @@
   "
   [class]="disabled ? ['cursor-not-allowed'] : ['cursor-pointer', 'hover:ring-1', 'active:ring-2']"
   [attr.tabindex]="disableTabIndex ? '' : 0"
-  (click)="disabled ? doNothing() : action()"
 >
 </div>

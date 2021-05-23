@@ -44,9 +44,11 @@ const routes: Routes = [
       },
       {
         path: 'contract',
-        loadChildren: () => import('./components/body-contract/body-contract.module').then(
-          module => module.BodyContractModule,
-        ),
+        loadChildren:
+          () => import('./components/body-contract/body-contract.module').then(
+            module => module.BodyContractModule,
+          )
+        ,
       },
       {
         path: 'customer',
@@ -54,21 +56,19 @@ const routes: Routes = [
       },
       {
         path: 'bike',
-        loadChildren: () => import('./components/body-bike/body-bike.module').then(
-          module => module.BodyBikeModule,
-        ),
+        component: UnderConstructionComponent,
       },
       {
         path: 'statistics',
-        loadChildren: () => import('./components/body-statistics/body-statistics.module').then(
-          module => module.BodyStatisticsModule,
-        ),
+        component: UnderConstructionComponent,
       },
       {
         path: 'settings',
-        loadChildren: () => import('./components/body-settings/body-settings.module').then(
-          module => module.BodySettingsModule
-        ),
+        loadChildren:
+          () => import('./components/body-settings/body-settings.module').then(
+            module => module.BodySettingsModule
+          )
+        ,
       },
     ],
   },

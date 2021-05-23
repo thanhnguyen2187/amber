@@ -43,6 +43,7 @@ export class PaginatorComponent implements OnInit {
             break;
           case CellType.navigate:
             action = () => {
+              console.log(cellData);
               this.current = cellData.key as number;
             };
             break;

@@ -16,7 +16,6 @@ export class IconComponent implements OnInit {
   @Input() disableTabIndex = false;
   @Input() backgroundImageUrl = '';
   @Input() hoverBackgroundImageUrl = '';
-  @Input() size = '';
   getBackgroundImageUrl(): string {
     if (!this.hoverBackgroundImageUrl || !this.hovering) {
       return this.backgroundImageUrl;
@@ -24,9 +23,7 @@ export class IconComponent implements OnInit {
       return this.hoverBackgroundImageUrl;
     }
   }
-
-  @Input() action = () => {};
-  doNothing(): void {}
+  @Input() size = '';
 
   ngOnInit(): void {
   }

@@ -10,7 +10,7 @@ export interface CookedContract {
   customerData: CustomerData;
   contractData: ContractData;
   vehicleUsages: VehicleUsage[];
-  // vehicleUsagesLog: VehicleUsage[];
+  vehicleUsagesLog: VehicleUsage[];
   payments: Payment[];
   total: number;
   totalPaid: number;

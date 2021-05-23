@@ -60,17 +60,9 @@ export class PrefixedHttpClientService {
   }
 
   get(
-    {
-      url,
-      params,
-      headers = this.httpHeaders,
-      responseType,
-    }: {
-      url: string,
-      params?: HttpParams,
-      headers?: HttpHeaders,
-      responseType?: any,
-    }
+    url: string,
+    params?: HttpParams,
+    headers: HttpHeaders = this.httpHeaders,
   ): Observable<object> {
     return (
       this
@@ -80,7 +72,6 @@ export class PrefixedHttpClientService {
         {
           headers,
           params,
-          responseType,
         }
       )
     );
@@ -92,14 +83,12 @@ export class PrefixedHttpClientService {
       headers = this.httpHeaders,
       params,
       body,
-      responseType,
     }:
     {
       url: string,
       headers?: HttpHeaders,
       params?: HttpParams,
       body?: {},
-      responseType?: any,
     }
   ): Observable<object> {
     return (
@@ -109,7 +98,6 @@ export class PrefixedHttpClientService {
         {
           headers,
           params,
-          responseType,
         }
       )
     );

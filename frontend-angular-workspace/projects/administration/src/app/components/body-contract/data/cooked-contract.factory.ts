@@ -36,9 +36,9 @@ export class CookedContractFactory {
       vehicleUsages: cookedContract.vehicleUsages.map(
         VehicleUsageFactory.augment
       ),
-      // vehicleUsagesLog: cookedContract.vehicleUsagesLog.map(
-      //   VehicleUsageFactory.augment
-      // ),
+      vehicleUsagesLog: cookedContract.vehicleUsagesLog.map(
+        VehicleUsageFactory.augment
+      ),
       payments: cookedContract.payments.map(
         PaymentFactory.augment
       ),
@@ -64,7 +64,7 @@ export class CookedContractFactory {
       customerData: CustomerDataFactory.createDefault(),
       contractData: ContractDataFactory.createDefault(),
       vehicleUsages: [],
-      // vehicleUsagesLog: [],
+      vehicleUsagesLog: [],
       payments: [],
       total: 0,
       totalPaid: 0,
