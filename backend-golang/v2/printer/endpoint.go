@@ -39,7 +39,7 @@ func Print(
 		fileName string
 	)
 
-	fileName, filePath, err = formatContract(contractId)
+	// fileName, filePath, err = format.Run(contractId)
 	if err != nil {
 		log.Printf(
 			"Errors happened persisting contract id %v: %v",
