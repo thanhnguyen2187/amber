@@ -39,7 +39,7 @@ func Print(
 		fileName string
 	)
 
-	fileName, filePath, err = persistContract(contractId)
+	fileName, filePath, err = formatContract(contractId)
 	if err != nil {
 		log.Printf(
 			"Errors happened persisting contract id %v: %v",
@@ -67,7 +67,6 @@ func Print(
 				err,
 			)
 		} else {
-			log.Printf("Read body: %v", body)
 			_, err = w.Write(body)
 			if err != nil {
 				log.Printf(

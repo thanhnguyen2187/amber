@@ -1,6 +1,7 @@
 package contract
 
 import (
+	"amber-backend/core/date"
 	"amber-backend/core/db"
 	"amber-backend/model"
 	"amber-backend/model/contract"
@@ -98,16 +99,16 @@ func generateVehicleUsagesQuery(
 	return query, nil
 }
 
-func listVehicleUsages(
+func ListVehicleUsages(
 	contractId int,
-	updateId int,
+	changeId int,
 ) (
 	vehicleUsages []contract.Usage,
 	err error,
 ) {
 	query, err := generateVehicleUsagesQuery(
 		contractId,
-		updateId,
+		changeId,
 	)
 	if err != nil {
 		return nil, err
@@ -140,8 +141,12 @@ func listVehicleUsages(
 			return nil, err
 		}
 
-		vehicleUsage.DateStartDisplay = vehicleUsage.DateStart.Format("2006-01-02")
-		vehicleUsage.DateEndDisplay = vehicleUsage.DateEnd.Format("2006-01-02")
+		if !date.IsZero(vehicleUsage.DateStart) {
+			vehicleUsage.DateStartDisplay = vehicleUsage.DateStart.Format("2006-01-02")
+		}
+		if !date.IsZero(vehicleUsage.DateEnd) {
+			vehicleUsage.DateEndDisplay = vehicleUsage.DateEnd.Format("2006-01-02")
+		}
 
 		switch vehicleUsage.Type {
 		case request.DailyInsideCity:
@@ -254,7 +259,7 @@ func List(
 			break
 		}
 
-		vehicleUsages, err := listVehicleUsages(id, updateId)
+		vehicleUsages, err := ListVehicleUsages(id, updateId)
 		if err != nil {
 			return nil, err
 		}

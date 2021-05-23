@@ -9,5 +9,6 @@ require (
 	github.com/go-chi/cors v1.2.0
 	github.com/go-chi/jwtauth/v5 v5.0.0
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/olekukonko/tablewriter v0.0.5
 	github.com/spf13/viper v1.7.1
 )

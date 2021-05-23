@@ -248,7 +248,7 @@ func ListV2(
 			break
 		}
 
-		vehicleUsages, err := listVehicleUsages(
+		vehicleUsages, err := ListVehicleUsages(
 			id,
 			changeId,
 		)

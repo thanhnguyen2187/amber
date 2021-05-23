@@ -33,6 +33,10 @@ func Router() chi.Router {
 	r.Group(
 		func(r chi.Router) {
 			r.Mount(
+				"/",
+				v2.Router(),
+			)
+			r.Mount(
 				"/metadata",
 				metadata.Router(),
 			)
@@ -43,10 +47,6 @@ func Router() chi.Router {
 			r.Mount(
 				"/contract",
 				contract.Router(),
-			)
-			r.Mount(
-				"/",
-				v2.Router(),
 			)
 		},
 	)
