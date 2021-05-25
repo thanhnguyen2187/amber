@@ -30,14 +30,14 @@ export class RangePickerBoxComponent implements OnInit {
   @Input() get display(): boolean {
     return this.displayValue;
   }
-
   set display(displayValue: boolean) {
     this.displayValue = displayValue;
     this.displayChange.emit(displayValue);
   }
-
   displayValue = false;
   @Output() displayChange = new EventEmitter<boolean>();
+
+  @Input() allowPastRange = false;
 
   // data
   dayOfWeekCellData = dayOfWeekCellData;
@@ -57,6 +57,7 @@ export class RangePickerBoxComponent implements OnInit {
       {
         anchor: this.anchor,
         pickedDates: this.pickedDates,
+        allowPastRange: this.allowPastRange,
       }
     );
   }
@@ -115,7 +116,7 @@ export class RangePickerBoxComponent implements OnInit {
 
   pickDate(date: Date): void {
     // do nothing if past dates are picked
-    if (isPast(date) && !isToday(date)) {
+    if (!this.allowPastRange && isPast(date) && !isToday(date)) {
       return;
     }
 

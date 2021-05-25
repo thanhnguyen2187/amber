@@ -1,0 +1,56 @@
+<div
+  style="width: 42em;"
+  class="
+    border-2
+    rounded
+    p-2
+    flex
+    flex-col
+    gap-2
+    cursor-pointer
+  "
+  (click)="open = !open"
+>
+  <div
+    class="
+      flex
+      justify-between
+      items-center
+    "
+  >
+    <div
+      class="
+        text-lg
+        pl-1
+      "
+    >
+      {{title}}
+    </div>
+    <div
+      class="
+        flex
+        gap-2
+      "
+    >
+      <amber-icon
+        backgroundImageUrl="assets/cheveron-down.svg"
+        size="1.25em"
+        *ngIf="open"
+      ></amber-icon>
+      <amber-icon
+        backgroundImageUrl="assets/cheveron-right.svg"
+        size="1.25em"
+        *ngIf="!open"
+      ></amber-icon>
+    </div>
+  </div>
+  <div
+    class="
+      border-t-2
+      p-4
+    "
+    *ngIf="open"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

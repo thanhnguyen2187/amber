@@ -2,18 +2,31 @@
 >
   <div
     class="
-      text-xl
-      font-semibold
+      flex
+      flex-col
+      gap-2
       px-4
-      py-2
     "
   >
-    Statistics
-  </div>
-  <div>
-    Second
-  </div>
-  <div>
-    Third
+    <div
+      class="
+        text-xl
+        font-semibold
+        py-2
+      "
+    >
+      Statistics
+    </div>
+    <div
+      class="
+        flex
+        flex-wrap
+        gap-2
+      "
+    >
+      <app-chart-contracts></app-chart-contracts>
+      <app-chart-revenue></app-chart-revenue>
+      <app-chart-bike-types></app-chart-bike-types>
+    </div>
   </div>
 </app-content-layout>

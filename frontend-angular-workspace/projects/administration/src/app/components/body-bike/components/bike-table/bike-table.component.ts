@@ -34,6 +34,7 @@ export class BikeTableComponent implements OnInit {
     return Math.ceil(this.totalValue / this.size);
   }
   cookedBikeModels: CookedBikeModel[] = [];
+  newCookedBikeModel = CookedBikeModelFactory.createDefault();
 
   bikeTypesMap = BikeTransmissionsMap;
   bikePurposesMap = BikePurposesMap;
@@ -58,7 +59,6 @@ export class BikeTableComponent implements OnInit {
     );
   }
 
-  newCookedBikeModel = CookedBikeModelFactory.createDefault();
 
   constructor(
     private tableCellFactoryService: TableCellFactoryService,

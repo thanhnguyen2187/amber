@@ -70,9 +70,11 @@ export class RangePickerCellDataFactory {
     {
       anchor,
       pickedDates,
+      allowPastRange,
     }: {
       anchor: Date,
       pickedDates: Date[],
+      allowPastRange: boolean,
     }
   ): RangePickerCellData[] {
     return eachDayOfInterval(
@@ -123,7 +125,7 @@ export class RangePickerCellDataFactory {
         }
         if (isToday(date)) {
           type |= RangePickerCellDataType.CurrentDate;
-        } else if (isPast(date)) {
+        } else if (!allowPastRange && isPast(date)) {
           type |= RangePickerCellDataType.NotAllowed | RangePickerCellDataType.PastDay;
         }
         if (!isSameMonth(date, anchor)) {

@@ -1,0 +1,54 @@
+<app-chart-box
+  title="Contracts"
+>
+  <div
+    class="
+      flex
+      flex-col
+      gap-4
+    "
+  >
+    <div
+      class="
+        flex
+        gap-2
+      "
+    >
+      <div
+        class="
+          flex
+          flex-col
+          gap-2
+        "
+      >
+        <div>
+          Statistics from
+          <span
+            class="underline cursor-pointer"
+            (click)="toggleRangePicker()"
+          >
+            {{contractsData.dateStartDisplay}}
+          </span>
+          to
+          <span
+            class="underline cursor-pointer"
+            (click)="toggleRangePicker()"
+          >
+            {{contractsData.dateEndDisplay}}
+          </span>
+        </div>
+        <app-range-picker-box
+          [(display)]="contractsData.displayRangePicker"
+          [(pickedDates)]="contractsData.dateRange"
+          [allowPastRange]="true"
+        ></app-range-picker-box>
+      </div>
+    </div>
+    <ngx-charts-line-chart
+      [results]="contractsData.chartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [timeline]="true"
+    ></ngx-charts-line-chart>
+  </div>
+</app-chart-box>
