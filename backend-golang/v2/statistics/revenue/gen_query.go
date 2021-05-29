@@ -19,7 +19,7 @@ func genQuery(
 	dialect = db.Dialect()
 	ds = dialect.
 		Select(
-			goqu.SUM("*"),
+			goqu.SUM("amount"),
 			goqu.L("date(date_created)"),
 		).
 		From("contract_map_payment").

@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { PrefixedHttpClientService } from '../../../services/prefixed-http-client.service';
-import { SingleSeries } from '../models/single-series.interface';
 import { Observable, Subject } from 'rxjs';
-import { HttpParams } from '@angular/common/http';
-import { SingleSeriesWrapper } from '../models/single-series-wrapper.interface';
+import { SingleSeries } from '../models/single-series.interface';
 import { map } from 'rxjs/operators';
-import { format, parseJSON } from 'date-fns';
-import { ChartComponentData } from '../models/chart-component-data.interface';
+import { parseJSON } from 'date-fns';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContractsService {
+export class RevenueService {
 
-  contractsChartData$ = new Subject<SingleSeries[]>();
+  revenueChartData$ = new Subject<SingleSeries[]>();
 
   reload(
     {
@@ -27,7 +25,7 @@ export class ContractsService {
     (
       this.prefixedHttpClientService.get(
         {
-          url: 'v2/statistics/contracts',
+          url: 'v2/statistics/revenue',
           params: new HttpParams().appendAll({
             dateStart,
             dateEnd,
@@ -51,7 +49,7 @@ export class ContractsService {
         return multipleSeries;
       })
     ).subscribe(
-      (data) => this.contractsChartData$.next(data)
+      (data) => this.revenueChartData$.next(data)
     );
   }
 

@@ -1,8 +1,8 @@
-import { ContractsData } from '../models/contracts-data.interface';
+import { ChartComponentData } from '../models/chart-component-data.interface';
 import { format } from 'date-fns';
 
-export class ContractsDataFactory {
-  static createDefault(): ContractsData {
+export class ChartComponentDataFactory {
+  static createDefault(): ChartComponentData {
     return {
       chartData: [],
       displayRangePicker: false,

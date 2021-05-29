@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContractsData } from '../../models/contracts-data.interface';
-import { ContractsDataFactory } from '../../data/contracts-data.factory';
+import { ChartComponentData } from '../../models/chart-component-data.interface';
+import { ChartComponentDataFactory } from '../../data/chart-component-data.factory';
 import { ContractsService } from '../../services/contracts.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ContractsService } from '../../services/contracts.service';
 })
 export class ChartContractsComponent implements OnInit {
 
-  contractsData: ContractsData = ContractsDataFactory.createDefault();
+  contractsData: ChartComponentData = ChartComponentDataFactory.createDefault();
 
   toggleRangePicker(): void {
     this.contractsData.displayRangePicker = !this.contractsData.displayRangePicker;
