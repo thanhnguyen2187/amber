@@ -24,7 +24,10 @@ func List(
 			"model_data",
 			"media_files",
 		).
-		From("bike_model")
+		From("bike_model").
+		Where(
+			goqu.C("visibility").Eq(1),
+		)
 	if len(tags) > 0 {
 		for _, tag := range tags {
 			d = d.Where(
@@ -38,6 +41,11 @@ func List(
 				),
 			)
 		}
+		// d = d.Where(
+		// 	goqu.
+		// 		V("json_extract(model_data, \"$.type\")").
+		// 		In(tags),
+		// )
 	}
 	if len(orders) > 0 {
 		for _, c := range orders {

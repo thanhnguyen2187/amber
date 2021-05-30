@@ -21,6 +21,10 @@ func Search(
 		cookedBikeModels []model.Cooked
 		total            int
 		body             struct {
+			BikeName struct {
+				Name string `json:"name"`
+			} `json:"bikeName"`
+			// TODO: fix the wrong names
 			PossibleUsageTypes []int    `json:"bikeData"`
 			BikeTypes          []string `json:"transmission"`
 			Visibilities       []int    `json:"visibility"`
@@ -38,6 +42,7 @@ func Search(
 	}
 
 	cookedBikeModels, err = fetch.Do(
+		body.BikeName.Name,
 		body.PossibleUsageTypes,
 		body.BikeTypes,
 		body.Visibilities,
@@ -49,7 +54,12 @@ func Search(
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	total, err = fetch.CountTotal()
+	total, err = fetch.CountTotal(
+		body.BikeName.Name,
+		body.PossibleUsageTypes,
+		body.BikeTypes,
+		body.Visibilities,
+	)
 
 	type returnData struct {
 		CookedBikeModels []model.Cooked `json:"cookedBikeModels"`

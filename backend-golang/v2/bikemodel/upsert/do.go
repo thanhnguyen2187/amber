@@ -1,6 +1,9 @@
 package upsert
 
 import (
+	"database/sql"
+	"log"
+
 	"amber-backend/core/db"
 	"amber-backend/v2/bikemodel/model"
 )
@@ -12,11 +15,41 @@ func Do(
 ) {
 	var (
 		query string
+		tx *sql.Tx
 	)
-	query, err = genQuery(cooked)
-
-	_, err = db.Db.Exec(query)
+	tx, err = db.Db.Begin()
 	if err != nil {
+		return
+	}
+
+	query, err = genQuery(cooked)
+	_, err = tx.Exec(query)
+	if err != nil {
+		log.Print(err)
+		err = tx.Rollback()
+		return
+	}
+
+	query, err = genQueryDeleteTag(cooked)
+	_, err = tx.Exec(query)
+	if err != nil {
+		log.Print(err)
+		err = tx.Rollback()
+		return
+	}
+
+	query, err = genQueryInsertTag(cooked)
+	_, err = tx.Exec(query)
+	if err != nil {
+		log.Print(err)
+		err = tx.Rollback()
+		return
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		log.Print(err)
+		err = tx.Rollback()
 		return
 	}
 

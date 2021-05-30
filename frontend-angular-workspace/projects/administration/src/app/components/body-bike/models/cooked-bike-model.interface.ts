@@ -5,6 +5,7 @@ export interface CookedBikeModel {
   id: number;
   modelData: BikeModelData;
   mediaFiles: MediaFile[];
+  visibility: number;
 
   displayDetails: boolean;
 }

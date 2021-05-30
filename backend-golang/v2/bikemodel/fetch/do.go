@@ -9,6 +9,7 @@ import (
 )
 
 func Do(
+	bikeName string,
 	possibleUsageTypes []int,
 	bikeTypes []string,
 	visibilities []int,
@@ -23,7 +24,15 @@ func Do(
 		rows  *sql.Rows
 	)
 
-	query, err = genQuery(page, size, false)
+	query, err = genQuery(
+		bikeName,
+		possibleUsageTypes,
+		bikeTypes,
+		visibilities,
+		page,
+		size,
+		false,
+	)
 	if err != nil {
 		log.Print(err)
 		return
@@ -42,6 +51,7 @@ func Do(
 			&cookedBikeModel.Id,
 			&cookedBikeModel.ModelData,
 			&cookedBikeModel.MediaFiles,
+			&cookedBikeModel.Visibility,
 		)
 		if err != nil {
 			log.Print(err)

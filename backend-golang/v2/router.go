@@ -25,6 +25,14 @@ func Router() http.Handler {
 		"/v2/bike-models/upsert",
 		bikemodel.Upsert,
 	)
+	r.Delete(
+		"/v2/bike-models/{bikeModelId}",
+		bikemodel.Delete,
+	)
+	r.Post(
+		"/v2/bike-models/{bikeModelId}/toggle/{visibility}",
+		bikemodel.ToggleVisibility,
+	)
 
 	r.Get(
 		"/v2/statistics/bike-model-types",

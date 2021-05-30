@@ -4,6 +4,10 @@ import { BikeTransmissions } from '../../data/bike-transmissions';
 import { MediaFileFactory } from '../../data/media-file.factory';
 import { CookedBikeModel } from '../../models/cooked-bike-model.interface';
 import { BikeUpsertService } from '../../services/bike-upsert.service';
+import { FileChangeEvent } from '@angular/compiler-cli/src/perform_watch';
+import { BikeUploadResponse } from '../../models/bike-upload-response.interface';
+import { BikeUploadImageService } from '../../services/bike-upload-image.service';
+import { MediaFile } from '../../models/media-file.interface';
 
 @Component({
   selector: 'app-bike-details',
@@ -139,8 +143,22 @@ export class BikeDetailsComponent implements OnInit {
     );
   }
 
+  fileChange(
+    $event: any,
+    mediaFile: MediaFile,
+  ): void {
+    const file = $event.target.files[0];
+    this.bikeUploadImageService.upload$(file).subscribe(
+      (response) => {
+        mediaFile.source = response.kraked_url;
+        mediaFile.title = response.file_name;
+      }
+    );
+  }
+
   constructor(
     private bikeUpsertService: BikeUpsertService,
+    private bikeUploadImageService: BikeUploadImageService,
   ) { }
 
   ngOnInit(): void {

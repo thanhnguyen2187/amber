@@ -9,6 +9,7 @@ export class CookedBikeModelFactory {
       modelData: cookedBikeModel.modelData,
       mediaFiles: cookedBikeModel.mediaFiles,
       displayDetails: false,
+      visibility: cookedBikeModel.visibility,
     };
   }
 
@@ -20,6 +21,7 @@ export class CookedBikeModelFactory {
         MediaFileFactory.createDefault(),
       ],
       displayDetails: false,
+      visibility: 1,
     };
   }
 

@@ -8,6 +8,7 @@ import { BikePurposesMap } from '../../data/bike-purposes.map';
 import { BikeSearchDynamicFormGroups } from '../../data/bike-table/bike-search-dynamic-form-groups';
 import { convertDynamicFormGroup } from 'amber-core';
 import { CookedBikeModelFactory } from '../../data/cooked-bike-model.factory';
+import { BikeVisibilityService } from '../../services/bike-visibility.service';
 
 @Component({
   selector: 'app-bike-table',
@@ -59,10 +60,24 @@ export class BikeTableComponent implements OnInit {
     );
   }
 
+  toggleVisibility(
+    bikeModelId: number,
+    visibility: number,
+  ): void {
+    this.bikeVisibilityService.toggle$(
+      {
+        bikeModelId,
+        visibility,
+      }
+    ).subscribe(
+      () => this.reload()
+    );
+  }
 
   constructor(
     private tableCellFactoryService: TableCellFactoryService,
     private bikeSearchService: BikeSearchService,
+    private bikeVisibilityService: BikeVisibilityService,
   ) {
     this.bikeSearchService.search$.subscribe(
       (response) => {

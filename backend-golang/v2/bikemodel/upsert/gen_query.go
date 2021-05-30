@@ -3,6 +3,7 @@ package upsert
 import (
 	"encoding/json"
 	"log"
+	"strings"
 
 	"amber-backend/core/db"
 	"amber-backend/v2/bikemodel/model"
@@ -54,6 +55,109 @@ func genQuery(
 		)
 
 	query, _, err = d.ToSQL()
+
+	return
+}
+
+func genQueryDeleteTag(
+	cooked model.Cooked,
+) (
+	query string,
+	err error,
+) {
+	var (
+		dialect goqu.DialectWrapper
+		ds      *goqu.DeleteDataset
+	)
+
+	dialect = db.Dialect()
+	ds = dialect.
+		Delete("bike_tag_map").
+		Where(
+			goqu.C("bike_model_id").Eq(cooked.Id),
+		)
+
+	query, _, err = ds.ToSQL()
+
+	return
+}
+
+func genQueryInsertTag(
+	cooked model.Cooked,
+) (
+	query string,
+	err error,
+) {
+	var (
+		dialect     goqu.DialectWrapper
+		ds          *goqu.InsertDataset
+		capacityTag string
+		records     []goqu.Record
+	)
+
+	dialect = db.Dialect()
+	ds = dialect.
+		Insert("bike_tag_map")
+
+	records = append(
+		records,
+		goqu.Record{
+			"bike_model_id": cooked.Id,
+			"tag_key": cooked.ModelData.Type,
+		},
+	)
+
+	if cooked.ModelData.Capacity < 125 {
+		capacityTag = "less-125"
+	} else if cooked.ModelData.Capacity < 250 {
+		capacityTag = "125-249"
+	} else {
+		capacityTag = "250-more"
+	}
+
+	tagged := false
+	brands := []string {
+		"honda",
+		"suzuki",
+		"yamaha",
+	}
+	for _, brand := range brands {
+		if strings.Index(
+			strings.ToLower(cooked.ModelData.Name),
+			brand,
+		) != -1 {
+			records = append(
+				records,
+				goqu.Record{
+					"bike_model_id": cooked.Id,
+					"tag_key":       brand,
+				},
+			)
+			tagged = true
+			break
+		}
+	}
+
+	if !tagged {
+		records = append(
+			records,
+			goqu.Record{
+				"bike_model_id": cooked.Id,
+				"tag_key":       "other",
+			},
+		)
+	}
+
+	records = append(
+		records,
+		goqu.Record{
+			"bike_model_id": cooked.Id,
+			"tag_key":       capacityTag,
+		},
+	)
+
+	ds = ds.Rows(records)
+	query, _, err = ds.ToSQL()
 
 	return
 }

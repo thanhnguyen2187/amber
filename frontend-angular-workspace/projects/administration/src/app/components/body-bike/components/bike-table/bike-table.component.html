@@ -116,10 +116,14 @@
           <amber-icon
             backgroundImageUrl="assets/view-show.svg"
             size="1.25em"
+            *ngIf="cookedBikeModel.visibility === 0"
+            (click)="toggleVisibility(cookedBikeModel.id, 1)"
           ></amber-icon>
           <amber-icon
             backgroundImageUrl="assets/view-hide.svg"
             size="1.25em"
+            *ngIf="cookedBikeModel.visibility === 1"
+            (click)="toggleVisibility(cookedBikeModel.id, 0)"
           ></amber-icon>
         </div>
         <app-bike-details
@@ -147,6 +151,7 @@
 
   <amber-modal
     [(display)]="displaySearch"
+    [dismissAction]="reload.bind(this)"
     title="Search"
   >
     <amber-dynamic-form

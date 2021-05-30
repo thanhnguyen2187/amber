@@ -293,26 +293,42 @@
                 rounded
                 p-2
               "
-              *ngIf="cookedBikeModel.mediaFiles.length > 1"
             >
               <amber-icon
                 size="1em"
-                backgroundImageUrl="assets/trash.svg"
-                *ngIf="!mediaFile.removing && cookedBikeModel.mediaFiles.length > 1"
-                (click)="toggleRemovingMediaFile(index)"
-              ></amber-icon>
-              <amber-icon
-                size="1em"
-                backgroundImageUrl="assets/checkmark.svg"
-                *ngIf="mediaFile.removing"
-                (click)="removeMediaFile(index)"
-              ></amber-icon>
-              <amber-icon
-                size="1em"
-                backgroundImageUrl="assets/close.svg"
-                *ngIf="mediaFile.removing"
-                (click)="toggleRemovingMediaFile(index)"
-              ></amber-icon>
+                backgroundImageUrl="assets/upload.svg"
+                *ngIf="!mediaFile.removing"
+                (click)="uploadButton.click()"
+              >
+                <input
+                  #uploadButton
+                  type="file"
+                  accept="image/*"
+                  (change)="fileChange($event, mediaFile)"
+                />
+              </amber-icon>
+              <ng-container
+                *ngIf="cookedBikeModel.mediaFiles.length > 1"
+              >
+                <amber-icon
+                  size="1em"
+                  backgroundImageUrl="assets/trash.svg"
+                  *ngIf="!mediaFile.removing && cookedBikeModel.mediaFiles.length > 1"
+                  (click)="toggleRemovingMediaFile(index)"
+                ></amber-icon>
+                <amber-icon
+                  size="1em"
+                  backgroundImageUrl="assets/checkmark.svg"
+                  *ngIf="mediaFile.removing"
+                  (click)="removeMediaFile(index)"
+                ></amber-icon>
+                <amber-icon
+                  size="1em"
+                  backgroundImageUrl="assets/close.svg"
+                  *ngIf="mediaFile.removing"
+                  (click)="toggleRemovingMediaFile(index)"
+                ></amber-icon>
+              </ng-container>
             </div>
           </div>
 

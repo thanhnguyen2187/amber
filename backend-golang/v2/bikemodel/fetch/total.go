@@ -7,6 +7,10 @@ import (
 )
 
 func CountTotal(
+	bikeName string,
+	possibleUsageTypes []int,
+	bikeTypes []string,
+	visibilities []int,
 ) (
 	total int,
 	err error,
@@ -15,7 +19,15 @@ func CountTotal(
 		query string
 	)
 
-	query, err = genQuery(0, 0, true)
+	query, err = genQuery(
+		bikeName,
+		possibleUsageTypes,
+		bikeTypes,
+		visibilities,
+		0,
+		0,
+		true,
+	)
 	if err != nil {
 		log.Print(err)
 		return

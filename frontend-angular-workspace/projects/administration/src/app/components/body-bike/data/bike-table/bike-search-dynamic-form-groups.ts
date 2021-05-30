@@ -6,7 +6,7 @@ export const BikeSearchDynamicFormGroups: DynamicFormGroup[] = [
   {
     title: 'Bike Data',
     type: 'textInputs',
-    key: 'bikeData',
+    key: 'bikeName',
     rowsCount: 1,
     formControls: [
       {
