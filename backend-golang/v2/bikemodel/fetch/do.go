@@ -53,6 +53,9 @@ func Do(
 			&cookedBikeModel.MediaFiles,
 			&cookedBikeModel.Visibility,
 		)
+		if cookedBikeModel.ModelData.NumberPlates == nil {
+			cookedBikeModel.ModelData.NumberPlates = make([]string, 0)
+		}
 		if err != nil {
 			log.Print(err)
 			return

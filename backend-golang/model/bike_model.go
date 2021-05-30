@@ -7,19 +7,35 @@ import (
 	"strings"
 )
 
+type NumberPlates []string
+
 type BikeModelData struct {
-	Brand                    string  `json:"brand"`
-	Name                     string  `json:"name"`
-	Type                     string  `json:"type"`
-	Capacity                 int     `json:"capacity"`
-	Cost                     float32 `json:"cost"`
-	DailyRentalFeeInsideCity float32 `json:"dailyRentalFeeInsideCity"`
-	DailyRentalFeeTraveling  float32 `json:"dailyRentalFeeTraveling"`
-	MonthlyRentalFee         float32 `json:"monthlyRentalFee"`
-	PossibleUsageTypes       []int   `json:"possibleUsageTypes"`
+	Brand                    string       `json:"brand"`
+	Name                     string       `json:"name"`
+	Type                     string       `json:"type"`
+	Capacity                 int          `json:"capacity"`
+	Cost                     float32      `json:"cost"`
+	DailyRentalFeeInsideCity float32      `json:"dailyRentalFeeInsideCity"`
+	DailyRentalFeeTraveling  float32      `json:"dailyRentalFeeTraveling"`
+	MonthlyRentalFee         float32      `json:"monthlyRentalFee"`
+	PossibleUsageTypes       []int        `json:"possibleUsageTypes"`
+	NumberPlates             NumberPlates `json:"numberPlates"`
 }
 
 func (d *BikeModelData) Scan(val interface{}) error {
+	b, ok := val.([]byte)
+	if ok {
+		err := json.Unmarshal(
+			b,
+			&d,
+		)
+		return err
+	} else {
+		return errors.New("invalid bike model data")
+	}
+}
+
+func (d *NumberPlates) Scan(val interface{}) error {
 	b, ok := val.([]byte)
 	if ok {
 		err := json.Unmarshal(

@@ -13,6 +13,7 @@ export class BikeModelDataFactory {
       monthlyRentalFee: 0,
       description: '',
       possibleUsageTypes: [0, 1, 2, 10],
+      numberPlates: [],
     };
   }
 }

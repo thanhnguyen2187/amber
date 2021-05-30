@@ -82,6 +82,7 @@ func List(
 		if err != nil {
 			return nil, err
 		} else {
+			modelData.NumberPlates = nil // hide information
 			bikeModel := model.BikeModel{
 				Id:         id,
 				ModelData:  modelData,

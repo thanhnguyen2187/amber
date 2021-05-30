@@ -31,6 +31,7 @@ export class VehicleUsageFactory {
       bikeModelId: vehicleUsage.bikeModelId,
       bikeModelData: vehicleUsage.bikeModelData,
       amount: vehicleUsage.amount,
+      numberPlates: vehicleUsage.numberPlates,
       get dayCount(): number {
         if (this.dateStart && this.dateEnd) {
           return differenceInDays(
@@ -118,6 +119,7 @@ export class VehicleUsageFactory {
       bikeModelId: 0,
       bikeModelData: BikeModelDataFactory.createDefault(),
       amount: 1,
+      numberPlates: [],
       dayCount: 1,
       monthCount: 1,
       price: 0,

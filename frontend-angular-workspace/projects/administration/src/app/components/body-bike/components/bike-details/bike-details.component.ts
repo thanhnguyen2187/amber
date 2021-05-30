@@ -140,6 +140,17 @@ export class BikeDetailsComponent implements OnInit {
           && this.cookedBikeModel.modelData.monthlyRentalFee > 0
         )
       )
+      && (
+        (
+          // every number plate is not blank
+          this.cookedBikeModel.modelData.numberPlates.every(
+            numberPlate => numberPlate
+          )
+          // the number plates are unique
+          && new Set(this.cookedBikeModel.modelData.numberPlates).size
+          === this.cookedBikeModel.modelData.numberPlates.length
+        )
+      )
     );
   }
 
@@ -154,6 +165,18 @@ export class BikeDetailsComponent implements OnInit {
         mediaFile.title = response.file_name;
       }
     );
+  }
+
+  addNumberPlate(): void {
+    this.cookedBikeModel.modelData.numberPlates.push('');
+  }
+
+  removeNumberPlate(index: number): void {
+    this.cookedBikeModel.modelData.numberPlates.splice(index, 1);
+  }
+
+  trackByNumberPlate(index: number, item: any): number {
+    return index;
   }
 
   constructor(

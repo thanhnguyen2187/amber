@@ -15,6 +15,7 @@ create table contract_map_usage (
     model_data json,
     /* model_name varchar(50) character set utf8, */
     amount tinyint,
+    number_plates json default '[]',
 
     /* hour_count smallint, */
     day_count smallint,

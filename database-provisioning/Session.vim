@@ -7,24 +7,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 readme.md
-badd +1 ~/Projects/amber/database-provisioning/seeds/staff.sql
+badd +2 readme.md
+badd +2 ~/Projects/amber/database-provisioning/seeds/staff.sql
+badd +0 ~/Projects/amber/database-provisioning/schemas/contract_map_payment.sql
+badd +0 ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
 argglobal
 %argdel
 $argadd readme.md
-edit readme.md
+edit ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 92 + 92) / 184)
-exe 'vert 2resize ' . ((&columns * 91 + 92) / 184)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -35,33 +31,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 17) / 35)
+let s:l = 1 - ((0 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+1
 normal! 0
-wincmd w
-argglobal
-if bufexists("~/Projects/amber/database-provisioning/seeds/staff.sql") | buffer ~/Projects/amber/database-provisioning/seeds/staff.sql | else | edit ~/Projects/amber/database-provisioning/seeds/staff.sql | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 17) / 35)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-3
-normal! 0
-wincmd w
-exe 'vert 1resize ' . ((&columns * 92 + 92) / 184)
-exe 'vert 2resize ' . ((&columns * 91 + 92) / 184)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

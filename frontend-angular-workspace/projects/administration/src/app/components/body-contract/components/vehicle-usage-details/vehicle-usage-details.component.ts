@@ -111,15 +111,25 @@ export class VehicleUsageDetailsComponent implements OnInit {
     }
   }
 
+  addNumberPlate(): void {
+    this.vehicleUsage.numberPlates.push('');
+  }
+
+  removeNumberPlate(
+    index: number,
+  ): void {
+    this.vehicleUsage.numberPlates.splice(index, 1);
+  }
+
   constructor(
     private bikeModelOptionsService: BikeModelOptionsService,
   ) {
-    bikeModelOptionsService.bikeModelOptions$.subscribe(
-      bikeModelOptions => this.bikeModelOptions = bikeModelOptions
-    );
   }
 
   ngOnInit(): void {
+    this.bikeModelOptionsService.bikeModelOptions$.subscribe(
+      bikeModelOptions => this.bikeModelOptions = bikeModelOptions
+    );
   }
 
 }

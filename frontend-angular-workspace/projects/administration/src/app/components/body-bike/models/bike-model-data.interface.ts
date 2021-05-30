@@ -9,4 +9,5 @@ export interface BikeModelData {
   monthlyRentalFee: number;
   description: string;
   possibleUsageTypes: number[];
+  numberPlates: string[];
 }

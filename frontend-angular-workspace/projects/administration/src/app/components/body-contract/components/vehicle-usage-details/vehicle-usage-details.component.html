@@ -94,6 +94,50 @@
     </div>
   </ng-container>
 
+  <!--Number Plate(s)-->
+  <ng-container
+  >
+    <div>
+      Number Plate(s)
+    </div>
+    <div
+      style="grid-template-columns: repeat(2, max-content)"
+      class="
+        grid
+        gap-2
+        items-center
+      "
+    >
+      <ng-container
+        *ngFor="let numberPlate of vehicleUsage.numberPlates; let index = index"
+      >
+        <input
+          amberCommonInputText
+          [size]="18"
+          type="text"
+          [(ngModel)]="vehicleUsage.numberPlates[index]"
+        />
+        <amber-icon
+          backgroundImageUrl="assets/trash.svg"
+          size="1em"
+          (click)="removeNumberPlate(index)"
+        ></amber-icon>
+      </ng-container>
+      <div
+        class="
+          col-span-full
+          flex
+          flex-row-reverse
+        "
+      >
+        <amber-icon
+          backgroundImageUrl="assets/add-solid.svg"
+          [action]="addNumberPlate.bind(this)"
+          size="1em"
+        ></amber-icon>
+      </div>
+    </div>
+  </ng-container>
   <!--Date Start-->
   <ng-container
     *ngIf="vehicleUsage.type <= vehicleUsageTypesEnum.MonthlyRental"

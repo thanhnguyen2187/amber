@@ -11,6 +11,8 @@ import (
 	"amber-backend/model/customer"
 )
 
+type NumberPlates []string
+
 type Usage struct {
 	DateCreated      time.Time           `json:"dateCreated"`
 	UsageId          int                 `json:"usageId"`
@@ -19,6 +21,7 @@ type Usage struct {
 	BikeModelId      int                 `json:"bikeModelId"`
 	BikeModelData    model.BikeModelData `json:"bikeModelData"`
 	Amount           int                 `json:"amount"`
+	NumberPlates     NumberPlates        `json:"numberPlates"`
 	TypeDisplay      string              `json:"typeDisplay"`
 	DayCount         float64             `json:"dayCount"`
 	MonthCount       float64             `json:"monthCount"`
@@ -45,6 +48,19 @@ type Cooked struct {
 }
 
 func (d *Usage) Scan(val interface{}) error {
+	b, ok := val.([]byte)
+	if ok {
+		err := json.Unmarshal(
+			b,
+			&d,
+		)
+		return err
+	} else {
+		return errors.New("invalid contract usage data")
+	}
+}
+
+func (d *NumberPlates) Scan(val interface{}) error {
 	b, ok := val.([]byte)
 	if ok {
 		err := json.Unmarshal(

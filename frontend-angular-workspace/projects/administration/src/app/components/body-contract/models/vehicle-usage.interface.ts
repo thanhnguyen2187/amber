@@ -10,6 +10,7 @@ export interface VehicleUsage {
   bikeModelId: number;
   bikeModelData: BikeModelData;
   amount: number;
+  numberPlates: string[];
   dayCount: number;
   monthCount: number;
   price: number;
