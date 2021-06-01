@@ -2,6 +2,7 @@ package upsert
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"strings"
 
@@ -103,7 +104,7 @@ func genQueryInsertTag(
 		records,
 		goqu.Record{
 			"bike_model_id": cooked.Id,
-			"tag_key": cooked.ModelData.Type,
+			"tag_key":       cooked.ModelData.Type,
 		},
 	)
 
@@ -116,7 +117,7 @@ func genQueryInsertTag(
 	}
 
 	tagged := false
-	brands := []string {
+	brands := []string{
 		"honda",
 		"suzuki",
 		"yamaha",
@@ -159,5 +160,43 @@ func genQueryInsertTag(
 	ds = ds.Rows(records)
 	query, _, err = ds.ToSQL()
 
+	return
+}
+
+func genQueryUpdateUsage(
+	cooked model.Cooked,
+) (
+	query string,
+	err error,
+) {
+	var (
+		dialect goqu.DialectWrapper
+		ds      *goqu.UpdateDataset
+		quoted  []string
+	)
+
+	for _, plate := range cooked.ModelData.NumberPlates {
+		quoted = append(quoted, "'" + plate + "'")
+	}
+
+	dialect = db.Dialect()
+	ds = dialect.
+		Update("contract_map_usage").
+		Set(
+			goqu.Record{
+				"model_data": goqu.L(
+					fmt.Sprintf(
+						"JSON_SET(model_data, '$.number_plates', JSON_ARRAY(%v))",
+						strings.Join(quoted, ","),
+						// create JSON_ARRAY('29M1 ...', '33A ...', ...)
+					),
+				),
+			},
+		).
+		Where(
+			goqu.C("model_id").Eq(cooked.Id),
+		)
+
+	query, _, err = ds.ToSQL()
 	return
 }

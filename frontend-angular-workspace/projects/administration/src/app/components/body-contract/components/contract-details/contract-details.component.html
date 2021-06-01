@@ -106,11 +106,23 @@
             <div>{{vehicleUsage.price}} USD</div>
           </app-table-cell>
 
-          <!--Amount-->
+          <!--Number Plates-->
           <app-table-cell
             [tableCell]="customCell"
           >
-            <div>{{vehicleUsage.amount}}</div>
+            <div
+              class="
+                flex
+                flex-col
+                gap-2
+              "
+            >
+              <div
+                *ngFor="let numberPlate of vehicleUsage.numberPlates"
+              >
+                {{numberPlate}}
+              </div>
+            </div>
           </app-table-cell>
 
           <!--Purpose-->

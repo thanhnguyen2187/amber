@@ -1,7 +1,7 @@
 export const headerLabels: string[] = [
   'Model',
   'Price',
-  'Amount',
+  'Number Plate(s)',
   'Purpose',
   'Date End',
   'Total',

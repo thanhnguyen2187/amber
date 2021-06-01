@@ -9,12 +9,13 @@ endif
 set shortmess=aoO
 badd +2 readme.md
 badd +2 ~/Projects/amber/database-provisioning/seeds/staff.sql
-badd +0 ~/Projects/amber/database-provisioning/schemas/contract_map_payment.sql
-badd +0 ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
+badd +1 ~/Projects/amber/database-provisioning/schemas/contract_map_payment.sql
+badd +6 ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
+badd +0 ~/Projects/amber/database-provisioning/seeds/bike_model.sql
 argglobal
 %argdel
 $argadd readme.md
-edit ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
+edit ~/Projects/amber/database-provisioning/seeds/bike_model.sql
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -31,12 +32,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 17) / 35)
+let s:l = 208 - ((16 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+208
+normal! 053|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

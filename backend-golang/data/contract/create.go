@@ -79,10 +79,15 @@ func generateMapUsageQuery(
 	var total float64
 
 	for _, rental := range rentals {
+
 		modelData, err := bikemodel.GetData(rental.BikeModelId)
 		if err != nil {
 			log.Printf("Error happened getting bike model data: %v", err)
 			return "", 0, err
+		}
+
+		for i := 0; i < rental.Amount; i++ {
+			modelData.NumberPlates = append(modelData.NumberPlates, "unknown")
 		}
 		modelDataBytes, err := json.Marshal(modelData)
 		if err != nil {

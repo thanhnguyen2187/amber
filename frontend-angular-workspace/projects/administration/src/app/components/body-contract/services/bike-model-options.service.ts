@@ -21,4 +21,5 @@ export class BikeModelOptionsService {
       pluck('bikeModelOptions'),
     );
   }
+
 }

@@ -46,6 +46,14 @@ func Do(
 		return
 	}
 
+	// query, err = genQueryUpdateUsage(cooked)
+	// _, err = tx.Exec(query)
+	// if err != nil {
+	// 	log.Print(err)
+	// 	err = tx.Rollback()
+	// 	return
+	// }
+
 	err = tx.Commit()
 	if err != nil {
 		log.Print(err)

@@ -18,7 +18,8 @@
                     "capacity": 100,
                     "type": "manual",
                     "cost": 280,
-                    "possibleUsageTypes": [10]
+                    "possibleUsageTypes": [10],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -48,7 +49,8 @@
                     "dailyRentalFeeInsideCity": 5,
                     "dailyRentalFeeTraveling": 10,
                     "monthlyRentalFee": 45,
-                    "possibleUsageTypes": [0, 1, 2]
+                    "possibleUsageTypes": [0, 1, 2],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -79,7 +81,8 @@
                     "dailyRentalFeeInsideCity": 7.5,
                     "dailyRentalFeeTraveling": 15,
                     "monthlyRentalFee": 50,
-                    "possibleUsageTypes": [0, 1, 2, 10]
+                    "possibleUsageTypes": [0, 1, 2, 10],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -114,7 +117,8 @@
                     "dailyRentalFeeInsideCity": 12.5,
                     "dailyRentalFeeTraveling": 25,
                     "monthlyRentalFee": 250,
-                    "possibleUsageTypes": [0, 1, 2, 10]
+                    "possibleUsageTypes": [0, 1, 2, 10],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -140,7 +144,8 @@
                     "cost": 2000,
                     "dailyRentalFeeTraveling": 20,
                     "monthlyRentalFee": 200,
-                    "possibleUsageTypes": [1, 2, 10]
+                    "possibleUsageTypes": [1, 2, 10],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -169,7 +174,8 @@
                     "type": "manual",
                     "cost": 3000,
                     "dailyRentalFeeTraveling": 40,
-                    "possibleUsageTypes": [1, 10]
+                    "possibleUsageTypes": [1, 10],
+                    "numberPlates": []
                 }
                 ',
                 '
@@ -199,7 +205,8 @@
                     "cost": 1000,
                     "dailyRentalFeeInsideCity": 7,
                     "dailyRentalFeeTraveling": 14,
-                    "possibleUsageTypes": [0, 1, 10]
+                    "possibleUsageTypes": [0, 1, 10],
+                    "numberPlates": []
                 }
                 ',
                 '

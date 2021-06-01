@@ -17,6 +17,7 @@ export class BikeModelDataFactory {
         2,
         10,
       ],
+      numberPlates: [],
     };
   }
 }

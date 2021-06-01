@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"amber-backend/v2/bikemodel"
+	"amber-backend/v2/numberplate"
 	"amber-backend/v2/printer"
 	"amber-backend/v2/statistics"
 	"github.com/go-chi/chi/v5"
@@ -28,6 +29,10 @@ func Router() http.Handler {
 	r.Delete(
 		"/v2/bike-models/{bikeModelId}",
 		bikemodel.Delete,
+	)
+	r.Get(
+		"/v2/bike-models/{bikeModelId}/number-plate-options",
+		numberplate.Options,
 	)
 	r.Post(
 		"/v2/bike-models/{bikeModelId}/toggle/{visibility}",

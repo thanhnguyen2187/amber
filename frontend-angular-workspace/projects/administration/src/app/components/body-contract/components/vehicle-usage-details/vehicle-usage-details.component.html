@@ -15,7 +15,7 @@
       <select
         amberCommonSelect
         [(ngModel)]="vehicleUsage.bikeModelId"
-        (ngModelChange)="changeBikeModelOption($event)"
+        (ngModelChange)="changeBikeModelOption($event); updateNumberPlateOptions()"
       >
         <option
           *ngFor="let bikeModelOption of bikeModelOptions"
@@ -72,7 +72,7 @@
       <amber-icon
         backgroundImageUrl="assets/minus.svg"
         size="1em"
-        (click)="decreaseAmount()"
+        (click)="popNumberPlate()"
       ></amber-icon>
       <input
         type="number"
@@ -84,12 +84,12 @@
           rounded
           flex-initial
         "
-        [(ngModel)]="vehicleUsage.amount"
+        [valueAsNumber]="vehicleUsage.amount"
       />
       <amber-icon
         backgroundImageUrl="assets/plus.svg"
         size="1em"
-        (click)="increaseAmount()"
+        (click)="addNumberPlate()"
       ></amber-icon>
     </div>
   </ng-container>
@@ -111,18 +111,30 @@
       <ng-container
         *ngFor="let numberPlate of vehicleUsage.numberPlates; let index = index"
       >
-        <input
-          amberCommonInputText
-          [size]="18"
-          type="text"
-          [(ngModel)]="vehicleUsage.numberPlates[index]"
-        />
-        <amber-icon
-          backgroundImageUrl="assets/trash.svg"
-          size="1em"
-          (click)="removeNumberPlate(index)"
-        ></amber-icon>
+        <div
+        >
+          <select
+            style="width: 12em;"
+            amberCommonSelect
+            [(ngModel)]="vehicleUsage.numberPlates[index]"
+          >
+            <option
+              *ngFor="let numberPlateOption of numberPlateOptions"
+              [value]="numberPlateOption.key"
+            >
+              {{numberPlateOption.label}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <amber-icon
+            backgroundImageUrl="assets/trash.svg"
+            size="1em"
+            (click)="removeNumberPlate(index)"
+          ></amber-icon>
+        </div>
       </ng-container>
+
       <div
         class="
           col-span-full

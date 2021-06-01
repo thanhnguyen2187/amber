@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { VehicleUsage } from '../../models/vehicle-usage.interface';
 import { VehicleUsageFactory } from '../../data/vehicle-usage.factory';
-import { vehicleUsageTypes } from '../../data/vehicle-usage-types';
 import { vehicleUsageTypesEnum } from '../../data/vehicle-usage-types.enum';
 import { vehicleUsageTypesMap } from '../../data/vehicle-usage-types.map';
 import { BikeModelOptionsService } from '../../services/bike-model-options.service';
 import { BikeModelOption } from '../../models/bike-model-option.interface';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NumberPlateOptionsService } from '../../services/number-plate-options.service';
+import { NumberPlateOptionsFactory } from '../../data/number-plate-options.factory';
 
 @Component({
   selector: 'app-vehicle-usage-details',
@@ -15,7 +15,15 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class VehicleUsageDetailsComponent implements OnInit {
 
-  @Input() vehicleUsage: VehicleUsage = VehicleUsageFactory.createDefault();
+  vehicleUsageValue: VehicleUsage = VehicleUsageFactory.createDefault();
+
+  @Input() get vehicleUsage(): VehicleUsage {
+    return this.vehicleUsageValue;
+  }
+  set vehicleUsage(newValue: VehicleUsage) {
+    this.vehicleUsageValue = newValue;
+    this.updateNumberPlateOptions();
+  }
   get mode(): 'create' | 'edit' {
     switch (this.vehicleUsage.contractId) {
       case 0:
@@ -32,7 +40,7 @@ export class VehicleUsageDetailsComponent implements OnInit {
   bikeModelOptions: BikeModelOption[] = [];
 
   changeBikeModelOption(bikeModelId: number): void {
-    this.vehicleUsage.bikeModelId = bikeModelId;
+    // this.vehicleUsage.bikeModelId = bikeModelId;
     this.bikeModelOptions.forEach(
       bikeModelOption => {
         if (bikeModelOption.bikeModelId === bikeModelId) {
@@ -112,23 +120,45 @@ export class VehicleUsageDetailsComponent implements OnInit {
   }
 
   addNumberPlate(): void {
-    this.vehicleUsage.numberPlates.push('');
+    this.vehicleUsage.numberPlates.push('unknown');
   }
 
-  removeNumberPlate(
-    index: number,
-  ): void {
-    this.vehicleUsage.numberPlates.splice(index, 1);
+  popNumberPlate(): void {
+    if (this.vehicleUsage.numberPlates.length > 1) {
+      this.vehicleUsage.numberPlates.pop();
+    }
+  }
+
+  removeNumberPlate(index: number): void {
+    if (this.vehicleUsage.numberPlates.length > 1) {
+      this.vehicleUsage.numberPlates.splice(index, 1);
+    }
+  }
+
+  numberPlateOptions = NumberPlateOptionsFactory.createDefault();
+
+  updateNumberPlateOptions(): void {
+    if (this.vehicleUsage.bikeModelId !== 0) {
+      this.numberPlateOptionsService.reload(this.vehicleUsage.bikeModelId);
+    }
   }
 
   constructor(
     private bikeModelOptionsService: BikeModelOptionsService,
+    private numberPlateOptionsService: NumberPlateOptionsService,
   ) {
   }
 
   ngOnInit(): void {
     this.bikeModelOptionsService.bikeModelOptions$.subscribe(
       bikeModelOptions => this.bikeModelOptions = bikeModelOptions
+    );
+    this.numberPlateOptionsService.numberPlateOptions$.subscribe(
+      options => this.numberPlateOptions = options
+    );
+    setTimeout(
+      () => this.updateNumberPlateOptions(),
+      100,
     );
   }
 

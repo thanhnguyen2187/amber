@@ -93,45 +93,54 @@ func generateUpdateUsageQuery(
 	var (
 		price float64
 		total float64
+		amount = len(usage.NumberPlates)
 	)
 	switch usage.Type {
 	case request.DailyInsideCity:
 		price = float64(modelData.DailyRentalFeeInsideCity)
-		total = price * dayCount * float64(usage.Amount)
+		total = price * dayCount * float64(amount)
 		break
 	case request.DailyTraveling:
 		price = float64(modelData.DailyRentalFeeTraveling)
-		total = price * dayCount * float64(usage.Amount)
+		total = price * dayCount * float64(amount)
 		break
 	case request.Monthly:
 		price = float64(modelData.MonthlyRentalFee)
 		total = round.Round(
-			price*monthCount*float64(usage.Amount),
+			price*monthCount*float64(amount),
 			0.5,
 			math.Ceil,
 		)
 		break
 	case request.ForSale:
 		price = float64(modelData.Cost)
-		total = price * float64(usage.Amount)
+		total = price * float64(amount)
 		break
+	}
+
+	var npb []byte
+	npb, err = json.Marshal(usage.NumberPlates)
+	if err != nil {
+		log.Print(err)
+		return
 	}
 
 	d := dialect.
 		Insert("contract_map_usage").
 		Rows(
 			goqu.Record{
-				"contract_id": contractId,
-				"type":        usage.Type,
-				"model_id":    usage.BikeModelId,
-				"model_data":  modelDataBytes,
-				"amount":      usage.Amount,
-				"day_count":   dayCount,
-				"month_count": monthCount,
-				"price":       price,
-				"date_start":  usage.DateStart.Format("2006-01-02"),
-				"date_end":    usage.DateEnd.Format("2006-01-02"),
-				"total":       total,
+				"contract_id":   contractId,
+				"type":          usage.Type,
+				"model_id":      usage.BikeModelId,
+				"model_data":    modelDataBytes,
+				"amount":        amount,
+				"number_plates": npb,
+				"day_count":     dayCount,
+				"month_count":   monthCount,
+				"price":         price,
+				"date_start":    usage.DateStart.Format("2006-01-02"),
+				"date_end":      usage.DateEnd.Format("2006-01-02"),
+				"total":         total,
 				"change_id": goqu.V(
 					dialect.
 						Select("change_id").

@@ -75,7 +75,7 @@ export class ContractDetailsComponent implements OnInit {
     usage.type = vehicleUsage.type;
     usage.bikeModelId = vehicleUsage.bikeModelId;
     usage.bikeModelData = vehicleUsage.bikeModelData;
-    usage.amount = vehicleUsage.amount;
+    usage.numberPlates = vehicleUsage.numberPlates.slice();
     usage.dateStart = vehicleUsage.dateStart;
     usage.dateEnd = vehicleUsage.dateEnd;
     return VehicleUsageFactory.augment(usage);

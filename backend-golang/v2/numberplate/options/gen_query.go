@@ -13,12 +13,19 @@ func genQuery(
 ) {
 	var (
 		dialect goqu.DialectWrapper
-		ds *goqu.SelectDataset
+		ds      *goqu.SelectDataset
 	)
 
 	dialect = db.Dialect()
-	ds = dialect.Select(
-		goqu.L("json_extract(model_data, '$.number_plates')"),
-	).From("")
+	ds = dialect.
+		Select(
+			goqu.L("json_extract(model_data, '$.numberPlates')"),
+		).
+		From("bike_model").
+		Where(
+			goqu.C("id").Eq(bikeModelId),
+		)
+
+	query, _, err = ds.ToSQL()
 	return
 }
