@@ -11,7 +11,7 @@ badd +2 readme.md
 badd +2 ~/Projects/amber/database-provisioning/seeds/staff.sql
 badd +1 ~/Projects/amber/database-provisioning/schemas/contract_map_payment.sql
 badd +6 ~/Projects/amber/database-provisioning/schemas/contract_map_usage.sql
-badd +0 ~/Projects/amber/database-provisioning/seeds/bike_model.sql
+badd +1 ~/Projects/amber/database-provisioning/seeds/bike_model.sql
 argglobal
 %argdel
 $argadd readme.md
@@ -32,7 +32,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 208 - ((16 * winheight(0) + 17) / 34)
+let s:l = 208 - ((17 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

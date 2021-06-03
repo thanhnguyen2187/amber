@@ -20,10 +20,13 @@ export class VehicleUsageDetailsComponent implements OnInit {
   @Input() get vehicleUsage(): VehicleUsage {
     return this.vehicleUsageValue;
   }
+
   set vehicleUsage(newValue: VehicleUsage) {
     this.vehicleUsageValue = newValue;
+    this.originalBikeModelId = newValue.bikeModelId;
     this.updateNumberPlateOptions();
   }
+
   get mode(): 'create' | 'edit' {
     switch (this.vehicleUsage.contractId) {
       case 0:
@@ -32,9 +35,11 @@ export class VehicleUsageDetailsComponent implements OnInit {
         return 'edit';
     }
   }
+
   get vehicleUsageJSON(): string {
     return JSON.stringify(this.vehicleUsage);
   }
+
   vehicleUsageTypesEnum = vehicleUsageTypesEnum;
   vehicleUsageTypesMap = vehicleUsageTypesMap;
   bikeModelOptions: BikeModelOption[] = [];
@@ -62,6 +67,7 @@ export class VehicleUsageDetailsComponent implements OnInit {
   @Output() cancelEventEmitter = new EventEmitter();
 
   validated = true;
+
   accept(): void {
     switch (this.mode) {
       case 'create':
@@ -93,6 +99,7 @@ export class VehicleUsageDetailsComponent implements OnInit {
       return [];
     }
   }
+
   set pickedDates(pickedDates: Date[]) {
     switch (pickedDates.length) {
       case 0:
@@ -113,6 +120,7 @@ export class VehicleUsageDetailsComponent implements OnInit {
   increaseAmount(): void {
     this.vehicleUsage.amount += 1;
   }
+
   decreaseAmount(): void {
     if (this.vehicleUsage.amount > 1) {
       this.vehicleUsage.amount -= 1;
@@ -149,12 +157,29 @@ export class VehicleUsageDetailsComponent implements OnInit {
   ) {
   }
 
+  originalBikeModelId = 0;
+  get dirtiedBikeModelId(): boolean {
+    return this.originalBikeModelId !== this.vehicleUsage.bikeModelId;
+  }
+
   ngOnInit(): void {
     this.bikeModelOptionsService.bikeModelOptions$.subscribe(
       bikeModelOptions => this.bikeModelOptions = bikeModelOptions
     );
     this.numberPlateOptionsService.numberPlateOptions$.subscribe(
-      options => this.numberPlateOptions = options
+      options => this.numberPlateOptions = [
+        ...options,
+        ...this.vehicleUsage.numberPlates.filter(
+          numberPlate => numberPlate !== 'unknown' && !this.dirtiedBikeModelId
+        ).map(
+          numberPlate => {
+            return {
+              label: numberPlate,
+              key: numberPlate,
+            };
+          }
+        ),
+      ]
     );
     setTimeout(
       () => this.updateNumberPlateOptions(),

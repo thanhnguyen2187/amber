@@ -87,21 +87,34 @@
       [tableCell]="customCell"
     >
       <div
+        style="grid-template-columns: repeat(3, max-content)"
         class="
           grid
-          grid-cols-2
-          gap-2
+          gap-x-2
         "
       >
         <ng-container
           *ngFor="let vehicleUsage of cookedContract.vehicleUsages"
         >
-          <div>
-            {{vehicleUsage.typeDisplay}}
-          </div>
-          <div>
-            {{vehicleUsage.bikeModelData.name}}
-          </div>
+          <ng-container
+            *ngFor="let numberPlate of vehicleUsage.numberPlates"
+          >
+            <div
+              class="w-44"
+            >
+              {{vehicleUsage.typeDisplay}}
+            </div>
+            <div
+              class="w-40"
+            >
+              {{vehicleUsage.bikeModelData.name}}
+            </div>
+            <div
+              class="w-24"
+            >
+              {{numberPlate}}
+            </div>
+          </ng-container>
         </ng-container>
       </div>
     </app-table-cell>
