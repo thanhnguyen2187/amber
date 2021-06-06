@@ -17,6 +17,7 @@ import { VehicleUsageLogsTableComponent } from './components/vehicle-usage-logs-
 import { ContractStateComponent } from './components/contract-state/contract-state.component';
 import { CustomerDataComponent } from './components/customer-data/customer-data.component';
 import { ContractDataComponent } from './components/contract-data/contract-data.component';
+import { TableStateSummarizerComponent } from './components/table-state-summarizer/table-state-summarizer.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ContractDataComponent } from './components/contract-data/contract-data.
     ContractStateComponent,
     CustomerDataComponent,
     ContractDataComponent,
+    TableStateSummarizerComponent,
   ],
   imports: [
     CommonModule,

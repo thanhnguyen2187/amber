@@ -146,13 +146,13 @@ func generateListV2Query(
 		)
 	}
 
-	if len(body.States) == 0 ||
-		len(body.VehicleUsages) == 0 ||
-		len(body.Visibilities) == 0 {
-		d = d.Where(
-			goqu.L("false"),
-		)
-	}
+	// if len(body.States) == 0 ||
+	// 	len(body.VehicleUsages) == 0 ||
+	// 	len(body.Visibilities) == 0 {
+	// 	d = d.Where(
+	// 		goqu.L("false"),
+	// 	)
+	// }
 
 	query, _, err = d.ToSQL()
 

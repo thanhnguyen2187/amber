@@ -25,6 +25,7 @@ export class ContractTableComponent implements OnInit {
   );
   customCell = this.tableCellFactoryService.customCell;
   displaySearch = false;
+  displayTableState = false;
 
   cookedContracts: CookedContract[] = [];
   currentValue = 1;

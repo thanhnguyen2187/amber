@@ -13,7 +13,9 @@ export class ChartComponentDataFactory {
             return '[unpicked]';
           case 1:
           case 2:
-            return format(this.dateRange[0], 'yyyy-MM-dd');
+            return this.dateRange[0]
+              ? format(this.dateRange[0], 'yyyy-MM-dd')
+              : '';
           default:
             return '[unpicked]';
         }
@@ -24,7 +26,9 @@ export class ChartComponentDataFactory {
           case 1:
             return '[unpicked]';
           case 2:
-            return format(this.dateRange[1], 'yyyy-MM-dd');
+            return this.dateRange[1]
+              ? format(this.dateRange[1], 'yyyy-MM-dd')
+              : '';
           default:
             return '[unpicked]';
         }

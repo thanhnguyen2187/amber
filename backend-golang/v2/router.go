@@ -26,6 +26,10 @@ func Router() http.Handler {
 		"/v2/bike-models/upsert",
 		bikemodel.Upsert,
 	)
+	r.Post(
+		"/v2/bike-models/state-summarizing",
+		numberplate.Summarize,
+	)
 	r.Delete(
 		"/v2/bike-models/{bikeModelId}",
 		bikemodel.Delete,

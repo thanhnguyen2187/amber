@@ -38,6 +38,17 @@
             size="1.25em"
             (click)="displaySearch = true"
           ></amber-icon>
+          <amber-icon
+            backgroundImageUrl="assets/table.svg"
+            size="1.25em"
+            (click)="displayTableState = true"
+          ></amber-icon>
+          <amber-modal
+            [(display)]="displayTableState"
+            title="State Summarizing Table"
+          >
+            <app-table-state-summarizer></app-table-state-summarizer>
+          </amber-modal>
           <amber-modal
             [(display)]="displaySearch"
             [dismissAction]="reloadDataV2.bind(this)"

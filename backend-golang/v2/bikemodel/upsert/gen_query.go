@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"amber-backend/core/db"
+	"amber-backend/core/stringsutil"
 	"amber-backend/v2/bikemodel/model"
 	"github.com/doug-martin/goqu/v9"
 )
@@ -116,37 +117,32 @@ func genQueryInsertTag(
 		capacityTag = "250-more"
 	}
 
-	tagged := false
 	brands := []string{
 		"honda",
 		"suzuki",
 		"yamaha",
 	}
 	for _, brand := range brands {
-		if strings.Index(
-			strings.ToLower(cooked.ModelData.Name),
-			brand,
-		) != -1 {
-			records = append(
-				records,
-				goqu.Record{
-					"bike_model_id": cooked.Id,
-					"tag_key":       brand,
-				},
-			)
-			tagged = true
-			break
-		}
-	}
+		record := goqu.Record{}
 
-	if !tagged {
-		records = append(
-			records,
-			goqu.Record{
-				"bike_model_id": cooked.Id,
-				"tag_key":       "other",
-			},
-		)
+		if stringsutil.Has(
+			cooked.ModelData.Name,
+			[]string{"chinese", "copy"},
+		) { // Honda win Chinese copy...
+			record["bike_model_id"] = cooked.Id
+			record["tag_key"] = "other"
+		} else if stringsutil.Has(
+			cooked.ModelData.Name,
+			[]string{brand},
+		) { // Honda XR...
+			record["bike_model_id"] = cooked.Id
+			record["tag_key"] = brand
+		} else { // Lifan...
+			record["bike_model_id"] = cooked.Id
+			record["tag_key"] = "other"
+		}
+
+		records = append(records, record)
 	}
 
 	records = append(

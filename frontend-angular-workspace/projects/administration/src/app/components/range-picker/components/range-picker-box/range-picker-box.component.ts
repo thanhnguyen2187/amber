@@ -103,7 +103,7 @@ export class RangePickerBoxComponent implements OnInit {
     }
   }
 
-  @Input() datePickingMode: 'create' | 'edit' = 'create';
+  @Input() datePickingMode: 'create' | 'edit' | 'single' = 'create';
   pickedDatesValue: Date[] = [];
   @Input() get pickedDates(): Date[] {
     return this.pickedDatesValue;
@@ -166,9 +166,23 @@ export class RangePickerBoxComponent implements OnInit {
             break;
         }
         break;
+      case 'single':
+        switch (this.pickedDatesValue.length) {
+          case 1:
+            if (isSameDay(this.pickedDatesValue[0], date)) {
+              this.pickedDatesValue = [];
+            }
+            else {
+              this.pickedDatesValue = [date];
+            }
+            break;
+          default:
+            this.pickedDatesValue = [date];
+            break;
+        }
+        break;
     }
     this.pickedDatesChange.emit(this.pickedDates);
-
   }
 
   cancel(): void {
