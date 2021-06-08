@@ -6,6 +6,7 @@ import (
 
 	"amber-backend/core/date"
 	"amber-backend/core/db"
+	state2 "amber-backend/model/contract/state"
 	"github.com/doug-martin/goqu/v9"
 )
 
@@ -55,9 +56,10 @@ func genQueryFetchByState(
 	dateStart time.Time,
 	dateEnd time.Time,
 	types []string,
-	// numberPlate string,
+// numberPlate string,
 	bikeName string,
 	state int,
+	usageTypes []int,
 ) (
 	query string,
 	err error,
@@ -72,6 +74,7 @@ func genQueryFetchByState(
 		Select(
 			"number_plates",
 			goqu.L("json_extract(model_data, '$.name')"),
+			"contract_id",
 		).
 		From("contract_map_usage").
 		Where(
@@ -86,23 +89,31 @@ func genQueryFetchByState(
 			),
 		)
 
-	orClauseDates := goqu.Or()
-	if !date.IsZero(dateStart) {
-		orClauseDates = orClauseDates.Append(
+	if !date.IsZero(dateStart) && state != state2.Finished {
+		orClause := goqu.Or()
+		orClause = orClause.Append(
+			goqu.C("date_start").Gte(
+				goqu.V(dateStart.Format("2006-01-02")),
+			),
 			goqu.C("date_end").Gte(
-				goqu.L(dateStart.Format("2006-01-02")),
+				goqu.V(dateStart.Format("2006-01-02")),
 			),
 		)
+		ds = ds.Where(orClause)
 	}
 
-	if !date.IsZero(dateEnd) {
-		orClauseDates = orClauseDates.Append(
+	if !date.IsZero(dateEnd) && state != state2.Finished {
+		orClause := goqu.Or()
+		orClause = orClause.Append(
 			goqu.C("date_start").Lte(
-				goqu.L(dateEnd.Format("2006-01-02")),
+				goqu.V(dateEnd.Format("2006-01-02")),
+			),
+			goqu.C("date_end").Lte(
+				goqu.V(dateEnd.Format("2006-01-02")),
 			),
 		)
+		ds = ds.Where(orClause)
 	}
-	ds = ds.Where(orClauseDates)
 
 	if len(types) > 0 {
 		orClause := goqu.Or()
@@ -119,6 +130,12 @@ func genQueryFetchByState(
 			goqu.
 				L("lower(json_value(model_data, '$.name'))").
 				Like("%" + strings.ToLower(bikeName) + "%"),
+		)
+	}
+
+	if len(usageTypes) > 0 {
+		ds = ds.Where(
+			goqu.C("type").In(usageTypes),
 		)
 	}
 

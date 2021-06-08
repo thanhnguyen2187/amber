@@ -2,6 +2,7 @@ package options
 
 import (
 	"amber-backend/core/db"
+	"amber-backend/model/contract/request"
 	"amber-backend/model/contract/state"
 	"github.com/doug-martin/goqu/v9"
 )
@@ -56,7 +57,35 @@ func genQueryActiveOnes(
 					From("contract").
 					Where(
 						goqu.L("contract.id").Eq(goqu.L("contract_id")),
-						goqu.C("state").Eq(state.InEffect),
+						goqu.Or(
+							goqu.And(
+								goqu.L("contract_map_usage.type").In(
+									[]int{
+										request.DailyInsideCity,
+										request.DailyTraveling,
+										request.Monthly,
+									},
+								),
+								goqu.L("contract.state").In(
+									[]int{
+										state.Booked,
+										state.InEffect,
+										state.Overdue,
+									},
+								),
+							),
+							goqu.And(
+								goqu.L("contract_map_usage.type").Eq(request.ForSale),
+								goqu.L("contract.state").In(
+									[]int{
+										state.Booked,
+										state.InEffect,
+										state.Finished,
+										state.Overdue,
+									},
+								),
+							),
+						),
 					),
 			),
 		)

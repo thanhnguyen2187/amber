@@ -4,6 +4,7 @@ import (
 	"log"
 	"time"
 
+	"amber-backend/model/contract/request"
 	"amber-backend/model/contract/state"
 	model2 "amber-backend/v2/numberplate/model"
 )
@@ -22,7 +23,8 @@ func Summarize(
 ) {
 
 	var (
-		numberPlateStatesAll []model2.NumberPlateState
+		numberPlateStatesAll    []model2.NumberPlateState
+		numberPlateStatesBought []model2.NumberPlateState
 	)
 
 	numberPlateStatesAll, err = fetchAllNumberPlates(
@@ -42,6 +44,13 @@ func Summarize(
 		numberPlate,
 		bikeName,
 		state.Booked,
+		[]int{
+			// TODO: handle the case where customer booked a bike to buy
+			// 	     and want to take it at a specific day
+			// request.DailyInsideCity,
+			// request.DailyTraveling,
+			// request.Monthly,
+		},
 	)
 	if err != nil {
 		log.Print(err)
@@ -55,6 +64,27 @@ func Summarize(
 		numberPlate,
 		bikeName,
 		state.InEffect,
+		[]int{
+			request.DailyInsideCity,
+			request.DailyTraveling,
+			request.Monthly,
+		},
+	)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+
+	numberPlateStatesBought, err = fetchByState(
+		dateStart,
+		dateEnd,
+		types,
+		numberPlate,
+		bikeName,
+		state.Finished,
+		[]int{
+			request.ForSale,
+		},
 	)
 	if err != nil {
 		log.Print(err)
@@ -62,7 +92,7 @@ func Summarize(
 	}
 
 	var (
-		numberPlatesAllSet    = make(map[string]bool)
+		numberPlatesAllSet = make(map[string]bool)
 		// numberPlatesFreeSet   = make(map[string]bool)
 		numberPlatesBookedSet = make(map[string]bool)
 		numberPlatesTakenSet  = make(map[string]bool)
@@ -88,9 +118,17 @@ func Summarize(
 			log.Print("Number plate " + p.Value + " was not declared anywhere.")
 		}
 	}
+	for _, p := range numberPlateStatesBought {
+		if s, ok := numberPlatesAllSet[p.Value]; ok && s {
+			numberPlatesAllSet[p.Value] = false
+		} else {
+			log.Print("Number plate " + p.Value + " was not declared anywhere.")
+		}
+	}
 
 	for _, st := range numberPlateStatesAll {
-		if marked, ok := numberPlatesAllSet[st.Value]; marked && ok && st.Value != "unknown" {
+		marked, ok := numberPlatesAllSet[st.Value]
+		if marked && ok && st.Value != "unknown" {
 			numberPlateStatesFree = append(
 				numberPlateStatesFree,
 				st,

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"amber-backend/v2/bikemodel"
+	"amber-backend/v2/cookedcontract"
 	"amber-backend/v2/numberplate"
 	"amber-backend/v2/printer"
 	"amber-backend/v2/statistics"
@@ -16,6 +17,10 @@ func Router() http.Handler {
 	r.Get(
 		"/contracts/{contractId}/print",
 		printer.Print,
+	)
+	r.Get(
+		"/v2/contracts/{contractId}",
+		cookedcontract.FetchOne,
 	)
 
 	r.Post(
@@ -55,6 +60,7 @@ func Router() http.Handler {
 		"/v2/statistics/revenue",
 		statistics.Revenue,
 	)
+
 
 	return r
 }

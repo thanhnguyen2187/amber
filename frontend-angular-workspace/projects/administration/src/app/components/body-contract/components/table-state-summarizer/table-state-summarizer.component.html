@@ -42,7 +42,8 @@
           <amber-icon
             backgroundImageUrl="assets/zoom-in.svg"
             size="1.25em"
-            *ngIf="numberPlateState.cookedContract.id !== 0"
+            *ngIf="numberPlateState.contractId !== 0"
+            (click)="emitContract(numberPlateState.contractId)"
           ></amber-icon>
         </div>
       </div>

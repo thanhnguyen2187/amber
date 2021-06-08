@@ -47,8 +47,14 @@
             [(display)]="displayTableState"
             title="State Summarizing Table"
           >
-            <app-table-state-summarizer></app-table-state-summarizer>
+            <app-table-state-summarizer
+              (currentCookedContractChange)="summarizingContract = $event; summarizingContract.displayDetails = true"
+            ></app-table-state-summarizer>
           </amber-modal>
+          <app-contract-details
+            [(display)]="summarizingContract.displayDetails"
+            [cookedContract]="summarizingContract"
+          ></app-contract-details>
           <amber-modal
             [(display)]="displaySearch"
             [dismissAction]="reloadDataV2.bind(this)"

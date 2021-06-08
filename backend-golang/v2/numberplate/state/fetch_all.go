@@ -7,7 +7,6 @@ import (
 
 	"amber-backend/core/db"
 	model2 "amber-backend/model"
-	"amber-backend/model/contract"
 	"amber-backend/v2/numberplate/model"
 )
 
@@ -45,24 +44,33 @@ func fetchAllNumberPlates(
 	)
 	for rows.Next() {
 		var (
-			tmp model2.NumberPlates
+			tmp      model2.NumberPlates
 			bikeName string
 		)
-		err = rows.Scan(&tmp, &bikeName)
+		err = rows.Scan(
+			&tmp,
+			&bikeName,
+		)
 		if err != nil {
 			log.Print(err)
 			return
 		}
 
 		for _, s := range tmp {
-			if strings.Index(s, includingNumberPlate) != -1 {
+			if strings.Index(
+				s,
+				includingNumberPlate,
+			) != -1 {
 				numberPlateStatesAll = append(
 					numberPlateStatesAll,
 					model.NumberPlateState{
-						Value:          s,
-						Label:          strings.Title(s),
-						CookedContract: contract.Cooked{},
-						BikeName:       strings.Trim(bikeName, "\""),
+						Value:      s,
+						Label:      strings.Title(s),
+						ContractId: 0,
+						BikeName:   strings.Trim(
+							bikeName,
+							"\"",
+						),
 					},
 				)
 			}

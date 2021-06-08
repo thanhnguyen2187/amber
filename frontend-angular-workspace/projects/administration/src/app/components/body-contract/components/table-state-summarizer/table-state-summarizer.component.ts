@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TableCellFactoryService } from '../../../table/services/table-cell-factory.service';
 import { DateWrapper } from '../../models/date-wrapper.interface';
 import { DateWrapperFactory } from '../../data/date-wrapper.factory';
@@ -6,6 +6,8 @@ import { StateSummarizingService } from '../../services/state-summarizing.servic
 import { NumberPlateState } from '../../models/number-plate-state.interface';
 import { StateSummarizingRequest } from '../../models/state-summarizing-request.interface';
 import { BikeModelTypeWrapperFactory } from '../../data/bike-model-type-wrapper.factory';
+import { CookedContract } from '../../models/cooked-contract.interface';
+import { FetchContractService } from '../../services/fetch-contract.service';
 
 @Component({
   selector: 'app-table-state-summarizer',
@@ -66,9 +68,17 @@ export class TableStateSummarizerComponent implements OnInit {
     );
   }
 
+  @Output() currentCookedContractChange = new EventEmitter<CookedContract>();
+  emitContract(contractId: number): void {
+    this.fetchContractService.fetchContract$(contractId).subscribe(
+      cookedContract => this.currentCookedContractChange.emit(cookedContract)
+    );
+  }
+
   constructor(
     private tableCellFactoryService: TableCellFactoryService,
     private stateSummarizingService: StateSummarizingService,
+    private fetchContractService: FetchContractService,
   ) {
     stateSummarizingService.stateSummarizing$.subscribe(
       response => {

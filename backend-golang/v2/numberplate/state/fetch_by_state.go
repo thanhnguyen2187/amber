@@ -8,7 +8,6 @@ import (
 
 	"amber-backend/core/db"
 	model2 "amber-backend/model"
-	"amber-backend/model/contract"
 	"amber-backend/v2/numberplate/model"
 )
 
@@ -19,6 +18,7 @@ func fetchByState(
 	numberPlate string,
 	bikeName string,
 	state int,
+	usageTypes []int,
 ) (
 	numberPlateStates []model.NumberPlateState,
 	err error,
@@ -35,6 +35,7 @@ func fetchByState(
 		// numberPlate,
 		bikeName,
 		state,
+		usageTypes,
 	)
 	if err != nil {
 		log.Print(err)
@@ -53,12 +54,14 @@ func fetchByState(
 	)
 	for rows.Next() {
 		var (
-			tmp      model2.NumberPlates
-			bikeName string
+			tmp        model2.NumberPlates
+			bikeName   string
+			contractId int
 		)
 		err = rows.Scan(
 			&tmp,
 			&bikeName,
+			&contractId,
 		)
 		if err != nil {
 			log.Print(err)
@@ -66,14 +69,20 @@ func fetchByState(
 		}
 
 		for _, s := range tmp {
-			if strings.Index(s, numberPlate) != -1 {
+			if strings.Index(
+				s,
+				numberPlate,
+			) != -1 {
 				numberPlateStates = append(
 					numberPlateStates,
 					model.NumberPlateState{
-						Value:          s,
-						Label:          strings.Title(s),
-						CookedContract: contract.Cooked{},
-						BikeName:       strings.Trim(bikeName, "\""),
+						Value:      s,
+						Label:      strings.Title(s),
+						ContractId: contractId,
+						BikeName: strings.Trim(
+							bikeName,
+							"\"",
+						),
 					},
 				)
 			}

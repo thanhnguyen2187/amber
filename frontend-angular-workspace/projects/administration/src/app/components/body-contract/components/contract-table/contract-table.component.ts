@@ -5,6 +5,7 @@ import { BodyContractDataService } from '../../services/body-contract-data.servi
 import { CookedContract } from '../../models/cooked-contract.interface';
 import { dynamicFormGroups } from './contract-table.dynamic-form.data';
 import { convertDynamicFormGroup } from 'amber-core';
+import { CookedContractFactory } from '../../data/cooked-contract.factory';
 
 @Component({
   selector: 'app-contract-table',
@@ -111,5 +112,7 @@ export class ContractTableComponent implements OnInit {
       }
     );
   }
+
+  summarizingContract: CookedContract = CookedContractFactory.createDefault();
 
 }

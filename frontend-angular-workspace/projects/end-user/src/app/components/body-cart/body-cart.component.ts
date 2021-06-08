@@ -11,6 +11,7 @@ import { TableMasterType } from '../table-v2/components/table-master/table-maste
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../notification/notification.service';
 import { PrefixedHttpClientService } from '../../services/prefixed-http-client.service';
+import { format } from 'date-fns';
 
 interface RowsData {
   headerLabels: string[];
@@ -152,8 +153,8 @@ export class BodyCartComponent implements OnInit {
                     bikeModelId: row.id,
                     amount: row.amountValue,
                     type: 0, // DailyInsideCity
-                    dateStart: (row as TableRowForRent).dateStart,
-                    dateEnd: (row as TableRowForRent).dateEnd,
+                    dateStart: format((row as TableRowForRent).dateStart, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
+                    dateEnd: format((row as TableRowForRent).dateEnd, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
                   };
                 }
               ),
@@ -163,8 +164,8 @@ export class BodyCartComponent implements OnInit {
                     bikeModelId: row.id,
                     amount: row.amountValue,
                     type: 1, // DailyTraveling
-                    dateStart: (row as TableRowForRent).dateStart,
-                    dateEnd: (row as TableRowForRent).dateEnd,
+                    dateStart: format((row as TableRowForRent).dateStart, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
+                    dateEnd: format((row as TableRowForRent).dateEnd, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
                   };
                 }
               ),
@@ -174,8 +175,8 @@ export class BodyCartComponent implements OnInit {
                     bikeModelId: row.id,
                     amount: row.amountValue,
                     type: 2, // Monthly
-                    dateStart: (row as TableRowForRent).dateStart,
-                    dateEnd: (row as TableRowForRent).dateEnd,
+                    dateStart: format((row as TableRowForRent).dateStart, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
+                    dateEnd: format((row as TableRowForRent).dateEnd, 'yyyy-MM-dd\'T\'HH:mm:ss\'+\'07:00'),
                   };
                 }
               ),

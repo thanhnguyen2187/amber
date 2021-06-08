@@ -1,7 +1,6 @@
 package state
 
 import (
-	"amber-backend/model/contract"
 	"amber-backend/v2/numberplate/model"
 )
 
@@ -31,7 +30,6 @@ func Transform(
 			model.NumberPlateState{
 				Label:          label,
 				Value:          value,
-				CookedContract: contract.Cooked{},
 			},
 		)
 	}
