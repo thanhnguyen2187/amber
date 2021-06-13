@@ -9,8 +9,8 @@ you manage a bike rental business in Vietnam, and is based on a real shop that I
 have worked on in the past, so a lot of things are tailored for the place.
 
 At first, I did not think that I would let this project comes to daylight, but
-then I somehow got over the fear of it. I made a lot of bad decisions, and the
-code was a horrible mess, but at least, I put a lot of effort into my work, and
+then I somehow got over the fear of it. I made a lot of bad decisions and the
+code was a horrible mess, but at least, I put a lot of effort into my work and
 it would be a waste to let it rot in the dark, I thought.
 
 == link:./docs-v2/installation.adoc[Installation]
