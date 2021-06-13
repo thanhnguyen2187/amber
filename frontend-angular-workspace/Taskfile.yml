@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build-core:
+    cmds:
+      - ng build
+        --project amber-core
+
+  build-core-watch:
+    cmds:
+      - ng build
+        --project amber-core
+        --watch
+
+  serve-admin:
+    deps: [build-core]
+    cmds:
+      - ng serve
+        --port 4200
+        --project end-user
+        --public-host amber.dev
+
+  serve-end-user:
+    deps: [build-core]
+    cmds:
+      - ng serve
+        --port 4210
+        --project administration
+        --public admin.amber.dev

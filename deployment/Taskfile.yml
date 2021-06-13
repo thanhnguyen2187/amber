@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+
+  up:
+    cmds:
+      - sudo docker-compose up -d
+    silent: true
+
+  assure:
+    cmds:
+      - ./caddy/assure_local_dns.sh
+    silent: true

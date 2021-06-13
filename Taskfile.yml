@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: '3'
+
+includes:
+
+  frontend:
+    dir: ./frontend-angular-workspace
+    taskfile: ./frontend-angular-workspace/Taskfile.yml
+
+  backend:
+    dir: ./backend-golang
+    taskfile: ./backend-golang/Taskfile.yml
+
+  deployment:
+    dir: ./deployment
+    taskfile: ./deployment/Taskfile.yml

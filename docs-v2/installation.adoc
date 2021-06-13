@@ -1,0 +1,51 @@
+= Amber Installation
+
+== Prerequisites
+
+=== Ubuntu 20.04
+
+It was the OS version that I developed on, and tested on. Other Linux
+distributions shall be able to run the project, but I am not certainly sure that
+it would works on Windows nor Mac.
+
+=== NodeJS
+
+`node` and `npm` are needed to run frontend (Angular).
+
+* `node --version` was `v14.16.0`
+* `npm --version` was `7.10.0`
+
+=== Golang
+
+`go` is needed to run backend.
+
+* `go version` was `go version go1.16.5 linux/amd64`
+
+=== Docker
+
+Docker is needed to run MariaDB and Caddy.
+
+* `docker --version` was `Docker version 20.10.6, build 370c289`, and
+* `docker-compose --version` was `docker-compose version 1.25.0, build unknown`.
+
+=== Task
+
+`task` is needed to... run tasks.
+
+* `task --version` was `Task version: v3.4.3 (h1:YlDgbnqe5ypB7BxONLlaav0b0wV9+VI8Ai0P6uGN+3I=)`
+
+== Run
+
+Make sure that you have `task` (or read the Taskfiles) to run these commands
+first:
+
+* `task deployment:assure`: assure that `*.amber.dev` is pointed to the right
+  place
+* `task deployment:up`: basically `docker-compose up` to make MariaDB and Caddy
+  do their jobs
+
+Run these tasks in separate windows:
+
+* `task backend:run`
+* `task frontend:serve-admin`
+* `task frontend:serve-end-user`
