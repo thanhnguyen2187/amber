@@ -13,7 +13,7 @@ then I somehow got over the fear of it. I made a lot of bad decisions, and the
 code was a horrible mess, but at least, I put a lot of effort into my work, and
 it would be a waste to let it rot in the dark, I thought.
 
-== ./docs-v2/installation.adoc[Installation]
+== link:./docs-v2/installation.adoc[Installation]
 
 == Good (and Bad) Techical Decisions
 
