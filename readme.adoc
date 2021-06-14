@@ -10,12 +10,12 @@ have worked on in the past, so a lot of things are tailored for the place.
 
 At first, I did not think that I would let this project comes to daylight, but
 then I somehow got over the fear of it. I made a lot of bad decisions and the
-code was a horrible mess, but at least, I put a lot of effort into my work and
-it would be a waste to let it rot in the dark, I thought.
+code was a horrible mess, but at last, I put a lot of effort into my work and
+it would be a waste to let it rot in the dark.
 
 == link:./docs-v2/installation.adoc[Installation]
 
-== Good (and Bad) Techical Decisions
+== link:./docs-v2/decisions-and-lessons.adoc[Decisions and Lessons]
 
 == Afterthoughts
 

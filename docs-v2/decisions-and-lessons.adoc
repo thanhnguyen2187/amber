@@ -1,0 +1,40 @@
+= Decisions and Lessons
+
+== Planning
+
+I had a "big" ambition at first: a tailored CMS, plus CRM, that will fit well
+within the "niche" business model of bike rental and sale for traveling... The
+project will be able to earn me some pocket money from it sales for the shops
+that I knew... Basically you understood it: a wide scope, along with an
+uncertain money earning model, and the long run that burns people out. The
+lessons that I learned was:
+
+* Define your purpose, and your scope. Do it as soon as possible. Do it before
+  you start any planing, or design, or coding. Ask someone you trust about the
+  worthiness of the project.
+* Be sure that the project can interest you for a time, financially, or
+  non-financially, which leads to the next point:
+* For a solo developer, find something small and feasible (a Minimum Viable
+  Product can be released in less than 1 month full-time, and less than 3 months
+  part-time).
+* If you are learning something new in the process, multiply the number by 1.5
+  (or by 2 at maximum). Anything that takes too long to finish without earning
+  you any money has big risks of burning you out.
+
+== Technical Decisions
+
+I really did not have a lot of thoughts when I choose my technical stack:
+
+* Tailwind CSS was chosen since it is a lot more customizable than Bootstrap or
+  anything else, and a tad better than plain CSS
+* Angular was chosen since it looks like the "hardest" Javascript framework to
+  use
+* .NET Core was chosen since I had a few times working with C# and WinForms, and
+  wanted to see how it runs on Linux
+* MariaDB was chosen since I worked with PostgresQL, and wanted to see how MySQL
+  works, and also wanted a mix into my data
+* Caddy was chosen since I wanted the deployment to be simple and easy
+* Docker Compose was chosen since I also wanted the deployment to be simple and
+  easy
+
+What was right, your guess?
