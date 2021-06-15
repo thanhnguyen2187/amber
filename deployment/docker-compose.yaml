@@ -33,6 +33,7 @@ services:
     restart: always
     image: caddy:2.4.0-alpine
     volumes:
+      - ./caddy-production/Caddyfile:/etc/caddy/Caddyfile
       - /tmp/amber:/var/www/amber
       - /tmp/amber-admin:/var/www/amber-admin
     network_mode: host
