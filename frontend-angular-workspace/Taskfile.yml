@@ -15,7 +15,6 @@ tasks:
         --watch
 
   serve-admin:
-    deps: [build-core]
     cmds:
       - ng serve
         --port 4200
@@ -23,9 +22,38 @@ tasks:
         --public-host amber.dev
 
   serve-end-user:
-    deps: [build-core]
     cmds:
       - ng serve
         --port 4210
         --project administration
         --public admin.amber.dev
+  
+  build-admin:
+    env:
+      NODE_ENV: production
+    cmds:
+      - ng build
+        --project administration
+
+  build-admin-tmp:
+    env:
+      NODE_ENV: production
+    cmds:
+      - ng build
+        --project administration
+        --output-path /tmp/amber-admin
+
+  build-end-user:
+    env:
+      NODE_ENV: production
+    cmds:
+      - ng build
+        --project end-user
+
+  build-end-user-tmp:
+    env:
+      NODE_ENV: production
+    cmds:
+      - ng build
+        --project end-user
+        --output-path /tmp/amber

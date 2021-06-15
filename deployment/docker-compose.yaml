@@ -28,6 +28,15 @@ services:
       - ./caddy/certs/amber-key.pem:/etc/certs/amber-key.pem
     network_mode: host
 
+  amber-caddy-production:
+    container_name: amber-caddy-production
+    restart: always
+    image: caddy:2.4.0-alpine
+    volumes:
+      - /tmp/amber:/var/www/amber
+      - /tmp/amber-admin:/var/www/amber-admin
+    network_mode: host
+
   # amber-elasticsearch:
   #   restart: always
   #   image: elasticsearch:7.12.1

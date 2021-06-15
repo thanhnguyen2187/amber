@@ -1,0 +1,13 @@
+http://amber.nguyenhuythanh.com {
+    file_server
+    root * /var/www/amber
+}
+
+http://amber-admin.nguyenhuythanh.com {
+    file_server
+    root * /var/www/amber-admin
+}
+
+http://amber-api.nguyenhuythanh.com {
+    reverse_proxy localhost:5000
+}
