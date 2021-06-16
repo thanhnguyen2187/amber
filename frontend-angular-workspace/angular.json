@@ -17,7 +17,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/end-user/browser",
+            "outputPath": "dist/end-user",
             "index": "projects/end-user/src/index.html",
             "main": "projects/end-user/src/main.ts",
             "polyfills": "projects/end-user/src/polyfills.ts",
