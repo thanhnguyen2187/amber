@@ -1,10 +1,10 @@
 http://amber.nguyenhuythanh.com {
-    file_server
+    file_server browse
     root * /var/www/amber
 }
 
 http://amber-admin.nguyenhuythanh.com {
-    file_server
+    file_server browse
     root * /var/www/amber-admin
 }
 
