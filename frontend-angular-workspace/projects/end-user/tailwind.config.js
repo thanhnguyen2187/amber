@@ -5,7 +5,8 @@ module.exports = {
     enabled: process.env.NODE_ENV === 'production',
     // enabled: true,
     content: [
-      './src/**/*.{html,ts}',
+      // './projects/end-user/src/**/*.{html,ts}',
+      './projects/**/*.{html,ts}',
       // './src/**/*.ts'
     ]
   },

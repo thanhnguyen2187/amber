@@ -10,12 +10,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: [
     './app.component.scss',
-    '../css/tailwind-base.scss',
-    '../css/tailwind-components.scss',
-    '../css/tailwind-screens.scss',
-    '../css/tailwind-utilities.scss',
   ],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'administration';

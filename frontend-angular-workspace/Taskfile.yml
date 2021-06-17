@@ -62,10 +62,10 @@ tasks:
     deps:
       - build-end-user
     cmds:
-      - scp -r ./dist/end-user thanh@184.164.94.7:/tmp/amber
+      - rsync -vaR ./dist/end-user/ thanh@184.164.94.7:/tmp/amber
 
   deploy-admin:
     deps:
       - build-admin
     cmds:
-      - scp -r ./dist/administration thanh@184.164.94.7:/tmp/amber-admin
+      - rsync -vaR dist/administration/ thanh@184.164.94.7:/tmp/amber-admin
