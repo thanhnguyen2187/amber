@@ -42,6 +42,12 @@ services:
         target: /var/www/amber-admin
     network_mode: host
 
+  amber-backend:
+    container_name: amber-backend
+    image: amber-backend
+    ports:
+      - "5000:5000"
+
   # amber-elasticsearch:
   #   restart: always
   #   image: elasticsearch:7.12.1

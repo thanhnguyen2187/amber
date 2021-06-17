@@ -8,3 +8,9 @@ tasks:
     cmds:
       - go run .
     silent: true
+
+  build:
+    cmds:
+      - sudo docker image build
+        -t amber-backend
+        .
