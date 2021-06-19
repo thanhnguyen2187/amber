@@ -9,8 +9,15 @@ tasks:
       - go run .
     silent: true
 
-  build:
+  build-docker-image:
     cmds:
       - sudo docker image build
-        -t amber-backend
+        -t thanhnguyen2187/amber-backend
         .
+  
+  push-docker-image:
+    deps:
+      - build-docker-image
+    cmds:
+      - sudo docker push
+        thanhnguyen2187/amber-backend:latest
