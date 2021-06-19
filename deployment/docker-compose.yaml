@@ -42,9 +42,14 @@ services:
         target: /var/www/amber-admin
     network_mode: host
 
+  amber-frontend:
+    container_name: amber-frontend
+    image: thanhnguyen2187/amber-frontend
+    network_mode: host
+
   amber-backend:
     container_name: amber-backend
-    image: amber-backend
+    image: thanhnguyen2187/amber-backend
     network_mode: host
 
   # amber-elasticsearch:

@@ -14,6 +14,7 @@ tasks:
         --project amber-core
         --watch
 
+  # admin
   serve-admin:
     cmds:
       - ng serve
@@ -21,13 +22,6 @@ tasks:
         --project end-user
         --public-host amber.dev
 
-  serve-end-user:
-    cmds:
-      - ng serve
-        --port 4210
-        --project administration
-        --public admin.amber.dev
-  
   build-admin:
     env:
       NODE_ENV: production
@@ -43,6 +37,14 @@ tasks:
         --project administration
         --output-path /tmp/amber-admin
 
+  # end-user
+  serve-end-user:
+    cmds:
+      - ng serve
+        --port 4210
+        --project administration
+        --public admin.amber.dev
+  
   build-end-user:
     env:
       NODE_ENV: production
@@ -58,7 +60,22 @@ tasks:
         --project end-user
         --output-path /tmp/amber
 
-  deploy-end-user:
+  build-docker-image:
+    # deps:
+    #   - build-end-user-tmp
+    #   - build-admin-tmp
+    cmds:
+      - sudo docker image build
+        -t thanhnguyen2187/amber-frontend
+        .
+
+  push-docker-image:
+    deps:
+      - build-docker-image
+    cmds:
+      - sudo docker push thanhnguyen2187/amber-frontend:latest
+
+  push-end-user-docker:
     deps:
       - build-end-user
     cmds:
