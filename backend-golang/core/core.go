@@ -7,13 +7,13 @@ import (
 	"amber-backend/core/conf"
 	"amber-backend/core/db"
 	"amber-backend/core/esclient"
-	"amber-backend/core/tz"
+	// "amber-backend/core/tz"
 )
 
 func Init() {
 	log.SetFlags(log.Llongfile)
 
-	tz.Init()
+	// tz.Init()
 	conf.Init()
 	db.Init(
 		conf.Config.DbDriver,

@@ -45,8 +45,7 @@ services:
   amber-backend:
     container_name: amber-backend
     image: amber-backend
-    ports:
-      - "5000:5000"
+    network_mode: host
 
   # amber-elasticsearch:
   #   restart: always

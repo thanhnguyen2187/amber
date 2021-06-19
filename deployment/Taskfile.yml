@@ -13,3 +13,7 @@ tasks:
     cmds:
       - ./caddy/assure_local_dns.sh
     silent: true
+
+  up-backend:
+    cmds:
+      - sudo docker-compose up -d amber-backend
