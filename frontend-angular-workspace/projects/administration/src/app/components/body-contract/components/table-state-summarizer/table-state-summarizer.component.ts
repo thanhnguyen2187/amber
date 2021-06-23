@@ -75,6 +75,11 @@ export class TableStateSummarizerComponent implements OnInit {
     );
   }
 
+  @Output() displayStateChange = new EventEmitter<boolean>();
+  close(): void {
+    this.displayStateChange.emit(false);
+  }
+
   constructor(
     private tableCellFactoryService: TableCellFactoryService,
     private stateSummarizingService: StateSummarizingService,

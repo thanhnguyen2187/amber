@@ -49,6 +49,7 @@
           >
             <app-table-state-summarizer
               (currentCookedContractChange)="summarizingContract = $event; summarizingContract.displayDetails = true"
+              (displayStateChange)="displayTableState = $event"
             ></app-table-state-summarizer>
           </amber-modal>
           <app-contract-details

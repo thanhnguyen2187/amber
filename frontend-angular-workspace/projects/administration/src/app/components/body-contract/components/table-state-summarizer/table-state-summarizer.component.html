@@ -23,6 +23,9 @@
         class="
           flex
           flex-col
+          h-60
+          overflow-y-scroll
+          pr-4
         "
       >
         <div
@@ -155,6 +158,7 @@
     <amber-button
       backgroundColor="#b8d1c2"
       borderColor="#b8d1c2"
+      [action]="close.bind(this)"
     >
       <amber-icon
         backgroundImageUrl="assets/close.svg"
